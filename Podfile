@@ -1,12 +1,15 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '11.0'
 
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/Loopring/loopr-ios-sdk.git'
+
 target 'loopr-ios' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for loopr-ios
-  pod 'Charts', '3.0.5'
+  pod 'Charts', '~> 3.0.5'
   pod 'lottie-ios'
   pod 'SwiftLint'
   pod 'SwiftTheme'
@@ -20,8 +23,10 @@ target 'loopr-ios' do
   pod 'Geth'
   pod 'BigInt', '3.0.1'
   pod 'CryptoSwift', '0.8.3'
-  pod 'secp256k1_ios', git: 'https://github.com/shamatar/secp256k1_ios.git', inhibit_warnings: true
+  pod 'secp256k1_ios', '0.1.3'
   pod 'TrezorCrypto', '0.0.4', inhibit_warnings: true
+
+  pod 'Loopr', :path => '~/Development/loopr-ios-sdk'
 
   target 'loopr-iosTests' do
     inherit! :search_paths

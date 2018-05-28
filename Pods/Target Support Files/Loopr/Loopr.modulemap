@@ -1,0 +1,6 @@
+framework module Loopr {
+  umbrella header "Loopr-umbrella.h"
+
+  export *
+  module * { export * }
+}
