@@ -65,13 +65,8 @@ class AuthenticationViewController: UIViewController {
                     self.dismiss(animated: true, completion: {
                         
                     })
-                    
-                } else {
-                    // User did not authenticate successfully
                 }
             }
-        } else {
-            // Handle Error
         }
     }
 
