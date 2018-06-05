@@ -130,7 +130,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // MarketDataManager.shared.startGetTicker()
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
-        
         if type == .favorite {
             marketTableView.reloadData()
         }
@@ -138,6 +137,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        isSearching = false
         isListeningSocketIO = false
         // MarketDataManager.shared.stopGetTicker()
         NotificationCenter.default.removeObserver(self, name: .tickerResponseReceived, object: nil)
@@ -184,11 +184,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if marketTableView.contentOffset.y == 0 {
             marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
         } else {
-            canHideKeyboard = false
             _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
                 self.canHideKeyboard = true
             }
-            
             marketTableView.reloadData()
             // tableView.setContentOffset(.zero, animated: false)
             let topIndex = IndexPath(row: 0, section: 0)

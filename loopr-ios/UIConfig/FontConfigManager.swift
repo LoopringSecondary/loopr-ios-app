@@ -15,6 +15,8 @@ enum SupportedFonts: String {
     case Lato
     case OpenSans
     case Roboto
+    case Eczar
+    case RobotoCondensed
 }
 
 class FontConfigManager {
@@ -22,7 +24,7 @@ class FontConfigManager {
     static let shared = FontConfigManager()
     
     // To change the font in the app
-    var currentFont: SupportedFonts = .OpenSans
+    var currentFont: SupportedFonts = .RobotoCondensed
     
     private init() {
         // currentFont = getCurrentFontFromLocalStorage()
@@ -110,6 +112,10 @@ class FontConfigManager {
             return "OpenSans-SemiBold"
         case .Roboto:
             return "Roboto-Medium"
+        case .Eczar:
+            return "Eczar"
+        case .RobotoCondensed:
+            return "Roboto_Condensed"
         }
     }
     
@@ -136,4 +142,8 @@ class FontConfigManager {
         return UIFont(name: "\(currentFont.rawValue)-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)
     }
 
+    func getTickerFont() -> UIFont {
+        let fontSize = 48 * UIStyleConfig.scale
+        return UIFont(name: "Eczar-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
 }

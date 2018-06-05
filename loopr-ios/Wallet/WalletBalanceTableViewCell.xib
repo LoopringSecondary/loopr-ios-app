@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,10 +28,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-gI-ta8" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
-                        <rect key="frame" x="20" y="31" width="355" height="36"/>
+                        <rect key="frame" x="20" y="35" width="355" height="64"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="36" id="mCn-zs-TbZ"/>
+                            <constraint firstAttribute="height" constant="64" id="mCn-zs-TbZ"/>
                         </constraints>
                     </view>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBU-Bt-tYb">
@@ -62,7 +62,7 @@
                     <constraint firstAttribute="trailing" secondItem="bom-wH-aAn" secondAttribute="trailing" id="DQo-N9-7Oa"/>
                     <constraint firstItem="1FF-gI-ta8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Jla-Wc-dit"/>
                     <constraint firstItem="bom-wH-aAn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LZM-Zi-4p0"/>
-                    <constraint firstItem="1FF-gI-ta8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="ThD-iX-ro7"/>
+                    <constraint firstItem="1FF-gI-ta8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="24" id="ThD-iX-ro7"/>
                     <constraint firstAttribute="bottom" secondItem="bom-wH-aAn" secondAttribute="bottom" id="VQ8-ip-dtE"/>
                     <constraint firstAttribute="trailing" secondItem="RBU-Bt-tYb" secondAttribute="trailing" constant="15" id="cFs-mA-Vvh"/>
                     <constraint firstItem="RBU-Bt-tYb" firstAttribute="centerY" secondItem="bom-wH-aAn" secondAttribute="centerY" id="eMA-Es-87c"/>

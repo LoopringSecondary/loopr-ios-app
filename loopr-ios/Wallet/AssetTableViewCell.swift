@@ -10,29 +10,24 @@ import UIKit
 
 class AssetTableViewCell: UITableViewCell {
 
-    var asset: Asset?
-    
-    // TODO: We may deprecate IBOutlet
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var seperateLine: UIView!
     
-    // @IBOutlet weak var forwardImageView: UIImageView!
+    var asset: Asset?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         theme_backgroundColor = GlobalPicker.backgroundColor
-        symbolLabel.setHeaderFont()
+        symbolLabel.setTitleFont()
+        nameLabel.setSubTitleFont()
         amountLabel.setTitleFont()
         amountLabel.baselineAdjustment = .alignCenters
         balanceLabel.setSubTitleFont()
         balanceLabel.baselineAdjustment = .alignCenters
-        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         accessoryType = .disclosureIndicator
     }
 
@@ -44,19 +39,9 @@ class AssetTableViewCell: UITableViewCell {
     
     func update() {
         if let asset = asset {
-            if asset.icon != nil {
-                iconImageView.image = asset.icon
-                iconImageView.isHidden = false
-                iconView.isHidden = true
-            } else {
-                iconView.isHidden = false
-                iconView.symbol = asset.symbol
-                iconView.symbolLabel.text = asset.symbol
-                iconImageView.isHidden = true
-            }
-
             symbolLabel.text = asset.symbol
             // TODO: price unit get from setting
+            nameLabel.text = asset.name
             balanceLabel.text = asset.currency
             amountLabel.text = "\(asset.display) \(asset.symbol)"
         }
