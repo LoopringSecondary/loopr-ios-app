@@ -10,6 +10,9 @@ import UIKit
 
 class AssetTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var container: UIView!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
@@ -22,13 +25,14 @@ class AssetTableViewCell: UITableViewCell {
         // Initialization code
         
         theme_backgroundColor = GlobalPicker.backgroundColor
+        
         symbolLabel.setTitleFont()
         nameLabel.setSubTitleFont()
         amountLabel.setTitleFont()
         amountLabel.baselineAdjustment = .alignCenters
         balanceLabel.setSubTitleFont()
         balanceLabel.baselineAdjustment = .alignCenters
-        accessoryType = .disclosureIndicator
+//        accessoryType = .disclosureIndicator
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,6 +43,16 @@ class AssetTableViewCell: UITableViewCell {
     
     func update() {
         if let asset = asset {
+            if asset.icon != nil {
+                iconImageView.image = asset.icon
+                iconImageView.isHidden = false
+                iconView.isHidden = true
+            } else {
+                iconView.isHidden = false
+                iconView.symbol = asset.symbol
+                iconView.symbolLabel.text = asset.symbol
+                iconImageView.isHidden = true
+            }
             symbolLabel.text = asset.symbol
             // TODO: price unit get from setting
             nameLabel.text = asset.name

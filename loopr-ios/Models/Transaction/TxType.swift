@@ -9,6 +9,7 @@
 import Foundation
 
 extension Transaction {
+    
     enum TxType: String, CustomStringConvertible {
         case approved = "approve"
         case sent = "send"
