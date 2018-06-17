@@ -26,7 +26,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         // Initialization code
         
         selectionStyle = .none
-        self.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.theme_backgroundColor = GlobalPicker.navigationBarTintColor
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
@@ -35,7 +35,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         balanceLabel.animationDuration = 0.3
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
-        balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
+        balanceLabel.theme_backgroundColor = GlobalPicker.navigationBarTintColor
 
         var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balance.insert(" ", at: balance.index(after: balance.startIndex))
@@ -58,7 +58,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
 
     private func update() {
-        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
+        balanceLabel.textColor = UIColor.white
         addressLabel.theme_textColor = GlobalPicker.textLightGreyColor
     }
     

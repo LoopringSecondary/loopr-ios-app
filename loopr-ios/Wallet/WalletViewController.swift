@@ -46,7 +46,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let qrCodebutton = UIButton(type: UIButtonType.custom)
         
         // TODO: smaller images.
-        qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
+        qrCodebutton.theme_setImage(["QRCode-white", "QRCode-white"], forState: UIControlState.normal)
         qrCodebutton.setImage(UIImage(named: "QRCode-black")?.alpha(0.3), for: .highlighted)
         qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -70,14 +70,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         frame.origin.y = -frame.size.height
         let backgroundView = UIView(frame: frame)
         backgroundView.autoresizingMask = .flexibleWidth
-        backgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
+        backgroundView.theme_backgroundColor = GlobalPicker.navigationBarTintColor
         
         // Adding the view below the refresh control
         assetTableView.insertSubview(backgroundView, at: 0)
         
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
         buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getNavigationTitleFont()
-        buttonInNavigationBar.theme_setTitleColor(["#000", "#fff"], forState: .normal)
+        buttonInNavigationBar.theme_setTitleColor(GlobalPicker.navigationBarTextColor, forState: .normal)
         buttonInNavigationBar.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
         buttonInNavigationBar.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = buttonInNavigationBar
@@ -122,7 +122,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         buttonInNavigationBar.title = buttonTitle
-        buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
+        // TODO: in the new design, no right image
+        // buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {

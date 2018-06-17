@@ -19,6 +19,8 @@ class AssetSwipeViewController: SwipeViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // For back button in navigation bar
+        setBackButton()
         setupNavigationBar()
         
         options.swipeTabView.height = 50
@@ -56,8 +58,6 @@ class AssetSwipeViewController: SwipeViewController {
     
     func setupNavigationBar() {
         self.navigationItem.title = asset?.symbol
-        // For back button in navigation bar
-        setBackButton()
         if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {
             let convertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 28))
             convertButton.setupRoundWhite(height: 28)

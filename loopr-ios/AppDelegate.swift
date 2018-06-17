@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITableViewCell.appearance().selectedBackgroundView = colorView
         
         // status bar
-        UIApplication.shared.theme_setStatusBarStyle([.default, .lightContent, .lightContent, .lightContent], animated: true)
+        UIApplication.shared.theme_setStatusBarStyle([.lightContent, .default], animated: true)
         
         // navigation bar
         let navigationBar = UINavigationBar.appearance()
@@ -90,22 +90,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let shadow = NSShadow()
         shadow.shadowOffset = CGSize(width: 0, height: 0)
         
-        let titleAttributes = GlobalPicker.barTextColors.map { hexString in
+        let titleAttributes = GlobalPicker.navigationBarTextColors.map { hexString in
             return [
                 NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
                 NSAttributedStringKey.font: FontConfigManager.shared.getNavigationTitleFont(),
                 NSAttributedStringKey.shadow: shadow
             ]
         }
-        
         navigationBar.isTranslucent = false
-        navigationBar.theme_tintColor = GlobalPicker.barTextColor
-        navigationBar.theme_barTintColor = GlobalPicker.barTintColor
+        navigationBar.theme_tintColor = GlobalPicker.navigationBarTextColor
+        navigationBar.theme_barTintColor = GlobalPicker.navigationBarTintColor
         navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(titleAttributes)
         
         // tab bar
         let tabBar = UITabBar.appearance()
-        
         tabBar.theme_tintColor = GlobalPicker.barTextColor
         tabBar.theme_barTintColor = GlobalPicker.barTintColor
     }
