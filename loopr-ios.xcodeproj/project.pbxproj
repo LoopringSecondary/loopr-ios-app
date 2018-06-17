@@ -3489,7 +3489,7 @@
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
 				INFOPLIST_FILE = "loopr-iosTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3512,7 +3512,7 @@
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
 				INFOPLIST_FILE = "loopr-iosTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

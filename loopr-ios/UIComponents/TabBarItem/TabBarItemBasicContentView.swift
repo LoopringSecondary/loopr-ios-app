@@ -13,6 +13,9 @@ class TabBarItemBasicContentView: ESTabBarItemContentView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        renderingMode = .alwaysOriginal
+        imageView.contentMode = .center
+        
         // textColor = UIColor.black
         highlightTextColor = Themes.isNight() ? UIColor.white : UIColor.black
         // iconColor = UIColor.black

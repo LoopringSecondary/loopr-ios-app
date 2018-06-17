@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController: UIGestureRecognizerDelegate {
     
-    func setBackButton(image name: String = "BackButtonImage") {
+    func setBackButton(image name: String = "BackButtonImage-white") {
         let backButton = UIButton(type: UIButtonType.custom)
         backButton.setImage(UIImage(named: name), for: .normal)
         backButton.setImage(UIImage(named: name)?.alpha(0.3), for: .highlighted)
