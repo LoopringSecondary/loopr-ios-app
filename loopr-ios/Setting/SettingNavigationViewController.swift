@@ -16,7 +16,7 @@ class SettingNavigationViewController: UINavigationController {
         // Do any additional setup after loading the view.
         navigationBar.shadowImage = UIImage()
 
-        let viewController = SettingViewController(nibName: nil, bundle: nil)
+        let viewController = UpdatedSettingViewController()
         self.setViewControllers([viewController], animated: false)
     }
 

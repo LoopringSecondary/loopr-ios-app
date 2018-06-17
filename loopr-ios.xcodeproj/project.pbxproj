@@ -259,6 +259,8 @@
 		AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */; };
 		AC4C144B204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4C1449204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift */; };
 		AC4C144C204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4C144A204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib */; };
+		AC4D02E520D6DE35007F087B /* UpdatedSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D02E320D6DE35007F087B /* UpdatedSettingViewController.swift */; };
+		AC4D02E620D6DE35007F087B /* UpdatedSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4D02E420D6DE35007F087B /* UpdatedSettingViewController.xib */; };
 		AC4F600D20773E9D00F1D954 /* SignatureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */; };
 		AC4F600E20773E9D00F1D954 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFD20773E9D00F1D954 /* Sign.swift */; };
 		AC4F600F20773E9D00F1D954 /* GethBigInt+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */; };
@@ -816,6 +818,8 @@
 		AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundButton.swift"; sourceTree = "<group>"; };
 		AC4C1449204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletEnterNameAndPasswordViewController.swift; sourceTree = "<group>"; };
 		AC4C144A204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateWalletEnterNameAndPasswordViewController.xib; sourceTree = "<group>"; };
+		AC4D02E320D6DE35007F087B /* UpdatedSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedSettingViewController.swift; sourceTree = "<group>"; };
+		AC4D02E420D6DE35007F087B /* UpdatedSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedSettingViewController.xib; sourceTree = "<group>"; };
 		AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureData.swift; sourceTree = "<group>"; };
 		AC4F5FFD20773E9D00F1D954 /* Sign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sign.swift; sourceTree = "<group>"; };
 		AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GethBigInt+Extension.swift"; sourceTree = "<group>"; };
@@ -2169,6 +2173,8 @@
 				AC4F8643209D488F002E62AB /* SettingMarginSplit */,
 				AC500BC320B6511C0073E590 /* SettingSecurity */,
 				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
+				AC4D02E320D6DE35007F087B /* UpdatedSettingViewController.swift */,
+				AC4D02E420D6DE35007F087B /* UpdatedSettingViewController.xib */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
 				ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */,
@@ -2613,6 +2619,7 @@
 				AC13B30F2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
 				AC54FD70204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */,
+				AC4D02E620D6DE35007F087B /* UpdatedSettingViewController.xib in Resources */,
 				AC9ADF92205EE3B900CBE368 /* ConvertETHViewController.xib in Resources */,
 				ACFEFEA620C392F800013921 /* AssetSwipeViewController.xib in Resources */,
 				ACEC978020AD57F3003F9DEB /* P2POrderHistoryViewController.xib in Resources */,
@@ -3051,6 +3058,7 @@
 				AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */,
 				AC31B951204A8DF400B16155 /* DataHex.swift in Sources */,
 				AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */,
+				AC4D02E520D6DE35007F087B /* UpdatedSettingViewController.swift in Sources */,
 				AC5288B4208300580002AEAD /* DateUtil.swift in Sources */,
 				940B45222060F67E00ADE2B9 /* PriceDataManager.swift in Sources */,
 				AC38751F205F12F100A76637 /* ContextMenuDelegate.swift in Sources */,
