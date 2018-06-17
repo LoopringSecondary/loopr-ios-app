@@ -15,7 +15,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private let refreshControl = UIRefreshControl()
 
     var isLaunching: Bool = true
-    var isReordering: Bool = false
     var isListeningSocketIO: Bool = false
 
     var contextMenuSourceView: UIView = UIView()
@@ -29,7 +28,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         assetTableView.dataSource = self
         assetTableView.delegate = self
-        assetTableView.reorder.delegate = self
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
         footerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
         assetTableView.tableFooterView = footerView
@@ -254,7 +252,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func balanceResponseReceivedNotification() {
-        if !isReordering && !isLaunching && isListeningSocketIO {
+        if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
             self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
@@ -262,7 +260,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func priceQuoteResponseReceivedNotification() {
-        if !isReordering && !isLaunching {
+        if !isLaunching {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
             self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
@@ -372,32 +370,5 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.assetTableView.insertRows(at: rows, with: .top)
             }
         }
-    }
-}
-
-extension WalletViewController: TableViewReorderDelegate {
-    // MARK: - Reorder Delegate
-    func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        // print("tableView reorderRowAt")
-        CurrentAppWalletDataManager.shared.exchange(at: sourceIndexPath.row, to: destinationIndexPath.row)
-    }
-
-    func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section >= 1 {
-            // TODO: disable reordering. We will revisit this feature in the future.
-            return false
-        } else {
-            return false
-        }
-    }
-    
-    func tableViewDidBeginReordering(_ tableView: UITableView) {
-        print("tableViewDidBeginReordering")
-        isReordering = true
-    }
-    
-    func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
-        print("tableViewDidFinishReordering")
-        isReordering = false
     }
 }

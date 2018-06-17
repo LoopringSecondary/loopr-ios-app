@@ -225,6 +225,8 @@ class CurrentAppWalletDataManager {
         }
     }
 
+    // This method has been deprecated.
+    /*
     func exchange(at sourceIndex: Int, to destinationIndex: Int) {
         guard let currentAppWallet = currentAppWallet else {
             return
@@ -253,6 +255,7 @@ class CurrentAppWalletDataManager {
             AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet)
         }
     }
+    */
     
     func startGetBalance() {
         guard let wallet = currentAppWallet else {
