@@ -47,7 +47,7 @@ class UpdatedAssetTableViewCell: UITableViewCell {
         
         symbolLabel.frame = CGRect.init(x: 60, y: 22-3, width: 200, height: 35)
         symbolLabel.setTitleFont()
-        symbolLabel.text = "ETHETHETHETHETHETHETH"  // Prototype the label size. Will be updated very soon.
+        symbolLabel.text = "ETHETHETHETHETHETHETH"
         symbolLabel.sizeToFit()
         symbolLabel.text = ""
         baseView.addSubview(symbolLabel)

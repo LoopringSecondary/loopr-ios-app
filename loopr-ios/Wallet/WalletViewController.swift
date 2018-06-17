@@ -321,9 +321,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             return cell!
         } else {
-            if let spacer = assetTableView.reorder.spacerCell(for: indexPath) {
-                return spacer
-            }
             var cell = tableView.dequeueReusableCell(withIdentifier: UpdatedAssetTableViewCell.getCellIdentifier()) as? UpdatedAssetTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("UpdatedAssetTableViewCell", owner: self, options: nil)
@@ -342,7 +339,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.section == 0 {
             
         } else {
-            
             tableView.deselectRow(at: indexPath, animated: true)
             let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
             let viewController = AssetSwipeViewController()
