@@ -11,9 +11,9 @@
 "Bought" = "买入";
 "Sell" = "卖出";
 "Sold" = "卖出";
-"Receive" = "收款";
+"Receive" = "转入";
 "Received" = "收到";
-"Send" = "转账";
+"Send" = "转出";
 "Sent" = "转出";
 "Language" = "语言";
 "Create a new wallet" = "创建钱包";

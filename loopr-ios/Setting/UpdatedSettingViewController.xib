@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="addressLabel" destination="auU-X6-1ZA" id="ADc-Rz-A2E"/>
                 <outlet property="copyButton" destination="mBe-Wn-sPj" id="whE-Bb-6Kg"/>
+                <outlet property="customizedNavigationBar" destination="ASs-TZ-HlA" id="yBa-54-zoK"/>
                 <outlet property="item1" destination="xIZ-jX-7TG" id="bkg-Qk-9Ya"/>
                 <outlet property="item2" destination="Q8J-z9-2Kj" id="cat-35-oqQ"/>
                 <outlet property="item3" destination="Pz8-xB-oFo" id="dcr-PF-gEk"/>
@@ -127,7 +128,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBe-Wn-sPj">
-                    <rect key="frame" x="264" y="172" width="60" height="28"/>
+                    <rect key="frame" x="264" y="172.5" width="60" height="28"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="WAl-pd-wbb"/>
@@ -137,18 +138,30 @@
                         <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASs-TZ-HlA">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="CrM-pY-9MF"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Title" id="dgx-hY-AWF"/>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="0.95294117647058818" green="0.96470588235294119" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="mBe-Wn-sPj" firstAttribute="centerY" secondItem="auU-X6-1ZA" secondAttribute="centerY" id="2H3-5v-zAF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Np6-6t-Mjo" secondAttribute="trailing" constant="14" id="4qt-FX-YQu"/>
+                <constraint firstItem="ASs-TZ-HlA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="B60-Uy-Y3c"/>
                 <constraint firstItem="Ojp-ue-C71" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="KUr-DC-Gq2"/>
                 <constraint firstItem="Np6-6t-Mjo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="14" id="N1R-Xq-vvC"/>
                 <constraint firstItem="Ojp-ue-C71" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.6" id="Wqf-8R-hNh"/>
                 <constraint firstItem="THo-w0-yc1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hgO-7m-mNZ"/>
                 <constraint firstItem="mBe-Wn-sPj" firstAttribute="leading" secondItem="THo-w0-yc1" secondAttribute="trailing" constant="8" id="i35-uk-F8A"/>
                 <constraint firstItem="Ojp-ue-C71" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="l2E-tx-XQR"/>
+                <constraint firstItem="ASs-TZ-HlA" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="mUI-p7-jWP"/>
                 <constraint firstItem="Ojp-ue-C71" firstAttribute="bottom" secondItem="Np6-6t-Mjo" secondAttribute="bottom" constant="-120" id="rfR-qL-Y1M"/>
+                <constraint firstItem="ASs-TZ-HlA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="tWi-T1-y8D"/>
                 <constraint firstItem="THo-w0-yc1" firstAttribute="centerY" secondItem="Ojp-ue-C71" secondAttribute="centerY" constant="-50" id="wR5-m8-uU5"/>
                 <constraint firstItem="Ojp-ue-C71" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="whC-BS-eqz"/>
             </constraints>

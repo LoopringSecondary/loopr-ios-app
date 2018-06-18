@@ -41,6 +41,9 @@ enum QRCodeType: String {
 
 class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    
     weak var delegate: QRCodeScanProtocol?
     
     @IBOutlet weak var scanView: UIView!
@@ -59,12 +62,14 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     var isTorchOn = false
     var shouldPop = true
     
+    var parentControllerHasNavigationBar = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setBackButton()
-        self.navigationItem.title = NSLocalizedString("Scan QR Code", comment: "")
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Scan QR Code", comment: ""))
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
         scanTipLabel.font = FontConfigManager.shared.getLabelFont()
         scanTipLabel.textColor = Themes.isNight() ? .white : .black
@@ -112,6 +117,10 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if !parentControllerHasNavigationBar {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+        
         if captureSession.isRunning == false {
             captureSession.startRunning()
         }
@@ -119,6 +128,10 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if !parentControllerHasNavigationBar {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+        
         if captureSession.isRunning == true {
             captureSession.stopRunning()
         }

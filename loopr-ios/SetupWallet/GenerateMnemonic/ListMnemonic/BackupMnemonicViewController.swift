@@ -56,7 +56,8 @@ class BackupMnemonicViewController: UIViewController {
         view.addSubview(infoTextView)
 
         collectionViewWidth = screenWidth - padding * 2
-        collectionViewHeight = 4*MnemonicCollectionViewCell.getHeight() + 2*padding
+        // Need to update the height for different sizes of devices.
+        collectionViewHeight = 6*MnemonicCollectionViewCell.getHeight() + 2*padding
         collectionViewY = infoTextView.frame.maxY + 10
         
         let flowLayout = UICollectionViewFlowLayout()

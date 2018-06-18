@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,8 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AssetDetailViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="buttonHeightLayoutConstraint" destination="To1-dR-8PD" id="bpz-d1-rxT"/>
+                <outlet property="customizedNavigationBar" destination="ZgU-h1-UxY" id="rcL-IP-0YB"/>
                 <outlet property="receiveButton" destination="oU0-Pm-y7X" id="k1W-vG-cy6"/>
                 <outlet property="sendButton" destination="IV9-Ck-OQ7" id="cY1-E0-ieZ"/>
+                <outlet property="statusBarBackgroundView" destination="bLh-rN-FhO" id="u0j-i1-h7r"/>
                 <outlet property="tableView" destination="Ze1-7w-Ov8" id="2Ct-vg-4VP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,8 +25,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ze1-7w-Ov8">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ze1-7w-Ov8">
+                    <rect key="frame" x="0.0" y="120" width="375" height="472"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U8R-q4-vAw">
@@ -56,16 +57,35 @@
                         <constraint firstAttribute="height" constant="45" id="To1-dR-8PD"/>
                     </constraints>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLh-rN-FhO">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZgU-h1-UxY">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="nm0-dc-HMF"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Title" id="fHg-g1-b7C"/>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="bLh-rN-FhO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3EU-Jn-NOH"/>
+                <constraint firstItem="ZgU-h1-UxY" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="9Cu-Fw-iwR"/>
+                <constraint firstItem="bLh-rN-FhO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AUy-ik-RuG"/>
+                <constraint firstItem="ZgU-h1-UxY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ai4-gB-qtW"/>
+                <constraint firstItem="ZgU-h1-UxY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="BqZ-7K-GMe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="bLh-rN-FhO" secondAttribute="bottom" id="Fke-f6-SSu"/>
                 <constraint firstItem="U8R-q4-vAw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Gsr-mR-qOE"/>
                 <constraint firstItem="Ze1-7w-Ov8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="H4N-2a-4fX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="U8R-q4-vAw" secondAttribute="bottom" constant="15" id="Lua-pN-YhS"/>
                 <constraint firstItem="U8R-q4-vAw" firstAttribute="top" secondItem="Ze1-7w-Ov8" secondAttribute="bottom" constant="15" id="NQF-xP-CC3"/>
                 <constraint firstItem="Ze1-7w-Ov8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Ve5-Vf-O7r"/>
-                <constraint firstItem="Ze1-7w-Ov8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lLz-NY-zJB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U8R-q4-vAw" secondAttribute="trailing" constant="15" id="qHa-q8-Ug3"/>
+                <constraint firstAttribute="trailing" secondItem="bLh-rN-FhO" secondAttribute="trailing" id="wr7-2I-1zG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="81.5" y="95.5"/>

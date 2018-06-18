@@ -11,6 +11,7 @@ import NotificationBannerSwift
 
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate, QRCodeScanProtocol {
 
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
     @IBOutlet weak var assetTableView: UITableView!
     private let refreshControl = UIRefreshControl()
 
@@ -26,6 +27,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        setupNavigationBar()
+        
         assetTableView.dataSource = self
         assetTableView.delegate = self
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
@@ -38,22 +41,23 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.estimatedSectionHeaderHeight = 0
         assetTableView.estimatedSectionFooterHeight = 0
 
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        assetTableView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
+        view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
+        assetTableView.backgroundColor = UIColor.init(rgba: "#F3F6F8") // = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
 
         let qrCodebutton = UIButton(type: UIButtonType.custom)
         
         // TODO: smaller images.
         qrCodebutton.theme_setImage(["QRCode-white", "QRCode-white"], forState: UIControlState.normal)
         qrCodebutton.setImage(UIImage(named: "QRCode-black")?.alpha(0.3), for: .highlighted)
-        qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        qrCodebutton.addTarget(self, action: #selector(self.pressScanQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
-        self.navigationItem.leftBarButtonItem = qrCodeBarButton
+        // self.navigationItem.leftBarButtonItem = qrCodeBarButton
 
         let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        self.navigationItem.rightBarButtonItem = addBarButton
+        // self.navigationItem.rightBarButtonItem = addBarButton
         
+        // Disable refresh control
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {
             assetTableView.refreshControl = refreshControl
@@ -62,23 +66,56 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        
+ 
+        // TODO: Unfinished
+        // https://stackoverflow.com/questions/13364465/uirefreshcontrol-background-color
         // Creating view for extending background color
+        //
         var frame = assetTableView.bounds
         frame.origin.y = -frame.size.height
-        let backgroundView = UIView(frame: frame)
+        let backgroundView = UIImageView(frame: CGRect.init(x: 0, y: -100, width: assetTableView.bounds.width, height: 345))
+        backgroundView.image = UIImage.init(named: "Tokenest-asset-background-image")
+        // backgroundView.frame.height = 345
         backgroundView.autoresizingMask = .flexibleWidth
-        backgroundView.theme_backgroundColor = GlobalPicker.navigationBarTintColor
+        // backgroundView.backgroundColor = UIColor.init(red: 59/255.0, green: 81/255.0, blue: 200/255.0, alpha: 1)
+        
+        // view.addSubview(backgroundView)
+        // view.sendSubview(toBack: backgroundView)
         
         // Adding the view below the refresh control
-        assetTableView.insertSubview(backgroundView, at: 0)
+        // assetTableView.insertSubview(backgroundView, at: 0)
         
+        /*
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
         buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getNavigationTitleFont()
         buttonInNavigationBar.theme_setTitleColor(GlobalPicker.navigationBarTextColor, forState: .normal)
         buttonInNavigationBar.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
         buttonInNavigationBar.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = buttonInNavigationBar
+        */
+    }
+    
+    func setupNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
+        
+        customizedNavigationBar.backgroundColor = UIColor.clear
+        customizedNavigationBar.isTranslucent = true
+        customizedNavigationBar.setBackgroundImage(UIImage(), for: .default)
+        customizedNavigationBar.shadowImage = UIImage()
+        
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "TOKENEST"
+        
+        // TODO: Needs an icon
+        let qrScanButton = UIButton(type: UIButtonType.custom)
+        qrScanButton.setImage(UIImage.init(named: "Scan-white"), for: .normal)
+        qrScanButton.setImage(UIImage(named: "Scan")?.alpha(0.3), for: .highlighted)
+        qrScanButton.addTarget(self, action: #selector(self.pressScanQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        qrScanButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
+        navigationItem.leftBarButtonItem = qrCodeBarButton
+        
+        customizedNavigationBar.setItems([navigationItem], animated: false)
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -112,6 +149,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewWillAppear")
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         getBalanceFromRelay()
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
@@ -122,8 +161,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         buttonInNavigationBar.title = buttonTitle
         // TODO: in the new design, no right image
         // buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
+        
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         isListeningSocketIO = true
@@ -202,10 +246,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @objc func pressQRCodeButton(_ button: UIBarButtonItem) {
-        print("pressQRCodeButton")
+    @objc func pressScanQRCodeButton(_ button: UIBarButtonItem) {
+        print("pressScanQRCodeButton")
         if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
-            let viewController = QRCodeViewController()
+            let viewController = ScanQRCodeViewController()
+            viewController.parentControllerHasNavigationBar = false
+            // viewController.delegate = self
+            viewController.shouldPop = false
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         }
@@ -300,9 +347,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return WalletBalanceTableViewCell.getHeight()
+            let backgroundImageHeight: CGFloat = 345 - 20 // self.view.frame.height * 0.6
+            return backgroundImageHeight + 32
         } else {
-            return UpdatedAssetTableViewCell.getHeight()
+            return AssetTableViewCell.getHeight()
         }
     }
     
@@ -321,10 +369,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             return cell!
         } else {
-            var cell = tableView.dequeueReusableCell(withIdentifier: UpdatedAssetTableViewCell.getCellIdentifier()) as? UpdatedAssetTableViewCell
+            var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
             if cell == nil {
-                let nib = Bundle.main.loadNibNamed("UpdatedAssetTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? UpdatedAssetTableViewCell
+                let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? AssetTableViewCell
             }
             cell?.asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
             cell?.update()
@@ -341,7 +389,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
             let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
-            let viewController = AssetSwipeViewController()
+            // let viewController = AssetSwipeViewController()
+            let viewController = AssetDetailViewController()
             viewController.asset = asset
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)

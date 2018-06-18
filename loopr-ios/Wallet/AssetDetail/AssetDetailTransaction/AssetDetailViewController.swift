@@ -9,6 +9,9 @@
 import UIKit
 
 class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
 
     var asset: Asset?
     var transactions: [Transaction] = []
@@ -26,6 +29,10 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         setup()
         // Do any additional setup after loading the view.
+        
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: asset?.symbol ?? "")
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
+        
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
@@ -107,6 +114,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         if !isLaunching {
             getTransactionsFromRelay()
         }
@@ -114,6 +122,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @IBAction func pressedSendButton(_ sender: Any) {

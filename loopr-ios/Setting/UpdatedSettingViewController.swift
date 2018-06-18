@@ -11,6 +11,8 @@ import NotificationBannerSwift
 
 class UpdatedSettingViewController: UIViewController {
     
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+
     @IBOutlet weak var qrcodeButton: UIButton!
     @IBOutlet weak var myAddressInfoLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -29,8 +31,8 @@ class UpdatedSettingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.isNavigationBarHidden = true
-        
+        setupNavigationBar()
+
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode"), for: .normal)
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode")?.alpha(0.6), for: .highlighted)
 
@@ -116,7 +118,43 @@ class UpdatedSettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
         addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
+    }
+    
+    func setupNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
+        customizedNavigationBar.backgroundColor = UIColor.clear
+        customizedNavigationBar.isTranslucent = true
+        customizedNavigationBar.setBackgroundImage(UIImage(), for: .default)
+        customizedNavigationBar.shadowImage = UIImage()
+
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "TOKENEST"
+        
+        // TODO: Needs an icon
+        let qrScanButton = UIButton(type: UIButtonType.custom)
+        qrScanButton.setImage(UIImage.init(named: "Scan-white"), for: .normal)
+        qrScanButton.setImage(UIImage(named: "Scan")?.alpha(0.3), for: .highlighted)
+        qrScanButton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        qrScanButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
+        navigationItem.leftBarButtonItem = qrCodeBarButton
+
+        customizedNavigationBar.setItems([navigationItem], animated: false)
+    }
+    
+    @objc func pressQRCodeButton(_ sender: Any) {
+        print("Selected Scan QR code")
+        let viewController = ScanQRCodeViewController()
+        viewController.parentControllerHasNavigationBar = false
+        // viewController.delegate = self
+        viewController.shouldPop = false
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func pressedCopyButton(_ button: UIButton) {
@@ -143,6 +181,9 @@ class UpdatedSettingViewController: UIViewController {
     
     @objc func pressedItem4Button(_ button: UIButton) {
         print("pressedItem4Button")
+        let viewController = AppSettingViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func pressedItem5Button(_ button: UIButton) {
