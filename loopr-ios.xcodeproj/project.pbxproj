@@ -261,6 +261,8 @@
 		AC4C144C204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4C144A204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib */; };
 		AC4D02E520D6DE35007F087B /* UpdatedSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D02E320D6DE35007F087B /* UpdatedSettingViewController.swift */; };
 		AC4D02E620D6DE35007F087B /* UpdatedSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4D02E420D6DE35007F087B /* UpdatedSettingViewController.xib */; };
+		AC4D02E920D717A0007F087B /* UpdatedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D02E720D717A0007F087B /* UpdatedSetupViewController.swift */; };
+		AC4D02EA20D717A0007F087B /* UpdatedSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4D02E820D717A0007F087B /* UpdatedSetupViewController.xib */; };
 		AC4F600D20773E9D00F1D954 /* SignatureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */; };
 		AC4F600E20773E9D00F1D954 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFD20773E9D00F1D954 /* Sign.swift */; };
 		AC4F600F20773E9D00F1D954 /* GethBigInt+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */; };
@@ -377,6 +379,8 @@
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
 		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
 		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
+		AC6EC87420D72D3700A34DF0 /* UnlockWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6EC87220D72D3700A34DF0 /* UnlockWalletViewController.swift */; };
+		AC6EC87520D72D3700A34DF0 /* UnlockWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6EC87320D72D3700A34DF0 /* UnlockWalletViewController.xib */; };
 		AC70E84E20683C7500451047 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70E84D20683C7500451047 /* IconView.swift */; };
 		AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */; };
 		AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */; };
@@ -820,6 +824,8 @@
 		AC4C144A204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateWalletEnterNameAndPasswordViewController.xib; sourceTree = "<group>"; };
 		AC4D02E320D6DE35007F087B /* UpdatedSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedSettingViewController.swift; sourceTree = "<group>"; };
 		AC4D02E420D6DE35007F087B /* UpdatedSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedSettingViewController.xib; sourceTree = "<group>"; };
+		AC4D02E720D717A0007F087B /* UpdatedSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedSetupViewController.swift; sourceTree = "<group>"; };
+		AC4D02E820D717A0007F087B /* UpdatedSetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedSetupViewController.xib; sourceTree = "<group>"; };
 		AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureData.swift; sourceTree = "<group>"; };
 		AC4F5FFD20773E9D00F1D954 /* Sign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sign.swift; sourceTree = "<group>"; };
 		AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GethBigInt+Extension.swift"; sourceTree = "<group>"; };
@@ -896,6 +902,8 @@
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
 		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
+		AC6EC87220D72D3700A34DF0 /* UnlockWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewController.swift; sourceTree = "<group>"; };
+		AC6EC87320D72D3700A34DF0 /* UnlockWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockWalletViewController.xib; sourceTree = "<group>"; };
 		AC70E84D20683C7500451047 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupMnemonicViewController.swift; sourceTree = "<group>"; };
 		AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupMnemonicViewController.xib; sourceTree = "<group>"; };
@@ -1377,6 +1385,8 @@
 		AC3756752038D70D00AADC60 /* UnlockWallet */ = {
 			isa = PBXGroup;
 			children = (
+				AC6EC87220D72D3700A34DF0 /* UnlockWalletViewController.swift */,
+				AC6EC87320D72D3700A34DF0 /* UnlockWalletViewController.xib */,
 				AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */,
 				AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */,
 				AC45EFEA20D0CCF5004F6EC0 /* AlertForErrorExtension.swift */,
@@ -2421,6 +2431,8 @@
 			isa = PBXGroup;
 			children = (
 				AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */,
+				AC4D02E720D717A0007F087B /* UpdatedSetupViewController.swift */,
+				AC4D02E820D717A0007F087B /* UpdatedSetupViewController.xib */,
 				C8BF95AE2027AC9400343B9A /* SetupViewController.swift */,
 				C8BF95AF2027AC9400343B9A /* SetupViewController.xib */,
 				AC99CF502083E708000AE4BD /* GenerateWalletEnterNameAndPassword */,
@@ -2638,6 +2650,7 @@
 				AC31CE6E205B995500A30335 /* Roboto-Medium.ttf in Resources */,
 				AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */,
 				AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */,
+				AC6EC87520D72D3700A34DF0 /* UnlockWalletViewController.xib in Resources */,
 				AC54FD76204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
 				940B45292060F67E00ADE2B9 /* gas_limit.json in Resources */,
 				AC54FD6D204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */,
@@ -2652,6 +2665,7 @@
 				AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */,
 				AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
+				AC4D02EA20D717A0007F087B /* UpdatedSetupViewController.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
 				AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */,
 				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
@@ -2975,6 +2989,7 @@
 				ACB746E52043C5F5006C2BF5 /* QRCodeViewController.swift in Sources */,
 				ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */,
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
+				AC6EC87420D72D3700A34DF0 /* UnlockWalletViewController.swift in Sources */,
 				9423F77920C7D688000B6983 /* SignRawTransaction.swift in Sources */,
 				ACC8D0B020CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift in Sources */,
 				AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */,
@@ -3040,6 +3055,7 @@
 				AC387521205F12F100A76637 /* ContextMenu.swift in Sources */,
 				ACC8D0AA20CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift in Sources */,
 				AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */,
+				AC4D02E920D717A0007F087B /* UpdatedSetupViewController.swift in Sources */,
 				ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */,
 				AC4F600F20773E9D00F1D954 /* GethBigInt+Extension.swift in Sources */,
 				9413F69120B802CB00524D2D /* AmountButton.swift in Sources */,

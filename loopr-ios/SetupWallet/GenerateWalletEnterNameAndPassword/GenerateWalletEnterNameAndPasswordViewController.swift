@@ -10,6 +10,11 @@ import UIKit
 
 class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    
+    @IBOutlet weak var backgroundView: UIView!
+    
     // Scrollable UI components
     var walletNameTextField: UITextField = UITextField()
     var walletNameUnderLine: UIView = UIView()
@@ -35,12 +40,15 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         // Do any additional setup after loading the view.
         // self.navigationItem.title = NSLocalizedString("Generate Wallet", comment: "")
         
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Generate Wallet", comment: ""))
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
+
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
         
-        setBackButton()
+        // self.navigationController?.isNavigationBarHidden = false
         
-        self.navigationController?.isNavigationBarHidden = false
+        backgroundView.isUserInteractionEnabled = true
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -58,18 +66,18 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         walletNameTextField.placeholder = NSLocalizedString("Give your wallet an awesome name", comment: "")
         walletNameTextField.contentMode = UIViewContentMode.bottom
         walletNameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
-        view.addSubview(walletNameTextField)
+        backgroundView.addSubview(walletNameTextField)
         
         walletNameUnderLine.frame = CGRect(x: padding, y: walletNameTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
         walletNameUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        view.addSubview(walletNameUnderLine)
+        backgroundView.addSubview(walletNameUnderLine)
         
         walletNameInfoLabel.frame = CGRect(x: padding, y: walletNameUnderLine.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
         walletNameInfoLabel.text = NSLocalizedString("Please enter a wallet name", comment: "")
         walletNameInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         walletNameInfoLabel.textColor = UIStyleConfig.red
         walletNameInfoLabel.alpha = 0.0
-        view.addSubview(walletNameInfoLabel)
+        backgroundView.addSubview(walletNameInfoLabel)
         
         walletPasswordTextField.isSecureTextEntry = true
         walletPasswordTextField.delegate = self
@@ -80,18 +88,18 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         walletPasswordTextField.placeholder = NSLocalizedString("Password", comment: "")
         walletPasswordTextField.contentMode = UIViewContentMode.bottom
         walletPasswordTextField.frame = CGRect(x: padding, y: walletNameUnderLine.frame.maxY + 45, width: screenWidth-padding*2, height: 40)
-        view.addSubview(walletPasswordTextField)
+        backgroundView.addSubview(walletPasswordTextField)
         
         walletPasswordUnderLine.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
         walletPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        view.addSubview(walletPasswordUnderLine)
+        backgroundView.addSubview(walletPasswordUnderLine)
         
         walletPasswordInfoLabel.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
         walletPasswordInfoLabel.text = NSLocalizedString("Please set a password", comment: "")
         walletPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         walletPasswordInfoLabel.textColor = UIStyleConfig.red
         walletPasswordInfoLabel.alpha = 0.0
-        view.addSubview(walletPasswordInfoLabel)
+        backgroundView.addSubview(walletPasswordInfoLabel)
         
         // Repeat password
         walletRepeatPasswordTextField.isSecureTextEntry = true
@@ -103,25 +111,25 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         walletRepeatPasswordTextField.placeholder = NSLocalizedString("Confirm password", comment: "")
         walletRepeatPasswordTextField.contentMode = UIViewContentMode.bottom
         walletRepeatPasswordTextField.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 45, width: screenWidth-padding*2, height: 40)
-        view.addSubview(walletRepeatPasswordTextField)
+        backgroundView.addSubview(walletRepeatPasswordTextField)
         
         walletRepeatPasswordUnderLine.frame = CGRect(x: padding, y: walletRepeatPasswordTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
         walletRepeatPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        view.addSubview(walletRepeatPasswordUnderLine)
+        backgroundView.addSubview(walletRepeatPasswordUnderLine)
         
         walletRepeatPasswordInfoLabel.frame = CGRect(x: padding, y: walletRepeatPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
         walletRepeatPasswordInfoLabel.text = NSLocalizedString("Confirm your password", comment: "")
         walletRepeatPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         walletRepeatPasswordInfoLabel.textColor = UIStyleConfig.red
         walletRepeatPasswordInfoLabel.alpha = 0.0
-        view.addSubview(walletRepeatPasswordInfoLabel)
+        backgroundView.addSubview(walletRepeatPasswordInfoLabel)
         
         continueButton.setupRoundBlack()
         continueButton.frame = CGRect(x: padding, y: walletRepeatPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
-        view.addSubview(continueButton)
+        backgroundView.addSubview(continueButton)
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        backgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // UI will be different based on SetupWalletMethod
         self.navigationItem.title = NSLocalizedString("Create a new wallet", comment: "")
@@ -132,7 +140,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
-        view.addGestureRecognizer(scrollViewTap)
+        backgroundView.addGestureRecognizer(scrollViewTap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -142,7 +150,12 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     @objc func pressedContinueButton(_ sender: Any) {

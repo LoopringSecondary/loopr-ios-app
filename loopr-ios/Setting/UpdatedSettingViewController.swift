@@ -66,7 +66,7 @@ class UpdatedSettingViewController: UIViewController {
         item1.set(image: UIImage.init(named: "Tokenest-airdrop")?.alpha(0.6), title: NSLocalizedString("Airdrop", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         item1.setTitleColor(UIColor.black, for: .normal)
         item1.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
-        item1.addTarget(self, action: #selector(self.pressedCopyButton(_:)), for: .touchUpInside)
+        item1.addTarget(self, action: #selector(self.pressedItem1Button(_:)), for: .touchUpInside)
         
         item2.backgroundColor = UIColor.clear
         item2.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14.0)

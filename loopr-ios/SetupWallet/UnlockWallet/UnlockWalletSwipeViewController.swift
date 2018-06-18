@@ -21,11 +21,6 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Import Wallet", comment: "")
-        setBackButton()
-        
-        self.navigationController?.isNavigationBarHidden = false
-        
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
         options.swipeTabView.underlineView.margin = 30
@@ -56,9 +51,14 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         if let valueToDisplay = valueFromQRCodeScanning {
             if typeFromQRCodeScanning == QRCodeType.privateKey {
