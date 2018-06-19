@@ -13,9 +13,13 @@ import SwiftTheme
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate, QRCodeScanProtocol {
 
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
-    @IBOutlet weak var assetTableView: UITableView!
+    
     private let refreshControl = UIRefreshControl()
 
+    var assetTableView: UITableView = UITableView()
+    var headerView = UILabel()
+    var stickyView = UILabel()
+    
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
 
@@ -30,11 +34,32 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         setupNavigationBar()
         
+        
+        self.view.backgroundColor = UIColor.white
+        self.automaticallyAdjustsScrollViewInsets = true
+        // self.edgesForExtendedLayout = UIRectEdge.none
+        
+        let w = UIScreen.main.bounds.size.width
+        
+        headerView.backgroundColor = UIColor.green
+        headerView.textColor = UIColor.white
+        headerView.textAlignment = .center
+        headerView.frame = CGRect.init(x: 0, y: 0, width: w, height: 345 - 20 + 32)
+        self.view.addSubview(headerView)
+        
+        stickyView.backgroundColor = UIColor.red
+        stickyView.textColor = UIColor.white
+        stickyView.textAlignment = .center
+        stickyView.frame = CGRect.init(x: 0, y: headerView.frame.maxY, width: w, height: 50)
+        self.view.addSubview(stickyView)
+        
+        assetTableView.frame = CGRect.init(x: 0, y: stickyView.frame.maxY, width: w, height: self.view.frame.height - stickyView.frame.maxY)
+        assetTableView.delegate = self
+        assetTableView.dataSource = self
+        self.view.addSubview(assetTableView)
+        
         assetTableView.dataSource = self
         assetTableView.delegate = self
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
-        footerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
-        assetTableView.tableFooterView = footerView
         assetTableView.separatorStyle = .none
         
         // Avoid dragging a cell to the top makes the tableview shake
@@ -317,9 +342,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         isListeningSocketIO = false
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    }
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDecelerating")
         isListeningSocketIO = true
@@ -413,4 +435,49 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
+    
+    // MARK: - UIScrollViewDelegate
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.isKind(of: UITableView.self) {
+            if scrollView.contentOffset.x == 0 {
+                let y = scrollView.contentOffset.y
+                
+                // 向上滚动
+                if y > 0 {
+                    struct Diff {
+                        static var previousY: CGFloat = 0.0
+                    }
+                    
+                    guard headerView.bottomY > 0.0 else {
+                        return
+                    }
+                    
+                    var bottomY = headerView.bottomY - fabs(y - Diff.previousY)
+                    bottomY = bottomY >= 0.0 ? bottomY : 0.0
+                    headerView.bottomY = bottomY
+                    stickyView.y = headerView.bottomY
+                    assetTableView.frame = CGRect.init(x: 0, y: stickyView.bottomY, width: assetTableView.width, height: self.view.height - stickyView.bottomY)
+                    
+                    Diff.previousY = y
+                    
+                    if Diff.previousY >= headerView.height {
+                        Diff.previousY = 0
+                    }
+                }
+                    // 向下滚动
+                else if y < 0 {
+                    if headerView.y >= 0 {
+                        return
+                    }
+                    
+                    var bottomY = headerView.bottomY + fabs(y)
+                    bottomY = bottomY <= headerView.height ? bottomY : headerView.height
+                    headerView.bottomY = bottomY
+                    stickyView.y = headerView.bottomY
+                    assetTableView.frame = CGRect.init(x: 0, y: stickyView.bottomY, width: assetTableView.width, height: self.view.height - stickyView.bottomY)
+                }
+            }
+        }
+    }
+
 }
