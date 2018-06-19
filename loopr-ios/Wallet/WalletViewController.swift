@@ -37,23 +37,23 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.view.backgroundColor = UIColor.white
         self.automaticallyAdjustsScrollViewInsets = true
-        // self.edgesForExtendedLayout = UIRectEdge.none
+        // self.edgesForExtendedLayout = .None
         
         let w = UIScreen.main.bounds.size.width
         
         headerView.backgroundColor = UIColor.green
         headerView.textColor = UIColor.white
         headerView.textAlignment = .center
-        headerView.frame = CGRect.init(x: 0, y: 0, width: w, height: 345 - 20 + 32)
+        headerView.frame = CGRect.init(x: 0, y: 0, width: w, height: 80)
         self.view.addSubview(headerView)
         
         stickyView.backgroundColor = UIColor.red
         stickyView.textColor = UIColor.white
         stickyView.textAlignment = .center
-        stickyView.frame = CGRect.init(x: 0, y: headerView.frame.maxY, width: w, height: 50)
+        stickyView.frame = CGRect.init(x: 0, y: headerView.bottomY, width: w, height: 50)
         self.view.addSubview(stickyView)
         
-        assetTableView.frame = CGRect.init(x: 0, y: stickyView.frame.maxY, width: w, height: self.view.frame.height - stickyView.frame.maxY)
+        assetTableView.frame = CGRect.init(x: 0, y: stickyView.bottomY, width: w, height: self.view.height - stickyView.bottomY)
         assetTableView.delegate = self
         assetTableView.dataSource = self
         self.view.addSubview(assetTableView)
@@ -442,7 +442,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if scrollView.contentOffset.x == 0 {
                 let y = scrollView.contentOffset.y
                 
-                // 向上滚动
+                // scroll up
                 if y > 0 {
                     struct Diff {
                         static var previousY: CGFloat = 0.0
@@ -459,12 +459,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     assetTableView.frame = CGRect.init(x: 0, y: stickyView.bottomY, width: assetTableView.width, height: self.view.height - stickyView.bottomY)
                     
                     Diff.previousY = y
-                    
                     if Diff.previousY >= headerView.height {
                         Diff.previousY = 0
                     }
                 }
-                    // 向下滚动
+                // scroll down
                 else if y < 0 {
                     if headerView.y >= 0 {
                         return
