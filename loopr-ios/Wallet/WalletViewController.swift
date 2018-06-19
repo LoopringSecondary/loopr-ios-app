@@ -325,54 +325,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        struct Diff {
-            static var previousY: CGFloat = 0.0
-        }
         print("change: \(scrollView.contentOffset.y)")
-        if scrollView.tag == assetTableView.tag {
-            if scrollView.contentOffset.x == 0 {
-                let y = scrollView.contentOffset.y
-                
-                // 向上滚动
-                if y > 0 {
-                    
-                    print("diff \(Diff.previousY)")
-                    
-                    guard headerViewView.view.bottomY > 0.0 else {
-                        return
-                    }
-                    
-                    var bottomY = headerViewView.view.bottomY - fabs(y - Diff.previousY)
-                    if bottomY >= 0.0 {
-                        // bottomY = bottomY
-                    } else {
-                        bottomY = 0
-                    }
-                    // bottomY = bottomY >= 0.0 ? bottomY : 0.0
-                    headerViewView.view.bottomY = bottomY
-                    stickyView.y = headerViewView.view.bottomY
-                    assetTableView.frame = CGRect.init(x: 0, y: stickyView.bottomY, width: assetTableView.width, height: self.view.height - stickyView.bottomY)
-                    
-                    Diff.previousY = y
-                    
-                    if Diff.previousY >= headerViewView.view.height {
-                        Diff.previousY = 0
-                    }
-                }
-                    // 向下滚动
-                else if y < 0 {
-                    if headerViewView.view.y >= 0 {
-                        return
-                    }
-                    
-                    var bottomY = headerViewView.view.bottomY + fabs(y)
-                    bottomY = bottomY <= headerViewView.view.height ? bottomY : headerViewView.view.height
-                    headerViewView.view.bottomY = bottomY
-                    stickyView.y = headerViewView.view.bottomY
-                    assetTableView.frame = CGRect.init(x: 0, y: stickyView.bottomY, width: assetTableView.width, height: self.view.height - stickyView.bottomY)
-                }
-            }
-        }
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
