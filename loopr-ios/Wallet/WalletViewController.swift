@@ -16,10 +16,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private let refreshControl = UIRefreshControl()
 
-    var isTableViewScrolling: Bool = true
-    var scrollView = UIScrollView()
     var assetTableView: UITableView = UITableView()
-    var headerView = UILabel()
+    var headerViewController: WalletBalanceTableViewCellViewController = WalletBalanceTableViewCellViewController()
+    var headerHeightConstraint: NSLayoutConstraint!
     
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
@@ -30,6 +29,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var numberOfRowsInSection1: Int = 0
     
     var previousY: CGFloat = 0.0
+    let backgroundImageHeight: CGFloat = 345 - 20 + 32
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,46 +37,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         setupNavigationBar()
         
+        setUpHeader()
+        setUpTableView()
+        
         self.view.backgroundColor = UIColor.white
-        // self.view.contentInsetAdjustmentBehavior = .automatic
-        // self.edgesForExtendedLayout = .None
-        assetTableView.contentInsetAdjustmentBehavior = .never
-        
-        let w = UIScreen.main.bounds.size.width
-        
-        scrollView.frame = CGRect.init(x: 0, y: 0, width: w, height: self.view.height)
-        
-        headerView.backgroundColor = UIColor.green
-        headerView.textColor = UIColor.white
-        headerView.textAlignment = .center
-        headerView.frame = CGRect.init(x: 0, y: 0, width: w, height: 300)
-        self.scrollView.addSubview(headerView)
-        
-        assetTableView.frame = CGRect.init(x: 0, y: headerView.bottomY, width: w, height: self.view.height)
-        assetTableView.delegate = self
-        assetTableView.dataSource = self
-        self.scrollView.addSubview(assetTableView)
-        
-        scrollView.contentSize = CGSize.init(width: w, height: assetTableView.bottomY)
-        
-        assetTableView.isScrollEnabled = false
-        assetTableView.tag = 1
-        assetTableView.dataSource = self
-        assetTableView.delegate = self
-        assetTableView.separatorStyle = .none
-        
-        // Avoid dragging a cell to the top makes the tableview shake
-        assetTableView.estimatedRowHeight = 0
-        assetTableView.estimatedSectionHeaderHeight = 0
-        assetTableView.estimatedSectionFooterHeight = 0
+
 
         view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
         assetTableView.backgroundColor = UIColor.init(rgba: "#F3F6F8") // = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
-
-        scrollView.tag = 0
-        scrollView.delegate = self
-        // scrollView.bounces = false
-        view.addSubview(scrollView)
         
         let qrCodebutton = UIButton(type: UIButtonType.custom)
         
@@ -101,23 +69,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
  
-        // TODO: Unfinished
-        // https://stackoverflow.com/questions/13364465/uirefreshcontrol-background-color
-        // Creating view for extending background color
-        //
-        var frame = assetTableView.bounds
-        frame.origin.y = -frame.size.height
-        let backgroundView = UIImageView(frame: CGRect.init(x: 0, y: -100, width: assetTableView.bounds.width, height: 345))
-        backgroundView.image = UIImage.init(named: "Tokenest-asset-background-image")
-        // backgroundView.frame.height = 345
-        backgroundView.autoresizingMask = .flexibleWidth
-        // backgroundView.backgroundColor = UIColor.init(red: 59/255.0, green: 81/255.0, blue: 200/255.0, alpha: 1)
         
-        // view.addSubview(backgroundView)
-        // view.sendSubview(toBack: backgroundView)
-        
-        // Adding the view below the refresh control
-        // assetTableView.insertSubview(backgroundView, at: 0)
         
         /*
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
@@ -332,7 +284,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
-            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
+            // self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
     
@@ -340,7 +292,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
-            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
+            // self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
     
@@ -348,22 +300,46 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("scrollViewWillBeginDragging")
         CurrentAppWalletDataManager.shared.stopGetBalance()
         isListeningSocketIO = false
-        
-        if self.scrollView.contentOffset.y == 0 {
-            if scrollView.contentOffset.y > 0 {
-                print("scrollViewWillBeginDragging up")
-            } else if scrollView.contentOffset.y < 0 {
-                print("scrollViewWillBeginDragging down")
-            } else {
-                print("zero")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+        if scrollView.contentOffset.y < 0 {
+            self.headerHeightConstraint.constant += abs(scrollView.contentOffset.y)
+            if self.headerHeightConstraint.constant > backgroundImageHeight {
+                self.headerHeightConstraint.constant = backgroundImageHeight
             }
+            
+        } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= 65 {
+            struct Diff {
+                static var previousY: CGFloat = 0.0
+            }
+            
+            self.headerHeightConstraint.constant -= fabs(scrollView.contentOffset.y/10 - Diff.previousY) // scrollView.contentOffset.y/10
+            Diff.previousY = scrollView.contentOffset.y/10
+            /*
+            if self.headerHeightConstraint.constant < 65 {
+                self.headerHeightConstraint.constant = 65
+                Diff.previousY = 0
+            }
+            */
+        }
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if self.headerHeightConstraint.constant > 150 {
+            // animateHeader()
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDecelerating")
         isListeningSocketIO = true
-        CurrentAppWalletDataManager.shared.startGetBalance()
+        // CurrentAppWalletDataManager.shared.startGetBalance()
+        
+        if self.headerHeightConstraint.constant > 150 {
+            // animateHeader()
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -454,127 +430,47 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        /*
-        if scrollView.tag == 0 {
-            assetTableView.isScrollEnabled = (self.scrollView.contentOffset.y == 0)
-        }
-        
-        if scrollView.tag == 1 {
-            self.assetTableView.isScrollEnabled = (self.assetTableView.contentOffset.y > 0)
-        }
- */
-        
-        // WOrking..
+    func setUpHeader() {
+        // headerView = CustomHeaderView(frame: CGRect.zero, title: "Articles")
+        headerViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(headerViewController.view)
+        addChildViewController(headerViewController)
 
-        let yOffset = scrollView.contentOffset.y
+         // self.view.frame.height * 0.6
         
-        if self.scrollView.contentOffset.y == 0 {
-            if yOffset > 0 {
-                self.scrollView.setContentOffset(CGPoint.init(x: 0, y: yOffset), animated: false)
-                assetTableView.isScrollEnabled = false
-                self.scrollView.isScrollEnabled = true
-            } else if yOffset < 0 {
-                // self.assetTableView.setContentOffset(CGPoint.init(x: 0, y: yOffset), animated: false)
-                assetTableView.isScrollEnabled = true
-                self.scrollView.isScrollEnabled = false
-            }
-            return
-        }
-        
-        if isTableViewScrolling && yOffset > 0 {
-            assetTableView.isScrollEnabled = false
-            self.scrollView.isScrollEnabled = true
-            return
-        }
-        
-        if isTableViewScrolling && yOffset < 0 {
-            assetTableView.isScrollEnabled = true
-            self.scrollView.isScrollEnabled = false
-            
-            return
-        }
-        
-        if scrollView.tag == 0 {
-            print(scrollView.tag)
-            if yOffset > 100 {
-                assetTableView.isScrollEnabled = true
-                self.scrollView.isScrollEnabled = false
-            } else {
-                assetTableView.isScrollEnabled = true
-                self.scrollView.isScrollEnabled = false
-            }
-            // scrollView.isScrollEnabled = false
-            /*
-            if yOffset >= scrollViewContentHeight - screenHeight {
-                scrollView.scrollEnabled = false
-                tableView.scrollEnabled = true
-            }
-             */
-        }
-        
-        if scrollView.tag == 1 {
-            print(scrollView.tag)
-            print(yOffset)
-            if yOffset == 0 {
-                assetTableView.isScrollEnabled = false
-                self.scrollView.isScrollEnabled = true
-                return
-            }
-            if yOffset > 0 && self.scrollView.contentOffset.y > -100 {
-                assetTableView.isScrollEnabled = false
-                self.scrollView.isScrollEnabled = true
-            }
-        }
+        headerHeightConstraint = headerViewController.view.heightAnchor.constraint(equalToConstant: backgroundImageHeight)
+        headerHeightConstraint.isActive = true
+        let constraints: [NSLayoutConstraint] = [
+            headerViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            headerViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    func setUpTableView() {
+        assetTableView = UITableView()
+        assetTableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(assetTableView)
+        let constraints: [NSLayoutConstraint] = [
+            assetTableView.topAnchor.constraint(equalTo: headerViewController.view.bottomAnchor),
+            assetTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            assetTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            assetTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        //assetTableView.register(WalletBalanceTableViewCell.self, forCellReuseIdentifier: "WalletBalanceTableViewCell")
+        //assetTableView.register(AssetTableViewCell.self, forCellReuseIdentifier: "AssetTableViewCell")
+        assetTableView.dataSource = self
+        assetTableView.delegate = self
     }
     
     /*
-    // MARK: - UIScrollViewDelegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        /*
-        // if scrollView.isKind(of: UITableView.self) {
-            if scrollView.contentOffset.x == 0 {
-                let y = scrollView.contentOffset.y
-                
-                // scroll up
-                if y > 0 {
-                    print("###########")
-                    struct Diff {
-                        static var previousY: CGFloat = 0.0
-                    }
-                    
-                    guard headerView.bottomY > 0.0 else {
-                        return
-                    }
-                    
-                    var bottomY = headerView.bottomY - fabs(y - Diff.previousY)
-                    bottomY = bottomY >= 0.0 ? bottomY : 0.0
-                    headerView.bottomY = bottomY
-                    assetTableView.y = headerView.bottomY
-                    // tableView.frame = CGRectMake(0, stickyView.bottomY, tableView.width, self.view.height - stickyView.bottomY)
-                    
-                    Diff.previousY = y
-                    
-                    if Diff.previousY >= headerView.height {
-                        Diff.previousY = 0
-                    }
-                }
-                // scroll down
-                else if y < 0 {
-                    if headerView.y >= 0 {
-                        return
-                    }
-                    
-                    var bottomY = headerView.bottomY + fabs(y)
-                    bottomY = bottomY <= headerView.height ? bottomY : headerView.height
-                    headerView.bottomY = bottomY
-                    assetTableView.y = headerView.bottomY
-                    // assetTableView.frame = CGRect.init(x: 0, y: headerView.bottomY, width: assetTableView.width, height: self.view.height - headerView.bottomY)
-                }
-            }
-        // }
-        */
+    func animateHeader() {
+        self.headerHeightConstraint.constant = 150
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     */
-
 }
