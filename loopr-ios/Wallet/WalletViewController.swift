@@ -20,6 +20,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var headerViewView = WalletBalanceTableViewCellViewController()
     var stickyView = UILabel()
     
+    var firstAppear: Bool = true
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
 
@@ -44,10 +45,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         addChildViewController(headerViewView)
         headerViewView.didMove(toParentViewController: self)
         
-        stickyView.backgroundColor = UIColor.red
+        stickyView.backgroundColor = UIColor.init(rgba: "#F3F6F8")
         stickyView.textColor = UIColor.white
         stickyView.textAlignment = .center
-        stickyView.frame = CGRect.init(x: 0, y: backgroundImageHeight, width: w, height: 10)
+        stickyView.frame = CGRect.init(x: 0, y: backgroundImageHeight, width: w, height: 1)
         self.view.addSubview(stickyView)
         
         assetTableView.tag = 1
@@ -84,8 +85,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
  
-        
-        
         /*
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
         buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getNavigationTitleFont()
@@ -142,7 +141,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if self.isLaunching {
                     self.isLaunching = false
                 }
-                self.assetTableView.reloadData()
+                if self.firstAppear {
+                    self.assetTableView.reloadData()
+                    self.firstAppear = false
+                }
                 self.refreshControl.endRefreshing()
             }
         })
@@ -162,7 +164,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // TODO: in the new design, no right image
         // buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
         
-        headerViewView.view.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: backgroundImageHeight)
+        if firstAppear {
+            headerViewView.view.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: backgroundImageHeight)
+            // firstAppear = false
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -320,6 +325,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        struct Diff {
+            static var previousY: CGFloat = 0.0
+        }
         print("change: \(scrollView.contentOffset.y)")
         if scrollView.tag == assetTableView.tag {
             if scrollView.contentOffset.x == 0 {
@@ -327,9 +335,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 // 向上滚动
                 if y > 0 {
-                    struct Diff {
-                        static var previousY: CGFloat = 0.0
-                    }
                     
                     print("diff \(Diff.previousY)")
                     
