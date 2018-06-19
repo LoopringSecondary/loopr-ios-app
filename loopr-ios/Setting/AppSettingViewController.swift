@@ -19,7 +19,6 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Settings_in_grid", comment: ""))
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
         tableView.dataSource = self
@@ -35,6 +34,10 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Settings_in_grid", comment: ""))
+        
+        // Reload data if the data is updated.
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,7 +50,7 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -73,6 +76,8 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
             return createDetailTableCell(title: NSLocalizedString("Manage Wallet", comment: ""), detailTitle: currentWalletName!)
         case 1:
             return createDetailTableCell(title: NSLocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
+        case 2:
+            return createSettingPasscodeTableView()
         default:
             return UITableViewCell()
         }
@@ -100,4 +105,15 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
             break
         }
     }
+
+    func createSettingPasscodeTableView() -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: SettingPasscodeTableViewCell.getCellIdentifier()) as? SettingPasscodeTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("SettingPasscodeTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? SettingPasscodeTableViewCell
+            cell?.selectionStyle = .none
+        }
+        return cell!
+    }
+
 }

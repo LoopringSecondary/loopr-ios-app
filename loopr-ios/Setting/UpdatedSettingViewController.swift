@@ -118,11 +118,13 @@ class UpdatedSettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
+        hideNavigationBar()
         addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        showNavigationBar()
     }
     
     func setupNavigationBar() {
@@ -177,6 +179,9 @@ class UpdatedSettingViewController: UIViewController {
     
     @objc func pressedItem3Button(_ button: UIButton) {
         print("pressedItem3Button")
+        let viewController = TradeFAQViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func pressedItem4Button(_ button: UIButton) {

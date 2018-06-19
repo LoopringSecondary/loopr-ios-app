@@ -150,8 +150,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        hideNavigationBar()
         
         getBalanceFromRelay()
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
@@ -162,11 +161,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         buttonInNavigationBar.title = buttonTitle
         // TODO: in the new design, no right image
         // buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
-        
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -180,6 +174,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        showNavigationBar()
+
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
@@ -192,27 +188,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.stopUpdateBalanceLabelTimer()
         }
-        
-        // status bar
-        UIApplication.shared.theme_setStatusBarStyle([.lightContent, .default], animated: true)
-        
-        // navigation bar
-        let navigationBar = UINavigationBar.appearance()
-        
-        let shadow = NSShadow()
-        shadow.shadowOffset = CGSize(width: 0, height: 0)
-        
-        let titleAttributes = GlobalPicker.navigationBarTextColors.map { hexString in
-            return [
-                NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
-                NSAttributedStringKey.font: FontConfigManager.shared.getNavigationTitleFont(),
-                NSAttributedStringKey.shadow: shadow
-            ]
-        }
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.theme_tintColor = GlobalPicker.navigationBarTextColor
-        self.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.navigationBarTintColor
-        self.navigationController?.navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(titleAttributes)
     }
 
     override func didReceiveMemoryWarning() {

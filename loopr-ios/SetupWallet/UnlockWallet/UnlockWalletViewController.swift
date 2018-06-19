@@ -19,8 +19,6 @@ class UnlockWalletViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Import Wallet", comment: ""))
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
     }
 
@@ -32,6 +30,7 @@ class UnlockWalletViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Import Wallet", comment: ""))
         
         let screensize: CGRect = self.view.frame
         let screenWidth = screensize.width

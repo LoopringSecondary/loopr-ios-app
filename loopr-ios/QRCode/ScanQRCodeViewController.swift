@@ -68,7 +68,6 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Scan QR Code", comment: ""))
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
         scanTipLabel.font = FontConfigManager.shared.getLabelFont()
@@ -120,6 +119,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         if !parentControllerHasNavigationBar {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Scan QR Code", comment: ""))
         
         if captureSession.isRunning == false {
             captureSession.startRunning()

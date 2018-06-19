@@ -519,6 +519,9 @@
 		ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */; };
 		ACD2D93B20D8977600580360 /* TradingSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2D93920D8977600580360 /* TradingSettingViewController.swift */; };
 		ACD2D93C20D8977600580360 /* TradingSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD2D93A20D8977600580360 /* TradingSettingViewController.xib */; };
+		ACD2D94020D8C55F00580360 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2D93F20D8C55F00580360 /* UIViewController+NavigationBar.swift */; };
+		ACD2D94320D8CD8A00580360 /* TradeFAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2D94120D8CD8A00580360 /* TradeFAQViewController.swift */; };
+		ACD2D94420D8CD8A00580360 /* TradeFAQViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD2D94220D8CD8A00580360 /* TradeFAQViewController.xib */; };
 		ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF100203FE73B000F0DEC /* ReorderController.swift */; };
 		ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF102203FE790000F0DEC /* ReorderUITableView.swift */; };
 		ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF104203FE7D5000F0DEC /* ReorderSnapshotView.swift */; };
@@ -1053,6 +1056,9 @@
 		ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
 		ACD2D93920D8977600580360 /* TradingSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingSettingViewController.swift; sourceTree = "<group>"; };
 		ACD2D93A20D8977600580360 /* TradingSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradingSettingViewController.xib; sourceTree = "<group>"; };
+		ACD2D93F20D8C55F00580360 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
+		ACD2D94120D8CD8A00580360 /* TradeFAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeFAQViewController.swift; sourceTree = "<group>"; };
+		ACD2D94220D8CD8A00580360 /* TradeFAQViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeFAQViewController.xib; sourceTree = "<group>"; };
 		ACDBF100203FE73B000F0DEC /* ReorderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderController.swift; sourceTree = "<group>"; };
 		ACDBF102203FE790000F0DEC /* ReorderUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderUITableView.swift; sourceTree = "<group>"; };
 		ACDBF104203FE7D5000F0DEC /* ReorderSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderSnapshotView.swift; sourceTree = "<group>"; };
@@ -2022,6 +2028,7 @@
 				AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */,
 				ACB8AD88207F299700B478D6 /* UIViewController+BackButton.swift */,
 				AC6EC87A20D7737C00A34DF0 /* UIViewController+TableViewCell.swift */,
+				ACD2D93F20D8C55F00580360 /* UIViewController+NavigationBar.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -2198,6 +2205,7 @@
 				AC6EC87720D7678700A34DF0 /* AppSettingViewController.xib */,
 				ACD2D93920D8977600580360 /* TradingSettingViewController.swift */,
 				ACD2D93A20D8977600580360 /* TradingSettingViewController.xib */,
+				ACD2D94520D8CE2000580360 /* TradeFAQ */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
 				ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */,
@@ -2293,6 +2301,15 @@
 				AC31B93B204A8D1F00B16155 /* Keystore@8fea1ff */,
 			);
 			path = "loopr-ios-sdk";
+			sourceTree = "<group>";
+		};
+		ACD2D94520D8CE2000580360 /* TradeFAQ */ = {
+			isa = PBXGroup;
+			children = (
+				ACD2D94120D8CD8A00580360 /* TradeFAQViewController.swift */,
+				ACD2D94220D8CD8A00580360 /* TradeFAQViewController.xib */,
+			);
+			path = TradeFAQ;
 			sourceTree = "<group>";
 		};
 		ACDBF0FD203D3FEF000F0DEC /* FloatLabel */ = {
@@ -2590,6 +2607,7 @@
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
 				AC78FC3C20A4B0C300992AE8 /* OrderBookTableViewCell.xib in Resources */,
+				ACD2D94420D8CD8A00580360 /* TradeFAQViewController.xib in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeViewController.xib in Resources */,
@@ -3126,6 +3144,7 @@
 				AC0CD57D20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */,
+				ACD2D94320D8CD8A00580360 /* TradeFAQViewController.swift in Sources */,
 				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
@@ -3204,6 +3223,7 @@
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
 				AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */,
 				AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */,
+				ACD2D94020D8C55F00580360 /* UIViewController+NavigationBar.swift in Sources */,
 				AC38751D205F12F100A76637 /* UIViewController+Extensions.swift in Sources */,
 				94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */,
 				940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */,

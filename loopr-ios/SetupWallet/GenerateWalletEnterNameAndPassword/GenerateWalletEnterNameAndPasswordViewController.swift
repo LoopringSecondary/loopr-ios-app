@@ -39,8 +39,6 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         
         // Do any additional setup after loading the view.
         // self.navigationItem.title = NSLocalizedString("Generate Wallet", comment: "")
-        
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Generate Wallet", comment: ""))
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
 
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -151,6 +149,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Generate Wallet", comment: ""))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

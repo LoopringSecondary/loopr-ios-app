@@ -19,7 +19,6 @@ class TradingSettingViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Trading_settings_in_grid", comment: ""))
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
         tableView.dataSource = self
@@ -32,10 +31,13 @@ class TradingSettingViewController: UIViewController, UITableViewDelegate, UITab
         // Dispose of any resources that can be recreated.
     }
 
-    // TODO: consider add a subclass of UIViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Trading_settings_in_grid", comment: ""))
+
+        // Reload data if the data is updated.
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
