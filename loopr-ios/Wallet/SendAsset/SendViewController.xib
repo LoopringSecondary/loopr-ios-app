@@ -16,6 +16,7 @@
                 <outlet property="customizedNavigationBar" destination="SD6-xa-mpX" id="7vL-SP-Jn3"/>
                 <outlet property="moreTokensButton" destination="gcM-zj-e9C" id="h5O-94-I4y"/>
                 <outlet property="scrollView" destination="kWy-7K-zP6" id="ECk-qg-7ep"/>
+                <outlet property="scrollViewBottomLayoutContraint" destination="0wY-gc-fU5" id="7Dm-Vd-7Fw"/>
                 <outlet property="scrollViewTopToCollection" destination="Hwh-I1-Iy2" id="aYu-Dl-dkk"/>
                 <outlet property="scrollViewTopToHeader" destination="s9O-Ob-WI9" id="heg-TW-pNF"/>
                 <outlet property="statusBarBackgroundView" destination="pbg-MI-La4" id="awu-h2-zKq"/>
@@ -36,6 +37,9 @@
                 </view>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SD6-xa-mpX">
                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="gNw-YM-16E"/>
+                    </constraints>
                     <items>
                         <navigationItem title="Title" id="Sf8-Aj-Ca6"/>
                     </items>
@@ -109,12 +113,11 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </scrollView>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="fGS-cZ-SL6" firstAttribute="leading" secondItem="9Yk-xz-iTb" secondAttribute="leading" id="FzW-QS-LgN"/>
                         <constraint firstAttribute="trailing" secondItem="kWy-7K-zP6" secondAttribute="trailing" id="GyA-mI-IEd"/>
                         <constraint firstItem="kWy-7K-zP6" firstAttribute="top" secondItem="SEd-EQ-XnW" secondAttribute="bottom" priority="250" constant="10" id="Hwh-I1-Iy2"/>
-                        <constraint firstAttribute="bottom" secondItem="kWy-7K-zP6" secondAttribute="bottom" id="Q8S-Ur-8CP"/>
                         <constraint firstAttribute="trailing" secondItem="fGS-cZ-SL6" secondAttribute="trailing" id="Qk3-no-Qga"/>
                         <constraint firstItem="SEd-EQ-XnW" firstAttribute="leading" secondItem="9Yk-xz-iTb" secondAttribute="leading" id="TC9-PK-eut"/>
                         <constraint firstAttribute="trailing" secondItem="SEd-EQ-XnW" secondAttribute="trailing" id="kfN-Yx-qRr"/>
@@ -127,6 +130,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kWy-7K-zP6" secondAttribute="bottom" id="0wY-gc-fU5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="pbg-MI-La4" secondAttribute="leading" id="9ue-gF-7Zf"/>
                 <constraint firstItem="SD6-xa-mpX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BP1-HK-baT"/>
                 <constraint firstItem="9Yk-xz-iTb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Pld-fQ-oci"/>

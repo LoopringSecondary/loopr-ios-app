@@ -21,6 +21,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewTopToCollection: NSLayoutConstraint!
     @IBOutlet weak var scrollViewTopToHeader: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewBottomLayoutContraint: NSLayoutConstraint!
     
     // Address
     var addressY: CGFloat = 0.0
@@ -214,7 +215,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-//        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Settings_in_grid", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Settings_in_grid", comment: ""))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -319,6 +320,17 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         addressTextField.text = valueSent
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            hideNumericKeyboard()
+        } else if textField.tag == 1 {
+            showNumericKeyboard(textField: amountTextField)
+        }
+        activeTextFieldTag = amountTextField.tag
+        _ = validate()
+        return true
+    }
+    
     func getActiveTextField() -> UITextField? {
         return amountTextField
     }
@@ -332,19 +344,21 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             // Get the the distance from the bottom safe area edge to the bottom of the screen
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-            
+            self.scrollViewBottomLayoutContraint.constant = systemKeyboardHeight + bottomPadding
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                // animation for layout constraint change.
                 self.view.layoutIfNeeded()
+                if self.addressY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewBottomLayoutContraint.constant {
+                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.addressY + 30), animated: true)
+                }
             }, completion: { _ in
                 
             })
         }
-        // self.scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
+        scrollViewBottomLayoutContraint.constant = 0
     }
     
     @objc func keyboardDidChange(notification: NSNotification?) {
@@ -356,27 +370,26 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         if !isNumericKeyboardShow {
             let width = self.view.frame.width
             let height = self.view.frame.height
+            scrollViewBottomLayoutContraint.constant = DefaultNumericKeyboard.height
             numericKeyboardView = DefaultNumericKeyboard.init(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate2 = self
             view.addSubview(numericKeyboardView)
-//            view.bringSubview(toFront: sendButtonBackgroundView)
-//            view.bringSubview(toFront: sendButton)
             
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
             
-//            let destinateY = height - DefaultNumericKeyboard.height - sendButtonBackgroundViewHeightLayoutContraint.constant - bottomPadding
-//
-//            // TODO: improve the animation.
-//            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-//                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-//                if self.amountY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
-//                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.amountY - 120*UIStyleConfig.scale), animated: true)
-//                }
-//
-//            }, completion: { _ in
-//                self.isNumericKeyboardShow = true
-//            })
+            let destinateY = height - DefaultNumericKeyboard.height - bottomPadding
+
+            // TODO: improve the animation.
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
+                if self.amountY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewBottomLayoutContraint.constant {
+                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.amountY - 120*UIStyleConfig.scale), animated: true)
+                }
+
+            }, completion: { _ in
+                self.isNumericKeyboardShow = true
+            })
         }
         numericKeyboardView.currentText = textField.text ?? ""
     }
@@ -386,7 +399,8 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             let width = self.view.frame.width
             let height = self.view.frame.height
             let destinateY = height
-            
+            self.scrollViewBottomLayoutContraint.constant = 0
+
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
