@@ -46,4 +46,8 @@ extension UIColor {
     class var buttonBackground: UIColor {
         return UIColor(named: "ButtonBackground")!
     }
+    
+    class var tokenestBackground: UIColor {
+        return UIColor(named: "TokenestBackground")!
+    }
 }

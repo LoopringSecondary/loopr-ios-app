@@ -16,7 +16,7 @@ enum GlobalPicker {
     static let textLightGreyColor: ThemeColorPicker = ["#aaa", "#aaa"]  // ["#00000099", "#fff"]
 
     // TODO: Update purple color
-    static let themeColor = UIColor.init(rgba: "#3B51C8")
+    static let themeColor = UIColor.tokenestBackground
     
     // Navigation bar
     static let navigationBarTextColors = ["#fff", "#fff"]  // used in navigation map

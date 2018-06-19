@@ -36,8 +36,8 @@ protocol AmountStackViewDelegate: class {
         minusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpInside)
         minusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpOutside)
         
-        minusButton.buttonColor = UIColor.init(rgba: "#000000")
-        minusButton.progressColor = UIColor.init(rgba: "#000000")
+        minusButton.buttonColor = UIColor.tokenestBackground
+        minusButton.progressColor = UIColor.tokenestBackground
         minusButton.title = "-"
         minusButton.tag = 1
         minusButton.titleColor = UIColor.white
@@ -49,8 +49,8 @@ protocol AmountStackViewDelegate: class {
         plusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpInside)
         plusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpOutside)
         
-        plusButton.buttonColor = UIColor.init(rgba: "#000000")
-        plusButton.progressColor = UIColor.init(rgba: "#000000")
+        plusButton.buttonColor = UIColor.tokenestBackground
+        plusButton.progressColor = UIColor.tokenestBackground
         plusButton.title = "+"
         plusButton.tag = 0
         plusButton.titleColor = UIColor.white

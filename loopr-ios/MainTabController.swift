@@ -15,7 +15,8 @@ class MainTabController: ESTabBarController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let v1 = WalletNavigationViewController()
+//        let v1 = WalletNavigationViewController()
+        let v1 = SendViewController()
         let v2 = MarketNavigationViewController()
         let v3 = TradeNavigationViewController()
         let v4 = SettingNavigationViewController()

@@ -39,5 +39,4 @@ class AssetCollectionViewCell: UICollectionViewCell {
     class func getCellIdentifier() -> String {
         return "AssetCollectionViewCell"
     }
-
 }
