@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationBannerSwift
+import SwiftTheme
 
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate, QRCodeScanProtocol {
 
@@ -191,6 +192,27 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.stopUpdateBalanceLabelTimer()
         }
+        
+        // status bar
+        UIApplication.shared.theme_setStatusBarStyle([.lightContent, .default], animated: true)
+        
+        // navigation bar
+        let navigationBar = UINavigationBar.appearance()
+        
+        let shadow = NSShadow()
+        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        
+        let titleAttributes = GlobalPicker.navigationBarTextColors.map { hexString in
+            return [
+                NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
+                NSAttributedStringKey.font: FontConfigManager.shared.getNavigationTitleFont(),
+                NSAttributedStringKey.shadow: shadow
+            ]
+        }
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.theme_tintColor = GlobalPicker.navigationBarTextColor
+        self.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.navigationBarTintColor
+        self.navigationController?.navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(titleAttributes)
     }
 
     override func didReceiveMemoryWarning() {
