@@ -230,7 +230,9 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         line.lineWidth = 4
         
         line.lineJoin = kCALineJoinRound
-        self.view.layer.addSublayer(line)
+        
+        // line is using scanQRCodeView as reference. So it should be added to scanView, which is the same parent view of scanQRCodeView
+        scanView.layer.addSublayer(line)
     }
     
     func launchApp(decodedURL: String, codeType: QRCodeType) {
