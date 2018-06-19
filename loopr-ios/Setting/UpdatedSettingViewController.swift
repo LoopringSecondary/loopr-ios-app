@@ -188,6 +188,9 @@ class UpdatedSettingViewController: UIViewController {
     
     @objc func pressedItem5Button(_ button: UIButton) {
         print("pressedItem5Button")
+        let viewController = TradingSettingViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func pressedItem6Button(_ button: UIButton) {

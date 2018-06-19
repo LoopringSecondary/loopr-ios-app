@@ -517,6 +517,8 @@
 		ACCC7EA32082BE0B008E58BA /* ImportMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */; };
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
 		ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */; };
+		ACD2D93B20D8977600580360 /* TradingSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2D93920D8977600580360 /* TradingSettingViewController.swift */; };
+		ACD2D93C20D8977600580360 /* TradingSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD2D93A20D8977600580360 /* TradingSettingViewController.xib */; };
 		ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF100203FE73B000F0DEC /* ReorderController.swift */; };
 		ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF102203FE790000F0DEC /* ReorderUITableView.swift */; };
 		ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF104203FE7D5000F0DEC /* ReorderSnapshotView.swift */; };
@@ -1049,6 +1051,8 @@
 		ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMnemonicTests.swift; sourceTree = "<group>"; };
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
+		ACD2D93920D8977600580360 /* TradingSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingSettingViewController.swift; sourceTree = "<group>"; };
+		ACD2D93A20D8977600580360 /* TradingSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradingSettingViewController.xib; sourceTree = "<group>"; };
 		ACDBF100203FE73B000F0DEC /* ReorderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderController.swift; sourceTree = "<group>"; };
 		ACDBF102203FE790000F0DEC /* ReorderUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderUITableView.swift; sourceTree = "<group>"; };
 		ACDBF104203FE7D5000F0DEC /* ReorderSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderSnapshotView.swift; sourceTree = "<group>"; };
@@ -2192,6 +2196,8 @@
 				AC4D02E420D6DE35007F087B /* UpdatedSettingViewController.xib */,
 				AC6EC87620D7678700A34DF0 /* AppSettingViewController.swift */,
 				AC6EC87720D7678700A34DF0 /* AppSettingViewController.xib */,
+				ACD2D93920D8977600580360 /* TradingSettingViewController.swift */,
+				ACD2D93A20D8977600580360 /* TradingSettingViewController.xib */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
 				ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */,
@@ -2592,6 +2598,7 @@
 				ACA677C52079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib in Resources */,
 				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
 				AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */,
+				ACD2D93C20D8977600580360 /* TradingSettingViewController.xib in Resources */,
 				AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */,
 				AC54FD79204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
@@ -3029,6 +3036,7 @@
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
 				AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */,
+				ACD2D93B20D8977600580360 /* TradingSettingViewController.swift in Sources */,
 				948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */,
 				AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */,
 				94A39E1320C8E4FE00BC1B72 /* SignStatus.swift in Sources */,
