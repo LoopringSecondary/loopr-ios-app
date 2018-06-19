@@ -17,8 +17,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private let refreshControl = UIRefreshControl()
 
     var assetTableView: UITableView = UITableView()
-    var headerViewController: WalletBalanceTableViewCellViewController = WalletBalanceTableViewCellViewController()
-    var headerHeightConstraint: NSLayoutConstraint!
+    var headerViewView = WalletBalanceTableViewCellViewController()
+    var stickyView = UILabel()
     
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
@@ -37,11 +37,26 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         setupNavigationBar()
         
-        setUpHeader()
-        setUpTableView()
+        let w = UIScreen.main.bounds.width
+        
+        headerViewView.view.frame = CGRect.init(x: 0, y: 0, width: w, height: backgroundImageHeight)
+        self.view.addSubview(headerViewView.view)
+        addChildViewController(headerViewView)
+        headerViewView.didMove(toParentViewController: self)
+        
+        stickyView.backgroundColor = UIColor.red
+        stickyView.textColor = UIColor.white
+        stickyView.textAlignment = .center
+        stickyView.frame = CGRect.init(x: 0, y: backgroundImageHeight, width: w, height: 10)
+        self.view.addSubview(stickyView)
+        
+        assetTableView.tag = 1
+        assetTableView.frame = CGRect.init(x: 0, y: stickyView.bottomY, width: w, height: self.view.height - stickyView.bottomY)
+        assetTableView.delegate = self
+        assetTableView.dataSource = self
+        self.view.addSubview(assetTableView)
         
         self.view.backgroundColor = UIColor.white
-
 
         view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
         assetTableView.backgroundColor = UIColor.init(rgba: "#F3F6F8") // = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
@@ -146,6 +161,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         buttonInNavigationBar.title = buttonTitle
         // TODO: in the new design, no right image
         // buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
+        
+        headerViewView.view.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: backgroundImageHeight)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -303,43 +320,64 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
-        if scrollView.contentOffset.y < 0 {
-            self.headerHeightConstraint.constant += abs(scrollView.contentOffset.y)
-            if self.headerHeightConstraint.constant > backgroundImageHeight {
-                self.headerHeightConstraint.constant = backgroundImageHeight
+        print("change: \(scrollView.contentOffset.y)")
+        if scrollView.tag == assetTableView.tag {
+            if scrollView.contentOffset.x == 0 {
+                let y = scrollView.contentOffset.y
+                
+                // 向上滚动
+                if y > 0 {
+                    struct Diff {
+                        static var previousY: CGFloat = 0.0
+                    }
+                    
+                    print("diff \(Diff.previousY)")
+                    
+                    guard headerViewView.view.bottomY > 0.0 else {
+                        return
+                    }
+                    
+                    var bottomY = headerViewView.view.bottomY - fabs(y - Diff.previousY)
+                    if bottomY >= 0.0 {
+                        // bottomY = bottomY
+                    } else {
+                        bottomY = 0
+                    }
+                    // bottomY = bottomY >= 0.0 ? bottomY : 0.0
+                    headerViewView.view.bottomY = bottomY
+                    stickyView.y = headerViewView.view.bottomY
+                    assetTableView.frame = CGRect.init(x: 0, y: stickyView.bottomY, width: assetTableView.width, height: self.view.height - stickyView.bottomY)
+                    
+                    Diff.previousY = y
+                    
+                    if Diff.previousY >= headerViewView.view.height {
+                        Diff.previousY = 0
+                    }
+                }
+                    // 向下滚动
+                else if y < 0 {
+                    if headerViewView.view.y >= 0 {
+                        return
+                    }
+                    
+                    var bottomY = headerViewView.view.bottomY + fabs(y)
+                    bottomY = bottomY <= headerViewView.view.height ? bottomY : headerViewView.view.height
+                    headerViewView.view.bottomY = bottomY
+                    stickyView.y = headerViewView.view.bottomY
+                    assetTableView.frame = CGRect.init(x: 0, y: stickyView.bottomY, width: assetTableView.width, height: self.view.height - stickyView.bottomY)
+                }
             }
-            
-        } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= 65 {
-            struct Diff {
-                static var previousY: CGFloat = 0.0
-            }
-            
-            self.headerHeightConstraint.constant -= fabs(scrollView.contentOffset.y/10 - Diff.previousY) // scrollView.contentOffset.y/10
-            Diff.previousY = scrollView.contentOffset.y/10
-            /*
-            if self.headerHeightConstraint.constant < 65 {
-                self.headerHeightConstraint.constant = 65
-                Diff.previousY = 0
-            }
-            */
         }
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if self.headerHeightConstraint.constant > 150 {
-            // animateHeader()
-        }
+        
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDecelerating")
         isListeningSocketIO = true
         // CurrentAppWalletDataManager.shared.startGetBalance()
-        
-        if self.headerHeightConstraint.constant > 150 {
-            // animateHeader()
-        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -351,7 +389,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
+            return 0
         } else {
             numberOfRowsInSection1 = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
             return numberOfRowsInSection1
@@ -430,47 +468,4 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func setUpHeader() {
-        // headerView = CustomHeaderView(frame: CGRect.zero, title: "Articles")
-        headerViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(headerViewController.view)
-        addChildViewController(headerViewController)
-
-         // self.view.frame.height * 0.6
-        
-        headerHeightConstraint = headerViewController.view.heightAnchor.constraint(equalToConstant: backgroundImageHeight)
-        headerHeightConstraint.isActive = true
-        let constraints: [NSLayoutConstraint] = [
-            headerViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
-            headerViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-
-    func setUpTableView() {
-        assetTableView = UITableView()
-        assetTableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(assetTableView)
-        let constraints: [NSLayoutConstraint] = [
-            assetTableView.topAnchor.constraint(equalTo: headerViewController.view.bottomAnchor),
-            assetTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            assetTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            assetTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
-        //assetTableView.register(WalletBalanceTableViewCell.self, forCellReuseIdentifier: "WalletBalanceTableViewCell")
-        //assetTableView.register(AssetTableViewCell.self, forCellReuseIdentifier: "AssetTableViewCell")
-        assetTableView.dataSource = self
-        assetTableView.delegate = self
-    }
-    
-    /*
-    func animateHeader() {
-        self.headerHeightConstraint.constant = 150
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-    }
-    */
 }
