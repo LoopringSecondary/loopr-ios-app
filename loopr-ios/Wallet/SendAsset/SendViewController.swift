@@ -11,10 +11,12 @@ import Geth
 
 class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var statusBarBackgroundView: UIView!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
     @IBOutlet weak var tokenImage: UIImageView!
     @IBOutlet weak var tokenLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var moreTokensButton: UIButton!
     @IBOutlet weak var tokensCollectionView: UICollectionView!
@@ -22,6 +24,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     @IBOutlet weak var scrollViewTopToCollection: NSLayoutConstraint!
     @IBOutlet weak var scrollViewTopToHeader: NSLayoutConstraint!
     @IBOutlet weak var scrollViewBottomLayoutContraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     
     // Address
     var addressY: CGFloat = 0.0
@@ -231,17 +234,25 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     @IBAction func pressedMoreButton(_ sender: UIButton) {
         showCollection = !showCollection
         if showCollection {
+            moreTokensButton.image = #imageLiteral(resourceName: "Tokenest-lesstoken")
             scrollViewTopToHeader.priority = .defaultLow
             scrollViewTopToCollection.priority = .defaultHigh
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: { () -> Void in
                 self.tokensCollectionView.alpha = 1
+                self.backgroundView.backgroundColor = UIColor.black
+                self.backgroundView.alpha = 0.7
+                self.view.sendSubview(toBack: self.scrollView)
                 self.view.layoutIfNeeded()
             }, completion: nil)
         } else {
+            moreTokensButton.image = #imageLiteral(resourceName: "Tokenest-moretoken")
             scrollViewTopToHeader.priority = .defaultHigh
             scrollViewTopToCollection.priority = .defaultLow
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: { () -> Void in
                 self.tokensCollectionView.alpha = 0
+                self.view.bringSubview(toFront: self.scrollView)
+                self.backgroundView.backgroundColor = GlobalPicker.themeColor
+                self.backgroundView.alpha = 1
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }
@@ -428,18 +439,22 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         _ = validate()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
-            return wallet.assetSequence.count
+            return wallet.assetSequence.count / 4
         } else {
             return 0
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetCollectionViewCell.getCellIdentifier(), for: indexPath) as? AssetCollectionViewCell
         if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
-            cell?.asset = wallet.assetSequence[indexPath.row]
+            cell?.asset = wallet.assetSequence[indexPath.row + (indexPath.section*4)]
         }
         cell?.update()
         return cell!
