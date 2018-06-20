@@ -10,7 +10,7 @@ import UIKit
 import NotificationBannerSwift
 import SwiftTheme
 
-class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceTableViewCellDelegate, ContextMenuDelegate, QRCodeScanProtocol {
+class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceDelegate, ContextMenuDelegate, QRCodeScanProtocol {
 
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
     
@@ -438,6 +438,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             headerViewView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+        headerViewView.delegate = self
     }
     
     func setUpTableView() {
@@ -453,5 +454,15 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         NSLayoutConstraint.activate(constraints)
         assetTableView.dataSource = self
         assetTableView.delegate = self
+    }
+    
+    func pressedSendButton() {
+        let viewController = SendViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func pressedReceiveButton() {
+        
     }
 }

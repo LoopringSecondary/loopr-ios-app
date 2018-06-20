@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol WalletBalanceDelegate: class {
+    func pressedReceiveButton()
+    func pressedSendButton()
+}
+
 class WalletBalanceTableViewCellViewController: UIViewController {
+    
+    weak var delegate: WalletBalanceDelegate?
     
     var updateBalanceLabelTimer: Timer?
     
@@ -58,7 +65,7 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: NSLocalizedString("Send", comment: ""), titlePosition: .left, additionalSpacing: iconTitlePadding, state: .highlighted)
         sendButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
         sendButton.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
-        sendButton.addTarget(self, action: #selector(self.pressedReceiveButton(_:)), for: .touchUpInside)
+        sendButton.addTarget(self, action: #selector(self.pressedSendButton(_:)), for: .touchUpInside)
         
         if updateBalanceLabelTimer == nil {
             updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
@@ -77,6 +84,12 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     
     @objc func pressedReceiveButton(_ button: UIButton) {
         print("pressedItem1Button")
+        delegate?.pressedReceiveButton()
+    }
+
+    @objc func pressedSendButton(_ button: UIButton) {
+        print("pressedSendButton")
+        delegate?.pressedSendButton()
     }
     
     func setup() {

@@ -47,7 +47,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     var transactionAmountMaxLabel = UILabel()
     var transactionAmountCurrentLabel = UILabel()
     var transactionAmountHelpButton = UIButton()
-    
+
+    var sendButton = UIButton()
+
     // Numeric keyboard
     var isNumericKeyboardShow: Bool = false
     var numericKeyboardView: DefaultNumericKeyboard!
@@ -59,6 +61,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // TODO: able to switch tokens.
+        asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
 
         // Do any additional setup after loading the view.
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
@@ -145,7 +150,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         transactionSpeedSlider.minimumValue = 1
         transactionSpeedSlider.maximumValue = Float(gasPriceInGwei * 2) <= 20 ? 20 : Float(gasPriceInGwei * 2)
         transactionSpeedSlider.value = Float(gasPriceInGwei)
-        transactionSpeedSlider.tintColor = UIColor.black
+        transactionSpeedSlider.tintColor = GlobalPicker.themeColor
         transactionSpeedSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         transactionSpeedSlider.frame = CGRect(x: padding, y: transactionFeeTextField.frame.maxY + padding, width: screenWidth-2*padding, height: 20)
         scrollView.addSubview(transactionSpeedSlider)
@@ -177,7 +182,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelFont()
         transactionAmountMaxLabel.text = NSLocalizedString("Fast", comment: "")
         scrollView.addSubview(transactionAmountMaxLabel)
-        
+
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: screenWidth, height: transactionAmountMinLabel.frame.maxY + 30)
         
@@ -215,7 +220,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Settings_in_grid", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

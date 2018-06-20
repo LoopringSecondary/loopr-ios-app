@@ -35,4 +35,17 @@ extension UIButton {
         layer.cornerRadius = height * 0.5
     }
 
+    func setupRoundPurple(height: CGFloat = 47*UIStyleConfig.scale) {
+        backgroundColor = UIColor.black
+        setBackgroundColor(GlobalPicker.themeColor, for: .normal)
+        // TODO: update the color in the highlighted state.
+        setBackgroundColor(GlobalPicker.themeColor.withAlphaComponent(0.8), for: .highlighted)
+        clipsToBounds = true
+        setTitleColor(.gray, for: .disabled)
+        setTitleColor(UIColor.white, for: .normal)
+        setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
+        titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0*UIStyleConfig.scale)
+        layer.cornerRadius = height * 0.5
+    }
+
 }
