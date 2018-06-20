@@ -10,8 +10,6 @@ import UIKit
 
 class SetupViewController: UIViewController {
     
-    @IBOutlet weak var loopringLogoImageView: UIImageView!
-    @IBOutlet weak var taglineLabel: UILabel!
     var unlockWalletButton = UIButton()
     var generateWalletButton = UIButton()
     
@@ -24,9 +22,6 @@ class SetupViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.clear
-
-        taglineLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
-        taglineLabel.isHidden = true
 
         button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
         button.setTitleColor(UIColor.black, for: .normal)
@@ -47,8 +42,6 @@ class SetupViewController: UIViewController {
         backgrondImageView.isUserInteractionEnabled = true
         
         view.addSubview(backgrondImageView)
-        backgrondImageView.addSubview(loopringLogoImageView)
-        backgrondImageView.addSubview(taglineLabel)
         backgrondImageView.addSubview(button)
         backgrondImageView.addSubview(unlockWalletButton)
         backgrondImageView.addSubview(generateWalletButton)
@@ -76,10 +69,6 @@ class SetupViewController: UIViewController {
         let screenSize: CGRect = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
-
-        loopringLogoImageView.isHidden = true
-        loopringLogoImageView.frame = CGRect(x: 24, y: 64, width: 136, height: 41)
-        taglineLabel.frame = CGRect(x: 24, y: 119, width: screenWidth - 24 * 2, height: 20)
 
         let bottomPadding: CGFloat = UIDevice.current.iPhoneX ? 30 : 0
         

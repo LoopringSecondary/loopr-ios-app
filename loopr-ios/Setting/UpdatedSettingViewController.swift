@@ -124,7 +124,7 @@ class UpdatedSettingViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        showNavigationBar()
+        // showNavigationBar()
     }
     
     func setupNavigationBar() {

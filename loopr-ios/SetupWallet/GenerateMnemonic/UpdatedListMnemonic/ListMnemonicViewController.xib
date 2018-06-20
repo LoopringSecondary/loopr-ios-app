@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListMnemonicViewController" customModule="loopr_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="ex5-CK-3Ip" id="qkE-BL-Hmo"/>
+                <outlet property="nextButton" destination="Jwl-2l-KjS" id="1IV-LJ-Rz0"/>
+                <outlet property="startInfolbel" destination="XbE-vr-neH" id="Qdi-Ou-i2P"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-background-curve-image" translatesAutoresizingMaskIntoConstraints="NO" id="qZa-8t-k2D">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="240" id="JPu-gd-4dJ"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwl-2l-KjS">
+                    <rect key="frame" x="261" y="158" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="V90-QF-jBL"/>
+                        <constraint firstAttribute="height" constant="80" id="wr5-K7-rh7"/>
+                    </constraints>
+                    <state key="normal" image="Tokenest-setup-next-button"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-vr-neH">
+                    <rect key="frame" x="23" y="94" width="336" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="80J-i0-Lxw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="31"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ex5-CK-3Ip">
+                    <rect key="frame" x="14" y="48" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="XN7-mV-yDk"/>
+                        <constraint firstAttribute="width" constant="44" id="x0K-Xz-g4Q"/>
+                    </constraints>
+                    <state key="normal" image="Tokenest-setup-back-button"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Jwl-2l-KjS" firstAttribute="leading" secondItem="qZa-8t-k2D" secondAttribute="leading" constant="261" id="8By-Bn-dAl"/>
+                <constraint firstItem="ex5-CK-3Ip" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="14" id="BGz-mF-JA9"/>
+                <constraint firstItem="qZa-8t-k2D" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="RU2-04-UXt"/>
+                <constraint firstItem="ex5-CK-3Ip" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="4" id="U8q-eC-u0d"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XbE-vr-neH" secondAttribute="trailing" constant="16" id="WGY-y9-m23"/>
+                <constraint firstItem="qZa-8t-k2D" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b8S-eU-H1f"/>
+                <constraint firstItem="XbE-vr-neH" firstAttribute="top" secondItem="ex5-CK-3Ip" secondAttribute="bottom" constant="2" id="bpa-KG-3Hh"/>
+                <constraint firstItem="qZa-8t-k2D" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hFA-Hq-rGS"/>
+                <constraint firstItem="Jwl-2l-KjS" firstAttribute="top" secondItem="qZa-8t-k2D" secondAttribute="top" constant="158" id="hwG-fQ-CP3"/>
+                <constraint firstItem="XbE-vr-neH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="23" id="wDC-9N-Kdb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="33.5" y="118"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Tokenest-setup-back-button" width="17" height="16"/>
+        <image name="Tokenest-setup-background-curve-image" width="375" height="240"/>
+        <image name="Tokenest-setup-next-button" width="80" height="80"/>
+    </resources>
+</document>

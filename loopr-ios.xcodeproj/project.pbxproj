@@ -132,6 +132,12 @@
 		AC30C65C20D99393004436D8 /* WalletBalanceTableViewCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC30C65A20D99393004436D8 /* WalletBalanceTableViewCellViewController.xib */; };
 		AC30C65F20D9C486004436D8 /* WalletClearTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30C65D20D9C486004436D8 /* WalletClearTableViewCell.swift */; };
 		AC30C66020D9C486004436D8 /* WalletClearTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC30C65E20D9C486004436D8 /* WalletClearTableViewCell.xib */; };
+		AC30C66420DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30C66220DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.swift */; };
+		AC30C66520DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC30C66320DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.xib */; };
+		AC30C66820DA3E47004436D8 /* ListMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30C66620DA3E47004436D8 /* ListMnemonicViewController.swift */; };
+		AC30C66920DA3E47004436D8 /* ListMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC30C66720DA3E47004436D8 /* ListMnemonicViewController.xib */; };
+		AC30C66D20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30C66B20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.swift */; };
+		AC30C66E20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC30C66C20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.xib */; };
 		AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */; };
 		AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */; };
 		AC31B93A204A4F9000B16155 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B939204A4F9000B16155 /* Language.swift */; };
@@ -228,8 +234,6 @@
 		AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3756772038D7E200AADC60 /* UnlockKeystoreViewController.xib */; };
 		AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567A2038D80300AADC60 /* PrivateKeyViewController.swift */; };
 		AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */; };
-		AC3756802039198300AADC60 /* GenerateMnemonicViewController_Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567E2039198300AADC60 /* GenerateMnemonicViewController_Archive.swift */; };
-		AC3756812039198300AADC60 /* GenerateMnemonicViewController_Archive.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567F2039198300AADC60 /* GenerateMnemonicViewController_Archive.xib */; };
 		AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC375682203A641200AADC60 /* SelectWalletViewController.swift */; };
 		AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC375683203A641200AADC60 /* SelectWalletViewController.xib */; };
 		AC387511205F12F100A76637 /* ContextMenuDismissing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3874FF205F12E900A76637 /* ContextMenuDismissing.swift */; };
@@ -731,6 +735,12 @@
 		AC30C65A20D99393004436D8 /* WalletBalanceTableViewCellViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletBalanceTableViewCellViewController.xib; sourceTree = "<group>"; };
 		AC30C65D20D9C486004436D8 /* WalletClearTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletClearTableViewCell.swift; sourceTree = "<group>"; };
 		AC30C65E20D9C486004436D8 /* WalletClearTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletClearTableViewCell.xib; sourceTree = "<group>"; };
+		AC30C66220DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedGenerateWalletEnterNameAndPasswordViewController.swift; sourceTree = "<group>"; };
+		AC30C66320DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedGenerateWalletEnterNameAndPasswordViewController.xib; sourceTree = "<group>"; };
+		AC30C66620DA3E47004436D8 /* ListMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMnemonicViewController.swift; sourceTree = "<group>"; };
+		AC30C66720DA3E47004436D8 /* ListMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListMnemonicViewController.xib; sourceTree = "<group>"; };
+		AC30C66B20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedVerifyMnemonicViewController.swift; sourceTree = "<group>"; };
+		AC30C66C20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedVerifyMnemonicViewController.xib; sourceTree = "<group>"; };
 		AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC31B939204A4F9000B16155 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -805,8 +815,6 @@
 		AC3756772038D7E200AADC60 /* UnlockKeystoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockKeystoreViewController.xib; sourceTree = "<group>"; };
 		AC37567A2038D80300AADC60 /* PrivateKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyViewController.swift; sourceTree = "<group>"; };
 		AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateKeyViewController.xib; sourceTree = "<group>"; };
-		AC37567E2039198300AADC60 /* GenerateMnemonicViewController_Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMnemonicViewController_Archive.swift; sourceTree = "<group>"; };
-		AC37567F2039198300AADC60 /* GenerateMnemonicViewController_Archive.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateMnemonicViewController_Archive.xib; sourceTree = "<group>"; };
 		AC375682203A641200AADC60 /* SelectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletViewController.swift; sourceTree = "<group>"; };
 		AC375683203A641200AADC60 /* SelectWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletViewController.xib; sourceTree = "<group>"; };
 		AC3874FF205F12E900A76637 /* ContextMenuDismissing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuDismissing.swift; sourceTree = "<group>"; };
@@ -1334,6 +1342,17 @@
 			path = Keystore;
 			sourceTree = "<group>";
 		};
+		AC30C66A20DA3E51004436D8 /* UpdatedListMnemonic */ = {
+			isa = PBXGroup;
+			children = (
+				AC30C66620DA3E47004436D8 /* ListMnemonicViewController.swift */,
+				AC30C66720DA3E47004436D8 /* ListMnemonicViewController.xib */,
+				AC30C66B20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.swift */,
+				AC30C66C20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.xib */,
+			);
+			path = UpdatedListMnemonic;
+			sourceTree = "<group>";
+		};
 		AC31B93B204A8D1F00B16155 /* Keystore@8fea1ff */ = {
 			isa = PBXGroup;
 			children = (
@@ -1628,8 +1647,7 @@
 		AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */ = {
 			isa = PBXGroup;
 			children = (
-				AC37567E2039198300AADC60 /* GenerateMnemonicViewController_Archive.swift */,
-				AC37567F2039198300AADC60 /* GenerateMnemonicViewController_Archive.xib */,
+				AC30C66A20DA3E51004436D8 /* UpdatedListMnemonic */,
 				ACC8D0AD20CE0FB10049A741 /* ListMnemonic */,
 				ACC8D0AC20CE0E380049A741 /* VerifyMnemonic */,
 			);
@@ -1929,6 +1947,8 @@
 		AC99CF502083E708000AE4BD /* GenerateWalletEnterNameAndPassword */ = {
 			isa = PBXGroup;
 			children = (
+				AC30C66220DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.swift */,
+				AC30C66320DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.xib */,
 				AC4C1449204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift */,
 				AC4C144A204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib */,
 			);
@@ -2626,6 +2646,7 @@
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
 				AC78FC3C20A4B0C300992AE8 /* OrderBookTableViewCell.xib in Resources */,
 				ACD2D94420D8CD8A00580360 /* TradeFAQViewController.xib in Resources */,
+				AC30C66920DA3E47004436D8 /* ListMnemonicViewController.xib in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeViewController.xib in Resources */,
@@ -2684,6 +2705,7 @@
 				ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */,
 				AC13B30F2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
+				AC30C66520DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.xib in Resources */,
 				AC54FD70204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */,
 				AC4D02E620D6DE35007F087B /* UpdatedSettingViewController.xib in Resources */,
 				AC9ADF92205EE3B900CBE368 /* ConvertETHViewController.xib in Resources */,
@@ -2708,6 +2730,7 @@
 				AC54FD76204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
 				940B45292060F67E00ADE2B9 /* gas_limit.json in Resources */,
 				AC54FD6D204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */,
+				AC30C66E20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.xib in Resources */,
 				AC31CE65205B994A00A30335 /* Roboto-Italic.ttf in Resources */,
 				9475A2EF207EF81300200155 /* OrderDetailViewController.xib in Resources */,
 				AC68E10320C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.xib in Resources */,
@@ -2756,7 +2779,6 @@
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
 				AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
-				AC3756812039198300AADC60 /* GenerateMnemonicViewController_Archive.xib in Resources */,
 				AC30C65C20D99393004436D8 /* WalletBalanceTableViewCellViewController.xib in Resources */,
 				AC54FD88204FC6F8007E1DEB /* OpenSans-Regular.ttf in Resources */,
 			);
@@ -3022,7 +3044,6 @@
 				AC78FC3820A176CE00992AE8 /* OrderBookDataManager.swift in Sources */,
 				AC68E0FF20C22E8A00BFA837 /* AddWalletError.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
-				AC3756802039198300AADC60 /* GenerateMnemonicViewController_Archive.swift in Sources */,
 				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
@@ -3183,6 +3204,7 @@
 				AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */,
 				AC6466082083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.swift in Sources */,
 				949629DB204E836400858F03 /* Depth.swift in Sources */,
+				AC30C66420DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.swift in Sources */,
 				940B45232060F67E00ADE2B9 /* CurrentAppWalletDataManager.swift in Sources */,
 				ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */,
 				C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */,
@@ -3245,6 +3267,7 @@
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
 				AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */,
 				AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */,
+				AC30C66820DA3E47004436D8 /* ListMnemonicViewController.swift in Sources */,
 				ACD2D94020D8C55F00580360 /* UIViewController+NavigationBar.swift in Sources */,
 				AC38751D205F12F100A76637 /* UIViewController+Extensions.swift in Sources */,
 				94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */,
@@ -3297,6 +3320,7 @@
 				940B452D2061206900ADE2B9 /* Token.swift in Sources */,
 				AC38751C205F12F100A76637 /* ContextMenuPresentationController.swift in Sources */,
 				ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */,
+				AC30C66D20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.swift in Sources */,
 				940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */,
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
 				AC06193E208417AF0060F416 /* QRCodeMethod.swift in Sources */,

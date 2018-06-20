@@ -9,13 +9,13 @@
 import UIKit
 
 class UpdatedSetupViewController: UIViewController {
-
-    var isCreatingFirstWallet: Bool = true
     
-    var backgrondImageView = UIImageView()
-    var unlockWalletButton = UIButton()
-    var unlockWalletIconButton = UIButton()
-    var generateWalletButton = UIButton()
+    @IBOutlet weak var unlockWalletButton: UIButton!
+    @IBOutlet weak var unlockIconWalletButton: UIButton!
+    
+    @IBOutlet weak var generateWalletButton: UIButton!
+    @IBOutlet weak var generateIconWalletButton: UIButton!
+    
     var generateWalletIconButton = UIButton()
 
     override func viewDidLoad() {
@@ -24,22 +24,24 @@ class UpdatedSetupViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = true
         // self.navigationController?.navigationBar.alpha = 0
-        
-        let screenSize: CGRect = UIScreen.main.bounds
-        backgrondImageView.frame = screenSize
-        backgrondImageView.backgroundColor = GlobalPicker.themeColor
-        backgrondImageView.isUserInteractionEnabled = true
-        view.addSubview(backgrondImageView)
-        
+    
+        unlockWalletButton.backgroundColor = UIColor.clear
         unlockWalletButton.title = NSLocalizedString("Import", comment: "")
         unlockWalletButton.setTitleColor(UIColor.white, for: .normal)
+        unlockWalletButton.setTitleColor(UIColor.black.withAlphaComponent(0.7), for: .highlighted)
+        unlockWalletButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
         unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
-        backgrondImageView.addSubview(unlockWalletButton)
         
+        unlockIconWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
+        
+        generateWalletButton.backgroundColor = UIColor.clear
         generateWalletButton.title = NSLocalizedString("Create", comment: "")
         generateWalletButton.setTitleColor(UIColor.white, for: .normal)
+        generateWalletButton.setTitleColor(UIColor.black.withAlphaComponent(0.7), for: .highlighted)
+        generateWalletButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
-        backgrondImageView.addSubview(generateWalletButton)
+        
+        generateIconWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,19 +51,7 @@ class UpdatedSetupViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-
-        let screenSize: CGRect = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        let bottomPadding: CGFloat = UIDevice.current.iPhoneX ? 30 : 0
-        
-        let frameY: CGFloat = screenHeight - bottomPadding - 47 - 63
-        let titleButtonWidth: CGFloat = 60
-        
-        unlockWalletButton.frame = CGRect(x: 30, y: frameY, width: titleButtonWidth, height: 28)
-
-        generateWalletButton.frame = CGRect(x: screenWidth - 30 - titleButtonWidth, y: frameY, width: titleButtonWidth, height: 28)
+        hideNavigationBar()
     }
 
     @objc func unlockWalletButtonPressed(_ sender: Any) {
@@ -72,7 +62,7 @@ class UpdatedSetupViewController: UIViewController {
     
     @objc func generateWalletButtonPressed(_ sender: Any) {
         print("generateWalletButtonPressed")
-        let viewController = GenerateWalletEnterNameAndPasswordViewController(nibName: nil, bundle: nil)
+        let viewController = UpdatedGenerateWalletEnterNameAndPasswordViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
