@@ -26,6 +26,8 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     @IBOutlet weak var scrollViewBottomLayoutContraint: NSLayoutConstraint!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var scrollViewBackground: UIView!
+    
     // Address
     var addressY: CGFloat = 0.0
     var addressInfoLabel: UILabel = UILabel()
@@ -205,6 +207,10 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 self.updateTransactionFeeAmountLabel()
             }
         }
+        
+        scrollViewBackground.backgroundColor = UIColor.black
+        scrollViewBackground.alpha = 0
+        scrollViewBackground.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -237,17 +243,25 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             moreTokensButton.image = #imageLiteral(resourceName: "Tokenest-lesstoken")
             scrollViewTopToHeader.priority = .defaultLow
             scrollViewTopToCollection.priority = .defaultHigh
+            
+            scrollViewBackground.alpha = 0.7
+            scrollViewBackground.isHidden = false
+            
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: { () -> Void in
                 self.tokensCollectionView.alpha = 1
-                self.backgroundView.backgroundColor = UIColor.black
-                self.backgroundView.alpha = 0.7
-                self.view.sendSubview(toBack: self.scrollView)
+                // self.backgroundView.backgroundColor = UIColor.black
+                // self.backgroundView.alpha = 0.7
+                // self.view.sendSubview(toBack: self.scrollView)
                 self.view.layoutIfNeeded()
             }, completion: nil)
         } else {
             moreTokensButton.image = #imageLiteral(resourceName: "Tokenest-moretoken")
             scrollViewTopToHeader.priority = .defaultHigh
             scrollViewTopToCollection.priority = .defaultLow
+            
+            scrollViewBackground.alpha = 0
+            scrollViewBackground.isHidden = true
+            
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: { () -> Void in
                 self.tokensCollectionView.alpha = 0
                 self.view.bringSubview(toFront: self.scrollView)
