@@ -48,6 +48,14 @@ extension UIColor {
     }
     
     class var tokenestBackground: UIColor {
-        return UIColor(named: "TokenestBackground")!
+        return UIColor(named: "Tokenest-background")!
+    }
+    
+    class var tokenestBlankBackground: UIColor {
+        return UIColor.init(rgba: "#F3F6F8")
+    }
+    
+    class var tokenestBorder: UIColor {
+        return UIColor.init(rgba: "#E8E8E8")
     }
 }

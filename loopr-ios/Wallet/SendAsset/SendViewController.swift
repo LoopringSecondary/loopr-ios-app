@@ -9,9 +9,8 @@
 import UIKit
 import Geth
 
-class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var statusBarBackgroundView: UIView!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
     @IBOutlet weak var tokenImage: UIImageView!
@@ -21,12 +20,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     @IBOutlet weak var moreTokensButton: UIButton!
     @IBOutlet weak var tokensCollectionView: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollViewTopToCollection: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewTopToHeader: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewBottomLayoutContraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var scrollViewBackground: UIView!
+    @IBOutlet weak var maskView: UIView!
     
     // Address
     var addressY: CGFloat = 0.0
@@ -38,7 +34,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     var amountY: CGFloat = 0.0
     var amountInfoLabel: UILabel = UILabel()
     var amountTextField: UITextField = UITextField()
-    var amountStackView: AmountStackView!
+    var amountMaxButton: UIButton = UIButton()
     
     // Transaction Fee
     var transactionFeeLabel = UILabel()
@@ -71,7 +67,13 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
 
         // Do any additional setup after loading the view.
+        maskView.alpha = 0
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
+        
+        scrollView.layer.borderColor = UIColor.tokenestBorder.cgColor
+        scrollView.layer.borderWidth = 0.5
+        
+        nameLabel.font = FontConfigManager.shared.getLabelFont(size: 10)
         
         tokensCollectionView.alpha = 0
         tokensCollectionView.dataSource = self
@@ -86,7 +88,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         
         // 1st row: address
         addressInfoLabel.frame = CGRect(x: padding, y: padding, width: screenWidth, height: 40)
-        addressInfoLabel.text = "sdfsfd"
+        addressInfoLabel.text = "转账地址"
         scrollView.addSubview(addressInfoLabel)
 
         addressTextField.delegate = self
@@ -109,7 +111,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         
         // 2nd row: amount
         amountInfoLabel.frame = CGRect(x: padding, y: addressTextField.frame.maxY + padding, width: screenWidth, height: 40)
-        amountInfoLabel.text = "sdfsfd"
+        amountInfoLabel.text = "转账金额(ETH)"
         scrollView.addSubview(amountInfoLabel)
         
         amountTextField.delegate = self
@@ -125,12 +127,12 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         scrollView.addSubview(amountTextField)
         amountY = amountTextField.frame.minY
         
-        amountStackView = AmountStackView(frame: CGRect(x: screenWidth-110-padding, y: amountTextField.frame.origin.y, width: 100, height: 40))
-        amountStackView.delegate = self
-        scrollView.addSubview(amountStackView)
+        amountMaxButton.frame = CGRect(x: screenWidth-110-padding, y: amountTextField.frame.origin.y, width: 100, height: 40)
+        amountMaxButton.addTarget(self, action: #selector(pressedMaxButton(_:)), for: .touchUpInside)
+        scrollView.addSubview(amountMaxButton)
         
         // 3rd Row: Transaction
-        transactionFeeLabel.frame = CGRect(x: padding, y: amountTextField.frame.maxY + padding*2, width: screenWidth, height: 40)
+        transactionFeeLabel.frame = CGRect(x: padding, y: amountTextField.frame.maxY + padding, width: screenWidth, height: 40)
         transactionFeeLabel.font = FontConfigManager.shared.getLabelFont()
         transactionFeeLabel.text = NSLocalizedString("Transaction Fee", comment: "")
         scrollView.addSubview(transactionFeeLabel)
@@ -207,10 +209,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 self.updateTransactionFeeAmountLabel()
             }
         }
-        
-        scrollViewBackground.backgroundColor = UIColor.black
-        scrollViewBackground.alpha = 0
-        scrollViewBackground.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -240,33 +238,18 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     @IBAction func pressedMoreButton(_ sender: UIButton) {
         showCollection = !showCollection
         if showCollection {
-            moreTokensButton.image = #imageLiteral(resourceName: "Tokenest-lesstoken")
-            scrollViewTopToHeader.priority = .defaultLow
-            scrollViewTopToCollection.priority = .defaultHigh
-            
-            scrollViewBackground.alpha = 0.7
-            scrollViewBackground.isHidden = false
-            
+            moreTokensButton.setImage(#imageLiteral(resourceName: "Tokenest-lesstoken"), for: .normal)
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: { () -> Void in
+                self.maskView.alpha = 0.7
                 self.tokensCollectionView.alpha = 1
-                // self.backgroundView.backgroundColor = UIColor.black
-                // self.backgroundView.alpha = 0.7
-                // self.view.sendSubview(toBack: self.scrollView)
+                self.view.bringSubview(toFront: self.tokensCollectionView)
                 self.view.layoutIfNeeded()
             }, completion: nil)
         } else {
-            moreTokensButton.image = #imageLiteral(resourceName: "Tokenest-moretoken")
-            scrollViewTopToHeader.priority = .defaultHigh
-            scrollViewTopToCollection.priority = .defaultLow
-            
-            scrollViewBackground.alpha = 0
-            scrollViewBackground.isHidden = true
-            
-            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: { () -> Void in
+            moreTokensButton.setImage(#imageLiteral(resourceName: "Tokenest-moretoken"), for: .normal)
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: { () -> Void in
+                self.maskView.alpha = 0
                 self.tokensCollectionView.alpha = 0
-                self.view.bringSubview(toFront: self.scrollView)
-                self.backgroundView.backgroundColor = GlobalPicker.themeColor
-                self.backgroundView.alpha = 1
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }
@@ -334,18 +317,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         }
         return isValid
     }
-    
-    func setResultOfAmount(with percentage: Double) {
-        let length = Asset.getLength(of: asset.symbol) ?? 4
-        let value = asset.balance * Double(percentage)
-        amountTextField.text = value.withCommas(length)
-        if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
-            let total = value * price
-            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .black)
-        }
-        _ = validate()
-    }
-    
+
     func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
         addressTextField.text = valueSent
     }
@@ -365,6 +337,16 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         return amountTextField
     }
     
+    @objc func pressedMaxButton(_ sender: UIButton) {
+        let length = Asset.getLength(of: asset.symbol) ?? 4
+        amountTextField.text = asset.balance.withCommas(length)
+        if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
+            let total = asset.balance * price
+            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .black)
+        }
+        _ = validate()
+    }
+
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
             return
@@ -374,10 +356,10 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             // Get the the distance from the bottom safe area edge to the bottom of the screen
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-            self.scrollViewBottomLayoutContraint.constant = systemKeyboardHeight + bottomPadding
+            self.scrollViewBottomConstraint.constant = systemKeyboardHeight + bottomPadding
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
-                if self.addressY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewBottomLayoutContraint.constant {
+                if self.addressY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewBottomConstraint.constant {
                     self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.addressY + 30), animated: true)
                 }
             }, completion: { _ in
@@ -388,7 +370,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
-        scrollViewBottomLayoutContraint.constant = 0
+        scrollViewBottomConstraint.constant = 0
     }
     
     @objc func keyboardDidChange(notification: NSNotification?) {
@@ -400,7 +382,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         if !isNumericKeyboardShow {
             let width = self.view.frame.width
             let height = self.view.frame.height
-            scrollViewBottomLayoutContraint.constant = DefaultNumericKeyboard.height
+            scrollViewBottomConstraint.constant = DefaultNumericKeyboard.height
             numericKeyboardView = DefaultNumericKeyboard.init(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate2 = self
             view.addSubview(numericKeyboardView)
@@ -413,10 +395,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-                if self.amountY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewBottomLayoutContraint.constant {
+                if self.amountY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewBottomConstraint.constant {
                     self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.amountY - 120*UIStyleConfig.scale), animated: true)
                 }
-
             }, completion: { _ in
                 self.isNumericKeyboardShow = true
             })
@@ -429,7 +410,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             let width = self.view.frame.width
             let height = self.view.frame.height
             let destinateY = height
-            self.scrollViewBottomLayoutContraint.constant = 0
+            self.scrollViewBottomConstraint.constant = 0
 
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.

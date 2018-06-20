@@ -16,10 +16,6 @@ class AssetCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.clipsToBounds = true
-        self.layer.cornerRadius = self.frame.size.height / 2
-        nameLabel.backgroundColor = UIColor.init(rgba: "#F0F1F5")
-        nameLabel.textColor = UIColor.init(rgba: "#878FA4")
         nameLabel.font = FontConfigManager.shared.getSubtitleFont()
     }
     

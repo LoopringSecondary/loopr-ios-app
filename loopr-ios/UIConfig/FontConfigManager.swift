@@ -15,6 +15,7 @@ enum SupportedFonts: String {
     case Lato
     case OpenSans
     case Roboto
+    case PingFang
 }
 
 class FontConfigManager {
@@ -114,6 +115,8 @@ class FontConfigManager {
             return "OpenSans-SemiBold"
         case .Roboto:
             return "Roboto-Medium"
+        case .PingFang:
+            return "SF-UI-Text-Medium"
         }
     }
     
@@ -124,6 +127,16 @@ class FontConfigManager {
         return "\(currentFont.rawValue)-Bold"
     }
 
+    func getChineseMedium(size: CGFloat = 17.0) -> UIFont {
+        let fontSize = size * UIStyleConfig.scale
+        return UIFont(name: "PingFang-Medium", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+    
+    func getChineseRegular(size: CGFloat = 17.0) -> UIFont {
+        let fontSize = size * UIStyleConfig.scale
+        return UIFont(name: "PingFang-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+    
     func getLabelFont(size: CGFloat = 17.0) -> UIFont {
         let fontSize = size * UIStyleConfig.scale
         if currentFont == .DIN {
