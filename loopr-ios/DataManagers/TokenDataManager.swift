@@ -35,8 +35,8 @@ class TokenDataManager {
     }
 
     func getTokenList() -> [String] {
-        return ["BOO", "FOO", "VITE", "KNC", "OMG", "BAT", "SNT", "REQ", "ARP", "BNT", "IOST", "KNC"]
         // return tokenList
+        return whiteList
     }
 
     func getTokenListFromLocalStorage() {

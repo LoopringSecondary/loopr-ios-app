@@ -9,7 +9,9 @@
 import UIKit
 
 class WalletBalanceTableViewCellViewController: UIViewController {
-
+    
+    var updateBalanceLabelTimer: Timer?
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var balanceLabel: TickerLabel!
     // let addressLabel: UILabel = UILabel()
@@ -36,6 +38,10 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText("\(balance)", animated: false)
         
+        buttonBackgroundView.backgroundColor = UIColor.init(white: 1, alpha: 0.98)
+        buttonBackgroundView.cornerRadius = 7.5
+        buttonBackgroundView.clipsToBounds = true
+        
         let iconTitlePadding: CGFloat = 14
         
         receiveButton.backgroundColor = UIColor.clear
@@ -54,6 +60,9 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         sendButton.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
         sendButton.addTarget(self, action: #selector(self.pressedReceiveButton(_:)), for: .touchUpInside)
         
+        if updateBalanceLabelTimer == nil {
+            updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,8 +70,26 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setup()
+    }
+    
     @objc func pressedReceiveButton(_ button: UIButton) {
         print("pressedItem1Button")
+    }
+    
+    func setup() {
+        var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        balance.insert(" ", at: balance.index(after: balance.startIndex))
+        balanceLabel.setText(balance, animated: true)
+        balanceLabel.layoutCharacterLabels()
+    }
+    
+    @objc func updateBalance() {
+        var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        balance.insert(" ", at: balance.index(after: balance.startIndex))
+        balanceLabel.setText(balance, animated: true)
     }
 
 }
