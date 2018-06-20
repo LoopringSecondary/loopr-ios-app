@@ -10,11 +10,15 @@ import UIKit
 import NotificationBannerSwift
 import SwiftTheme
 
-class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate, QRCodeScanProtocol {
+class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceTableViewCellDelegate, ContextMenuDelegate, QRCodeScanProtocol {
 
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
-    @IBOutlet weak var assetTableView: UITableView!
+    
     private let refreshControl = UIRefreshControl()
+
+    var assetTableView: UITableView = UITableView()
+    var headerViewView = WalletBalanceTableViewCellViewController()
+    var headerHeightConstraint:NSLayoutConstraint!
 
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
@@ -24,27 +28,22 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let buttonInNavigationBar =  UIButton()
     var numberOfRowsInSection1: Int = 0
     
+    var previousY: CGFloat = 0.0
+    let backgroundImageHeight: CGFloat = 345 - 20 + 32
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        setupNavigationBar()
+        setUpHeader()
+        setUpTableView()
         
-        assetTableView.dataSource = self
-        assetTableView.delegate = self
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
-        footerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
-        assetTableView.tableFooterView = footerView
-        assetTableView.separatorStyle = .none
-        
-        // Avoid dragging a cell to the top makes the tableview shake
-        assetTableView.estimatedRowHeight = 0
-        assetTableView.estimatedSectionHeaderHeight = 0
-        assetTableView.estimatedSectionFooterHeight = 0
+        self.view.backgroundColor = UIColor.white
 
         view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
-        assetTableView.backgroundColor = UIColor.init(rgba: "#F3F6F8") // = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
-
+        assetTableView.backgroundColor = UIColor.clear
+        assetTableView.separatorStyle = .none
+        
         let qrCodebutton = UIButton(type: UIButtonType.custom)
         
         // TODO: smaller images.
@@ -52,40 +51,23 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         qrCodebutton.setImage(UIImage(named: "QRCode-black")?.alpha(0.3), for: .highlighted)
         qrCodebutton.addTarget(self, action: #selector(self.pressScanQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
+        _ = UIBarButtonItem(customView: qrCodebutton)
         // self.navigationItem.leftBarButtonItem = qrCodeBarButton
 
-        let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
+        _ = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         // self.navigationItem.rightBarButtonItem = addBarButton
         
         // Disable refresh control
         // Add Refresh Control to Table View
+        refreshControl.bounds = CGRect.init(x: refreshControl.bounds.origin.x, y: backgroundImageHeight - 10, width: refreshControl.bounds.size.width, height: refreshControl.bounds.size.height)
         if #available(iOS 10.0, *) {
             assetTableView.refreshControl = refreshControl
         } else {
-            assetTableView.addSubview(refreshControl)
+            // assetTableView.addSubview(refreshControl)
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
  
-        // TODO: Unfinished
-        // https://stackoverflow.com/questions/13364465/uirefreshcontrol-background-color
-        // Creating view for extending background color
-        //
-        var frame = assetTableView.bounds
-        frame.origin.y = -frame.size.height
-        let backgroundView = UIImageView(frame: CGRect.init(x: 0, y: -100, width: assetTableView.bounds.width, height: 345))
-        backgroundView.image = UIImage.init(named: "Tokenest-asset-background-image")
-        // backgroundView.frame.height = 345
-        backgroundView.autoresizingMask = .flexibleWidth
-        // backgroundView.backgroundColor = UIColor.init(red: 59/255.0, green: 81/255.0, blue: 200/255.0, alpha: 1)
-        
-        // view.addSubview(backgroundView)
-        // view.sendSubview(toBack: backgroundView)
-        
-        // Adding the view below the refresh control
-        // assetTableView.insertSubview(backgroundView, at: 0)
-        
         /*
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
         buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getNavigationTitleFont()
@@ -94,6 +76,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         buttonInNavigationBar.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = buttonInNavigationBar
         */
+        
+        setupNavigationBar()
+        bringSubviewsToFront()
     }
     
     func setupNavigationBar() {
@@ -107,7 +92,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let navigationItem = UINavigationItem()
         navigationItem.title = "TOKENEST"
         
-        // TODO: Needs an icon
+        // TODO: Needs an better icon
         let qrScanButton = UIButton(type: UIButtonType.custom)
         qrScanButton.setImage(UIImage.init(named: "Scan-white"), for: .normal)
         qrScanButton.setImage(UIImage(named: "Scan")?.alpha(0.3), for: .highlighted)
@@ -117,6 +102,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationItem.leftBarButtonItem = qrCodeBarButton
         
         customizedNavigationBar.setItems([navigationItem], animated: false)
+    }
+    
+    func bringSubviewsToFront() {
+        view.bringSubview(toFront: headerViewView.view)
+        view.bringSubview(toFront: customizedNavigationBar)
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -143,6 +133,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.isLaunching = false
                 }
                 self.assetTableView.reloadData()
+                self.headerViewView.setup()
                 self.refreshControl.endRefreshing()
             }
         })
@@ -159,6 +150,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         buttonInNavigationBar.title = buttonTitle
+        
         // TODO: in the new design, no right image
         // buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
     }
@@ -299,7 +291,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
-            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
+            // self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
     
@@ -307,10 +299,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
-            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
+            // self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
     
+    // Scroll view delegate
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print("scrollViewWillBeginDragging")
         CurrentAppWalletDataManager.shared.stopGetBalance()
@@ -318,12 +311,30 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("change: \(scrollView.contentOffset.y)")
+        if scrollView.contentOffset.y < 0 {
+            headerViewView.view.y = 0
+            headerViewView.balanceLabel.alpha = 1.0
+        } else {
+            headerViewView.view.y = -scrollView.contentOffset.y
+            headerViewView.balanceLabel.alpha = (70 - scrollView.contentOffset.y)/70
+            
+            // TODO: add more animation if needed. We can even update the navigation bar title.
+
+            if headerViewView.view.y <= -200 {
+                headerViewView.view.y = -200
+            }
+        }
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDecelerating")
         isListeningSocketIO = true
-        CurrentAppWalletDataManager.shared.startGetBalance()
+        // CurrentAppWalletDataManager.shared.startGetBalance()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -341,7 +352,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return numberOfRowsInSection1
         }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             let backgroundImageHeight: CGFloat = 345 - 20 // self.view.frame.height * 0.6
@@ -353,17 +364,19 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: WalletBalanceTableViewCell.getCellIdentifier()) as? WalletBalanceTableViewCell
+            var cell = tableView.dequeueReusableCell(withIdentifier: WalletClearTableViewCell.getCellIdentifier()) as? WalletClearTableViewCell
             if cell == nil {
-                let nib = Bundle.main.loadNibNamed("WalletBalanceTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? WalletBalanceTableViewCell
+                let nib = Bundle.main.loadNibNamed("WalletClearTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? WalletClearTableViewCell
                 cell?.selectionStyle = .none
-                cell?.delegate = self
+                // cell?.delegate = self
             }
+            /*
             cell?.setup()
             if isLaunching {
                 cell?.balanceLabel.setText("", animated: false)
             }
+            */
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
@@ -412,5 +425,33 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.assetTableView.insertRows(at: rows, with: .top)
             }
         }
+    }
+    
+    func setUpHeader() {
+        headerViewView.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(headerViewView.view)
+        headerHeightConstraint = headerViewView.view.heightAnchor.constraint(equalToConstant: backgroundImageHeight)
+        headerHeightConstraint.isActive = true
+        let constraints: [NSLayoutConstraint] = [
+            headerViewView.view.topAnchor.constraint(equalTo: view.topAnchor),
+            headerViewView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerViewView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    func setUpTableView() {
+        assetTableView = UITableView()
+        assetTableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(assetTableView)
+        let constraints: [NSLayoutConstraint] = [
+            assetTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            assetTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            assetTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            assetTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        assetTableView.dataSource = self
+        assetTableView.delegate = self
     }
 }

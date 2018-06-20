@@ -13,7 +13,7 @@ class IconView: UIView {
     var symbol: String = ""
     var symbolLabel: UILabel = UILabel()
     
-    var width: CGFloat = 5
+    // var width: CGFloat = 5
     
     var circleView: UIView = UIView()
     var circleViewColor: UIColor = UIColor.black
