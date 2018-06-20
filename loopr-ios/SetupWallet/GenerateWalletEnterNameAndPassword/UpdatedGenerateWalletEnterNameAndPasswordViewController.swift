@@ -21,6 +21,9 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController 
         // Add swipe to go-back feature back which is a system default gesture
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
+        // Generate a new wallet
+        _ = GenerateWalletDataManager.shared.new()
+        
         nextButton.addTarget(self, action: #selector(pressedNextButton), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         

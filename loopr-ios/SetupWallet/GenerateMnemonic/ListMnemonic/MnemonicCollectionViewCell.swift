@@ -19,15 +19,16 @@ class MnemonicCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        circleLabel.textColor = UIColor.white
         circleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 12)
         circleLabel.textAlignment = .center
-        circleLabel.layer.cornerRadius = 20.0 * 0.5
+        circleLabel.layer.cornerRadius = 16.0 * 0.5
         circleLabel.layer.borderWidth = 0.5
-        circleLabel.layer.backgroundColor = UIColor.clear.cgColor
-        circleLabel.layer.borderColor = UIColor.black.cgColor
+        circleLabel.layer.backgroundColor = UIColor.init(rgba: "#8997F3").cgColor
+        circleLabel.layer.borderColor = UIColor.clear.cgColor
         circleLabel.baselineAdjustment = .alignCenters
         
-        mnemonicLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 14)
+        mnemonicLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16)
     }
 
     class func getCellIdentifier() -> String {
@@ -35,6 +36,6 @@ class MnemonicCollectionViewCell: UICollectionViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 47
+        return 40
     }
 }

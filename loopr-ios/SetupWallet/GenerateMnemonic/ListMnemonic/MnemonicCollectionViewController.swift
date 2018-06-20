@@ -46,7 +46,7 @@ class MnemonicCollectionViewController: UICollectionViewController {
             return 0
         }
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MnemonicCollectionViewCell.getCellIdentifier(), for: indexPath) as! MnemonicCollectionViewCell
         cell.mnemonicLabel.text = mnemonics[indexPath.row]

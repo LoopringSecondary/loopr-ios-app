@@ -58,19 +58,51 @@
                     </constraints>
                     <state key="normal" image="Tokenest-setup-back-button"/>
                 </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ehA-jp-RfT">
+                    <rect key="frame" x="68.666666666666657" y="273" width="272.33333333333337" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Z0w-gS-AGd"/>
+                    </constraints>
+                    <string key="text">讲助记词按顺序记录到本子上，千万不要截图或保存到互联网上。
+这对您的账户安全至关重要，一旦丢失无法恢复！</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-info-icon" translatesAutoresizingMaskIntoConstraints="NO" id="qzm-4T-NtF">
+                    <rect key="frame" x="48" y="277" width="16.666666666666671" height="16.666666666666686"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16.670000000000002" id="28t-cf-iog"/>
+                        <constraint firstAttribute="height" constant="16.670000000000002" id="FSa-vC-PgY"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-vertical-line" translatesAutoresizingMaskIntoConstraints="NO" id="yyH-L2-UMT">
+                    <rect key="frame" x="56" y="340" width="2" height="400"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="9GV-2X-S0d"/>
+                        <constraint firstAttribute="width" constant="2" id="Vw2-GB-Op5"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Jwl-2l-KjS" firstAttribute="leading" secondItem="qZa-8t-k2D" secondAttribute="leading" constant="261" id="8By-Bn-dAl"/>
+                <constraint firstItem="Jwl-2l-KjS" firstAttribute="trailing" secondItem="qZa-8t-k2D" secondAttribute="trailing" constant="-34" id="8By-Bn-dAl"/>
                 <constraint firstItem="ex5-CK-3Ip" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="14" id="BGz-mF-JA9"/>
+                <constraint firstItem="yyH-L2-UMT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="340" id="O6b-Sy-l80"/>
+                <constraint firstItem="qzm-4T-NtF" firstAttribute="top" secondItem="qZa-8t-k2D" secondAttribute="bottom" constant="37" id="PZO-8A-LNW"/>
                 <constraint firstItem="qZa-8t-k2D" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="RU2-04-UXt"/>
+                <constraint firstItem="ehA-jp-RfT" firstAttribute="top" secondItem="qzm-4T-NtF" secondAttribute="top" constant="-4" id="S6y-Sq-WQf"/>
                 <constraint firstItem="ex5-CK-3Ip" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="4" id="U8q-eC-u0d"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XbE-vr-neH" secondAttribute="trailing" constant="16" id="WGY-y9-m23"/>
+                <constraint firstItem="qzm-4T-NtF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="YVd-fM-pLM"/>
                 <constraint firstItem="qZa-8t-k2D" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b8S-eU-H1f"/>
                 <constraint firstItem="XbE-vr-neH" firstAttribute="top" secondItem="ex5-CK-3Ip" secondAttribute="bottom" constant="2" id="bpa-KG-3Hh"/>
+                <constraint firstItem="ehA-jp-RfT" firstAttribute="leading" secondItem="qzm-4T-NtF" secondAttribute="trailing" constant="4" id="fki-6d-tCZ"/>
                 <constraint firstItem="qZa-8t-k2D" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hFA-Hq-rGS"/>
                 <constraint firstItem="Jwl-2l-KjS" firstAttribute="top" secondItem="qZa-8t-k2D" secondAttribute="top" constant="158" id="hwG-fQ-CP3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ehA-jp-RfT" secondAttribute="trailing" constant="34" id="kQ5-6I-Tn0"/>
                 <constraint firstItem="XbE-vr-neH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="23" id="wDC-9N-Kdb"/>
+                <constraint firstItem="yyH-L2-UMT" firstAttribute="centerX" secondItem="qzm-4T-NtF" secondAttribute="centerX" id="wZ2-7t-4wi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="118"/>
@@ -79,6 +111,8 @@
     <resources>
         <image name="Tokenest-setup-back-button" width="17" height="16"/>
         <image name="Tokenest-setup-background-curve-image" width="375" height="240"/>
+        <image name="Tokenest-setup-info-icon" width="17" height="17"/>
         <image name="Tokenest-setup-next-button" width="80" height="80"/>
+        <image name="Tokenest-setup-vertical-line" width="1" height="214"/>
     </resources>
 </document>
