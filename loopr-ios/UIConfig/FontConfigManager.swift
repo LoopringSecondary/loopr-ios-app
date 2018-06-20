@@ -23,7 +23,7 @@ class FontConfigManager {
     static let shared = FontConfigManager()
     
     // To change the font in the app
-    var currentFont: SupportedFonts = .OpenSans
+    var currentFont: SupportedFonts = .DIN
     
     private init() {
         // currentFont = getCurrentFontFromLocalStorage()
@@ -116,7 +116,7 @@ class FontConfigManager {
         case .Roboto:
             return "Roboto-Medium"
         case .PingFang:
-            return "SF-UI-Text-Medium"
+            return "Pingfang-Medium"
         }
     }
     
@@ -127,22 +127,17 @@ class FontConfigManager {
         return "\(currentFont.rawValue)-Bold"
     }
 
-    func getChineseMedium(size: CGFloat = 17.0) -> UIFont {
-        let fontSize = size * UIStyleConfig.scale
-        return UIFont(name: "PingFang-Medium", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
-    }
-    
-    func getChineseRegular(size: CGFloat = 17.0) -> UIFont {
-        let fontSize = size * UIStyleConfig.scale
-        return UIFont(name: "PingFang-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
-    }
-    
     func getLabelFont(size: CGFloat = 17.0) -> UIFont {
         let fontSize = size * UIStyleConfig.scale
         if currentFont == .DIN {
             return UIFont(name: "DINNextLTPro-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
         }
         return UIFont(name: "\(currentFont.rawValue)-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+    
+    func getLabelsFont(size: CGFloat = 14.0, type: String = "Regular") -> UIFont {
+        let fontSize = size * UIStyleConfig.scale
+        return UIFont(name: "Pingfang-\(type)", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
 
     func getButtonTitleLabelFont(size: CGFloat = 17.0) -> UIFont {

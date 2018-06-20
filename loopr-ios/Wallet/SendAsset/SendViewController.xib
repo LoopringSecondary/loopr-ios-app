@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SendViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="amountLabel" destination="LDf-eU-Y83" id="fLZ-uy-IhV"/>
+                <outlet property="amountTipLabel" destination="MGw-Qv-guN" id="oo3-GZ-v3d"/>
                 <outlet property="collectionHeight" destination="qiM-oI-jqu" id="E6m-Jp-NNZ"/>
                 <outlet property="customizedNavigationBar" destination="SD6-xa-mpX" id="7vL-SP-Jn3"/>
                 <outlet property="maskView" destination="b3X-WY-fjv" id="pgb-rw-LQX"/>
@@ -65,13 +66,21 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skD-YS-cuX">
-                            <rect key="frame" x="72" y="16" width="31" height="20"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <rect key="frame" x="72" y="16" width="32.5" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" name="Tokenest-header-font"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可用余额：0.335657" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDf-eU-Y83">
-                            <rect key="frame" x="185" y="27.5" width="134" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可用余额：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGw-Qv-guN">
+                            <rect key="frame" x="179" y="26" width="70" height="20"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                            <color key="textColor" name="Tokenest-tip-font"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.335657" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDf-eU-Y83">
+                            <rect key="frame" x="249" y="26" width="62" height="20"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="14"/>
+                            <color key="textColor" name="Tokenest-header-font"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcM-zj-e9C">
@@ -86,8 +95,8 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kao-EU-7Wp">
-                            <rect key="frame" x="72" y="44" width="46.5" height="12"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <rect key="frame" x="72" y="39.5" width="60" height="16.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" name="Tokenest-tip-font"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -97,10 +106,12 @@
                         <constraint firstItem="skD-YS-cuX" firstAttribute="top" secondItem="fGS-cZ-SL6" secondAttribute="top" constant="16" id="3gc-Zl-ITi"/>
                         <constraint firstItem="vWS-9o-hok" firstAttribute="leading" secondItem="fGS-cZ-SL6" secondAttribute="leading" constant="16" id="4nF-2j-NmF"/>
                         <constraint firstAttribute="trailing" secondItem="gcM-zj-e9C" secondAttribute="trailing" constant="16" id="BQQ-4D-KeM"/>
-                        <constraint firstItem="gcM-zj-e9C" firstAttribute="leading" secondItem="LDf-eU-Y83" secondAttribute="trailing" id="Bzu-Ol-gR7"/>
                         <constraint firstAttribute="bottom" secondItem="Kao-EU-7Wp" secondAttribute="bottom" constant="16" id="JFc-CL-MJ1"/>
+                        <constraint firstItem="LDf-eU-Y83" firstAttribute="leading" secondItem="MGw-Qv-guN" secondAttribute="trailing" id="MP1-Wh-GW5"/>
                         <constraint firstAttribute="height" constant="72" id="SWV-mm-RPm"/>
+                        <constraint firstItem="MGw-Qv-guN" firstAttribute="centerY" secondItem="fGS-cZ-SL6" secondAttribute="centerY" id="Seg-Of-Chx"/>
                         <constraint firstItem="Kao-EU-7Wp" firstAttribute="leading" secondItem="vWS-9o-hok" secondAttribute="trailing" constant="16" id="YvT-Lo-JCA"/>
+                        <constraint firstItem="gcM-zj-e9C" firstAttribute="leading" secondItem="LDf-eU-Y83" secondAttribute="trailing" constant="8" id="aFe-Md-kQY"/>
                         <constraint firstItem="vWS-9o-hok" firstAttribute="top" secondItem="fGS-cZ-SL6" secondAttribute="top" constant="16" id="mck-Xr-EbU"/>
                         <constraint firstItem="gcM-zj-e9C" firstAttribute="centerY" secondItem="fGS-cZ-SL6" secondAttribute="centerY" id="o7e-Rd-MsC"/>
                         <constraint firstItem="skD-YS-cuX" firstAttribute="leading" secondItem="vWS-9o-hok" secondAttribute="trailing" constant="16" id="sPY-xt-7eZ"/>
@@ -184,14 +195,14 @@
         <namedColor name="BorderColor">
             <color red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="BorderColor">
-            <color red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="BorderColor">
-            <color red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="Tokenest-blank">
             <color red="0.95294117647058818" green="0.96470588235294119" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Tokenest-header-font">
+            <color red="0.29019607843137257" green="0.33725490196078434" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Tokenest-tip-font">
+            <color red="0.52941176470588236" green="0.5607843137254902" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Tokenest-tip-font">
             <color red="0.52941176470588236" green="0.5607843137254902" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

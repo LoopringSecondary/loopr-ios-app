@@ -58,4 +58,12 @@ extension UIColor {
     class var tokenestBorder: UIColor {
         return UIColor.init(rgba: "#E8E8E8")
     }
+    
+    class var tokenestButton: UIColor {
+        return UIColor.init(rgba: "#2E2BA4")
+    }
+    
+    class var tokenestTip: UIColor {
+        return UIColor.init(rgba: "#878FA4")
+    }
 }

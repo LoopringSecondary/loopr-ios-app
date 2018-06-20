@@ -16,6 +16,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     @IBOutlet weak var tokenImage: UIImageView!
     @IBOutlet weak var tokenLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var amountTipLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var moreTokensButton: UIButton!
     @IBOutlet weak var tokensCollectionView: UICollectionView!
@@ -69,11 +70,8 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // Do any additional setup after loading the view.
         maskView.alpha = 0
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
-        
-        scrollView.layer.borderColor = UIColor.tokenestBorder.cgColor
-        scrollView.layer.borderWidth = 0.5
-        
         nameLabel.font = FontConfigManager.shared.getLabelFont(size: 10)
+        collectionHeight.constant = getCollectionHeight()
         
         tokensCollectionView.alpha = 0
         tokensCollectionView.dataSource = self
@@ -89,6 +87,8 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // 1st row: address
         addressInfoLabel.frame = CGRect(x: padding, y: padding, width: screenWidth, height: 40)
         addressInfoLabel.text = "转账地址"
+        addressInfoLabel.font = FontConfigManager.shared.getLabelsFont()
+        addressInfoLabel.textColor = UIColor.tokenestTip
         scrollView.addSubview(addressInfoLabel)
 
         addressTextField.delegate = self
@@ -112,6 +112,8 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // 2nd row: amount
         amountInfoLabel.frame = CGRect(x: padding, y: addressTextField.frame.maxY + padding, width: screenWidth, height: 40)
         amountInfoLabel.text = "转账金额(ETH)"
+        amountInfoLabel.font = FontConfigManager.shared.getLabelsFont()
+        amountInfoLabel.textColor = UIColor.tokenestTip
         scrollView.addSubview(amountInfoLabel)
         
         amountTextField.delegate = self
@@ -127,14 +129,18 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         scrollView.addSubview(amountTextField)
         amountY = amountTextField.frame.minY
         
-        amountMaxButton.frame = CGRect(x: screenWidth-110-padding, y: amountTextField.frame.origin.y, width: 100, height: 40)
+        amountMaxButton.title = "全部转出"
+        amountMaxButton.titleColor = UIColor.tokenestButton
+        amountMaxButton.titleLabel?.font = FontConfigManager.shared.getLabelsFont()
+        amountMaxButton.frame = CGRect(x: screenWidth-90-padding, y: amountTextField.frame.origin.y, width: 100, height: 40)
         amountMaxButton.addTarget(self, action: #selector(pressedMaxButton(_:)), for: .touchUpInside)
         scrollView.addSubview(amountMaxButton)
         
         // 3rd Row: Transaction
         transactionFeeLabel.frame = CGRect(x: padding, y: amountTextField.frame.maxY + padding, width: screenWidth, height: 40)
-        transactionFeeLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionFeeLabel.text = NSLocalizedString("Transaction Fee", comment: "")
+        transactionFeeLabel.font = FontConfigManager.shared.getLabelsFont()
+        transactionFeeLabel.textColor = UIColor.tokenestTip
+        transactionFeeLabel.text = "矿工费(ETH)"
         scrollView.addSubview(transactionFeeLabel)
         
         transactionFeeTextField.delegate = self
@@ -216,6 +222,15 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // Dispose of any resources that can be recreated.
     }
     
+    func getCollectionHeight() -> CGFloat {
+        var height: CGFloat = 0
+        if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
+            let rows = ceil(Double(wallet.assetSequence.count / 4))
+            height = CGFloat(rows * 55)
+        }
+        return height
+    }
+    
     func updateTransactionFeeAmountLabel() {
         let amountInEther = gasPriceInGwei / 1000000000
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
@@ -244,14 +259,18 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 self.tokensCollectionView.alpha = 1
                 self.view.bringSubview(toFront: self.tokensCollectionView)
                 self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: { (_) in
+                self.hideNumericKeyboard()
+            })
         } else {
             moreTokensButton.setImage(#imageLiteral(resourceName: "Tokenest-moretoken"), for: .normal)
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: { () -> Void in
                 self.maskView.alpha = 0
                 self.tokensCollectionView.alpha = 0
                 self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: { (_) in
+                self.hideNumericKeyboard()
+            })
         }
     }
     
@@ -269,13 +288,13 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 if toAddress.isHexAddress() {
                     var error: NSError? = nil
                     if GethNewAddressFromHex(toAddress, &error) != nil {
-                        updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
+                        updateLabel(label: addressInfoLabel, text: "转账地址", textColor: .tokenestTip)
                         return true
                     }
                 }
                 updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please input a correct address", comment: ""), textColor: .red)
             } else {
-                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
+                updateLabel(label: addressInfoLabel, text: NSLocalizedString("转账地址", comment: ""), textColor: .tokenestTip)
             }
         }
         return false
@@ -289,7 +308,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                         if GethBigInt.generate(valueInEther: amount, symbol: token.symbol) != nil {
                             if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
                                 let display = (amount * price).currency
-                                updateLabel(label: amountInfoLabel, text: display, textColor: .black)
+                                updateLabel(label: amountInfoLabel, text: display, textColor: .tokenestTip)
                                 return true
                             }
                         }
@@ -303,7 +322,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 updateLabel(label: amountInfoLabel, text: text, textColor: .red)
             }
         } else {
-            updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .black)
+            updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .tokenestTip)
         }
         return false
     }
@@ -342,7 +361,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         amountTextField.text = asset.balance.withCommas(length)
         if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
             let total = asset.balance * price
-            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .black)
+            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .tokenestTip)
         }
         _ = validate()
     }
