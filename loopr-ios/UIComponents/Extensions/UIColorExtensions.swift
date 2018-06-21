@@ -66,4 +66,8 @@ extension UIColor {
     class var tokenestTip: UIColor {
         return UIColor.init(rgba: "#878FA4")
     }
+    
+    class var tokenestTextFieldBackground: UIColor {
+        return UIColor.init(rgba: "#F3F5F8")
+    }
 }

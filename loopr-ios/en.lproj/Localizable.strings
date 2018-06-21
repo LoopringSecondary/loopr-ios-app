@@ -25,7 +25,7 @@
 "Confirm password" = "Confirm password";
 "Confirm your password" = "Confirm your password";
 "Password" = "Password";
-"Repeat password" = "Repeat password";
+"Repeat Password" = "Repeat Password";
 "Enter password" = "Enter password";
 "Wrong password" = "Wrong password";
 "Mnemonic" = "Mnemonic";
@@ -319,3 +319,4 @@
 "Quit" = "Quit";
 "My Wallet Address" = "My Wallet Address";
 "Copy" = "Copy";
+"Complete" = "Complete";

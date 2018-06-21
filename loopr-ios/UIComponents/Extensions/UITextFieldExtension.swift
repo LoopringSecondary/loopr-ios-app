@@ -10,6 +10,18 @@ import UIKit
 
 extension UITextField {
 
+    func setTokenestStyle(textFieldHeight: CGFloat = 43) {
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.tokenestBorder.cgColor
+        layer.cornerRadius = textFieldHeight * 0.5
+        tintColor = UIColor.black
+        backgroundColor = UIColor.tokenestTextFieldBackground
+        font = FontConfigManager.shared.getLabelFont(size: 19)
+        contentMode = UIViewContentMode.bottom
+        setLeftPaddingPoints(27)
+        setRightPaddingPoints(27)
+    }
+    
     func setBottomBorder() {
         self.borderStyle = .none
         self.layer.backgroundColor = UIColor.white.cgColor

@@ -42,7 +42,7 @@
                     <state key="normal" image="Tokenest-setup-next-button"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-vr-neH">
-                    <rect key="frame" x="23" y="94" width="336" height="40"/>
+                    <rect key="frame" x="43" y="89" width="316" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="80J-i0-Lxw"/>
                     </constraints>
@@ -51,7 +51,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ex5-CK-3Ip">
-                    <rect key="frame" x="14" y="48" width="44" height="44"/>
+                    <rect key="frame" x="29" y="43" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="XN7-mV-yDk"/>
                         <constraint firstAttribute="width" constant="44" id="x0K-Xz-g4Q"/>
@@ -87,12 +87,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Jwl-2l-KjS" firstAttribute="trailing" secondItem="qZa-8t-k2D" secondAttribute="trailing" constant="-34" id="8By-Bn-dAl"/>
-                <constraint firstItem="ex5-CK-3Ip" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="14" id="BGz-mF-JA9"/>
+                <constraint firstItem="ex5-CK-3Ip" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="29" id="BGz-mF-JA9"/>
                 <constraint firstItem="yyH-L2-UMT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="340" id="O6b-Sy-l80"/>
                 <constraint firstItem="qzm-4T-NtF" firstAttribute="top" secondItem="qZa-8t-k2D" secondAttribute="bottom" constant="37" id="PZO-8A-LNW"/>
                 <constraint firstItem="qZa-8t-k2D" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="RU2-04-UXt"/>
                 <constraint firstItem="ehA-jp-RfT" firstAttribute="top" secondItem="qzm-4T-NtF" secondAttribute="top" constant="-4" id="S6y-Sq-WQf"/>
-                <constraint firstItem="ex5-CK-3Ip" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="4" id="U8q-eC-u0d"/>
+                <constraint firstItem="ex5-CK-3Ip" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-1" id="U8q-eC-u0d"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XbE-vr-neH" secondAttribute="trailing" constant="16" id="WGY-y9-m23"/>
                 <constraint firstItem="qzm-4T-NtF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="YVd-fM-pLM"/>
                 <constraint firstItem="qZa-8t-k2D" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b8S-eU-H1f"/>
@@ -101,7 +101,7 @@
                 <constraint firstItem="qZa-8t-k2D" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hFA-Hq-rGS"/>
                 <constraint firstItem="Jwl-2l-KjS" firstAttribute="top" secondItem="qZa-8t-k2D" secondAttribute="top" constant="158" id="hwG-fQ-CP3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ehA-jp-RfT" secondAttribute="trailing" constant="34" id="kQ5-6I-Tn0"/>
-                <constraint firstItem="XbE-vr-neH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="23" id="wDC-9N-Kdb"/>
+                <constraint firstItem="XbE-vr-neH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="43" id="wDC-9N-Kdb"/>
                 <constraint firstItem="yyH-L2-UMT" firstAttribute="centerX" secondItem="qzm-4T-NtF" secondAttribute="centerX" id="wZ2-7t-4wi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -34,7 +34,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Om8-4P-GfG">
-                    <rect key="frame" x="12" y="24" width="44" height="44"/>
+                    <rect key="frame" x="29" y="19" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="HkH-io-pSL"/>
                         <constraint firstAttribute="height" constant="44" id="omM-UN-roi"/>
@@ -42,7 +42,7 @@
                     <state key="normal" image="Tokenest-setup-back-button"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKt-Yq-byq">
-                    <rect key="frame" x="23" y="70" width="336" height="40"/>
+                    <rect key="frame" x="43" y="65" width="316" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="LHu-7b-CBl"/>
                     </constraints>
@@ -65,10 +65,10 @@
                 <constraint firstItem="pKt-Yq-byq" firstAttribute="top" secondItem="Om8-4P-GfG" secondAttribute="bottom" constant="2" id="2iQ-KD-8zw"/>
                 <constraint firstItem="nyw-Ai-JtX" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="3tb-qU-Lbc"/>
                 <constraint firstItem="nyw-Ai-JtX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Vl-fN-kXx"/>
-                <constraint firstItem="pKt-Yq-byq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="23" id="BAy-dV-2Ou"/>
-                <constraint firstItem="Om8-4P-GfG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="Fj5-VW-U0Y"/>
-                <constraint firstItem="MhC-p0-wfv" firstAttribute="leading" secondItem="nyw-Ai-JtX" secondAttribute="leading" constant="261" id="JeJ-gl-49z"/>
-                <constraint firstItem="Om8-4P-GfG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="4" id="R7H-Xl-pSA"/>
+                <constraint firstItem="pKt-Yq-byq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="43" id="BAy-dV-2Ou"/>
+                <constraint firstItem="Om8-4P-GfG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="29" id="Fj5-VW-U0Y"/>
+                <constraint firstItem="MhC-p0-wfv" firstAttribute="trailing" secondItem="nyw-Ai-JtX" secondAttribute="trailing" constant="-34" id="JeJ-gl-49z"/>
+                <constraint firstItem="Om8-4P-GfG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-1" id="R7H-Xl-pSA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pKt-Yq-byq" secondAttribute="trailing" constant="16" id="S1c-6p-UPq"/>
                 <constraint firstItem="MhC-p0-wfv" firstAttribute="top" secondItem="nyw-Ai-JtX" secondAttribute="top" constant="158" id="Szv-zu-7oT"/>
             </constraints>
