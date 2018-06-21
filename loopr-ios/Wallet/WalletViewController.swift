@@ -239,7 +239,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("pressScanQRCodeButton")
         if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
             let viewController = ScanQRCodeViewController()
-            viewController.parentControllerHasNavigationBar = false
             // viewController.delegate = self
             viewController.shouldPop = false
             viewController.hidesBottomBarWhenPushed = true

@@ -489,6 +489,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         let viewController = ScanQRCodeViewController()
         viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true
+        
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

@@ -61,9 +61,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     var isTorchOn = false
     var shouldPop = true
-    
-    var parentControllerHasNavigationBar = true
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -116,9 +114,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !parentControllerHasNavigationBar {
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Scan QR Code", comment: ""))
         
         if captureSession.isRunning == false {
@@ -128,9 +124,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if !parentControllerHasNavigationBar {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
-        }
+        // No need to hide the navigation bar here.
+        // self.navigationController?.setNavigationBarHidden(false, animated: false)
         
         if captureSession.isRunning == true {
             captureSession.stopRunning()

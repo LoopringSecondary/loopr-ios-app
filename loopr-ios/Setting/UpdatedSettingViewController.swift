@@ -152,7 +152,6 @@ class UpdatedSettingViewController: UIViewController {
     @objc func pressQRCodeButton(_ sender: Any) {
         print("Selected Scan QR code")
         let viewController = ScanQRCodeViewController()
-        viewController.parentControllerHasNavigationBar = false
         // viewController.delegate = self
         viewController.shouldPop = false
         viewController.hidesBottomBarWhenPushed = true
