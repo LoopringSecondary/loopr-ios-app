@@ -18,7 +18,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var assetTableView: UITableView = UITableView()
     var headerViewView = WalletBalanceTableViewCellViewController()
-    var headerHeightConstraint:NSLayoutConstraint!
+    var headerHeightConstraint: NSLayoutConstraint!
 
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
@@ -462,6 +462,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func pressedReceiveButton() {
-        
+        let viewController = QRCodeViewController()
+        self.present(viewController, animated: true, completion: nil)
     }
 }
