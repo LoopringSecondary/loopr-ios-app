@@ -25,6 +25,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var maskView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     
     // Address
     var addressY: CGFloat = 0.0
@@ -157,11 +158,11 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         transactionCurrencyLabel.textColor = UIColor.tokenestTip
         scrollView.addSubview(transactionCurrencyLabel)
         
-        transactionTipButton.frame = CGRect(x: screenWidth-padding-60, y: transactionFeeLabel.frame.maxY, width: 60, height: 40)
+        transactionTipButton.frame = CGRect(x: screenWidth-padding-120, y: transactionFeeLabel.frame.maxY, width: 120, height: 40)
         transactionTipButton.titleColor = UIColor.tokenestButton
         transactionTipButton.titleLabel?.font = FontConfigManager.shared.getLabelsFont()
         transactionTipButton.contentHorizontalAlignment = .right
-        transactionTipButton.title = "推荐"
+        transactionTipButton.title = "获取推荐油费"
         transactionTipButton.addTarget(self, action: #selector(pressedTipButton(_:)), for: .touchUpInside)
         scrollView.addSubview(transactionTipButton)
         
@@ -262,6 +263,15 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    func hideCollectionView() {
+        moreTokensButton.setImage(#imageLiteral(resourceName: "Tokenest-moretoken"), for: .normal)
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: { () -> Void in
+            self.maskView.alpha = 0
+            self.tokensCollectionView.alpha = 0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     @IBAction func pressedMoreButton(_ sender: UIButton) {
         amountTextField.resignFirstResponder()
         self.view.endEditing(true)
@@ -276,12 +286,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 self.view.layoutIfNeeded()
             }, completion: nil)
         } else {
-            moreTokensButton.setImage(#imageLiteral(resourceName: "Tokenest-moretoken"), for: .normal)
-            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: { () -> Void in
-                self.maskView.alpha = 0
-                self.tokensCollectionView.alpha = 0
-                self.view.layoutIfNeeded()
-            }, completion: nil)
+            hideCollectionView()
         }
     }
     
@@ -433,7 +438,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         }
         let systemKeyboardHeight = keyboardFrame.cgRectValue.height
         if #available(iOS 11.0, *) {
-            // Get the the distance from the bottom safe area edge to the bottom of the screen
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
             self.scrollViewBottomConstraint.constant = systemKeyboardHeight + bottomPadding
@@ -443,18 +447,19 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                     self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.addressY + 30), animated: true)
                 }
             }, completion: { _ in
-                
+                self.activeTextFieldTag = self.addressTextField.tag
             })
         }
     }
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
-        scrollViewBottomConstraint.constant = 0
+        if self.activeTextFieldTag != 1 {
+            scrollViewBottomConstraint.constant = 0
+        }
     }
     
     @objc func keyboardDidChange(notification: NSNotification?) {
-        activeTextFieldTag = addressTextField.tag
         _ = validate()
     }
     
@@ -462,9 +467,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         if !isNumericKeyboardShow {
             let width = self.view.frame.width
             let height = self.view.frame.height
-            scrollViewBottomConstraint.constant = DefaultNumericKeyboard.height
             numericKeyboardView = DefaultNumericKeyboard.init(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate2 = self
+            scrollViewBottomConstraint.constant = DefaultNumericKeyboard.height
             view.addSubview(numericKeyboardView)
             
             let window = UIApplication.shared.keyWindow
@@ -544,7 +549,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         self.selectedIndexPath = indexPath
         let cell = collectionView.cellForItem(at: indexPath) as! AssetCollectionViewCell
         cell.highlightEffect()
-        
+        hideCollectionView()
         if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
             let symbol = wallet.assetSequence[indexPath.row + (indexPath.section*4)]
             if let token = TokenDataManager.shared.getTokenBySymbol(symbol) {
@@ -599,10 +604,8 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
 extension SendViewController {
     
     func completion(_ txHash: String?, _ error: Error?) {
-        // Close activity indicator
         SVProgressHUD.dismiss()
         guard error == nil && txHash != nil else {
-            // Show toast
             DispatchQueue.main.async {
                 let title = NSLocalizedString("Failed to send the transaction", comment: "")
                 let message = String(describing: error)
@@ -614,7 +617,6 @@ extension SendViewController {
             return
         }
         print("Result of transfer is \(txHash!)")
-        // Show toast
         DispatchQueue.main.async {
             let title = NSLocalizedString("Sent the transaction successfully", comment: "")
             let message = "Result of transfer is \(txHash!)"
