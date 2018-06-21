@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftTheme
 
 class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController, UITextFieldDelegate {
 
@@ -23,6 +24,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
 
     // Scrollable UI components
     var mainScrollView: UIScrollView = UIScrollView()
+    let scrollViewHeight: CGFloat = 360  // measured in sketch file.
     
     var infoImage: UIImageView = UIImageView()
     var infoLabel: UILabel = UILabel()
@@ -48,9 +50,9 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
 
         statusBarBackgroundView.backgroundColor = UIColor.init(rgba: "#2E2BA4")
         
-        // TODO: this is broken.
-        customizedNavigationBar.isTranslucent = false
-        customizedNavigationBar.barTintColor = UIColor.init(rgba: "#2E2BA4")
+        // TODO: Fail to update the tint color.
+        // customizedNavigationBar.isTranslucent = false
+        // customizedNavigationBar.barTintColor = UIColor.init(rgba: "#2E2BA4")
         
         // Generate a new wallet
         _ = GenerateWalletDataManager.shared.new()
@@ -73,9 +75,12 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         let paddingLeft: CGFloat = 47
         let textFieldHeight: CGFloat = 43
         
-        mainScrollView.frame = CGRect(x: 0, y: backgroundImageHeightLayoutConstraint.constant, width: screenWidth, height: screenHeight-backgroundImageHeightLayoutConstraint.constant)
+        // mainScrollView.frame = CGRect(x: 0, y: backgroundImageHeightLayoutConstraint.constant, width: screenWidth, height: screenHeight-backgroundImageHeightLayoutConstraint.constant)
+        mainScrollView.frame = CGRect(x: 0, y: backgroundImageHeightLayoutConstraint.constant, width: screenWidth, height: scrollViewHeight)
+        // mainScrollView.contentSize = CGSize(width: screenWidth, height: screenHeight-backgroundImageHeightLayoutConstraint.constant)
+        mainScrollView.contentSize = CGSize(width: screenWidth, height: scrollViewHeight)
         mainScrollView.backgroundColor = .white
-        mainScrollView.isScrollEnabled = false
+        // mainScrollView.isScrollEnabled = false
         
         infoImage.frame = CGRect(x: 48, y: 37, width: 16.5, height: 16.5)
         infoImage.image = UIImage.init(named: "Tokenest-setup-info-icon")
@@ -164,6 +169,19 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         super.viewWillAppear(animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // TODO: have to update the color here.
+        customizedNavigationBar.isTranslucent = false
+        customizedNavigationBar.barTintColor = UIColor.init(rgba: "#2E2BA4")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        customizedNavigationBar.isTranslucent = false
+        customizedNavigationBar.barTintColor = UIColor.init(rgba: "#2E2BA4")
+    }
+    
     @objc func backButtonPressed(_ sender: Any) {
         print("backButtonPressed")
         self.navigationController?.popViewController(animated: true)
@@ -185,8 +203,17 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         print("systemKeyboardWillShow")
         self.backgroundImageTopLayoutConstraint.constant = -backgroundImageHeightLayoutConstraint.constant
         
-        UIView.animate(withDuration: 10, delay: 0, options: .curveEaseInOut, animations: {
-            self.mainScrollView.y = self.customizedNavigationBar.bottomY
+        guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+        let systemKeyboardHeight = keyboardFrame.cgRectValue.height
+        let window = UIApplication.shared.keyWindow
+        let bottomPadding = window?.safeAreaInsets.bottom ?? 0
+        let height = self.view.bounds.height - self.customizedNavigationBar.bottomY - (systemKeyboardHeight + bottomPadding)
+        print(height)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+                self.mainScrollView.frame = CGRect(x: 0, y: self.customizedNavigationBar.bottomY, width: UIScreen.main.bounds.width, height: height)
             self.view.layoutIfNeeded()
         }) { (_) in
             
@@ -197,8 +224,8 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         print("keyboardWillDisappear")
         self.backgroundImageTopLayoutConstraint.constant = 0
 
-        UIView.animate(withDuration: 10, delay: 0, options: .curveEaseInOut, animations: {
-            self.mainScrollView.bottomY = self.view.bottomY
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.mainScrollView.frame = CGRect(x: 0, y: self.backgroundImageHeightLayoutConstraint.constant, width: UIScreen.main.bounds.width, height: self.scrollViewHeight)
             self.view.layoutIfNeeded()
         }) { (_) in
             
@@ -252,6 +279,11 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         }
         
         if validWalletName && validPassword && validRepeatPassword {
+            walletNameTextField.resignFirstResponder()
+            walletPasswordTextField.resignFirstResponder()
+            walletRepeatPasswordInfoLabel.resignFirstResponder()
+            self.view.endEditing(true)
+            
             GenerateWalletDataManager.shared.setWalletName(walletName)
             GenerateWalletDataManager.shared.setPassword(password)
             let viewController = ListMnemonicViewController()

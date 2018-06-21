@@ -99,7 +99,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         qrScanButton.addTarget(self, action: #selector(self.pressScanQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrScanButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
-        navigationItem.leftBarButtonItem = qrCodeBarButton
+        navigationItem.rightBarButtonItem = qrCodeBarButton
         
         customizedNavigationBar.setItems([navigationItem], animated: false)
     }
