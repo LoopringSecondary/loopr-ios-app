@@ -89,6 +89,21 @@ class FontConfigManager {
         return UIFont(name: "\(currentFont.rawValue)-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
     
+    func getBold() -> String {
+        if currentFont == .DIN {
+            return "DIN-Bold"
+        }
+        return "\(currentFont.rawValue)-Bold"
+    }
+    
+    func getBoldFont(size: CGFloat = 17.0) -> UIFont {
+        let fontSize = size * UIStyleConfig.scale
+        if currentFont == .DIN {
+            return UIFont(name: "DIN-Bold", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+        }
+        return UIFont(name: "\(currentFont.rawValue)-Bold", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+    
     func getNavigationTitleFont() -> UIFont {
         return getRegularFont(size: 17)
     }
@@ -120,12 +135,7 @@ class FontConfigManager {
         }
     }
     
-    func getBold() -> String {
-        if currentFont == .DIN {
-            return "DIN-Bold"
-        }
-        return "\(currentFont.rawValue)-Bold"
-    }
+    
 
     func getLabelFont(size: CGFloat = 17.0) -> UIFont {
         let fontSize = size * UIStyleConfig.scale

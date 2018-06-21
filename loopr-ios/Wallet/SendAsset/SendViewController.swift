@@ -8,6 +8,7 @@
 
 import UIKit
 import Geth
+import SVProgressHUD
 
 class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -39,10 +40,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     // Transaction Fee
     var transactionFeeLabel = UILabel()
-    var transactionFeeTextField = UITextField()
-    
-    var advancedButton: UIButton = UIButton()
-    var showAdvanced: Bool = false
+    var transactionValueLabel = UILabel()
+    var transactionCurrencyLabel = UILabel()
+    var transactionTipButton = UIButton()
  
     var transactionSpeedSlider = UISlider()
     var transactionAmountMinLabel = UILabel()
@@ -50,6 +50,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     var transactionAmountCurrentLabel = UILabel()
     var transactionAmountHelpButton = UIButton()
 
+    // send button
     var sendButton = UIButton()
 
     // Numeric keyboard
@@ -59,8 +60,10 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     var asset: Asset!
     var showCollection: Bool = false
+    var recGasPriceInGwei: Double = 0
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
-
+    var selectedIndexPath: IndexPath!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,13 +73,13 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // Do any additional setup after loading the view.
         maskView.alpha = 0
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
-        nameLabel.font = FontConfigManager.shared.getLabelFont(size: 10)
+        nameLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
         collectionHeight.constant = getCollectionHeight()
         
         tokensCollectionView.alpha = 0
         tokensCollectionView.dataSource = self
         tokensCollectionView.delegate = self
-        tokensCollectionView.allowsSelection = false
+        tokensCollectionView.allowsSelection = true
         tokensCollectionView.isScrollEnabled = true
         tokensCollectionView.register(UINib(nibName: "AssetCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "AssetCollectionViewCell")
         
@@ -143,38 +146,38 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         transactionFeeLabel.text = "矿工费(ETH)"
         scrollView.addSubview(transactionFeeLabel)
         
-        transactionFeeTextField.delegate = self
-        transactionFeeTextField.inputView = UIView()
-        transactionFeeTextField.frame = CGRect(x: padding, y: transactionFeeLabel.frame.maxY, width: screenWidth-padding*2, height: 40)
-        transactionFeeTextField.tag = 2
-        transactionFeeTextField.borderStyle = .roundedRect
-        transactionFeeTextField.setRightPaddingPoints(40)
-        transactionFeeTextField.theme_tintColor = GlobalPicker.textColor
-        transactionFeeTextField.placeholder = NSLocalizedString("Enter the amount", comment: "")
-        transactionFeeTextField.contentMode = UIViewContentMode.bottom
-        scrollView.addSubview(transactionFeeTextField)
+        transactionValueLabel.frame = CGRect(x: padding, y: transactionFeeLabel.frame.maxY, width: 100, height: 40)
+        transactionValueLabel.text  = "0.00000"
+        transactionValueLabel.font = FontConfigManager.shared.getLabelFont()
+        scrollView.addSubview(transactionValueLabel)
         
-        advancedButton.frame = CGRect(x: screenWidth-padding-40, y: transactionFeeTextField.frame.origin.y, width: 40, height: 40)
-        advancedButton.setImage(#imageLiteral(resourceName: "Tokenest-modify"), for: .normal)
-        advancedButton.addTarget(self, action: #selector(pressedAdvancedButton(_:)), for: .touchUpInside)
-        scrollView.addSubview(advancedButton)
+        let originX = transactionValueLabel.intrinsicContentSize.width + padding
+        transactionCurrencyLabel.frame = CGRect(x: originX, y: transactionFeeLabel.frame.maxY, width: 100, height: 40)
+        transactionCurrencyLabel.font = FontConfigManager.shared.getLabelsFont()
+        transactionCurrencyLabel.textColor = UIColor.tokenestTip
+        scrollView.addSubview(transactionCurrencyLabel)
         
-        transactionSpeedSlider.alpha = 0
+        transactionTipButton.frame = CGRect(x: screenWidth-padding-60, y: transactionFeeLabel.frame.maxY, width: 60, height: 40)
+        transactionTipButton.titleColor = UIColor.tokenestButton
+        transactionTipButton.titleLabel?.font = FontConfigManager.shared.getLabelsFont()
+        transactionTipButton.contentHorizontalAlignment = .right
+        transactionTipButton.title = "推荐"
+        transactionTipButton.addTarget(self, action: #selector(pressedTipButton(_:)), for: .touchUpInside)
+        scrollView.addSubview(transactionTipButton)
+        
         transactionSpeedSlider.minimumValue = 1
         transactionSpeedSlider.maximumValue = Float(gasPriceInGwei * 2) <= 20 ? 20 : Float(gasPriceInGwei * 2)
         transactionSpeedSlider.value = Float(gasPriceInGwei)
         transactionSpeedSlider.tintColor = GlobalPicker.themeColor
         transactionSpeedSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-        transactionSpeedSlider.frame = CGRect(x: padding, y: transactionFeeTextField.frame.maxY + padding, width: screenWidth-2*padding, height: 20)
+        transactionSpeedSlider.frame = CGRect(x: padding, y: transactionValueLabel.frame.maxY + padding, width: screenWidth-2*padding, height: 20)
         scrollView.addSubview(transactionSpeedSlider)
         
-        transactionAmountMinLabel.alpha = 0
         transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMinLabel.font = FontConfigManager.shared.getLabelFont()
         transactionAmountMinLabel.text = NSLocalizedString("Slow", comment: "")
         scrollView.addSubview(transactionAmountMinLabel)
         
-        transactionAmountCurrentLabel.alpha = 0
         transactionAmountCurrentLabel.textAlignment = .center
         transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
         transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelFont()
@@ -183,21 +186,26 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         scrollView.addSubview(transactionAmountCurrentLabel)
         
         let pad = (transactionAmountCurrentLabel.frame.width - transactionAmountCurrentLabel.intrinsicContentSize.width) / 2
-        transactionAmountHelpButton.alpha = 0
         transactionAmountHelpButton.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX - pad, y: transactionAmountCurrentLabel.frame.minY, width: 30, height: 30)
         transactionAmountHelpButton.image = UIImage(named: "HelpIcon")
         transactionAmountHelpButton.addTarget(self, action: #selector(pressedHelpButton), for: .touchUpInside)
         scrollView.addSubview(transactionAmountHelpButton)
         
-        transactionAmountMaxLabel.alpha = 0
         transactionAmountMaxLabel.textAlignment = .right
         transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelFont()
         transactionAmountMaxLabel.text = NSLocalizedString("Fast", comment: "")
         scrollView.addSubview(transactionAmountMaxLabel)
+        
+        // send button
+        sendButton.setupRoundPurple()
+        sendButton.title = "转出"
+        sendButton.frame = CGRect(x: padding*4, y: transactionAmountMaxLabel.frame.maxY + padding*3, width: screenWidth-padding*8, height: 48)
+        sendButton.addTarget(self, action: #selector(pressedSendButton(_:)), for: .touchUpInside)
+        scrollView.addSubview(sendButton)
 
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: screenWidth, height: transactionAmountMinLabel.frame.maxY + 30)
+        scrollView.contentSize = CGSize(width: screenWidth, height: sendButton.frame.maxY + 30)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
@@ -210,9 +218,10 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // Get the latest estimate gas price from Relay.
         GasDataManager.shared.getEstimateGasPrice { (gasPrice, _) in
             self.gasPriceInGwei = Double(gasPrice)
+            self.recGasPriceInGwei = Double(gasPrice)
             DispatchQueue.main.async {
-                self.transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(self.gasPriceInGwei) gwei"
-                self.updateTransactionFeeAmountLabel()
+                
+                self.updateTransactionFeeAmountLabel(self.gasPriceInGwei)
             }
         }
     }
@@ -231,11 +240,14 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         return height
     }
     
-    func updateTransactionFeeAmountLabel() {
+    func updateTransactionFeeAmountLabel(_ gasPriceInGwei: Double) {
         let amountInEther = gasPriceInGwei / 1000000000
+        let totalGasInEther = amountInEther * Double(GasDataManager.shared.getGasLimit(by: "eth_transfer")!)
+        transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
-            let transactionFeeInFiat = amountInEther * etherPrice * Double(GasDataManager.shared.getGasLimit(by: "eth_transfer")!)
-            transactionFeeTextField.text = "\(transactionFeeInFiat.currency)"
+            let transactionFeeInFiat = totalGasInEther * etherPrice
+            transactionValueLabel.text = "\(totalGasInEther.withCommas(5))"
+            transactionCurrencyLabel.text = "  ≈\(transactionFeeInFiat.currency)"
         }
     }
     
@@ -251,6 +263,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     }
     
     @IBAction func pressedMoreButton(_ sender: UIButton) {
+        amountTextField.resignFirstResponder()
+        self.view.endEditing(true)
+        hideNumericKeyboard()
         showCollection = !showCollection
         if showCollection {
             moreTokensButton.setImage(#imageLiteral(resourceName: "Tokenest-lesstoken"), for: .normal)
@@ -259,18 +274,14 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 self.tokensCollectionView.alpha = 1
                 self.view.bringSubview(toFront: self.tokensCollectionView)
                 self.view.layoutIfNeeded()
-            }, completion: { (_) in
-                self.hideNumericKeyboard()
-            })
+            }, completion: nil)
         } else {
             moreTokensButton.setImage(#imageLiteral(resourceName: "Tokenest-moretoken"), for: .normal)
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: { () -> Void in
                 self.maskView.alpha = 0
                 self.tokensCollectionView.alpha = 0
                 self.view.layoutIfNeeded()
-            }, completion: { (_) in
-                self.hideNumericKeyboard()
-            })
+            }, completion: nil)
         }
     }
     
@@ -356,14 +367,64 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         return amountTextField
     }
     
+    func pushController() {
+        let toAddress = addressTextField.text!
+        if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
+            let gethAmount = GethBigInt.generate(valueInEther: Double(amountTextField.text!)!, symbol: token.symbol)!
+            var error: NSError? = nil
+            let toAddress = GethNewAddressFromHex(toAddress, &error)!
+            if token.symbol.uppercased() == "ETH" {
+                SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, toAddress: toAddress, completion: completion)
+            } else {
+                // TODO: Error handling for invalid protocol value
+                if !token.protocol_value.isHexAddress() {
+                    print("token protocol \(token.protocol_value) is invalid")
+                    return
+                }
+                let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
+                SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, tokenAmount: gethAmount, completion: completion)
+            }
+        }
+    }
+    
+    @objc func pressedSendButton(_ sender: Any) {
+        print("start sending")
+        // Show activity indicator
+        hideNumericKeyboard()
+        addressTextField.resignFirstResponder()
+        amountTextField.resignFirstResponder()
+        let isAmountValid = validateAmount()
+        let isAddressValid = validateAddress()
+        if isAmountValid && isAddressValid {
+            SVProgressHUD.show(withStatus: "Processing the transaction ...")
+            self.pushController()
+        }
+        if !isAmountValid && amountInfoLabel.textColor != .red {
+            amountInfoLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            amountInfoLabel.textColor = .red
+            amountInfoLabel.shake()
+        }
+        if !isAddressValid && addressInfoLabel.textColor != .red {
+            addressInfoLabel.text = NSLocalizedString("Please input a correct address", comment: "")
+            addressInfoLabel.textColor = .red
+            addressInfoLabel.shake()
+        }
+    }
+    
     @objc func pressedMaxButton(_ sender: UIButton) {
-        let length = Asset.getLength(of: asset.symbol) ?? 4
-        amountTextField.text = asset.balance.withCommas(length)
+        amountTextField.text = asset.display
         if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
             let total = asset.balance * price
             updateLabel(label: amountInfoLabel, text: total.currency, textColor: .tokenestTip)
         }
         _ = validate()
+    }
+    
+    @objc func pressedTipButton(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5) {
+            self.transactionSpeedSlider.value = Float(self.recGasPriceInGwei)
+            self.updateTransactionFeeAmountLabel(self.recGasPriceInGwei)
+        }
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -470,8 +531,33 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
             cell?.asset = wallet.assetSequence[indexPath.row + (indexPath.section*4)]
         }
+        if selectedIndexPath != nil && selectedIndexPath == indexPath || cell?.asset?.lowercased() == self.asset.symbol.lowercased() {
+            cell?.highlightEffect()
+        } else {
+            cell?.removeHighlight()
+        }
         cell?.update()
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
+        let cell = collectionView.cellForItem(at: indexPath) as! AssetCollectionViewCell
+        cell.highlightEffect()
+        
+        if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
+            let symbol = wallet.assetSequence[indexPath.row + (indexPath.section*4)]
+            if let token = TokenDataManager.shared.getTokenBySymbol(symbol) {
+                tokenImage.image = token.icon
+                nameLabel.text = token.source
+                tokenLabel.text = token.symbol
+                if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: symbol) {
+                    self.asset = asset
+                    amountLabel.text = asset.display
+                }
+            }
+        }
+        tokensCollectionView.reloadData()
     }
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
@@ -479,10 +565,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         let step: Float = 1
         let roundedStepValue = round(sender.value / step) * step
         gasPriceInGwei = Double(roundedStepValue)
-        
-        // Update info
-        transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(roundedStepValue) gwei"
-        updateTransactionFeeAmountLabel()
+        updateTransactionFeeAmountLabel(self.gasPriceInGwei)
     }
     
     @objc func pressedScanButton(_ sender: UIButton) {
@@ -491,28 +574,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         viewController.hidesBottomBarWhenPushed = true
         
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    @objc func pressedAdvancedButton(_ sender: Any) {
-        print("pressedAdvancedButton")
-        showAdvanced = !showAdvanced
-        if showAdvanced {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.transactionSpeedSlider.alpha = 1
-                self.transactionAmountMinLabel.alpha = 1
-                self.transactionAmountCurrentLabel.alpha = 1
-                self.transactionAmountMaxLabel.alpha = 1
-                self.transactionAmountHelpButton.alpha = 1
-            })
-        } else {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.transactionSpeedSlider.alpha = 0
-                self.transactionAmountMinLabel.alpha = 0
-                self.transactionAmountCurrentLabel.alpha = 0
-                self.transactionAmountMaxLabel.alpha = 0
-                self.transactionAmountHelpButton.alpha = 0
-            })
-        }
     }
     
     @objc func pressedHelpButton(_ sender: Any) {
@@ -532,5 +593,36 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         amountTextField.resignFirstResponder()
         self.view.endEditing(true)
         hideNumericKeyboard()
+    }
+}
+
+extension SendViewController {
+    
+    func completion(_ txHash: String?, _ error: Error?) {
+        // Close activity indicator
+        SVProgressHUD.dismiss()
+        guard error == nil && txHash != nil else {
+            // Show toast
+            DispatchQueue.main.async {
+                let title = NSLocalizedString("Failed to send the transaction", comment: "")
+                let message = String(describing: error)
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: .default, handler: { _ in
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+            return
+        }
+        print("Result of transfer is \(txHash!)")
+        // Show toast
+        DispatchQueue.main.async {
+            let title = NSLocalizedString("Sent the transaction successfully", comment: "")
+            let message = "Result of transfer is \(txHash!)"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
