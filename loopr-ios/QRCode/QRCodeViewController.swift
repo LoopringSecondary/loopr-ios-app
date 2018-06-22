@@ -28,13 +28,11 @@ class QRCodeViewController: UIViewController {
         addressLabel.theme_textColor = GlobalPicker.textColor
         addressLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
         saveToAlbumButton.setTitle(NSLocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.setupRoundPurple()
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
         addressLabel.text = address
         let data = address?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         copyAddressButton.layer.shadowColor = UIColor.black.cgColor
-        copyAddressButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-        copyAddressButton.layer.shadowOpacity = 0.3
+        copyAddressButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         copyAddressButton.layer.shadowRadius = 4
         copyAddressButton.clipsToBounds = false
         generateQRCode(from: data!)
@@ -48,6 +46,7 @@ class QRCodeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         qrcodeImageView.image = qrcodeImage
+        saveToAlbumButton.setupRoundPurple()
     }
     
     func generateQRCode(from data: Data) {

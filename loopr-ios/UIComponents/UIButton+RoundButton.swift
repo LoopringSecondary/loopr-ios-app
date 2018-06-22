@@ -46,6 +46,18 @@ extension UIButton {
         setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
         titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0*UIStyleConfig.scale)
         layer.cornerRadius = height * 0.5
-    }
 
+        let shadowLayer = UIView(frame: self.frame)
+        shadowLayer.backgroundColor = UIColor.clear
+        shadowLayer.layer.shadowColor = GlobalPicker.themeColor.cgColor
+        shadowLayer.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: self.cornerRadius).cgPath
+        shadowLayer.layer.shadowOffset = CGSize(width: 4, height: 4)
+        shadowLayer.layer.shadowOpacity = 0.3
+        shadowLayer.layer.shadowRadius = 4
+        shadowLayer.layer.masksToBounds = true
+        shadowLayer.clipsToBounds = false
+        
+        self.superview?.addSubview(shadowLayer)
+        self.superview?.bringSubview(toFront: self)
+    }
 }

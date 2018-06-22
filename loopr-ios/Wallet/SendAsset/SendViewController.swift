@@ -199,7 +199,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         scrollView.addSubview(transactionAmountMaxLabel)
         
         // send button
-        sendButton.setupRoundPurple()
+        
         sendButton.title = "转出"
         sendButton.frame = CGRect(x: padding*4, y: transactionAmountMaxLabel.frame.maxY + padding*3, width: screenWidth-padding*8, height: 48)
         sendButton.addTarget(self, action: #selector(pressedSendButton(_:)), for: .touchUpInside)
@@ -254,8 +254,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.sendButton.setupRoundPurple()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
+        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
