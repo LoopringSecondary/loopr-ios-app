@@ -16,15 +16,11 @@ class CurrentAppWalletDataManager {
     private var totalCurrencyValue: Double
     private var assetsInHideSmallMode: [Asset]
     private var assets: [Asset]
-    private var transactions: [Transaction]
-    private var dateTransactions: [String: [Transaction]]
     
     private init() {
-        self.assetsInHideSmallMode = []
         self.assets = []
-        self.transactions = []
+        self.assetsInHideSmallMode = []
         self.totalCurrencyValue = 0
-        self.dateTransactions = [:]
     }
     
     func setup() {
@@ -49,7 +45,6 @@ class CurrentAppWalletDataManager {
         // TODO: This needs to join TokenLists
         self.assetsInHideSmallMode = []
         self.assets = []
-        self.transactions = []
         self.totalCurrencyValue = 0
         
         // Init assets using assetSequence in AppWallet
@@ -217,48 +212,6 @@ class CurrentAppWalletDataManager {
         }
     }
 
-    // TODO: Add filter by token.
-    func getTransactions(txStatuses: [Transaction.TxStatus]? = nil) -> [Transaction] {
-        guard let txStatuses = txStatuses else {
-            return self.transactions
-        }
-        return transactions.filter { (transaction) -> Bool in
-            txStatuses.contains(transaction.status)
-        }
-    }
-
-    // This method has been deprecated.
-    /*
-    func exchange(at sourceIndex: Int, to destinationIndex: Int) {
-        guard let currentAppWallet = currentAppWallet else {
-            return
-        }
-        
-        if SettingDataManager.shared.getHideSmallAssets() {
-            if destinationIndex < assetsInHideSmallMode.count && sourceIndex < assetsInHideSmallMode.count {
-                assetsInHideSmallMode.swapAt(sourceIndex, destinationIndex)
-            }
-
-            if destinationIndex < currentAppWallet.assetSequenceInHideSmallAssets.count && sourceIndex < currentAppWallet.assetSequenceInHideSmallAssets.count {
-                currentAppWallet.assetSequenceInHideSmallAssets.swapAt(sourceIndex, destinationIndex)
-            }
-        } else {
-            if destinationIndex < assets.count && sourceIndex < assets.count {
-                assets.swapAt(sourceIndex, destinationIndex)
-            }
-
-            if destinationIndex < currentAppWallet.assetSequence.count && sourceIndex < currentAppWallet.assetSequence.count {
-                currentAppWallet.assetSequence.swapAt(sourceIndex, destinationIndex)
-            }
-        }
-
-        // Update the asset sequence to the local storage
-        DispatchQueue.global(qos: .userInitiated).async {
-            AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet)
-        }
-    }
-    */
-    
     func startGetBalance() {
         guard let wallet = currentAppWallet else {
             return
@@ -270,7 +223,7 @@ class CurrentAppWalletDataManager {
         LoopringSocketIORequest.endBalance()
     }
     
-    func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
+    func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [String: [Transaction]], _ error: Error?) -> Void) {
         guard let wallet = currentAppWallet else {
             return
         }
@@ -278,14 +231,15 @@ class CurrentAppWalletDataManager {
             guard error == nil, let transactions = transactions else {
                 return
             }
-            self.transactions = transactions
-            self.dateTransactions = [:]
+            var dateTransactions: [String: [Transaction]] = [:]
             for transaction in transactions {
-                
-                
-                self.transactions.append(transaction)
+                let date = transaction.createTime.components(separatedBy: " ")[0]
+                if dateTransactions[date] == nil {
+                    dateTransactions[date] = []
+                }
+                dateTransactions[date]!.append(transaction)
             }
-            completionHandler(self.transactions, nil)
+            completionHandler(dateTransactions, nil)
         })
     }
 

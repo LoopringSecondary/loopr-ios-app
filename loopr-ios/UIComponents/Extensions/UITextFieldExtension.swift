@@ -16,7 +16,7 @@ extension UITextField {
         layer.cornerRadius = textFieldHeight * 0.5
         tintColor = UIColor.black
         backgroundColor = UIColor.tokenestTextFieldBackground
-        font = FontConfigManager.shared.getLabelFont(size: 19)
+        font = FontConfigManager.shared.getLabelENFont(size: 19)
         contentMode = UIViewContentMode.bottom
         setLeftPaddingPoints(27)
         setRightPaddingPoints(27)

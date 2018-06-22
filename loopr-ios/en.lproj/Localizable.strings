@@ -189,8 +189,6 @@
 "What is gas?" = "What is gas?";
 "Gas is..." = "Gas is...";
 "Please input a correct address" = "Please input a correct address";
-"Convert ETH To WETH" = "Convert ETH To WETH";
-"Convert WETH To ETH" = "Convert WETH To ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
 "Cancel Order(s)" = "Cancel Order(s)";
 "Enter the amount you have" = "Please input the amount you wish to sell";
@@ -276,6 +274,7 @@
 "Order Expired" = "Expired";
 "Order Locked" = "Locked";
 "Order Unknown" = "Unknown";
+"Unknown" = "Unknown";
 "Accept" = "Accept";
 "Decline" = "Decline";
 "Address detected" = "Address detected";

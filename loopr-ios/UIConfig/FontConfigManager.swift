@@ -35,9 +35,9 @@ class FontConfigManager {
             print("Loaded Fonts", fonts)
         }
 
-        UILabel.appearance().font = FontConfigManager.shared.getLabelFont()
-        UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        UITextField.appearance().font = FontConfigManager.shared.getLabelFont()
+        UILabel.appearance().font = FontConfigManager.shared.getLabelENFont()
+        UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getLabelENFont()
+        UITextField.appearance().font = FontConfigManager.shared.getLabelENFont()
         
         // Font in the tab bar is 10.
         let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: FontConfigManager.shared.getCurrentFontName(), size: 10) ?? UIFont.systemFont(ofSize: 10)]
@@ -135,9 +135,7 @@ class FontConfigManager {
         }
     }
     
-    
-
-    func getLabelFont(size: CGFloat = 17.0) -> UIFont {
+    func getLabelENFont(size: CGFloat = 17.0) -> UIFont {
         let fontSize = size * UIStyleConfig.scale
         if currentFont == .DIN {
             return UIFont(name: "DINNextLTPro-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
@@ -145,7 +143,7 @@ class FontConfigManager {
         return UIFont(name: "\(currentFont.rawValue)-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
     
-    func getLabelsFont(size: CGFloat = 14.0, type: String = "Regular") -> UIFont {
+    func getLabelSCFont(size: CGFloat = 14.0, type: String = "Regular") -> UIFont {
         let fontSize = size * UIStyleConfig.scale
         return UIFont(name: "Pingfang-\(type)", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }

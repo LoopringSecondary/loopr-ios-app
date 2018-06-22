@@ -22,13 +22,13 @@ class OrderBookTableViewCell: UITableViewCell {
         // Initialization code
         
         // priceLabel.theme_textColor = GlobalPicker.textColor
-        priceLabel.font = FontConfigManager.shared.getLabelFont()
+        priceLabel.font = FontConfigManager.shared.getLabelENFont()
         
         amountLabel.theme_textColor = GlobalPicker.textColor
-        amountLabel.font = FontConfigManager.shared.getLabelFont()
+        amountLabel.font = FontConfigManager.shared.getLabelENFont()
         
         totalLabel.theme_textColor = GlobalPicker.textColor
-        totalLabel.font = FontConfigManager.shared.getLabelFont()
+        totalLabel.font = FontConfigManager.shared.getLabelENFont()
         
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }

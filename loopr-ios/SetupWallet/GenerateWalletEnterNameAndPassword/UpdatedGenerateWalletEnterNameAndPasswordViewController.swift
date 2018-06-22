@@ -89,7 +89,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         mainScrollView.addSubview(infoImage)
         
         infoLabel.textColor = UIColor.tokenestTip
-        infoLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
+        infoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         infoLabel.frame = CGRect(x: 72, y: 36, width: screenWidth, height: 34)
         infoLabel.numberOfLines = 2
         let attr = NSMutableAttributedString(string: "钱包密码用于导出私钥，交易设置时验证您的身份" + "\n" + "长度不少于6位")
@@ -100,7 +100,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         mainScrollView.addSubview(infoLabel)
 
         walletNameInfoLabel.textColor = UIColor.tokenestTip
-        walletNameInfoLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
+        walletNameInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         walletNameInfoLabel.frame = CGRect(x: 74, y: 105, width: 200, height: 17)
         walletNameInfoLabel.text = NSLocalizedString("Wallet Name", comment: "")
         mainScrollView.addSubview(walletNameInfoLabel)
@@ -112,7 +112,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         mainScrollView.addSubview(walletNameTextField)
         
         walletPasswordInfoLabel.textColor = UIColor.tokenestTip
-        walletPasswordInfoLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
+        walletPasswordInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         walletPasswordInfoLabel.frame = CGRect(x: 74, y: 186, width: 200, height: 17)
         walletPasswordInfoLabel.text = NSLocalizedString("Password", comment: "")
         mainScrollView.addSubview(walletPasswordInfoLabel)
@@ -126,7 +126,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         mainScrollView.addSubview(walletPasswordTextField)
         
         walletRepeatPasswordInfoLabel.textColor = UIColor.tokenestTip
-        walletRepeatPasswordInfoLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
+        walletRepeatPasswordInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         walletRepeatPasswordInfoLabel.frame = CGRect(x: 74, y: 267, width: 200, height: 17)
         walletRepeatPasswordInfoLabel.text = NSLocalizedString("Repeat Password", comment: "")
         mainScrollView.addSubview(walletRepeatPasswordInfoLabel)
@@ -150,7 +150,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         let doneBarButton = UIBarButtonItem(title: NSLocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(doneWithNumberPad))
         doneBarButton.setTitleTextAttributes([
             NSAttributedStringKey.foregroundColor: UIColor(rgba: "#4350CC"),
-            NSAttributedStringKey.font: FontConfigManager.shared.getLabelFont(size: 16)
+            NSAttributedStringKey.font: FontConfigManager.shared.getLabelENFont(size: 16)
             ], for: .normal)
         numberToolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),

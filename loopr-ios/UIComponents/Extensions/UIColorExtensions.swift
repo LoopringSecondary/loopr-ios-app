@@ -66,4 +66,21 @@ extension UIColor {
     class var tokenestTextFieldBackground: UIColor {
         return UIColor.init(rgba: "#F3F5F8")
     }
+    
+    class var tokenestUps: UIColor {
+        return UIColor(named: "Tokenest-ups")!
+    }
+    
+    class var tokenestDowns: UIColor {
+        return UIColor(named: "Tokenest-downs")!
+    }
+    
+    class var tokenestFailed: UIColor {
+        return UIColor(named: "Tokenest-failed-tip")!
+    }
+    
+    class var tokenestPending: UIColor {
+        return UIColor(named: "Tokenest-pending")!
+    }
+    
 }

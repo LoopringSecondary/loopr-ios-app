@@ -12,11 +12,20 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var statusBarBackgroundView: UIView!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
-
+    
+    @IBOutlet weak var tokenImage: UIImageView!
+    @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var typeButton: UIButton!
+    
     var asset: Asset?
-    var transactions: [Transaction] = []
-
     var isLaunching: Bool = true
+    
+    var transactions: [String: [Transaction]] = [:]
+    var transactionDates: [String] = []
     
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -29,13 +38,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         setup()
         // Do any additional setup after loading the view.
-        
         setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: asset?.symbol ?? "")
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
@@ -77,10 +85,23 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setup() {
-        // TODO: putting getMarketsFromServer() here may cause a race condition.
-        // It's not perfect, but works. Need improvement in the future.
-        // self.transactions = CurrentAppWalletDataManager.shared.getTransactions()
         getTransactionsFromRelay()
+        if let asset = self.asset {
+            tokenImage.image = asset.icon
+            symbolLabel.text = asset.symbol
+            nameLabel.text = asset.name
+            amountLabel.text = asset.display
+            currencyLabel.text = asset.currency
+        }
+        symbolLabel.font = FontConfigManager.shared.getLabelENFont(size: 18)
+        nameLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        amountLabel.font = FontConfigManager.shared.getLabelENFont(size: 18)
+        currencyLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        typeButton.contentHorizontalAlignment = .left
+        titleView.layer.shadowRadius = 4
+        titleView.layer.shadowOpacity = 0.3
+        titleView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        titleView.layer.shadowColor = UIColor.black.cgColor
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -99,6 +120,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                         self.isLaunching = false
                     }
                     self.transactions = transactions
+                    self.transactionDates = transactions.keys.sorted(by: >)
                     self.tableView.reloadData()
                     // self.tableView.reloadSections(IndexSet(integersIn: 1...1), with: .fade)
                     self.refreshControl.endRefreshing()
@@ -140,87 +162,48 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return transactionDates.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
+        headerView.backgroundColor = UIColor.white
+        let headerLabel = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
+        headerLabel.textColor = UIColor.gray
+        headerLabel.text = transactionDates[section]
+        headerView.addSubview(headerLabel)
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else if section == 1 {
-            return self.transactions.count
-        } else {
-            return 0
-        }
+        return transactions[transactionDates[section]]!.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return AssetBalanceTableViewCell.getHeight()
-        } else {
-            return UpdatedAssetTransactionTableViewCell.getHeight()
-        }
+        return AssetTransactionTableViewCell.getHeight()
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return AssetBalanceTableViewCell.getHeight()
-        } else {
-            return AssetTransactionTableViewCell.getHeight()
-        }
+        return AssetTransactionTableViewCell.getHeight()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: AssetBalanceTableViewCell.getCellIdentifier()) as? AssetBalanceTableViewCell
-            if cell == nil {
-                let nib = Bundle.main.loadNibNamed("AssetBalanceTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? AssetBalanceTableViewCell
-                cell?.selectionStyle = .none
-            }
-            cell?.asset = asset
-            cell?.update()
-            return cell!
-        } else {
-            var cell = tableView.dequeueReusableCell(withIdentifier: UpdatedAssetTransactionTableViewCell.getCellIdentifier()) as? UpdatedAssetTransactionTableViewCell
-            if cell == nil {
-                let nib = Bundle.main.loadNibNamed("UpdatedAssetTransactionTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? UpdatedAssetTransactionTableViewCell
-            }
-            cell?.transaction = self.transactions[indexPath.row]
-            cell?.update()
-            return cell!
+        var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? AssetTransactionTableViewCell
         }
-    }
-
-    @objc func goToMarket(_ sender: AnyObject) {
-        if let asset = self.asset {
-            if asset.symbol.lowercased() == "eth" || asset.symbol.lowercased() == "weth" {
-                let viewController = ConvertETHViewController()
-                viewController.asset = asset
-                self.navigationController?.pushViewController(viewController, animated: true)
-            } else {
-                let tradingPair = "\(asset.symbol)/WETH"
-                let market = MarketDataManager.shared.getMarket(byTradingPair: tradingPair)
-                guard market != nil else {
-                    return
-                }
-                PlaceOrderDataManager.shared.new(tokenA: asset.symbol, tokenB: "WETH", market: market!)
-                let viewController = BuyAndSellSwipeViewController()
-                viewController.initialType = .buy
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
+        cell?.transaction = self.transactions[transactionDates[indexPath.section]]![indexPath.row]
+        cell?.update()
+        return cell!
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section >= 1 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let transaction = self.transactions[indexPath.row]
-            let vc = AssetTransactionDetailViewController()
-            vc.transaction = transaction
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        let transaction = self.transactions[transactionDates[indexPath.section]]![indexPath.row]
+        let vc = AssetTransactionDetailViewController()
+        vc.transaction = transaction
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-
 }

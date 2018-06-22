@@ -65,21 +65,21 @@ class TradeConfirmationViewController: UIViewController {
         // Price label
         priceLabel.text = NSLocalizedString("Price", comment: "")
         priceLabel.textColor = UIColor.black
-        priceLabel.font = FontConfigManager.shared.getLabelFont()
+        priceLabel.font = FontConfigManager.shared.getLabelENFont()
         priceLabel.frame = CGRect(x: padding, y: screenHeight * 0.57, width: 160, height: rowHeight)
         scrollView.addSubview(priceLabel)
         
         priceTipLabel.text = "(" + NSLocalizedString("Irrational", comment: "") + ")"
         priceTipLabel.textColor = .red
         priceTipLabel.textAlignment = .right
-        priceTipLabel.font = FontConfigManager.shared.getLabelFont()
+        priceTipLabel.font = FontConfigManager.shared.getLabelENFont()
         priceTipLabel.frame = CGRect(x: screenWidth - padding - 100, y: priceLabel.frame.minY, width: 100, height: rowHeight)
         priceTipLabel.isHidden = true
         scrollView.addSubview(priceTipLabel)
         
         priceValueLabel.textColor = UIColor.black
         priceValueLabel.textAlignment = .right
-        priceValueLabel.font = FontConfigManager.shared.getLabelFont()
+        priceValueLabel.font = FontConfigManager.shared.getLabelENFont()
         priceValueLabel.frame = CGRect(x: priceTipLabel.frame.minX - padding - 200, y: priceLabel.frame.minY, width: 200, height: rowHeight)
         scrollView.addSubview(priceValueLabel)
         
@@ -90,13 +90,13 @@ class TradeConfirmationViewController: UIViewController {
         // Trading Fee
         LRCFeeLabel.text = NSLocalizedString("Trading Fee", comment: "")
         LRCFeeLabel.textColor = UIColor.black
-        LRCFeeLabel.font = FontConfigManager.shared.getLabelFont()
+        LRCFeeLabel.font = FontConfigManager.shared.getLabelENFont()
         LRCFeeLabel.frame = CGRect(x: padding, y: priceValueLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
         scrollView.addSubview(LRCFeeLabel)
         
         LRCFeeValueLabel.textColor = UIColor.black
         LRCFeeValueLabel.textAlignment = .right
-        LRCFeeValueLabel.font = FontConfigManager.shared.getLabelFont()
+        LRCFeeValueLabel.font = FontConfigManager.shared.getLabelENFont()
         LRCFeeValueLabel.frame = CGRect(x: screenWidth - padding - 160, y: LRCFeeLabel.frame.minY, width: 160, height: rowHeight)
         scrollView.addSubview(LRCFeeValueLabel)
         
@@ -107,14 +107,14 @@ class TradeConfirmationViewController: UIViewController {
         // Margin Split
         marginSplitLabel.text = NSLocalizedString("Margin Split", comment: "")
         marginSplitLabel.textColor = UIColor.black
-        marginSplitLabel.font = FontConfigManager.shared.getLabelFont()
+        marginSplitLabel.font = FontConfigManager.shared.getLabelENFont()
         marginSplitLabel.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
         scrollView.addSubview(marginSplitLabel)
         
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
         marginSplitValueLabel.textColor = UIColor.black
         marginSplitValueLabel.textAlignment = .right
-        marginSplitValueLabel.font = FontConfigManager.shared.getLabelFont()
+        marginSplitValueLabel.font = FontConfigManager.shared.getLabelENFont()
         marginSplitValueLabel.frame = CGRect(x: screenWidth - padding - 160, y: marginSplitLabel.frame.minY, width: 160, height: rowHeight)
         scrollView.addSubview(marginSplitValueLabel)
         

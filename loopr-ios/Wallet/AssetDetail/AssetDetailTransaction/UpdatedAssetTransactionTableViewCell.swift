@@ -28,9 +28,6 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         let screenWidth = screensize.width
         
         backgroundColor = UIStyleConfig.tableViewBackgroundColor
-        baseView.backgroundColor = UIColor.white
-        baseView.frame = CGRect.init(x: 10, y: 10, width: screenWidth - 10*2, height: UpdatedAssetTransactionTableViewCell.getHeight() - 10)
-        addSubview(baseView)
         
         typeImageView.frame = CGRect.init(x: 15, y: 15, width: 30, height: 30)
         typeImageView.contentMode = .scaleAspectFit
@@ -166,5 +163,4 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
     class func getHeight() -> CGFloat {
         return 70
     }
-    
 }

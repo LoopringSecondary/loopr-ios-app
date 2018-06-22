@@ -68,7 +68,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         // Do any additional setup after loading the view.
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
-        scanTipLabel.font = FontConfigManager.shared.getLabelFont()
+        scanTipLabel.font = FontConfigManager.shared.getLabelENFont()
         scanTipLabel.textColor = Themes.isNight() ? .white : .black
         scanTipLabel.text = NSLocalizedString("Align QR Code within Frame to Scan", comment: "")
         self.flashButton.image = UIImage(named: "TorchOff")

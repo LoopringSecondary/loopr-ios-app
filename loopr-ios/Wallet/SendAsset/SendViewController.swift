@@ -74,7 +74,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // Do any additional setup after loading the view.
         maskView.alpha = 0
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
-        nameLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
+        nameLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         collectionHeight.constant = getCollectionHeight()
         
         tokensCollectionView.alpha = 0
@@ -91,14 +91,14 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // 1st row: address
         addressInfoLabel.frame = CGRect(x: padding, y: padding, width: screenWidth, height: 40)
         addressInfoLabel.text = "转账地址"
-        addressInfoLabel.font = FontConfigManager.shared.getLabelsFont()
+        addressInfoLabel.font = FontConfigManager.shared.getLabelSCFont()
         addressInfoLabel.textColor = UIColor.tokenestTip
         scrollView.addSubview(addressInfoLabel)
 
         addressTextField.delegate = self
         addressTextField.tag = 0
         addressTextField.keyboardType = .alphabet
-        addressTextField.font = FontConfigManager.shared.getLabelFont()
+        addressTextField.font = FontConfigManager.shared.getLabelENFont()
         addressTextField.theme_tintColor = GlobalPicker.textColor
         addressTextField.placeholder = NSLocalizedString("Enter the address", comment: "")
         addressTextField.borderStyle = .roundedRect
@@ -116,7 +116,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // 2nd row: amount
         amountInfoLabel.frame = CGRect(x: padding, y: addressTextField.frame.maxY + padding, width: screenWidth, height: 40)
         amountInfoLabel.text = "转账金额(ETH)"
-        amountInfoLabel.font = FontConfigManager.shared.getLabelsFont()
+        amountInfoLabel.font = FontConfigManager.shared.getLabelSCFont()
         amountInfoLabel.textColor = UIColor.tokenestTip
         scrollView.addSubview(amountInfoLabel)
         
@@ -125,7 +125,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         amountTextField.tag = 1
         amountTextField.borderStyle = .roundedRect
         amountTextField.setRightPaddingPoints(100)
-        amountTextField.font = FontConfigManager.shared.getLabelFont()
+        amountTextField.font = FontConfigManager.shared.getLabelENFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = NSLocalizedString("Enter the amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
@@ -135,32 +135,32 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         
         amountMaxButton.title = "全部转出"
         amountMaxButton.titleColor = UIColor.tokenestBackground
-        amountMaxButton.titleLabel?.font = FontConfigManager.shared.getLabelsFont()
+        amountMaxButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont()
         amountMaxButton.frame = CGRect(x: screenWidth-90-padding, y: amountTextField.frame.origin.y, width: 100, height: 40)
         amountMaxButton.addTarget(self, action: #selector(pressedMaxButton(_:)), for: .touchUpInside)
         scrollView.addSubview(amountMaxButton)
         
         // 3rd Row: Transaction
         transactionFeeLabel.frame = CGRect(x: padding, y: amountTextField.frame.maxY + padding, width: screenWidth, height: 40)
-        transactionFeeLabel.font = FontConfigManager.shared.getLabelsFont()
+        transactionFeeLabel.font = FontConfigManager.shared.getLabelSCFont()
         transactionFeeLabel.textColor = UIColor.tokenestTip
         transactionFeeLabel.text = "矿工费(ETH)"
         scrollView.addSubview(transactionFeeLabel)
         
         transactionValueLabel.frame = CGRect(x: padding, y: transactionFeeLabel.frame.maxY, width: 100, height: 40)
         transactionValueLabel.text  = "0.00000"
-        transactionValueLabel.font = FontConfigManager.shared.getLabelFont()
+        transactionValueLabel.font = FontConfigManager.shared.getLabelENFont()
         scrollView.addSubview(transactionValueLabel)
         
         let originX = transactionValueLabel.intrinsicContentSize.width + padding
         transactionCurrencyLabel.frame = CGRect(x: originX, y: transactionFeeLabel.frame.maxY, width: 100, height: 40)
-        transactionCurrencyLabel.font = FontConfigManager.shared.getLabelsFont()
+        transactionCurrencyLabel.font = FontConfigManager.shared.getLabelSCFont()
         transactionCurrencyLabel.textColor = UIColor.tokenestTip
         scrollView.addSubview(transactionCurrencyLabel)
         
         transactionTipButton.frame = CGRect(x: screenWidth-padding-120, y: transactionFeeLabel.frame.maxY, width: 120, height: 40)
         transactionTipButton.titleColor = UIColor.tokenestBackground
-        transactionTipButton.titleLabel?.font = FontConfigManager.shared.getLabelsFont()
+        transactionTipButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont()
         transactionTipButton.contentHorizontalAlignment = .right
         transactionTipButton.title = "获取推荐油费"
         transactionTipButton.addTarget(self, action: #selector(pressedTipButton(_:)), for: .touchUpInside)
@@ -175,13 +175,13 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         scrollView.addSubview(transactionSpeedSlider)
         
         transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
-        transactionAmountMinLabel.font = FontConfigManager.shared.getLabelFont()
+        transactionAmountMinLabel.font = FontConfigManager.shared.getLabelENFont()
         transactionAmountMinLabel.text = NSLocalizedString("Slow", comment: "")
         scrollView.addSubview(transactionAmountMinLabel)
         
         transactionAmountCurrentLabel.textAlignment = .center
         transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
-        transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelFont()
+        transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelENFont()
         transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
         
         scrollView.addSubview(transactionAmountCurrentLabel)
@@ -194,7 +194,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         
         transactionAmountMaxLabel.textAlignment = .right
         transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
-        transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelFont()
+        transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelENFont()
         transactionAmountMaxLabel.text = NSLocalizedString("Fast", comment: "")
         scrollView.addSubview(transactionAmountMaxLabel)
         

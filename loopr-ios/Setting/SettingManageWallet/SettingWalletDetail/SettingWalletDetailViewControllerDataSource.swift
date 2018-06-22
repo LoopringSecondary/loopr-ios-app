@@ -23,7 +23,7 @@ extension SettingWalletDetailViewController {
         let cell = SettingWalletDetailTableViewCell(style: .value1, reuseIdentifier: SettingWalletDetailTableViewCell.getCellIdentifier())
 
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.textLabel?.font = FontConfigManager.shared.getLabelENFont()
         
         if indexPath.section == 0 {
             if appWallet.setupWalletMethod == .create || appWallet.setupWalletMethod == .importUsingMnemonic {

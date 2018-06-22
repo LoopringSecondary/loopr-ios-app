@@ -12,7 +12,7 @@
 "Sell" = "卖出";
 "Sold" = "卖出";
 "Receive" = "转入";
-"Received" = "收到";
+"Received" = "转入";
 "Send" = "转出";
 "Sent" = "转出";
 "Language" = "语言";
@@ -106,6 +106,7 @@
 "1 Month" = "1月";
 "Orders" = "订单";
 "Trades" = "历史订单";
+"Unknown" = "其他";
 "Cancel All" = "取消全部";
 "Order Book" = "最新挂单";
 "No Data" = "暂时没有数据";
@@ -189,10 +190,8 @@
 "What is gas?" = "What is gas?";
 "Gas is..." = "Gas is...";
 "Please input a correct address" = "请输入正确的地址";
-"Convert ETH To WETH" = "将ETH转换为WETH";
-"Convert WETH To ETH" = "将WETH转换为ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
-"Cancel Order(s)" = "取消订单";
+"Cancel Order(s)" = "取消";
 "Enter the amount you have" = "请输入卖出数额";
 "Enter the amount you get" = "请输入买入数额";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";

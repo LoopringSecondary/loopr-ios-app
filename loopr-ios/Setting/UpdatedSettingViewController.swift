@@ -37,10 +37,10 @@ class UpdatedSettingViewController: UIViewController {
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode")?.alpha(0.6), for: .highlighted)
 
         myAddressInfoLabel.text = NSLocalizedString("My Wallet Address", comment: "")
-        myAddressInfoLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
+        myAddressInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         myAddressInfoLabel.textColor = UIColor.init(rgba: "#8493F4")
 
-        addressLabel.font = FontConfigManager.shared.getLabelFont(size: 16)
+        addressLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
         addressLabel.textColor = UIColor.white
         // In the system line break mode, "..." is not centered.
         addressLabel.textAlignment = .center
@@ -63,7 +63,7 @@ class UpdatedSettingViewController: UIViewController {
         let iconTitlePadding: CGFloat = 15
         
         item1.backgroundColor = UIColor.clear
-        item1.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14.0)
+        item1.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
         item1.set(image: UIImage.init(named: "Tokenest-airdrop"), title: NSLocalizedString("Airdrop", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         item1.set(image: UIImage.init(named: "Tokenest-airdrop")?.alpha(0.6), title: NSLocalizedString("Airdrop", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         item1.setTitleColor(UIColor.black, for: .normal)
@@ -71,7 +71,7 @@ class UpdatedSettingViewController: UIViewController {
         item1.addTarget(self, action: #selector(self.pressedItem1Button(_:)), for: .touchUpInside)
         
         item2.backgroundColor = UIColor.clear
-        item2.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14.0)
+        item2.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
         item2.set(image: UIImage.init(named: "Tokenest-trading-faq"), title: NSLocalizedString("Trade FAQ", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         item2.set(image: UIImage.init(named: "Tokenest-trading-faq")?.alpha(0.6), title: NSLocalizedString("Trade FAQ", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         item2.setTitleColor(UIColor.black, for: .normal)
@@ -79,7 +79,7 @@ class UpdatedSettingViewController: UIViewController {
         item2.addTarget(self, action: #selector(self.pressedItem2Button(_:)), for: .touchUpInside)
         
         item3.backgroundColor = UIColor.clear
-        item3.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14.0)
+        item3.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
         item3.set(image: UIImage.init(named: "Tokenest-question-feedback"), title: NSLocalizedString("Feedback", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         item3.set(image: UIImage.init(named: "Tokenest-question-feedback")?.alpha(0.6), title: NSLocalizedString("Feedback", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         item3.setTitleColor(UIColor.black, for: .normal)
@@ -87,7 +87,7 @@ class UpdatedSettingViewController: UIViewController {
         item3.addTarget(self, action: #selector(self.pressedItem3Button(_:)), for: .touchUpInside)
         
         item4.backgroundColor = UIColor.clear
-        item4.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14.0)
+        item4.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
         item4.set(image: UIImage.init(named: "Tokenest-app-settings"), title: NSLocalizedString("Settings_in_grid", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         item4.set(image: UIImage.init(named: "Tokenest-app-settings")?.alpha(0.6), title: NSLocalizedString("Settings_in_grid", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         item4.setTitleColor(UIColor.black, for: .normal)
@@ -95,7 +95,7 @@ class UpdatedSettingViewController: UIViewController {
         item4.addTarget(self, action: #selector(self.pressedItem4Button(_:)), for: .touchUpInside)
 
         item5.backgroundColor = UIColor.clear
-        item5.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14.0)
+        item5.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
         item5.set(image: UIImage.init(named: "Tokenest-trading-setting"), title: NSLocalizedString("Trading_settings_in_grid", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         item5.set(image: UIImage.init(named: "Tokenest-trading-setting")?.alpha(0.6), title: NSLocalizedString("Trading_settings_in_grid", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         item5.setTitleColor(UIColor.black, for: .normal)
@@ -103,7 +103,7 @@ class UpdatedSettingViewController: UIViewController {
         item5.addTarget(self, action: #selector(self.pressedItem5Button(_:)), for: .touchUpInside)
 
         item6.backgroundColor = UIColor.clear
-        item6.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14.0)
+        item6.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
         item6.set(image: UIImage.init(named: "Tokenest-settings-quit"), title: NSLocalizedString("Quit", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         item6.set(image: UIImage.init(named: "Tokenest-settings-quit")?.alpha(0.6), title: NSLocalizedString("Quit", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         item6.setTitleColor(UIColor.black, for: .normal)

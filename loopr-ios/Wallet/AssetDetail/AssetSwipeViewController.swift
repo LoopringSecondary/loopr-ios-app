@@ -64,7 +64,7 @@ class AssetSwipeViewController: SwipeViewController {
             convertButton.setTitle(NSLocalizedString("Convert", comment: ""), for: .normal)
             convertButton.contentHorizontalAlignment = .center
             convertButton.titleColor = UIColor.darkGray
-            convertButton.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 11)
+            convertButton.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 11)
             convertButton.addTarget(self, action: #selector(self.pressedConvertButton(_:)), for: UIControlEvents.touchUpInside)
             let convertBarButtton = UIBarButtonItem(customView: convertButton)
             self.navigationItem.rightBarButtonItem = convertBarButtton

@@ -13,29 +13,21 @@ class AssetTransactionTableViewCell: UITableViewCell {
     var transaction: Transaction?
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var displayLabel: UILabel!
-    @IBOutlet weak var typeImageView: UIImageView!
-    @IBOutlet weak var seperateLine: UIView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        titleLabel.setTitleFont()
-        amountLabel.setTitleFont()
-        amountLabel.baselineAdjustment = .alignCenters
-        dateLabel.setSubTitleFont()
-        displayLabel.setSubTitleFont()
-        displayLabel.baselineAdjustment = .alignCenters
-        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-        accessoryType = .disclosureIndicator
+        titleLabel.font = FontConfigManager.shared.getLabelSCFont(size: 16)
+        amountLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
+        dateLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
+        statusLabel.font = FontConfigManager.shared.getLabelSCFont(size: 16)
     }
     
     func update() {
         if let transaction = transaction {
-            typeImageView.image = transaction.icon
-            dateLabel.text = transaction.createTime
             switch transaction.type {
             case .convert_income:
                 updateConvertIncome()
@@ -48,53 +40,69 @@ class AssetTransactionTableViewCell: UITableViewCell {
             default:
                 updateDefault()
             }
+            updateDateLabel()
+            updateStatusLabel()
+            titleLabel.text = transaction.type.description
         }
     }
     
     private func updateConvertIncome() {
-        amountLabel.isHidden = false
-        displayLabel.isHidden = false
-        if transaction!.symbol.lowercased() == "weth" {
-            titleLabel.text = NSLocalizedString("Convert to WETH", comment: "")
-        } else if transaction!.symbol.lowercased() == "eth" {
-            titleLabel.text = NSLocalizedString("Convert to ETH", comment: "")
-        }
-        amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
-        displayLabel.text = transaction!.currency
+        amountLabel.text = "+\(transaction!.value)"
+        amountLabel.textColor = UIColor.tokenestUps
     }
     
     private func updateConvertOutcome() {
-        amountLabel.isHidden = false
-        displayLabel.isHidden = false
-        if transaction!.symbol.lowercased() == "weth" {
-            titleLabel!.text = NSLocalizedString("Convert to WETH", comment: "")
-        } else if transaction!.symbol.lowercased() == "eth" {
-            titleLabel!.text = NSLocalizedString("Convert to ETH", comment: "")
-        }
-        amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
-        displayLabel.text = transaction!.currency
+        amountLabel.text = "-\(transaction!.value)"
+        amountLabel.textColor = UIColor.tokenestDowns
     }
     
     private func updateApprove() {
-        amountLabel.isHidden = true
-        displayLabel.isHidden = true
-        let header = NSLocalizedString("Enabled", comment: "")
-        let footer = NSLocalizedString("to Trade", comment: "")
-        titleLabel.text = NSLocalizedString("\(header) \(transaction!.symbol) \(footer)", comment: "")
+        let gas = GasDataManager.shared.getGasAmountInETH(by: "approve")
+        amountLabel.text = "-\(gas.withCommas(6))"
+        amountLabel.textColor = UIColor.tokenestDowns
     }
     
     private func udpateCutoffAndCanceledOrder() {
-        amountLabel.isHidden = true
-        displayLabel.isHidden = true
-        titleLabel.text = NSLocalizedString("Cancel Order(s)", comment: "")
+        let gas = GasDataManager.shared.getGasAmountInETH(by: "cancelOrder")
+        amountLabel.text = "-\(gas.withCommas(6))"
+        amountLabel.textColor = UIColor.tokenestDowns
     }
     
     private func updateDefault() {
-        amountLabel.isHidden = false
-        displayLabel.isHidden = false
-        titleLabel.text = transaction!.type.description + " " + transaction!.symbol
-        amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
-        displayLabel.text = transaction!.currency
+        if let tx = self.transaction {
+            if tx.type == .bought || tx.type == .received {
+                amountLabel.textColor = UIColor.tokenestUps
+                amountLabel.text = "+\(transaction!.value)"
+            } else if tx.type == .sold || tx.type == .sent {
+                amountLabel.textColor = UIColor.tokenestDowns
+                amountLabel.text = "-\(transaction!.value)"
+            }
+        }
+    }
+    
+    private func updateDateLabel() {
+        if let tx = self.transaction {
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm"
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "HH:mm MM/dd"
+            if let date = dateFormatterGet.date(from: tx.createTime) {
+                dateLabel.text = dateFormatterPrint.string(from: date)
+            }
+        }
+    }
+    
+    private func updateStatusLabel() {
+        if let tx = self.transaction {
+            if tx.status == .success {
+                statusLabel.textColor = UIColor.tokenestBackground
+            } else if tx.status == .failed {
+                statusLabel.textColor = UIColor.tokenestFailed
+            } else if tx.status == .pending {
+                statusLabel.textColor = UIColor.tokenestPending
+            }
+            statusLabel.text = tx.status.description
+        }
     }
 
     class func getCellIdentifier() -> String {
@@ -102,6 +110,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
     }
 
     class func getHeight() -> CGFloat {
-        return 84
+        return 72
     }
 }

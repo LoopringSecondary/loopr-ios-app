@@ -47,7 +47,7 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         theme_backgroundColor = GlobalPicker.backgroundColor
         
         // Label config
-        tokenLabel.font = FontConfigManager.shared.getLabelFont()
+        tokenLabel.font = FontConfigManager.shared.getLabelENFont()
         tokenLabel.text = "WETH "
         
         balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: (27)))

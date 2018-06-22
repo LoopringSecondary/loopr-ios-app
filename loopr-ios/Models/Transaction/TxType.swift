@@ -23,16 +23,16 @@ extension Transaction {
         
         var description: String {
             switch self {
-            case .approved: return "Enable"
+            case .approved: return NSLocalizedString("Enabled", comment: "")
             case .sent: return NSLocalizedString("Sent", comment: "")
             case .received: return NSLocalizedString("Received", comment: "")
             case .sold: return NSLocalizedString("Sold", comment: "")
             case .bought: return NSLocalizedString("Bought", comment: "")
             case .convert_income: return NSLocalizedString("Convert", comment: "") // eth <-> weth
             case .convert_outcome: return NSLocalizedString("Convert", comment: "") // eth <-> weth
-            case .canceledOrder: return NSLocalizedString("Cancel", comment: "")
-            case .cutoff: return NSLocalizedString("Cancel", comment: "")
-            case .unsupportedContract: return "Unknown"
+            case .canceledOrder: return NSLocalizedString("Cancel Order(s)", comment: "")
+            case .cutoff: return NSLocalizedString("Cancel Order(s)", comment: "")
+            case .unsupportedContract: return NSLocalizedString("Unknown", comment: "")
             }
         }
     }

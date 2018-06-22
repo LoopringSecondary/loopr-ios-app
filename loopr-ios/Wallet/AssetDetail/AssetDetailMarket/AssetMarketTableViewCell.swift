@@ -21,9 +21,9 @@ class AssetMarketTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        exchangeLabel.font = FontConfigManager.shared.getLabelFont()
-        priceLabel.font = FontConfigManager.shared.getLabelFont()
-        percentageChangeLabel.font = FontConfigManager.shared.getLabelFont()
+        exchangeLabel.font = FontConfigManager.shared.getLabelENFont()
+        priceLabel.font = FontConfigManager.shared.getLabelENFont()
+        percentageChangeLabel.font = FontConfigManager.shared.getLabelENFont()
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
     

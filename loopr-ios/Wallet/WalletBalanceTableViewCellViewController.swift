@@ -52,7 +52,7 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         let iconTitlePadding: CGFloat = 14
         
         receiveButton.backgroundColor = UIColor.clear
-        receiveButton.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14.0)
+        receiveButton.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
         receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive"), title: NSLocalizedString("Receive", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
         receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive")?.alpha(0.6), title: NSLocalizedString("Receive", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .highlighted)
         receiveButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
@@ -60,7 +60,7 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         receiveButton.addTarget(self, action: #selector(self.pressedReceiveButton(_:)), for: .touchUpInside)
         
         sendButton.backgroundColor = UIColor.clear
-        sendButton.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14.0)
+        sendButton.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
         sendButton.set(image: UIImage.init(named: "Tokenest-asset-send"), title: NSLocalizedString("Send", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
         sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: NSLocalizedString("Send", comment: ""), titlePosition: .left, additionalSpacing: iconTitlePadding, state: .highlighted)
         sendButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)

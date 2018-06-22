@@ -25,7 +25,7 @@ class QRCodeViewController: UIViewController {
         self.modalPresentationStyle = .custom
         view.theme_backgroundColor = GlobalPicker.textColor
         addressLabel.theme_textColor = GlobalPicker.textColor
-        addressLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
+        addressLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         
         copyAddressButton.layer.shadowColor = UIColor.black.cgColor
         copyAddressButton.layer.shadowOffset = CGSize(width: 4, height: 4)

@@ -16,9 +16,9 @@ extension UIViewController {
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .blue
         cell.textLabel?.text = title
-        cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.textLabel?.font = FontConfigManager.shared.getLabelENFont()
         cell.detailTextLabel?.text = detailTitle
-        cell.detailTextLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.detailTextLabel?.font = FontConfigManager.shared.getLabelENFont()
         return cell
     }
 
@@ -27,7 +27,7 @@ extension UIViewController {
         cell.accessoryType = .detailButton
         cell.selectionStyle = .blue
         cell.textLabel?.text = title
-        cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.textLabel?.font = FontConfigManager.shared.getLabelENFont()
         return cell
     }
     
@@ -36,9 +36,9 @@ extension UIViewController {
         cell.accessoryType = .none
         cell.selectionStyle = .none
         cell.textLabel?.text = title
-        cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.textLabel?.font = FontConfigManager.shared.getLabelENFont()
         cell.detailTextLabel?.text = detailTitle
-        cell.detailTextLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.detailTextLabel?.font = FontConfigManager.shared.getLabelENFont()
         return cell
     }
 
