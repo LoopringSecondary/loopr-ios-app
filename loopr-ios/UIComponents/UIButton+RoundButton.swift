@@ -34,29 +34,31 @@ extension UIButton {
         layer.borderColor = UIColor.black.withAlphaComponent(0.5).cgColor
         layer.cornerRadius = height * 0.5
     }
-
+    
     func setupRoundPurple(height: CGFloat = 47*UIStyleConfig.scale) {
         backgroundColor = UIColor.black
-        setBackgroundColor(GlobalPicker.themeColor, for: .normal)
+        setBackgroundColor(UIColor.tokenestBackground, for: .normal)
         // TODO: update the color in the highlighted state.
-        setBackgroundColor(GlobalPicker.themeColor.withAlphaComponent(0.8), for: .highlighted)
+        setBackgroundColor(UIColor.tokenestBackground.withAlphaComponent(0.8), for: .highlighted)
         clipsToBounds = true
         setTitleColor(.gray, for: .disabled)
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
         titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0*UIStyleConfig.scale)
         layer.cornerRadius = height * 0.5
+    }
 
+    func setupRoundPurpleWithShadow(height: CGFloat = 47*UIStyleConfig.scale) {
+        setupRoundPurple(height: height)
         let shadowLayer = UIView(frame: self.frame)
         shadowLayer.backgroundColor = UIColor.clear
-        shadowLayer.layer.shadowColor = GlobalPicker.themeColor.cgColor
+        shadowLayer.layer.shadowColor = UIColor.tokenestBackground.cgColor
         shadowLayer.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: self.cornerRadius).cgPath
         shadowLayer.layer.shadowOffset = CGSize(width: 4, height: 4)
         shadowLayer.layer.shadowOpacity = 0.3
         shadowLayer.layer.shadowRadius = 4
         shadowLayer.layer.masksToBounds = true
         shadowLayer.clipsToBounds = false
-        
         self.superview?.addSubview(shadowLayer)
         self.superview?.bringSubview(toFront: self)
     }

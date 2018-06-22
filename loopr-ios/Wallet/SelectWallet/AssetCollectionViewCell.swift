@@ -26,13 +26,13 @@ class AssetCollectionViewCell: UICollectionViewCell {
     }
     
     func highlightEffect() {
-        self.nameLabel.backgroundColor = UIColor.tokenestButton
+        self.nameLabel.backgroundColor = UIColor.tokenestBackground
         self.nameLabel.textColor = UIColor.white
     }
     
     func removeHighlight() {
         self.nameLabel.backgroundColor = UIColor.white
-        self.nameLabel.textColor = UIColor.tokenestButton
+        self.nameLabel.textColor = UIColor.tokenestBackground
     }
     
     class func getCellIdentifier() -> String {

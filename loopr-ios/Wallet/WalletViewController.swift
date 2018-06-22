@@ -398,7 +398,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
             let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
-            // let viewController = AssetSwipeViewController()
             let viewController = AssetDetailViewController()
             viewController.asset = asset
             viewController.hidesBottomBarWhenPushed = true

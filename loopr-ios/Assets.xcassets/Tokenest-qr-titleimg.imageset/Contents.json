@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "fanbai.png",
+      "filename" : "fanbai@2x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "fanbai@2x.png",
+      "filename" : "fanbai@4x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "fanbai@3x.png",
+      "filename" : "fanbai@6x.png",
       "scale" : "3x"
     }
   ],

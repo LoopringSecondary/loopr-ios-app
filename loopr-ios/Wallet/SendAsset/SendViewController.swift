@@ -134,7 +134,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         amountY = amountTextField.frame.minY
         
         amountMaxButton.title = "全部转出"
-        amountMaxButton.titleColor = UIColor.tokenestButton
+        amountMaxButton.titleColor = UIColor.tokenestBackground
         amountMaxButton.titleLabel?.font = FontConfigManager.shared.getLabelsFont()
         amountMaxButton.frame = CGRect(x: screenWidth-90-padding, y: amountTextField.frame.origin.y, width: 100, height: 40)
         amountMaxButton.addTarget(self, action: #selector(pressedMaxButton(_:)), for: .touchUpInside)
@@ -159,7 +159,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         scrollView.addSubview(transactionCurrencyLabel)
         
         transactionTipButton.frame = CGRect(x: screenWidth-padding-120, y: transactionFeeLabel.frame.maxY, width: 120, height: 40)
-        transactionTipButton.titleColor = UIColor.tokenestButton
+        transactionTipButton.titleColor = UIColor.tokenestBackground
         transactionTipButton.titleLabel?.font = FontConfigManager.shared.getLabelsFont()
         transactionTipButton.contentHorizontalAlignment = .right
         transactionTipButton.title = "获取推荐油费"
@@ -199,11 +199,11 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         scrollView.addSubview(transactionAmountMaxLabel)
         
         // send button
-        
         sendButton.title = "转出"
         sendButton.frame = CGRect(x: padding*4, y: transactionAmountMaxLabel.frame.maxY + padding*3, width: screenWidth-padding*8, height: 48)
         sendButton.addTarget(self, action: #selector(pressedSendButton(_:)), for: .touchUpInside)
         scrollView.addSubview(sendButton)
+        self.sendButton.setupRoundPurpleWithShadow()
 
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: screenWidth, height: sendButton.frame.maxY + 30)
@@ -254,7 +254,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.sendButton.setupRoundPurple()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
     }

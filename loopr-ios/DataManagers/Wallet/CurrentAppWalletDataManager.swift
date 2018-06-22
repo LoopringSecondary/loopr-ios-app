@@ -17,12 +17,14 @@ class CurrentAppWalletDataManager {
     private var assetsInHideSmallMode: [Asset]
     private var assets: [Asset]
     private var transactions: [Transaction]
+    private var dateTransactions: [String: [Transaction]]
     
     private init() {
         self.assetsInHideSmallMode = []
         self.assets = []
         self.transactions = []
         self.totalCurrencyValue = 0
+        self.dateTransactions = [:]
     }
     
     func setup() {
@@ -273,11 +275,14 @@ class CurrentAppWalletDataManager {
             return
         }
         LoopringAPIRequest.getTransactions(owner: wallet.address, symbol: asset.symbol, txHash: nil, pageSize: 50, completionHandler: { (transactions, error) in
-            guard error == nil && transactions != nil else {
+            guard error == nil, let transactions = transactions else {
                 return
             }
-            self.transactions = []
-            for transaction in transactions! {
+            self.transactions = transactions
+            self.dateTransactions = [:]
+            for transaction in transactions {
+                
+                
                 self.transactions.append(transaction)
             }
             completionHandler(self.transactions, nil)
