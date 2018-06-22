@@ -16,6 +16,7 @@ target 'loopr-ios' do
   pod 'FoldingCell', '3.0.6'
   pod 'SVProgressHUD'
   pod 'ESTabBarController-swift'
+  pod 'SideMenu'
 
   pod 'Fabric'
   pod 'Crashlytics'

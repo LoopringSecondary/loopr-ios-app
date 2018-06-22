@@ -27,10 +27,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="635"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nU-4m-F2g" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
-                    <rect key="frame" x="30" y="299.5" width="315" height="36"/>
+                    <rect key="frame" x="30" y="292.5" width="315" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="36" id="sIJ-SJ-rMl"/>
+                        <constraint firstAttribute="height" constant="50" id="sIJ-SJ-rMl"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JtW-QQ-8am">
@@ -93,7 +93,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Tokenest-asset-background-image" width="375" height="345"/>
+        <image name="Tokenest-asset-background-image" width="375" height="315"/>
         <image name="Tokenest-center-seperate-line" width="1" height="19"/>
     </resources>
 </document>

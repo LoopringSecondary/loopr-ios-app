@@ -24,8 +24,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xW7-Bb-kd4">
-                        <rect key="frame" x="4" y="24" width="16" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xW7-Bb-kd4">
+                        <rect key="frame" x="0.0" y="22" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="MIz-fk-BhQ"/>
                             <constraint firstAttribute="height" constant="16" id="h0G-ev-cW1"/>
@@ -34,21 +34,32 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnB-bQ-Bcd">
+                        <rect key="frame" x="0.0" y="23" width="16" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="xW7-Bb-kd4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="4zB-gV-3Ez"/>
+                <constraint firstItem="QnB-bQ-Bcd" firstAttribute="width" secondItem="xW7-Bb-kd4" secondAttribute="width" id="3sF-U5-1VH"/>
+                <constraint firstItem="xW7-Bb-kd4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4zB-gV-3Ez"/>
+                <constraint firstItem="QnB-bQ-Bcd" firstAttribute="leading" secondItem="xW7-Bb-kd4" secondAttribute="leading" id="FHl-LG-xNY"/>
+                <constraint firstItem="QnB-bQ-Bcd" firstAttribute="top" secondItem="xW7-Bb-kd4" secondAttribute="top" constant="1" id="JYb-6k-Fkc"/>
                 <constraint firstAttribute="bottom" secondItem="wyU-rN-D9u" secondAttribute="bottom" id="NPy-PJ-Ekm"/>
-                <constraint firstItem="wyU-rN-D9u" firstAttribute="leading" secondItem="xW7-Bb-kd4" secondAttribute="trailing" constant="4" id="PdK-f9-UvR"/>
+                <constraint firstItem="wyU-rN-D9u" firstAttribute="leading" secondItem="xW7-Bb-kd4" secondAttribute="trailing" constant="8" id="PdK-f9-UvR"/>
                 <constraint firstAttribute="trailing" secondItem="wyU-rN-D9u" secondAttribute="trailing" id="QjQ-Wg-BJ8"/>
                 <constraint firstItem="wyU-rN-D9u" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Qoa-ou-bem"/>
-                <constraint firstItem="xW7-Bb-kd4" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="2" id="VqQ-jb-TyX"/>
+                <constraint firstItem="xW7-Bb-kd4" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="VqQ-jb-TyX"/>
+                <constraint firstItem="QnB-bQ-Bcd" firstAttribute="height" secondItem="xW7-Bb-kd4" secondAttribute="height" id="byz-ee-P9x"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="249" height="73"/>
             <connections>
                 <outlet property="circleLabel" destination="xW7-Bb-kd4" id="Z9A-Fk-FBa"/>
                 <outlet property="mnemonicLabel" destination="wyU-rN-D9u" id="xQM-3E-G3u"/>
+                <outlet property="textLabel" destination="QnB-bQ-Bcd" id="9he-bJ-iZB"/>
             </connections>
             <point key="canvasLocation" x="-166.5" y="153.5"/>
         </collectionViewCell>

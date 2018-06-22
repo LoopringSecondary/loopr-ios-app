@@ -34,7 +34,7 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
 
-        balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 32))
+        balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 36))
         balanceLabel.animationDuration = 0.3
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()

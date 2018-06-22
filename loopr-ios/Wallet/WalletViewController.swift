@@ -9,6 +9,7 @@
 import UIKit
 import NotificationBannerSwift
 import SwiftTheme
+import SideMenu
 
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceDelegate, ContextMenuDelegate, QRCodeScanProtocol {
 
@@ -18,7 +19,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var assetTableView: UITableView = UITableView()
     var headerViewView = WalletBalanceTableViewCellViewController()
-    var headerHeightConstraint:NSLayoutConstraint!
+    var headerHeightConstraint: NSLayoutConstraint!
 
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
@@ -92,16 +93,33 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let navigationItem = UINavigationItem()
         navigationItem.title = "TOKENEST"
         
-        // TODO: Needs an better icon
-        let qrScanButton = UIButton(type: UIButtonType.custom)
+        let qrScanButton = UIButton(type: .custom)
         qrScanButton.setImage(UIImage.init(named: "Scan-white"), for: .normal)
-        qrScanButton.setImage(UIImage(named: "Scan")?.alpha(0.3), for: .highlighted)
+        qrScanButton.setImage(UIImage(named: "Scan-white")?.alpha(0.3), for: .highlighted)
         qrScanButton.addTarget(self, action: #selector(self.pressScanQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrScanButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
         navigationItem.rightBarButtonItem = qrCodeBarButton
         
+        let switchWalletButton = UIButton(type: .custom)
+        switchWalletButton.setImage(UIImage.init(named: "Tokenest-switch-wallet"), for: .normal)
+        switchWalletButton.setImage(UIImage(named: "Tokenest-switch-wallet")?.alpha(0.3), for: .highlighted)
+        switchWalletButton.addTarget(self, action: #selector(self.pressedSwitchWalletButton(_:)), for: UIControlEvents.touchUpInside)
+        switchWalletButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let switchWalletBarButton = UIBarButtonItem(customView: switchWalletButton)
+        navigationItem.leftBarButtonItem = switchWalletBarButton
+        
         customizedNavigationBar.setItems([navigationItem], animated: false)
+        
+        // Left menu
+        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: SelectWalletViewController())
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        SideMenuManager.default.menuAnimationFadeStrength = 0.71
+        SideMenuManager.default.menuShadowColor = UIColor.clear
+        SideMenuManager.default.menuAnimationBackgroundColor = UIColor.black
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuWidth = UIScreen.main.bounds.width * 294/375
     }
     
     func bringSubviewsToFront() {
@@ -244,6 +262,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+    
+    @objc func pressedSwitchWalletButton(_ button: UIBarButtonItem) {
+        print("pressedSwitchWalletButton")
+        present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
