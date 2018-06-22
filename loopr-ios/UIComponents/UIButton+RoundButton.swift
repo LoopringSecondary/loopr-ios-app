@@ -35,7 +35,20 @@ extension UIButton {
         layer.cornerRadius = height * 0.5
     }
     
-    func setupRoundPurple(height: CGFloat = 47*UIStyleConfig.scale) {
+    func setupRoundPurpleOutline(height: CGFloat = 47*UIStyleConfig.scale, font: UIFont? = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0*UIStyleConfig.scale)) {
+        setTitleColor(UIColor.tokenestBackground, for: .normal)
+        setTitleColor(UIColor.tokenestBackground.withAlphaComponent(0.8), for: .highlighted)
+        setBackgroundColor(UIColor.white, for: .normal)
+        // TODO: design this color.
+        setBackgroundColor(UIColor.white, for: .highlighted)
+        clipsToBounds = true
+        titleLabel?.font = font
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.tokenestBackground.cgColor
+        layer.cornerRadius = height * 0.5
+    }
+    
+    func setupRoundPurple(height: CGFloat = 47*UIStyleConfig.scale, font: UIFont? = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0*UIStyleConfig.scale)) {
         backgroundColor = UIColor.black
         setBackgroundColor(UIColor.tokenestBackground, for: .normal)
         // TODO: update the color in the highlighted state.
@@ -44,7 +57,7 @@ extension UIButton {
         setTitleColor(.gray, for: .disabled)
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
-        titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0*UIStyleConfig.scale)
+        titleLabel?.font = font
         layer.cornerRadius = height * 0.5
     }
 

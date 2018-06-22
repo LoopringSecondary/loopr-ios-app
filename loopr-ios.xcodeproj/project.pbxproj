@@ -414,6 +414,8 @@
 		AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */; };
 		AC798E5A2022B93B0071D477 /* LoopringAPIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E592022B93B0071D477 /* LoopringAPIRequestTests.swift */; };
 		AC798E652022B93B0071D477 /* loopr_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E642022B93B0071D477 /* loopr_iosUITests.swift */; };
+		AC83858D20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC83858B20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift */; };
+		AC83858E20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC83858C20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib */; };
 		AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */; };
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
@@ -947,6 +949,8 @@
 		AC798E602022B93B0071D477 /* loopr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "loopr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E642022B93B0071D477 /* loopr_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loopr_iosUITests.swift; sourceTree = "<group>"; };
 		AC798E662022B93B0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC83858B20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedSelectWalletViewController.swift; sourceTree = "<group>"; };
+		AC83858C20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedSelectWalletViewController.xib; sourceTree = "<group>"; };
 		AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1428,6 +1432,8 @@
 				AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */,
 				94EB84DA2095E69600FFE40E /* AssetCollectionViewCell.swift */,
 				94EB84DB2095E69600FFE40E /* AssetCollectionViewCell.xib */,
+				AC83858B20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift */,
+				AC83858C20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib */,
 			);
 			path = SelectWallet;
 			sourceTree = "<group>";
@@ -2599,6 +2605,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC83858E20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib in Resources */,
 				FF9C7DDA208D55F8004687AD /* Settings.bundle in Resources */,
 				AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */,
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
@@ -3059,6 +3066,7 @@
 				940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */,
 				AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */,
 				AC45EFEB20D0CCF5004F6EC0 /* AlertForErrorExtension.swift in Sources */,
+				AC83858D20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
 				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,

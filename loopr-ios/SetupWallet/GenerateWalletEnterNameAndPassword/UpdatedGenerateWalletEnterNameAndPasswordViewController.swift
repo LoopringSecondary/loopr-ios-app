@@ -20,7 +20,9 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
     @IBOutlet weak var startInfolbel: UILabel!
     
     @IBOutlet weak var backgroundImageHeightLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var backgroundImageTopLayoutConstraint: NSLayoutConstraint!    
+    @IBOutlet weak var backgroundImageTopLayoutConstraint: NSLayoutConstraint!
+    
+    var isPushedInParentViewController: Bool = true
 
     // Scrollable UI components
     var mainScrollView: UIScrollView = UIScrollView()
@@ -184,7 +186,13 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
     
     @objc func backButtonPressed(_ sender: Any) {
         print("backButtonPressed")
-        self.navigationController?.popViewController(animated: true)
+        if isPushedInParentViewController {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: {
+                
+            })
+        }
     }
     
     @objc func doneWithNumberPad(_ sender: Any) {

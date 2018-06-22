@@ -11,7 +11,7 @@ import NotificationBannerSwift
 import SwiftTheme
 import SideMenu
 
-class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceDelegate, ContextMenuDelegate, QRCodeScanProtocol {
+class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceDelegate, ContextMenuDelegate, QRCodeScanProtocol, UpdatedSelectWalletViewControllerDelegate {
 
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
     
@@ -31,6 +31,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var previousY: CGFloat = 0.0
     let backgroundImageHeight: CGFloat = 345 - 20 + 32
+    
+    let leftViewController = UpdatedSelectWalletViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +114,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         customizedNavigationBar.setItems([navigationItem], animated: false)
         
         // Left menu
-        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: SelectWalletViewController())
+        leftViewController.delegate = self
+        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: leftViewController)
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         SideMenuManager.default.menuPresentMode = .menuSlideIn
         SideMenuManager.default.menuAnimationFadeStrength = 0.71
@@ -120,6 +123,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         SideMenuManager.default.menuAnimationBackgroundColor = UIColor.black
         SideMenuManager.default.menuFadeStatusBar = false
         SideMenuManager.default.menuWidth = UIScreen.main.bounds.width * 294/375
+        SideMenuManager.default.menuAnimationUsingSpringWithDamping = 0.8
     }
     
     func bringSubviewsToFront() {
@@ -487,5 +491,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let viewController = QRCodeViewController()
         viewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func pressedCreateButtonInUpdatedSelectWalletViewController() {
+        
     }
 }
