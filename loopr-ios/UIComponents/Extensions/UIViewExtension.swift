@@ -86,6 +86,27 @@ extension UIView {
         }
     }
     
+//    @IBInspectable
+//    var shadowColor: UIColor? {
+//        get {
+//            return layer.shadowColor != nil ? UIColor(cgColor: layer.shadowColor!) : nil
+//        }
+//        set {
+//            layer.shadowColor = newValue?.cgColor
+//        }
+//    }
+//
+//    @IBInspectable
+//    var shadowOffset: CGSize {
+//        get {
+//            return layer.shadowOffset
+//        }
+//
+//        set {
+//            layer.shadowOffset = newValue
+//        }
+//    }
+
     // Move view
     func moveOffset(y: CGFloat) {
         self.frame = self.frame.offsetBy(dx: 0, dy: y)

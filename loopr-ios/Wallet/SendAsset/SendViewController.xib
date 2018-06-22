@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="amountLabel" destination="LDf-eU-Y83" id="fLZ-uy-IhV"/>
                 <outlet property="amountTipLabel" destination="MGw-Qv-guN" id="oo3-GZ-v3d"/>
+                <outlet property="backgroundView" destination="9Yk-xz-iTb" id="dg6-a1-LCp"/>
                 <outlet property="collectionHeight" destination="qiM-oI-jqu" id="E6m-Jp-NNZ"/>
                 <outlet property="customizedNavigationBar" destination="SD6-xa-mpX" id="7vL-SP-Jn3"/>
                 <outlet property="maskView" destination="b3X-WY-fjv" id="pgb-rw-LQX"/>

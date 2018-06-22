@@ -421,7 +421,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
             let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
-            // let viewController = AssetSwipeViewController()
             let viewController = AssetDetailViewController()
             viewController.asset = asset
             viewController.hidesBottomBarWhenPushed = true
@@ -485,6 +484,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func pressedReceiveButton() {
-        
+        let viewController = QRCodeViewController()
+        viewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        self.present(viewController, animated: true, completion: nil)
     }
 }
