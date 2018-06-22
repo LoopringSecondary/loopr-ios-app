@@ -22,6 +22,8 @@ class QRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.modalPresentationStyle = .custom
+        
         view.theme_backgroundColor = GlobalPicker.textColor
         addressLabel.theme_textColor = GlobalPicker.textColor
         addressLabel.font = FontConfigManager.shared.getLabelFont(size: 12)
