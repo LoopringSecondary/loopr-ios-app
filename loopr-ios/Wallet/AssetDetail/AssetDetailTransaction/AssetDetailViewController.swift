@@ -56,13 +56,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Receive button
         receiveButton.setTitle(NSLocalizedString("Receive", comment: ""), for: .normal)
-        receiveButton.setupRoundBlack(height: 40)
         
         // Send button
         sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
-        sendButton.setupRoundBlack(height: 40)
-        
-        buttonHeightLayoutConstraint.constant = 40
         
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {
@@ -102,6 +98,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         titleView.layer.shadowOpacity = 0.3
         titleView.layer.shadowOffset = CGSize(width: 0, height: 4)
         titleView.layer.shadowColor = UIColor.black.cgColor
+        titleView.layer.masksToBounds = false
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -149,7 +146,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func pressedSendButton(_ sender: Any) {
         print("pressedSendButton")
-        let viewController = SendAssetViewController()
+        let viewController = SendViewController()
         viewController.asset = self.asset!
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -157,8 +154,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func pressedReceiveButton(_ sender: Any) {
         print("pressedReceiveButton")
         let viewController = QRCodeViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
+        viewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        self.present(viewController, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
