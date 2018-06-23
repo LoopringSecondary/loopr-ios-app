@@ -10,29 +10,28 @@ import UIKit
 import Geth
 import NotificationBannerSwift
 
-class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, AmountStackViewDelegate {
+class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    @IBOutlet weak var availableTipLabel: UILabel!
+    @IBOutlet weak var tokenSLabel: UILabel!
+    @IBOutlet weak var tokenBLabel: UILabel!
+    @IBOutlet weak var switchButton: UIButton!
+    @IBOutlet weak var ethAmountLabel: UILabel!
+    @IBOutlet weak var wethAmountLabel: UILabel!
+    @IBOutlet weak var amountSTextField: UITextField!
+    @IBOutlet weak var amountBTextField: UITextField!
+    @IBOutlet weak var tipLabel: UILabel!
+    
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewBottomLayoutConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var convertButton: UIButton!
-    @IBOutlet weak var convertBackgroundView: UIView!
-    @IBOutlet weak var convertBackgroundViewHeightConstraint: NSLayoutConstraint!
     
     var asset: Asset?
-
-    var infoLabel: UILabel = UILabel()
-
-    var tokenSView: TradeTokenView!
-    var tokenBView: TradeTokenView!
-    var arrowRightButton: UIButton = UIButton()
-
-    // Amout
-    var tokenSLabel: UILabel = UILabel()
-    var amountTextField: UITextField = UITextField()
-    var amountUnderLine: UIView = UIView()
-    var availableLabel: UILabel = UILabel()
-    var amountStackView: AmountStackView!
+    
+    var availableLabels: [String: UILabel] = [:]
 
     // Numeric Keyboard
     var isNumericKeyboardShow: Bool = false
@@ -42,76 +41,36 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Convert", comment: "")
+        self.navigationController?.isNavigationBarHidden = true
+
+        self.customizedNavigationBar.shadowImage = UIImage()
+        self.statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
 
         setBackButton()
-
-        scrollViewButtonLayoutConstraint.constant = 0
-        convertBackgroundViewHeightConstraint.constant = 47*UIStyleConfig.scale + 15*2
-
+        scrollViewBottomLayoutConstraint.constant = 0
+        
+        // Convert button
         convertButton.title = NSLocalizedString("Yes, convert now!", comment: "")
-        convertButton.setupRoundBlack()
+        convertButton.setupRoundPurpleWithShadow()
+        
+        // amount textfield
+        amountSTextField.delegate = self
+        amountSTextField.inputView = UIView()
+        
+        // Labels
+        availableLabels["ETH"] = ethAmountLabel
+        availableLabels["WETH"] = wethAmountLabel
+        tipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 10)
+        ethAmountLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        ethAmountLabel.text = ConvertDataManager.shared.getMaxAmountString("ETH")
+        wethAmountLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        wethAmountLabel.text = ConvertDataManager.shared.getMaxAmountString("WETH")
+        availableTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
 
-        // Setup UI
-        let screensize: CGRect = UIScreen.main.bounds
-        let screenWidth = screensize.width
-        // let screenHeight = screensize.height
-        
-        let padding: CGFloat = 15*UIStyleConfig.scale
-        
-        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: 0, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
-        scrollView.addSubview(tokenSView)
-        
-        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: 0, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
-        scrollView.addSubview(tokenBView)
-
-        arrowRightButton = UIButton(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
-        let image = UIImage.init(named: "Arrow-right-black")
-        let tintedImage = image?.withRenderingMode(.alwaysTemplate)
-        arrowRightButton.setImage(tintedImage, for: .normal)
-        arrowRightButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
-        arrowRightButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
-        arrowRightButton.addTarget(self, action: #selector(self.pressedArrowButton(_:)), for: UIControlEvents.touchUpInside)
-        scrollView.addSubview(arrowRightButton)
-        
-        infoLabel.frame = CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY - 60), size: CGSize(width: 200, height: 21*UIStyleConfig.scale))
-        infoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16*UIStyleConfig.scale)
-        infoLabel.textAlignment = .center
-        scrollView.addSubview(infoLabel)
-
-        // Row 2: Amount
-
-        tokenSLabel.font = FontConfigManager.shared.getLabelENFont()
-        tokenSLabel.textAlignment = .right
-        tokenSLabel.frame = CGRect(x: screenWidth-200-padding, y: tokenSView.frame.maxY + padding, width: 200, height: 40)
-        scrollView.addSubview(tokenSLabel)
-        
-        amountTextField.delegate = self
-        amountTextField.tag = 1
-        amountTextField.inputView = UIView()
-        amountTextField.font = FontConfigManager.shared.getLabelENFont()
-        amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.contentMode = UIViewContentMode.bottom
-        amountTextField.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding, width: screenWidth-padding*2-80, height: 40)
-        amountTextField.placeholder = NSLocalizedString("Amount you want to convert", comment: "")
-        scrollView.addSubview(amountTextField)
-
-        amountUnderLine.frame = CGRect(x: padding, y: tokenSLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        amountUnderLine.backgroundColor = UIColor.black
-        scrollView.addSubview(amountUnderLine)
-        
-        availableLabel.font = FontConfigManager.shared.getLabelENFont()
-        availableLabel.frame = CGRect(x: padding, y: amountUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
-        scrollView.addSubview(availableLabel)
-        
-        amountStackView = AmountStackView(frame: CGRect(x: screenWidth-100-padding, y: amountUnderLine.frame.maxY, width: 100, height: 40))
-        amountStackView.delegate = self
-        scrollView.addSubview(amountStackView)
-        
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
-        updateLabel()
+        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
     }
     
     override func didReceiveMemoryWarning() {
@@ -121,20 +80,13 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let asset = self.asset {
-            let symbol = asset.symbol
-            let available = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-            let title = NSLocalizedString("Available Balance", comment: "")
-            availableLabel.text = "\(title) \(available.withCommas()) \(symbol)"
-            tokenSView.update(symbol: symbol)
-            tokenBView.update(symbol: getAnotherToken())
-        }
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
+        
+        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Convert", comment: ""))
     }
     
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
-        amountTextField.resignFirstResponder()
+        amountSTextField.resignFirstResponder()
         self.view.endEditing(true)
         hideNumericKeyboard()
     }
@@ -155,31 +107,13 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         return ConvertDataManager.shared.getAsset(by: symbol)
     }
     
-    func updateLabel() {
-        let symbol = asset!.symbol.uppercased()
-        infoLabel.text = symbol == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
-        if symbol == "ETH" {
-            tokenSLabel.text = NSLocalizedString("ETH (Excluding for gas)", comment: "")
-            infoLabel.text = "1 ETH = 1 WETH"
-        } else if symbol == "WETH" {
-            tokenSLabel.text = "WETH"
-            infoLabel.text = "1 WETH = 1 ETH"
-        }
-    }
-    
-    @objc func pressedArrowButton(_ sender: Any) {
-        print("pressedArrowButton")
+    @IBAction func pressedSwitchButton(_ sender: UIButton) {
         if let asset = self.asset {
+            UIView.transition(with: tokenSLabel, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenSLabel.text = self.getAnotherToken() }, completion: nil)
+            UIView.transition(with: tokenBLabel, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenBLabel.text = asset.symbol }, completion: nil)
             self.asset = getAnotherAsset()
-            UIView.transition(with: tokenSView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenSView.update(symbol: self.asset?.symbol ?? "") }, completion: nil)
-            UIView.transition(with: tokenBView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenBView.update(symbol: asset.symbol) }, completion: nil)
-            updateLabel()
-            _ = validateTextField()
+            _ = validate()
         }
-    }
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        amountTextField.becomeFirstResponder() //Optional
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -190,28 +124,33 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
     func getActiveTextField() -> UITextField? {
         // Only one text field in the view controller.
-        return amountTextField
+        return amountSTextField
+    }
+    
+    func numericKeyboard(_ numericKeyboard: NumericKeyboard, currentTextDidUpdate currentText: String) {
+        let activeTextField: UITextField? = getActiveTextField()
+        guard activeTextField != nil else {
+            return
+        }
+        activeTextField!.text = currentText
+        _ = validate()
     }
     
     func showNumericKeyboard(textField: UITextField) {
         if !isNumericKeyboardShow {
             let width = self.view.frame.width
-            let height = self.convertBackgroundView.frame.origin.y
-                        
-            scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
-            
+            let height = self.view.frame.height
             numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate = self
+            scrollViewBottomLayoutConstraint.constant = DefaultNumericKeyboard.height
             view.addSubview(numericKeyboardView)
-            view.bringSubview(toFront: convertBackgroundView)
-            view.bringSubview(toFront: convertButton)
             
             let destinateY = height - DefaultNumericKeyboard.height
             
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-                
+                self.scrollView.setContentOffset(CGPoint.zero, animated: true)
             }, completion: { _ in
                 self.isNumericKeyboardShow = true
             })
@@ -219,17 +158,17 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     }
 
     func hideNumericKeyboard() {
-        
-    }
-    
-    func setResultOfAmount(with percentage: Double) {
-        if let asset = self.asset {
-            let symbol = asset.symbol
-            let available = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-            let value = available * Double(percentage)
-            amountTextField.text = value.withCommas()
-            updateLabel()
-            _ = validateTextField()
+        if isNumericKeyboardShow {
+            let width = self.view.frame.width
+            let height = self.view.frame.height
+            let destinateY = height
+            self.scrollViewBottomLayoutConstraint.constant = 0
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.view.layoutIfNeeded()
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
+            }, completion: { _ in
+                self.isNumericKeyboardShow = false
+            })
         }
     }
 
@@ -250,61 +189,47 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         }
     }
     
-    func validation() -> GethBigInt? {
+    func validate() -> GethBigInt? {
         var result: GethBigInt? = nil
-        // TODO: improve the following logic in the future.
-        if let asset = self.asset {
-            if let amountString = amountTextField.text {
-                if let amount = Double(amountString) {
-                    if asset.balance >= amount {
-                        if let token = TokenDataManager.shared.getTokenBySymbol(asset.symbol) {
-                            result = GethBigInt.generate(valueInEther: amountString, symbol: token.symbol)
-                        }
-                    }
+        let symbol = asset!.symbol.uppercased()
+        let tipMessage = NSLocalizedString("Convert_TipInfo", comment: "")
+        let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
+        if let text = amountSTextField.text, let inputAmount = Double(text) {
+            if inputAmount > 0 {
+                if inputAmount > maxAmount {
+                    availableLabels[symbol]?.shake()
+                    tipLabel.textColor = .red
+                    tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+                } else {
+                    amountBTextField.text = amountSTextField.text
+                    result = GethBigInt.generate(inputAmount)
+                    tipLabel.text = tipMessage
+                    tipLabel.textColor = UIColor.tokenestTip
                 }
+            } else {
+                tipLabel.textColor = .red
+                tipLabel.shake()
+                tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            }
+        } else {
+            if amountSTextField.text == "" {
+                tipLabel.text = tipMessage
+                tipLabel.textColor = UIColor.tokenestTip
+                amountBTextField.text = ""
+            } else {
+                tipLabel.textColor = .red
+                tipLabel.shake()
+                tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
             }
         }
         return result
     }
-
-    func validateTextField() -> Bool {
-        let symbol = asset!.symbol.uppercased()
-        let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-        let title = NSLocalizedString("Available Balance", comment: "")
-        availableLabel.text = "\(title) \(maxAmount.withCommas()) \(symbol)"
-        availableLabel.textColor = .black
-        if let text = amountTextField.text, let inputAmount = Double(text) {
-            if inputAmount > 0 {
-                if inputAmount > maxAmount {
-                    availableLabel.textColor = .red
-                    availableLabel.shake()
-                } else {
-                    // Valid
-                    availableLabel.textColor = .black
-                    return true
-                }
-            } else {
-                
-            }
-        } else {
-            if amountTextField.text == "" {
-                return true
-            } else {
-                availableLabel.textColor = .red
-                availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
-                availableLabel.shake()
-            }
-        }
-        
-        return false
-    }
     
-    @IBAction func pressedConvertButton(_ sender: Any) {
-        guard validateTextField() == true, let amount = validation() else {
-            print("Invalid Amount")
-            availableLabel.textColor = .red
-            availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
-            availableLabel.shake()
+    @IBAction func pressedConvertButton(_ sender: UIButton) {
+        guard let amount = validate() else {
+            tipLabel.textColor = .red
+            tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            tipLabel.shake()
             return
         }
         if asset!.symbol.uppercased() == "ETH" {
@@ -336,8 +261,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             let itemValue = position.row * 3 + position.column + 1
             activeTextField!.text = currentText + String(itemValue)
         }
-        updateLabel()
-        _ = validateTextField()
+        _ = validate()
     }
     
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {

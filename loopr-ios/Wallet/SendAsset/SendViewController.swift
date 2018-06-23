@@ -501,12 +501,10 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-                // self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+                self.scrollView.setContentOffset(CGPoint.zero, animated: true)
             }, completion: { _ in
                 self.isNumericKeyboardShow = false
             })
-        } else {
-            
         }
     }
     

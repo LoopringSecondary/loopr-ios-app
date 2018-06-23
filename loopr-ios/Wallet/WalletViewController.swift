@@ -29,7 +29,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var previousY: CGFloat = 0.0
     let backgroundImageHeight: CGFloat = 345 - 20 + 32
-    
     let leftViewController = UpdatedSelectWalletViewController()
     
     override func viewDidLoad() {

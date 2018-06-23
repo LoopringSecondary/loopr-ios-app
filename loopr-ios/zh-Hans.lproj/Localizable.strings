@@ -319,3 +319,5 @@
 "Complete" = "完成";
 "Get Recommended Gas Price" = "获取推荐油费";
 "Save QR code to Photo successfully." = "成功保存二维码到照片应用";
+"Convert_TipInfo" = "我们为您保留0.001 ETH作为油费以保证后续可以发送交易。";
+
