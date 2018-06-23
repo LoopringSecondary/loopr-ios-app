@@ -11,6 +11,7 @@ import UIKit
 protocol WalletBalanceDelegate: class {
     func pressedReceiveButton()
     func pressedSendButton()
+    func pressedAddTokenButton()
 }
 
 class WalletBalanceTableViewCellViewController: UIViewController {
@@ -22,6 +23,8 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var balanceLabel: TickerLabel!
     // let addressLabel: UILabel = UILabel()
+    
+    @IBOutlet weak var addTokenButton: UIButton!
     
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
@@ -45,6 +48,9 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText("\(balance)", animated: false)
         
+        addTokenButton.setImage(UIImage.init(named: "Tokenest-asset-add-token")?.alpha(0.7), for: .highlighted)
+        addTokenButton.addTarget(self, action: #selector(self.pressedAddTokenButton(_:)), for: .touchUpInside)
+
         buttonBackgroundView.backgroundColor = UIColor.init(white: 1, alpha: 0.98)
         buttonBackgroundView.cornerRadius = 7.5
         buttonBackgroundView.clipsToBounds = true
@@ -90,6 +96,11 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     @objc func pressedSendButton(_ button: UIButton) {
         print("pressedSendButton")
         delegate?.pressedSendButton()
+    }
+    
+    @objc func pressedAddTokenButton(_ button: UIButton) {
+        print("pressedAddTokenButton")
+        delegate?.pressedAddTokenButton()
     }
     
     func setup() {

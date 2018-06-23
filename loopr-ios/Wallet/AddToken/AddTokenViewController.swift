@@ -10,6 +10,9 @@ import UIKit
 
 class AddTokenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    
     @IBOutlet weak var tableView: UITableView!
     
     var searchText = ""
@@ -26,7 +29,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setBackButton()
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -42,13 +45,22 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.searchBarStyle = .minimal
         searchBar.keyboardType = .alphabet
         searchBar.autocapitalizationType = .allCharacters
-        
-        self.navigationItem.title = NSLocalizedString("Tokens", comment: "")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Add Token", comment: ""))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
