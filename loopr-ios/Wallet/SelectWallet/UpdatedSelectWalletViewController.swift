@@ -99,6 +99,10 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? UpdatedSelectWalletTableViewCell {
+            cell.update()
+        }
+        
         let appWallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
         if appWallet.address != CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address {
             let alertController = UIAlertController(title: NSLocalizedString("Choose Wallet", comment: "") + ": \(appWallet.name)",

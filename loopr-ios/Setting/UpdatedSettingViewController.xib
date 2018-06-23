@@ -32,7 +32,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-settings-background-image" translatesAutoresizingMaskIntoConstraints="NO" id="Ojp-ue-C71">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-settings-background-image" translatesAutoresizingMaskIntoConstraints="NO" id="Ojp-ue-C71">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="388"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Np6-6t-Mjo">
@@ -128,7 +128,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBe-Wn-sPj">
-                    <rect key="frame" x="264" y="172.5" width="60" height="28"/>
+                    <rect key="frame" x="264" y="171.5" width="60" height="28"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="WAl-pd-wbb"/>
@@ -170,6 +170,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Tokenest-settings-background-image" width="375" height="420"/>
+        <image name="Tokenest-settings-background-image" width="375" height="315"/>
     </resources>
 </document>

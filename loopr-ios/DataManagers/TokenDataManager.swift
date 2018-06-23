@@ -35,8 +35,8 @@ class TokenDataManager {
     }
 
     func getTokenList() -> [String] {
-        // return tokenList
-        return whiteList
+        return tokenList
+        // return whiteList
     }
 
     func getTokenListFromLocalStorage() {

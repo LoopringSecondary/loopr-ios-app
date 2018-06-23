@@ -43,9 +43,6 @@ class UpdatedSelectWalletTableViewCell: UITableViewCell {
                 baseView.layer.borderColor = UIColor.clear.cgColor
                 baseView.backgroundColor = UIColor.init(rgba: "#2E2BA4").withAlphaComponent(0.7)
             }
-        } else {
-            print("reset color")
-            update()
         }
     }
 
@@ -68,15 +65,15 @@ class UpdatedSelectWalletTableViewCell: UITableViewCell {
         baseView.backgroundColor = UIColor.white
         baseView.layer.borderColor = UIColor.init(rgba: "#E5E7ED").cgColor
         nameLabel.textColor = UIColor.init(rgba: "#32384C")
-        addressLabel.textColor = UIColor.init(rgba: "#8997F3")
-        toatalBalanceLabel.textColor = UIColor.init(rgba: "#32384C")
+        addressLabel.textColor = UIColor.init(rgba: "#878FA4")
+        toatalBalanceLabel.textColor = UIColor.init(rgba: "#8997F3")
     }
     
     func setCurrentWallet() {
         baseView.backgroundColor = UIColor.init(rgba: "#2E2BA4")
         baseView.layer.borderColor = UIColor.clear.cgColor
         nameLabel.textColor = UIColor.white
-        addressLabel.textColor = UIColor.init(rgba: "#8997F3")
+        addressLabel.textColor = UIColor.init(rgba: "#878FA4")
         toatalBalanceLabel.textColor = UIColor.white
     }
     

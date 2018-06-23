@@ -252,7 +252,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func balanceResponseReceivedNotification() {
         if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
-            // assetTableView.reloadData()
+            assetTableView.reloadData()
             // self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
@@ -260,7 +260,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func priceQuoteResponseReceivedNotification() {
         if !isLaunching {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
-            // assetTableView.reloadData()
+            assetTableView.reloadData()
             // self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
@@ -280,6 +280,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             headerViewView.view.y = -scrollView.contentOffset.y
             headerViewView.balanceLabel.alpha = (70 - scrollView.contentOffset.y)/70
+            headerViewView.addTokenButton.alpha = (70 - scrollView.contentOffset.y)/70
             
             // TODO: add more animation if needed. We can even update the navigation bar title.
 
@@ -296,7 +297,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDecelerating")
         isListeningSocketIO = true
-        // CurrentAppWalletDataManager.shared.startGetBalance()
+        CurrentAppWalletDataManager.shared.startGetBalance()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
