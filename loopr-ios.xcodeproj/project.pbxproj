@@ -416,6 +416,8 @@
 		AC798E652022B93B0071D477 /* loopr_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E642022B93B0071D477 /* loopr_iosUITests.swift */; };
 		AC83858D20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC83858B20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift */; };
 		AC83858E20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC83858C20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib */; };
+		AC83859120DE179E00438B25 /* UpdatedSelectWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC83858F20DE179E00438B25 /* UpdatedSelectWalletTableViewCell.swift */; };
+		AC83859220DE179E00438B25 /* UpdatedSelectWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC83859020DE179E00438B25 /* UpdatedSelectWalletTableViewCell.xib */; };
 		AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */; };
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
@@ -951,6 +953,8 @@
 		AC798E662022B93B0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC83858B20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedSelectWalletViewController.swift; sourceTree = "<group>"; };
 		AC83858C20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedSelectWalletViewController.xib; sourceTree = "<group>"; };
+		AC83858F20DE179E00438B25 /* UpdatedSelectWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedSelectWalletTableViewCell.swift; sourceTree = "<group>"; };
+		AC83859020DE179E00438B25 /* UpdatedSelectWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedSelectWalletTableViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1434,6 +1438,8 @@
 				94EB84DB2095E69600FFE40E /* AssetCollectionViewCell.xib */,
 				AC83858B20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift */,
 				AC83858C20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib */,
+				AC83858F20DE179E00438B25 /* UpdatedSelectWalletTableViewCell.swift */,
+				AC83859020DE179E00438B25 /* UpdatedSelectWalletTableViewCell.xib */,
 			);
 			path = SelectWallet;
 			sourceTree = "<group>";
@@ -2745,6 +2751,7 @@
 				94C11FDB208C2DE40050E180 /* SettingCurrencyTableViewCell.xib in Resources */,
 				AC31CE3D205B603E00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */,
 				945800212058FEB500E08DEF /* tokens.json in Resources */,
+				AC83859220DE179E00438B25 /* UpdatedSelectWalletTableViewCell.xib in Resources */,
 				AC45EFF820D0D9B4004F6EC0 /* my_page.html in Resources */,
 				AC54FD5B204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
 				AC9A274120A6144700DB04AC /* OrderNoDataTableViewCell.xib in Resources */,
@@ -3138,6 +3145,7 @@
 				AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */,
 				AC4D02E520D6DE35007F087B /* UpdatedSettingViewController.swift in Sources */,
 				AC5288B4208300580002AEAD /* DateUtil.swift in Sources */,
+				AC83859120DE179E00438B25 /* UpdatedSelectWalletTableViewCell.swift in Sources */,
 				940B45222060F67E00ADE2B9 /* PriceDataManager.swift in Sources */,
 				AC38751F205F12F100A76637 /* ContextMenuDelegate.swift in Sources */,
 				AC9A273D20A577E900DB04AC /* Double+Extension.swift in Sources */,
