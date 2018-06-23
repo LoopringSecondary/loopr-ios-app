@@ -83,6 +83,14 @@
                         <constraint firstItem="VfM-8T-LUw" firstAttribute="top" secondItem="sWh-gJ-r6Q" secondAttribute="top" constant="16" id="cPN-yy-kkn"/>
                         <constraint firstAttribute="trailing" secondItem="jgW-gH-CAq" secondAttribute="trailing" constant="32" id="qF1-1a-jH3"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" name="BorderColor"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nsa-qu-wYS" userLabel="Header View">
                     <rect key="frame" x="0.0" y="136" width="375" height="40"/>
@@ -134,35 +142,61 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ze1-7w-Ov8">
-                    <rect key="frame" x="0.0" y="176" width="375" height="416"/>
+                    <rect key="frame" x="0.0" y="176" width="375" height="443"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" name="BorderColor"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </tableView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U8R-q4-vAw">
-                    <rect key="frame" x="15" y="607" width="345" height="45"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="U8R-q4-vAw">
+                    <rect key="frame" x="0.0" y="619" width="375" height="48"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oU0-Pm-y7X">
-                            <rect key="frame" x="0.0" y="0.0" width="165" height="45"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Receive">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
+                            <state key="normal" title="转入">
+                                <color key="titleColor" name="Tokenest-background"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" name="BorderColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="pressedReceiveButton:" destination="-1" eventType="touchUpInside" id="QPC-bc-hPV"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IV9-Ck-OQ7">
-                            <rect key="frame" x="180" y="0.0" width="165" height="45"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Send">
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="48"/>
+                            <color key="backgroundColor" name="Tokenest-background"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
+                            <state key="normal" title="转出">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" name="BorderColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="pressedSendButton:" destination="-1" eventType="touchUpInside" id="Ro2-v8-0G1"/>
                             </connections>
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="To1-dR-8PD"/>
+                        <constraint firstAttribute="height" constant="48" id="To1-dR-8PD"/>
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLh-rN-FhO">
@@ -188,10 +222,10 @@
                 <constraint firstItem="ZgU-h1-UxY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ai4-gB-qtW"/>
                 <constraint firstItem="ZgU-h1-UxY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="BqZ-7K-GMe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="bLh-rN-FhO" secondAttribute="bottom" id="Fke-f6-SSu"/>
-                <constraint firstItem="U8R-q4-vAw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Gsr-mR-qOE"/>
+                <constraint firstItem="U8R-q4-vAw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Gsr-mR-qOE"/>
                 <constraint firstItem="Ze1-7w-Ov8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="H4N-2a-4fX"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="U8R-q4-vAw" secondAttribute="bottom" constant="15" id="Lua-pN-YhS"/>
-                <constraint firstItem="U8R-q4-vAw" firstAttribute="top" secondItem="Ze1-7w-Ov8" secondAttribute="bottom" constant="15" id="NQF-xP-CC3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="U8R-q4-vAw" secondAttribute="bottom" id="Lua-pN-YhS"/>
+                <constraint firstItem="U8R-q4-vAw" firstAttribute="top" secondItem="Ze1-7w-Ov8" secondAttribute="bottom" id="NQF-xP-CC3"/>
                 <constraint firstItem="nsa-qu-wYS" firstAttribute="top" secondItem="sWh-gJ-r6Q" secondAttribute="bottom" id="Teo-xe-jzW"/>
                 <constraint firstItem="Ze1-7w-Ov8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Ve5-Vf-O7r"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sWh-gJ-r6Q" secondAttribute="trailing" id="WN5-nV-qpg"/>
@@ -199,7 +233,7 @@
                 <constraint firstItem="Ze1-7w-Ov8" firstAttribute="top" secondItem="ZgU-h1-UxY" secondAttribute="bottom" constant="112" id="f5Q-gE-M2p"/>
                 <constraint firstItem="sWh-gJ-r6Q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ipp-A0-Axb"/>
                 <constraint firstItem="sWh-gJ-r6Q" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="44" id="q99-nf-hKu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U8R-q4-vAw" secondAttribute="trailing" constant="15" id="qHa-q8-Ug3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U8R-q4-vAw" secondAttribute="trailing" id="qHa-q8-Ug3"/>
                 <constraint firstAttribute="trailing" secondItem="bLh-rN-FhO" secondAttribute="trailing" id="wr7-2I-1zG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -208,6 +242,21 @@
     </objects>
     <resources>
         <image name="Tokenest-token-light" width="60" height="60"/>
+        <namedColor name="BorderColor">
+            <color red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="BorderColor">
+            <color red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="BorderColor">
+            <color red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="BorderColor">
+            <color red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Tokenest-background">
+            <color red="0.1803921568627451" green="0.16862745098039217" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Tokenest-blank">
             <color red="0.95294117647058818" green="0.96470588235294119" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
