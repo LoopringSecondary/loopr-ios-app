@@ -614,8 +614,6 @@
 		5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6654923520D75C5C006CB3B2 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		6654923620D75C5C006CB3B2 /* SendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendViewController.xib; sourceTree = "<group>"; };
-		665AA0A520DE231D007BFA3E /* PingFang-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang-ExtraLight.ttf"; sourceTree = "<group>"; };
-		665AA0A620DE231D007BFA3E /* PingFang-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang-Heavy.ttf"; sourceTree = "<group>"; };
 		665AA0A720DE231D007BFA3E /* PingFang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang-Regular.ttf"; sourceTree = "<group>"; };
 		665AA0A820DE231D007BFA3E /* PingFang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang-Bold.ttf"; sourceTree = "<group>"; };
 		665AA0A920DE231D007BFA3E /* PingFang-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang-Light.ttf"; sourceTree = "<group>"; };
@@ -1176,8 +1174,6 @@
 			isa = PBXGroup;
 			children = (
 				665AA0A820DE231D007BFA3E /* PingFang-Bold.ttf */,
-				665AA0A520DE231D007BFA3E /* PingFang-ExtraLight.ttf */,
-				665AA0A620DE231D007BFA3E /* PingFang-Heavy.ttf */,
 				665AA0A920DE231D007BFA3E /* PingFang-Light.ttf */,
 				665AA0AA20DE231D007BFA3E /* PingFang-Medium.ttf */,
 				665AA0A720DE231D007BFA3E /* PingFang-Regular.ttf */,
