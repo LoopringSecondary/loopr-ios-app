@@ -171,6 +171,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        hideNavigationBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {

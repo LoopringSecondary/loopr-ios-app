@@ -130,10 +130,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 if self.isLaunching {
                     self.isLaunching = false
-                    self.assetTableView.reloadData()
-                } else {
-                    
                 }
+                self.assetTableView.reloadData()
                 self.headerViewView.setup()
                 self.refreshControl.endRefreshing()
             }
@@ -161,8 +159,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(balanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(priceQuoteResponseReceivedNotification), name: .priceQuoteResponseReceived, object: nil)
-        
-        self.assetTableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

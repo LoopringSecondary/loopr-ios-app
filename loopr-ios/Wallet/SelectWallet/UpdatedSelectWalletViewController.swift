@@ -49,7 +49,10 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
         viewController.hidesBottomBarWhenPushed = true
         viewController.isPushedInParentViewController = false
         viewController.modalPresentationStyle = .overFullScreen
-        self.navigationController?.present(viewController, animated: true, completion: {
+
+        let newNavigationController = UINavigationController()
+        newNavigationController.setViewControllers([viewController], animated: false)
+        self.navigationController?.present(newNavigationController, animated: true, completion: {
             
         })
     }
