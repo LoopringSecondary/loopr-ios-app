@@ -43,7 +43,7 @@ class ListMnemonicViewController: UIViewController {
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         skipButton.addTarget(self, action: #selector(pressedSkipButton), for: .touchUpInside)
         skipButton.title = NSLocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
-        skipButton.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 12)
+        skipButton.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 12)
         skipButton.setTitleColor(UIColor.init(rgba: "#F2F5F7"), for: .normal)
 
         startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31)

@@ -162,7 +162,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         transactionTipButton.titleColor = UIColor.tokenestBackground
         transactionTipButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont()
         transactionTipButton.contentHorizontalAlignment = .right
-        transactionTipButton.title = "获取推荐油费"
+        transactionTipButton.title = NSLocalizedString("Get Recommended Gas Price", comment: "")
         transactionTipButton.addTarget(self, action: #selector(pressedTipButton(_:)), for: .touchUpInside)
         scrollView.addSubview(transactionTipButton)
         

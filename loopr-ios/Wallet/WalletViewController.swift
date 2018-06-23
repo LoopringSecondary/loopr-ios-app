@@ -11,20 +11,18 @@ import NotificationBannerSwift
 import SwiftTheme
 import SideMenu
 
-class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceDelegate, ContextMenuDelegate, QRCodeScanProtocol, UpdatedSelectWalletViewControllerDelegate {
+class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceDelegate, QRCodeScanProtocol, UpdatedSelectWalletViewControllerDelegate {
 
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
     
     private let refreshControl = UIRefreshControl()
 
-    var assetTableView: UITableView = UITableView()
+    @IBOutlet weak var assetTableView: UITableView!
     var headerViewView = WalletBalanceTableViewCellViewController()
     var headerHeightConstraint: NSLayoutConstraint!
 
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
-
-    var contextMenuSourceView: UIView = UIView()
 
     let buttonInNavigationBar =  UIButton()
     var numberOfRowsInSection1: Int = 0
@@ -39,47 +37,26 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Do any additional setup after loading the view.
         setUpHeader()
-        setUpTableView()
+        // setUpTableView()
         
         self.view.backgroundColor = UIColor.white
 
         view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
         assetTableView.backgroundColor = UIColor.clear
         assetTableView.separatorStyle = .none
-        
-        let qrCodebutton = UIButton(type: UIButtonType.custom)
-        
-        // TODO: smaller images.
-        qrCodebutton.theme_setImage(["QRCode-white", "QRCode-white"], forState: UIControlState.normal)
-        qrCodebutton.setImage(UIImage(named: "QRCode-black")?.alpha(0.3), for: .highlighted)
-        qrCodebutton.addTarget(self, action: #selector(self.pressScanQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
-        qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        _ = UIBarButtonItem(customView: qrCodebutton)
-        // self.navigationItem.leftBarButtonItem = qrCodeBarButton
+        assetTableView.delegate = self
+        assetTableView.dataSource = self
+        assetTableView.estimatedRowHeight = 0
 
-        _ = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        // self.navigationItem.rightBarButtonItem = addBarButton
-        
         // Disable refresh control
         // Add Refresh Control to Table View
         refreshControl.bounds = CGRect.init(x: refreshControl.bounds.origin.x, y: backgroundImageHeight - 10, width: refreshControl.bounds.size.width, height: refreshControl.bounds.size.height)
-        if #available(iOS 10.0, *) {
-            assetTableView.refreshControl = refreshControl
-        } else {
-            // assetTableView.addSubview(refreshControl)
-        }
+        assetTableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
  
-        /*
-        buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
-        buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getNavigationTitleFont()
-        buttonInNavigationBar.theme_setTitleColor(GlobalPicker.navigationBarTextColor, forState: .normal)
-        buttonInNavigationBar.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
-        buttonInNavigationBar.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
-        self.navigationItem.titleView = buttonInNavigationBar
-        */
-        
+        getBalanceFromRelay()
+
         setupNavigationBar()
         bringSubviewsToFront()
     }
@@ -153,8 +130,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 if self.isLaunching {
                     self.isLaunching = false
+                    self.assetTableView.reloadData()
+                } else {
+                    
                 }
-                self.assetTableView.reloadData()
                 self.headerViewView.setup()
                 self.refreshControl.endRefreshing()
             }
@@ -166,15 +145,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         hideNavigationBar()
         
         getBalanceFromRelay()
+
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.startUpdateBalanceLabelTimer()
         }
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         buttonInNavigationBar.title = buttonTitle
-        
-        // TODO: in the new design, no right image
-        // buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -184,6 +161,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(balanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(priceQuoteResponseReceivedNotification), name: .priceQuoteResponseReceived, object: nil)
+        
+        self.assetTableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -272,47 +251,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("pressedSwitchWalletButton")
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
-    
-    @objc func pressAddButton(_ button: UIBarButtonItem) {
-        contextMenuSourceView.frame = CGRect(x: self.view.frame.width-10, y: -5, width: 1, height: 1)
-        view.addSubview(contextMenuSourceView)
-        
-        let icons = [UIImage(named: "Scan-white")!, UIImage(named: "Add-token")!]
-        let titles = [NSLocalizedString("Scan QR Code", comment: ""), NSLocalizedString("Add Token", comment: "")]
-        let menuViewController = AddMenuViewController(rows: 2, titles: titles, icons: icons)
-        menuViewController.didSelectRowClosure = { (index) -> Void in
-            if index == 0 {
-                print("Selected Scan QR code")
-                let viewController = ScanQRCodeViewController()
-                viewController.delegate = self
-                viewController.shouldPop = false
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            } else if index == 1 {
-                print("Selected Add Token")
-                let viewController = AddTokenViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
-        ContextMenu.shared.show(
-            sourceViewController: self,
-            viewController: menuViewController,
-            options: ContextMenu.Options(containerStyle: ContextMenu.ContainerStyle(backgroundColor: UIColor.black), menuStyle: .minimal),
-            sourceView: contextMenuSourceView,
-            delegate: self
-        )
-    }
-    
-    func contextMenuWillDismiss(viewController: UIViewController, animated: Bool) {
-        print("will dismiss")
-    }
-    
-    func contextMenuDidDismiss(viewController: UIViewController, animated: Bool) {
-        print("did dismiss")
-        contextMenuSourceView.removeFromSuperview()
-    }
-    
+
     @objc func balanceResponseReceivedNotification() {
         if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
@@ -465,7 +404,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         NSLayoutConstraint.activate(constraints)
         headerViewView.delegate = self
     }
-    
+
+    // Keep the code. We may use it in the future.
+    /*
     func setUpTableView() {
         assetTableView = UITableView()
         assetTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -480,6 +421,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.dataSource = self
         assetTableView.delegate = self
     }
+    */
     
     func pressedSendButton() {
         let viewController = SendViewController()

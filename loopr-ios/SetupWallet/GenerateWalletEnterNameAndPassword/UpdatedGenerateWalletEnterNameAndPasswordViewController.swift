@@ -117,6 +117,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         walletPasswordInfoLabel.text = NSLocalizedString("Password", comment: "")
         mainScrollView.addSubview(walletPasswordInfoLabel)
         
+        walletPasswordTextField.textContentType = UITextContentType("")
         walletPasswordTextField.isSecureTextEntry = true
         walletPasswordTextField.autocorrectionType = .no
         walletPasswordTextField.delegate = self
@@ -131,6 +132,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         walletRepeatPasswordInfoLabel.text = NSLocalizedString("Repeat Password", comment: "")
         mainScrollView.addSubview(walletRepeatPasswordInfoLabel)
         
+        walletRepeatPasswordTextField.textContentType = UITextContentType("")
         walletRepeatPasswordTextField.isSecureTextEntry = true
         walletRepeatPasswordTextField.autocorrectionType = .no
         walletRepeatPasswordTextField.delegate = self

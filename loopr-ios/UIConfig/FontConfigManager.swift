@@ -30,6 +30,9 @@ class FontConfigManager {
     }
     
     func setup() {
+        let langStr = Locale.current.languageCode
+        print("Current lanaguge: \(langStr?.description)")
+        
         FontBlaster.debugEnabled = true
         FontBlaster.blast { (fonts) -> Void in
             print("Loaded Fonts", fonts)
