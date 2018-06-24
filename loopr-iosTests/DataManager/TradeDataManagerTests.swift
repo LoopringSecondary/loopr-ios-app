@@ -67,4 +67,16 @@ class TradeDataManagerTests: XCTestCase {
         let result = GasDataManager.shared.getGasAmount(by: "lrcFee", in: "LRC")
         print(result)
     }
+    
+    func test5() {
+        for fontFamilyName in UIFont.familyNames {
+            
+            print("family:'%@'",fontFamilyName)
+            for fontName in UIFont.fontNames(forFamilyName: fontFamilyName)
+            {
+                print("\tfont:'%@'",fontName);
+            }
+            print("-------------")
+        }
+    }
 }

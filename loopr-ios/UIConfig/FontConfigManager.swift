@@ -13,7 +13,7 @@ import UIKit
 enum SupportedFonts: String {
     case DIN
     case OpenSans
-    case PingFang
+    case PingFangSC
 }
 
 class FontConfigManager {
@@ -127,8 +127,8 @@ class FontConfigManager {
             return "DINNextLTPro-Medium"
         case .OpenSans:
             return "OpenSans-SemiBold"
-        case .PingFang:
-            return "Pingfang-Medium"
+        case .PingFangSC:
+            return "PingfangSC-Medium"
         }
     }
     
@@ -142,7 +142,7 @@ class FontConfigManager {
     
     func getLabelSCFont(size: CGFloat = 14.0, type: String = "Regular") -> UIFont {
         let fontSize = size * UIStyleConfig.scale
-        return UIFont(name: "Pingfang-\(type)", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+        return UIFont(name: "PingfangSC-\(type)", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
 
     func getButtonTitleLabelFont(size: CGFloat = 17.0) -> UIFont {

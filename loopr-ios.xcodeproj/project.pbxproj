@@ -553,10 +553,6 @@
 		5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6654923520D75C5C006CB3B2 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		6654923620D75C5C006CB3B2 /* SendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendViewController.xib; sourceTree = "<group>"; };
-		665AA0A720DE231D007BFA3E /* PingFang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang-Regular.ttf"; sourceTree = "<group>"; };
-		665AA0A820DE231D007BFA3E /* PingFang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang-Bold.ttf"; sourceTree = "<group>"; };
-		665AA0A920DE231D007BFA3E /* PingFang-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang-Light.ttf"; sourceTree = "<group>"; };
-		665AA0AA20DE231D007BFA3E /* PingFang-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang-Medium.ttf"; sourceTree = "<group>"; };
 		69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringSocketIORequest.swift; sourceTree = "<group>"; };
@@ -1092,17 +1088,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		66FCD73520DA5E0900AA4D57 /* PingFang */ = {
-			isa = PBXGroup;
-			children = (
-				665AA0A820DE231D007BFA3E /* PingFang-Bold.ttf */,
-				665AA0A920DE231D007BFA3E /* PingFang-Light.ttf */,
-				665AA0AA20DE231D007BFA3E /* PingFang-Medium.ttf */,
-				665AA0A720DE231D007BFA3E /* PingFang-Regular.ttf */,
-			);
-			path = PingFang;
-			sourceTree = "<group>";
-		};
 		9413F68F20B8028B00524D2D /* Amount */ = {
 			isa = PBXGroup;
 			children = (
@@ -1492,7 +1477,6 @@
 		AC54FD26204FC61C007E1DEB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				66FCD73520DA5E0900AA4D57 /* PingFang */,
 				AC54FD27204FC645007E1DEB /* DIN */,
 				AC72AEEB204FB29600E9D3B0 /* OpenSans */,
 			);
