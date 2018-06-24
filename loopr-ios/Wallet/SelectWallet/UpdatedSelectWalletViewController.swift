@@ -72,11 +72,19 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
     }
     
     @objc func pressedImportButton(_ sender: UIButton) {
-        let viewController = UnlockWalletViewController()
+        let viewController = UpdatedUnlockWalletViewController()
         viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
+        viewController.isPushedInParentViewController = false
+        viewController.modalPresentationStyle = .overFullScreen
+        
+        let newNavigationController = UINavigationController()
+        newNavigationController.modalPresentationStyle = .overFullScreen
+        newNavigationController.setViewControllers([viewController], animated: false)
+        self.navigationController?.present(newNavigationController, animated: true, completion: {
+            
+        })
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AppWalletDataManager.shared.getWallets().count
     }

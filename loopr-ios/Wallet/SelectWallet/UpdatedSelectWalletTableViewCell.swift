@@ -43,6 +43,9 @@ class UpdatedSelectWalletTableViewCell: UITableViewCell {
                 baseView.layer.borderColor = UIColor.clear.cgColor
                 baseView.backgroundColor = UIColor.init(rgba: "#2E2BA4").withAlphaComponent(0.7)
             }
+        } else {
+            print("reset color")
+            update()
         }
     }
 

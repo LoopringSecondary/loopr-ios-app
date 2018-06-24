@@ -188,42 +188,6 @@
 		AC31CE47205B604900A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
 		AC31CE48205B604A00A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
 		AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE4A205B83B600A30335 /* TradeTokenView.swift */; };
-		AC31CE59205B993B00A30335 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4E205B991A00A30335 /* Roboto-Black.ttf */; };
-		AC31CE5A205B993B00A30335 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4E205B991A00A30335 /* Roboto-Black.ttf */; };
-		AC31CE5B205B993C00A30335 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4E205B991A00A30335 /* Roboto-Black.ttf */; };
-		AC31CE5C205B993E00A30335 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE51205B991B00A30335 /* Roboto-BlackItalic.ttf */; };
-		AC31CE5D205B993E00A30335 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE51205B991B00A30335 /* Roboto-BlackItalic.ttf */; };
-		AC31CE5E205B993F00A30335 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE51205B991B00A30335 /* Roboto-BlackItalic.ttf */; };
-		AC31CE5F205B994200A30335 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE56205B991C00A30335 /* Roboto-Bold.ttf */; };
-		AC31CE60205B994300A30335 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE56205B991C00A30335 /* Roboto-Bold.ttf */; };
-		AC31CE61205B994300A30335 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE56205B991C00A30335 /* Roboto-Bold.ttf */; };
-		AC31CE62205B994700A30335 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE52205B991B00A30335 /* Roboto-BoldItalic.ttf */; };
-		AC31CE63205B994700A30335 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE52205B991B00A30335 /* Roboto-BoldItalic.ttf */; };
-		AC31CE64205B994800A30335 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE52205B991B00A30335 /* Roboto-BoldItalic.ttf */; };
-		AC31CE65205B994A00A30335 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE54205B991B00A30335 /* Roboto-Italic.ttf */; };
-		AC31CE66205B994B00A30335 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE54205B991B00A30335 /* Roboto-Italic.ttf */; };
-		AC31CE67205B994C00A30335 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE54205B991B00A30335 /* Roboto-Italic.ttf */; };
-		AC31CE68205B994E00A30335 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE55205B991C00A30335 /* Roboto-Light.ttf */; };
-		AC31CE69205B994E00A30335 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE55205B991C00A30335 /* Roboto-Light.ttf */; };
-		AC31CE6A205B994F00A30335 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE55205B991C00A30335 /* Roboto-Light.ttf */; };
-		AC31CE6B205B995100A30335 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4F205B991A00A30335 /* Roboto-LightItalic.ttf */; };
-		AC31CE6C205B995200A30335 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4F205B991A00A30335 /* Roboto-LightItalic.ttf */; };
-		AC31CE6D205B995300A30335 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4F205B991A00A30335 /* Roboto-LightItalic.ttf */; };
-		AC31CE6E205B995500A30335 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE53205B991B00A30335 /* Roboto-Medium.ttf */; };
-		AC31CE6F205B995600A30335 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE53205B991B00A30335 /* Roboto-Medium.ttf */; };
-		AC31CE70205B995600A30335 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE53205B991B00A30335 /* Roboto-Medium.ttf */; };
-		AC31CE71205B995900A30335 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE50205B991A00A30335 /* Roboto-MediumItalic.ttf */; };
-		AC31CE72205B995A00A30335 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE50205B991A00A30335 /* Roboto-MediumItalic.ttf */; };
-		AC31CE73205B995A00A30335 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE50205B991A00A30335 /* Roboto-MediumItalic.ttf */; };
-		AC31CE74205B996000A30335 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE58205B991D00A30335 /* Roboto-Regular.ttf */; };
-		AC31CE75205B996100A30335 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE58205B991D00A30335 /* Roboto-Regular.ttf */; };
-		AC31CE76205B996200A30335 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE58205B991D00A30335 /* Roboto-Regular.ttf */; };
-		AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE57205B991C00A30335 /* Roboto-Thin.ttf */; };
-		AC31CE78205B996400A30335 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE57205B991C00A30335 /* Roboto-Thin.ttf */; };
-		AC31CE79205B996500A30335 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE57205B991C00A30335 /* Roboto-Thin.ttf */; };
-		AC31CE7A205B996700A30335 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4D205B991900A30335 /* Roboto-ThinItalic.ttf */; };
-		AC31CE7B205B996700A30335 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4D205B991900A30335 /* Roboto-ThinItalic.ttf */; };
-		AC31CE7C205B996800A30335 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4D205B991900A30335 /* Roboto-ThinItalic.ttf */; };
 		AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */; };
 		AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */; };
 		AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */; };
@@ -294,36 +258,6 @@
 		AC5288B4208300580002AEAD /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B1208300570002AEAD /* DateUtil.swift */; };
 		AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */; };
 		AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */; };
-		AC54FD55204FC6BD007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
-		AC54FD56204FC6BE007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
-		AC54FD57204FC6BF007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
-		AC54FD58204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */; };
-		AC54FD59204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */; };
-		AC54FD5A204FC6C2007E1DEB /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */; };
-		AC54FD5B204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */; };
-		AC54FD5C204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */; };
-		AC54FD5D204FC6C5007E1DEB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */; };
-		AC54FD5E204FC6C7007E1DEB /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */; };
-		AC54FD5F204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */; };
-		AC54FD60204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */; };
-		AC54FD61204FC6CA007E1DEB /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */; };
-		AC54FD62204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */; };
-		AC54FD63204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */; };
-		AC54FD64204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */; };
-		AC54FD65204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */; };
-		AC54FD66204FC6CF007E1DEB /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */; };
-		AC54FD67204FC6D1007E1DEB /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */; };
-		AC54FD68204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */; };
-		AC54FD69204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */; };
-		AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */; };
-		AC54FD6B204FC6D5007E1DEB /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */; };
-		AC54FD6C204FC6D6007E1DEB /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */; };
-		AC54FD6D204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */; };
-		AC54FD6E204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */; };
-		AC54FD6F204FC6DA007E1DEB /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */; };
-		AC54FD70204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */; };
-		AC54FD71204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */; };
-		AC54FD72204FC6DD007E1DEB /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */; };
 		AC54FD73204FC6E1007E1DEB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD21204FC3F9007E1DEB /* OpenSans-Bold.ttf */; };
 		AC54FD74204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD21204FC3F9007E1DEB /* OpenSans-Bold.ttf */; };
 		AC54FD75204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD21204FC3F9007E1DEB /* OpenSans-Bold.ttf */; };
@@ -418,6 +352,11 @@
 		AC83858E20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC83858C20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib */; };
 		AC83859120DE179E00438B25 /* UpdatedSelectWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC83858F20DE179E00438B25 /* UpdatedSelectWalletTableViewCell.swift */; };
 		AC83859220DE179E00438B25 /* UpdatedSelectWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC83859020DE179E00438B25 /* UpdatedSelectWalletTableViewCell.xib */; };
+		AC83859620DF1A3700438B25 /* UpdatedUnlockWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC83859420DF1A3700438B25 /* UpdatedUnlockWalletViewController.swift */; };
+		AC83859720DF1A3700438B25 /* UpdatedUnlockWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC83859520DF1A3700438B25 /* UpdatedUnlockWalletViewController.xib */; };
+		AC83859920DF353100438B25 /* UpdatedUnlockWalletViewController+ImportUsingKeystore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC83859820DF353100438B25 /* UpdatedUnlockWalletViewController+ImportUsingKeystore.swift */; };
+		AC83859B20DF35DE00438B25 /* UpdatedUnlockWalletViewController+ImportUsingMnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC83859A20DF35DE00438B25 /* UpdatedUnlockWalletViewController+ImportUsingMnemonic.swift */; };
+		AC83859D20DF361C00438B25 /* UpdatedUnlockWalletViewController+ImportUsingPrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC83859C20DF361C00438B25 /* UpdatedUnlockWalletViewController+ImportUsingPrivateKey.swift */; };
 		AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */; };
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
@@ -783,18 +722,6 @@
 		AC31CE2F205B5FFF00A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DIN-Next-LT-Pro-UltraLight.ttf"; sourceTree = "<group>"; };
 		AC31CE30205B600000A30335 /* Linotype-DINNextLTPro-LightCondensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextLTPro-LightCondensed.otf"; sourceTree = "<group>"; };
 		AC31CE4A205B83B600A30335 /* TradeTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTokenView.swift; sourceTree = "<group>"; };
-		AC31CE4D205B991900A30335 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		AC31CE4E205B991A00A30335 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
-		AC31CE4F205B991A00A30335 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
-		AC31CE50205B991A00A30335 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
-		AC31CE51205B991B00A30335 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
-		AC31CE52205B991B00A30335 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
-		AC31CE53205B991B00A30335 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		AC31CE54205B991B00A30335 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
-		AC31CE55205B991C00A30335 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
-		AC31CE56205B991C00A30335 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		AC31CE57205B991C00A30335 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		AC31CE58205B991D00A30335 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
 		AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletSwipeViewController.swift; sourceTree = "<group>"; };
 		AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockWalletSwipeViewController.xib; sourceTree = "<group>"; };
@@ -875,16 +802,6 @@
 		AC54FD23204FC3FA007E1DEB /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		AC54FD24204FC3FA007E1DEB /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
-		AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
-		AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
-		AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
-		AC54FD37204FC686007E1DEB /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
-		AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
-		AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
-		AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
-		AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
-		AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		AC54FD91204FD291007E1DEB /* FontConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConfigManager.swift; sourceTree = "<group>"; };
 		AC5572FE20A6914300ACDEC9 /* OrderBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBook.swift; sourceTree = "<group>"; };
 		AC56625920563C05003C925C /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
@@ -955,6 +872,11 @@
 		AC83858C20DCCE9E00438B25 /* UpdatedSelectWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedSelectWalletViewController.xib; sourceTree = "<group>"; };
 		AC83858F20DE179E00438B25 /* UpdatedSelectWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedSelectWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AC83859020DE179E00438B25 /* UpdatedSelectWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedSelectWalletTableViewCell.xib; sourceTree = "<group>"; };
+		AC83859420DF1A3700438B25 /* UpdatedUnlockWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedUnlockWalletViewController.swift; sourceTree = "<group>"; };
+		AC83859520DF1A3700438B25 /* UpdatedUnlockWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedUnlockWalletViewController.xib; sourceTree = "<group>"; };
+		AC83859820DF353100438B25 /* UpdatedUnlockWalletViewController+ImportUsingKeystore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdatedUnlockWalletViewController+ImportUsingKeystore.swift"; sourceTree = "<group>"; };
+		AC83859A20DF35DE00438B25 /* UpdatedUnlockWalletViewController+ImportUsingMnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdatedUnlockWalletViewController+ImportUsingMnemonic.swift"; sourceTree = "<group>"; };
+		AC83859C20DF361C00438B25 /* UpdatedUnlockWalletViewController+ImportUsingPrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdatedUnlockWalletViewController+ImportUsingPrivateKey.swift"; sourceTree = "<group>"; };
 		AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1390,28 +1312,14 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
-		AC31CE4C205B98FC00A30335 /* Roboto */ = {
-			isa = PBXGroup;
-			children = (
-				AC31CE4E205B991A00A30335 /* Roboto-Black.ttf */,
-				AC31CE51205B991B00A30335 /* Roboto-BlackItalic.ttf */,
-				AC31CE56205B991C00A30335 /* Roboto-Bold.ttf */,
-				AC31CE52205B991B00A30335 /* Roboto-BoldItalic.ttf */,
-				AC31CE54205B991B00A30335 /* Roboto-Italic.ttf */,
-				AC31CE55205B991C00A30335 /* Roboto-Light.ttf */,
-				AC31CE4F205B991A00A30335 /* Roboto-LightItalic.ttf */,
-				AC31CE53205B991B00A30335 /* Roboto-Medium.ttf */,
-				AC31CE50205B991A00A30335 /* Roboto-MediumItalic.ttf */,
-				AC31CE58205B991D00A30335 /* Roboto-Regular.ttf */,
-				AC31CE57205B991C00A30335 /* Roboto-Thin.ttf */,
-				AC31CE4D205B991900A30335 /* Roboto-ThinItalic.ttf */,
-			);
-			path = Roboto;
-			sourceTree = "<group>";
-		};
 		AC3756752038D70D00AADC60 /* UnlockWallet */ = {
 			isa = PBXGroup;
 			children = (
+				AC83859420DF1A3700438B25 /* UpdatedUnlockWalletViewController.swift */,
+				AC83859520DF1A3700438B25 /* UpdatedUnlockWalletViewController.xib */,
+				AC83859820DF353100438B25 /* UpdatedUnlockWalletViewController+ImportUsingKeystore.swift */,
+				AC83859A20DF35DE00438B25 /* UpdatedUnlockWalletViewController+ImportUsingMnemonic.swift */,
+				AC83859C20DF361C00438B25 /* UpdatedUnlockWalletViewController+ImportUsingPrivateKey.swift */,
 				AC6EC87220D72D3700A34DF0 /* UnlockWalletViewController.swift */,
 				AC6EC87320D72D3700A34DF0 /* UnlockWalletViewController.xib */,
 				AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */,
@@ -1430,10 +1338,7 @@
 		AC375686203A7B0A00AADC60 /* SelectWallet */ = {
 			isa = PBXGroup;
 			children = (
-				AC375682203A641200AADC60 /* SelectWalletViewController.swift */,
-				AC375683203A641200AADC60 /* SelectWalletViewController.xib */,
-				AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */,
-				AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */,
+				AC83859320DF19A200438B25 /* Archive */,
 				94EB84DA2095E69600FFE40E /* AssetCollectionViewCell.swift */,
 				94EB84DB2095E69600FFE40E /* AssetCollectionViewCell.xib */,
 				AC83858B20DCCE9E00438B25 /* UpdatedSelectWalletViewController.swift */,
@@ -1589,9 +1494,7 @@
 			children = (
 				66FCD73520DA5E0900AA4D57 /* PingFang */,
 				AC54FD27204FC645007E1DEB /* DIN */,
-				AC54FD32204FC672007E1DEB /* Lato */,
 				AC72AEEB204FB29600E9D3B0 /* OpenSans */,
-				AC31CE4C205B98FC00A30335 /* Roboto */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -1609,23 +1512,6 @@
 				AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */,
 			);
 			path = DIN;
-			sourceTree = "<group>";
-		};
-		AC54FD32204FC672007E1DEB /* Lato */ = {
-			isa = PBXGroup;
-			children = (
-				AC54FD37204FC686007E1DEB /* Lato-Black.ttf */,
-				AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */,
-				AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */,
-				AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */,
-				AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */,
-				AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */,
-				AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */,
-				AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */,
-				AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */,
-				AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */,
-			);
-			path = Lato;
 			sourceTree = "<group>";
 		};
 		AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */ = {
@@ -1861,6 +1747,17 @@
 				AC798E662022B93B0071D477 /* Info.plist */,
 			);
 			path = "loopr-iosUITests";
+			sourceTree = "<group>";
+		};
+		AC83859320DF19A200438B25 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				AC375682203A641200AADC60 /* SelectWalletViewController.swift */,
+				AC375683203A641200AADC60 /* SelectWalletViewController.xib */,
+				AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */,
+				AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */,
+			);
+			path = Archive;
 			sourceTree = "<group>";
 		};
 		AC9280DF202EC5130009B574 /* Trade */ = {
@@ -2617,15 +2514,12 @@
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
 				AC5E0DDF203B447700AF03C7 /* WalletBalanceTableViewCell.xib in Resources */,
 				ACFEFEB020C3CA4800013921 /* AssetMarketTableViewCell.xib in Resources */,
-				AC31CE5C205B993E00A30335 /* Roboto-BlackItalic.ttf in Resources */,
 				94E665EA207234C5001328BF /* OrderTableViewCell.xib in Resources */,
-				AC54FD64204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
 				94C5E79520738ADE0074B939 /* OrderSearchViewController.xib in Resources */,
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
 				ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
 				AC8DBC7820BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib in Resources */,
-				AC31CE5F205B994200A30335 /* Roboto-Bold.ttf in Resources */,
 				94189CC22078B88700AA2CF4 /* OrderSearchResultViewController.xib in Resources */,
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
@@ -2635,7 +2529,6 @@
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeViewController.xib in Resources */,
-				AC31CE59205B993B00A30335 /* Roboto-Black.ttf in Resources */,
 				ACA677CA2079D5A000D34A2F /* DisplayPrivateKeyViewController.xib in Resources */,
 				ACA677C52079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib in Resources */,
 				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
@@ -2648,17 +2541,14 @@
 				AC54FD85204FC6F5007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
 				ACFEFEAA20C3986E00013921 /* AssetMarketViewController.xib in Resources */,
 				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
-				AC54FD58204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */,
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
 				ACC8D0A720CC95A00049A741 /* UpdatedAssetTableViewCell.xib in Resources */,
-				AC31CE71205B995900A30335 /* Roboto-MediumItalic.ttf in Resources */,
 				ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */,
 				AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */,
 				AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
 				ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */,
 				AC31CE1D205A2F0100A30335 /* SwitchTradeTokenViewController.xib in Resources */,
-				AC31CE68205B994E00A30335 /* Roboto-Light.ttf in Resources */,
 				ACC8D0AB20CCF6C30049A741 /* UpdatedAssetTransactionTableViewCell.xib in Resources */,
 				AC5E3E71205DFB700051ACFC /* SendAssetViewController.xib in Resources */,
 				ACBA47E7207890910032C2B4 /* SettingManageWalletTableViewCell.xib in Resources */,
@@ -2667,12 +2557,10 @@
 				AC6EC87920D7678700A34DF0 /* AppSettingViewController.xib in Resources */,
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
 				943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */,
-				AC31CE6B205B995100A30335 /* Roboto-LightItalic.ttf in Resources */,
 				AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
 				AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */,
 				AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */,
 				943C1CB320CE26CE008A8CED /* LoginResultViewController.xib in Resources */,
-				AC31CE7A205B996700A30335 /* Roboto-ThinItalic.ttf in Resources */,
 				AC06193A208401EB0060F416 /* MnemonicAddressTableViewCell.xib in Resources */,
 				ACB746E62043C5F5006C2BF5 /* QRCodeViewController.xib in Resources */,
 				AC54FD73204FC6E1007E1DEB /* OpenSans-Bold.ttf in Resources */,
@@ -2680,7 +2568,6 @@
 				AC6466092083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.xib in Resources */,
 				ACC8D0B120CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib in Resources */,
 				ACE65E422071F875001EE499 /* MnemonicCollectionViewController.xib in Resources */,
-				AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
 				ACB8485A20BA75E7006B83AD /* SettingPasscodeTableViewCell.xib in Resources */,
 				AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */,
 				AC31CE46205B604800A30335 /* Linotype-DINNextW1G-Light.otf in Resources */,
@@ -2691,39 +2578,30 @@
 				AC13B30F2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
 				AC30C66520DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.xib in Resources */,
-				AC54FD70204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */,
 				AC4D02E620D6DE35007F087B /* UpdatedSettingViewController.xib in Resources */,
 				AC9ADF92205EE3B900CBE368 /* ConvertETHViewController.xib in Resources */,
 				ACFEFEA620C392F800013921 /* AssetSwipeViewController.xib in Resources */,
 				ACEC978020AD57F3003F9DEB /* P2POrderHistoryViewController.xib in Resources */,
 				AC99CF4F2083E4AF000AE4BD /* MnemonicSelectAddressViewController.xib in Resources */,
-				AC31CE74205B996000A30335 /* Roboto-Regular.ttf in Resources */,
-				AC54FD61204FC6CA007E1DEB /* Lato-Hairline.ttf in Resources */,
 				AC4C144C204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib in Resources */,
 				94C11FD7208C2DC60050E180 /* SettingCurrencyViewController.xib in Resources */,
 				AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */,
 				AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */,
 				ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */,
 				AC54FD7C204FC6EB007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
-				AC31CE62205B994700A30335 /* Roboto-BoldItalic.ttf in Resources */,
-				AC54FD55204FC6BD007E1DEB /* Lato-Black.ttf in Resources */,
 				ACE65E4620720500001EE499 /* MnemonicCollectionViewCell.xib in Resources */,
-				AC31CE6E205B995500A30335 /* Roboto-Medium.ttf in Resources */,
 				AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */,
 				AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */,
 				AC6EC87520D72D3700A34DF0 /* UnlockWalletViewController.xib in Resources */,
 				AC54FD76204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
 				940B45292060F67E00ADE2B9 /* gas_limit.json in Resources */,
-				AC54FD6D204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */,
 				AC30C66E20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.xib in Resources */,
-				AC31CE65205B994A00A30335 /* Roboto-Italic.ttf in Resources */,
 				9475A2EF207EF81300200155 /* OrderDetailViewController.xib in Resources */,
 				AC68E10320C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.xib in Resources */,
 				ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */,
-				AC54FD5E204FC6C7007E1DEB /* Lato-BoldItalic.ttf in Resources */,
 				AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */,
 				AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
@@ -2731,12 +2609,12 @@
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
 				AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */,
 				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
-				AC54FD67204FC6D1007E1DEB /* Lato-Italic.ttf in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
 				ACA677C1207997F400D34A2F /* DisplayKeystoreViewController.xib in Resources */,
 				AC31CE43205B604500A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */,
 				6654923820D75C5C006CB3B2 /* SendViewController.xib in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
+				AC83859720DF1A3700438B25 /* UpdatedUnlockWalletViewController.xib in Resources */,
 				ACB729D5205DE21B00DD4DF3 /* TradeConfirmationViewController.xib in Resources */,
 				ACC8D0A320CC6F080049A741 /* ExportMnemonicViewController.xib in Resources */,
 				AC5E0992205F256500801738 /* AddTokenViewController.xib in Resources */,
@@ -2753,7 +2631,6 @@
 				945800212058FEB500E08DEF /* tokens.json in Resources */,
 				AC83859220DE179E00438B25 /* UpdatedSelectWalletTableViewCell.xib in Resources */,
 				AC45EFF820D0D9B4004F6EC0 /* my_page.html in Resources */,
-				AC54FD5B204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
 				AC9A274120A6144700DB04AC /* OrderNoDataTableViewCell.xib in Resources */,
 				ACBA47E320788ECD0032C2B4 /* SettingManageWalletViewController.xib in Resources */,
 				9498E3ED2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib in Resources */,
@@ -2763,7 +2640,6 @@
 				94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */,
 				AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */,
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
-				AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
 				AC30C65C20D99393004436D8 /* WalletBalanceTableViewCellViewController.xib in Resources */,
 				AC54FD88204FC6F8007E1DEB /* OpenSans-Regular.ttf in Resources */,
@@ -2774,48 +2650,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC31CE63205B994700A30335 /* Roboto-BoldItalic.ttf in Resources */,
 				AC54FD83204FC6F3007E1DEB /* OpenSans-Light.ttf in Resources */,
-				AC31CE75205B996100A30335 /* Roboto-Regular.ttf in Resources */,
 				AC31CE44205B604600A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */,
-				AC54FD69204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */,
 				AC54FD8C204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
 				AC54FD7A204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
-				AC31CE5A205B993B00A30335 /* Roboto-Black.ttf in Resources */,
-				AC54FD6B204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
-				AC31CE5D205B993E00A30335 /* Roboto-BlackItalic.ttf in Resources */,
 				AC4F601A2077536400F1D954 /* testKeystore.json in Resources */,
 				AC31CE32205B602E00A30335 /* DIN-Bold.otf in Resources */,
-				AC54FD65204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
 				AC31CE3B205B603B00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */,
 				AC54FD7D204FC6EC007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				AC54FD80204FC6EF007E1DEB /* OpenSans-Italic.ttf in Resources */,
 				AC31CE41205B604200A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC54FD89204FC6F9007E1DEB /* OpenSans-Regular.ttf in Resources */,
-				AC54FD71204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */,
 				AC54FD74204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */,
-				AC54FD5F204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */,
-				AC54FD5C204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
 				AC1E4BC2204B52FD00C6B1FA /* wallet.json in Resources */,
-				AC54FD56204FC6BE007E1DEB /* Lato-Black.ttf in Resources */,
-				AC31CE6C205B995200A30335 /* Roboto-LightItalic.ttf in Resources */,
-				AC31CE7B205B996700A30335 /* Roboto-ThinItalic.ttf in Resources */,
 				AC54FD77204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
 				AC1E4BC4204B533000C6B1FA /* key.json in Resources */,
-				AC54FD59204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */,
 				AC31CE35205B603300A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
-				AC31CE69205B994E00A30335 /* Roboto-Light.ttf in Resources */,
-				AC31CE72205B995A00A30335 /* Roboto-MediumItalic.ttf in Resources */,
-				AC31CE6F205B995600A30335 /* Roboto-Medium.ttf in Resources */,
-				AC54FD62204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */,
-				AC31CE60205B994300A30335 /* Roboto-Bold.ttf in Resources */,
 				AC54FD8F204FC700007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				AC31CE47205B604900A30335 /* Linotype-DINNextW1G-Light.otf in Resources */,
-				AC54FD6E204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */,
 				AC31CE3E205B603E00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */,
-				AC31CE66205B994B00A30335 /* Roboto-Italic.ttf in Resources */,
 				AC31CE38205B603700A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */,
-				AC31CE78205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				AC54FD86204FC6F6007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2824,29 +2678,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC54FD63204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */,
-				AC54FD5D204FC6C5007E1DEB /* Lato-Bold.ttf in Resources */,
-				AC31CE6D205B995300A30335 /* Roboto-LightItalic.ttf in Resources */,
 				AC54FD7B204FC6E9007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
 				AC31CE33205B602F00A30335 /* DIN-Bold.otf in Resources */,
-				AC54FD57204FC6BF007E1DEB /* Lato-Black.ttf in Resources */,
-				AC54FD66204FC6CF007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
 				AC54FD75204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */,
-				AC31CE70205B995600A30335 /* Roboto-Medium.ttf in Resources */,
-				AC31CE5E205B993F00A30335 /* Roboto-BlackItalic.ttf in Resources */,
-				AC31CE5B205B993C00A30335 /* Roboto-Black.ttf in Resources */,
-				AC31CE79205B996500A30335 /* Roboto-Thin.ttf in Resources */,
-				AC54FD60204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */,
-				AC31CE64205B994800A30335 /* Roboto-BoldItalic.ttf in Resources */,
-				AC54FD5A204FC6C2007E1DEB /* Lato-BlackItalic.ttf in Resources */,
-				AC31CE6A205B994F00A30335 /* Roboto-Light.ttf in Resources */,
 				AC54FD7E204FC6EC007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				AC54FD81204FC6F0007E1DEB /* OpenSans-Italic.ttf in Resources */,
 				AC54FD90204FC701007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				AC31CE3F205B603F00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */,
-				AC31CE7C205B996800A30335 /* Roboto-ThinItalic.ttf in Resources */,
-				AC54FD6F204FC6DA007E1DEB /* Lato-LightItalic.ttf in Resources */,
-				AC54FD68204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */,
 				AC54FD78204FC6E6007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
 				AC31CE3C205B603B00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */,
 				AC54FD84204FC6F3007E1DEB /* OpenSans-Light.ttf in Resources */,
@@ -2854,16 +2692,10 @@
 				AC31CE48205B604A00A30335 /* Linotype-DINNextW1G-Light.otf in Resources */,
 				AC31CE42205B604200A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC54FD8D204FC6FD007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
-				AC31CE73205B995A00A30335 /* Roboto-MediumItalic.ttf in Resources */,
 				AC31CE39205B603700A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */,
 				AC31CE36205B603400A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
 				AC54FD87204FC6F6007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
-				AC54FD72204FC6DD007E1DEB /* Lato-Regular.ttf in Resources */,
 				AC54FD8A204FC6FA007E1DEB /* OpenSans-Regular.ttf in Resources */,
-				AC31CE76205B996200A30335 /* Roboto-Regular.ttf in Resources */,
-				AC31CE61205B994300A30335 /* Roboto-Bold.ttf in Resources */,
-				AC31CE67205B994C00A30335 /* Roboto-Italic.ttf in Resources */,
-				AC54FD6C204FC6D6007E1DEB /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3086,6 +2918,7 @@
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
 				AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */,
 				ACD2D93B20D8977600580360 /* TradingSettingViewController.swift in Sources */,
+				AC83859B20DF35DE00438B25 /* UpdatedUnlockWalletViewController+ImportUsingMnemonic.swift in Sources */,
 				948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */,
 				AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */,
 				94A39E1320C8E4FE00BC1B72 /* SignStatus.swift in Sources */,
@@ -3099,6 +2932,7 @@
 				ACB8485920BA75E7006B83AD /* SettingPasscodeTableViewCell.swift in Sources */,
 				AC500BC920B6770E0073E590 /* AuthenticationTimingType.swift in Sources */,
 				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
+				AC83859620DF1A3700438B25 /* UpdatedUnlockWalletViewController.swift in Sources */,
 				AC4141F920352DA70089861D /* SwipeTabView.swift in Sources */,
 				AC4141F320352C460089861D /* SwipeViewController.swift in Sources */,
 				ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */,
@@ -3197,6 +3031,7 @@
 				AC30C66420DA3396004436D8 /* UpdatedGenerateWalletEnterNameAndPasswordViewController.swift in Sources */,
 				940B45232060F67E00ADE2B9 /* CurrentAppWalletDataManager.swift in Sources */,
 				ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */,
+				AC83859920DF353100438B25 /* UpdatedUnlockWalletViewController+ImportUsingKeystore.swift in Sources */,
 				C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */,
 				940B45262060F67E00ADE2B9 /* ConvertDataManager.swift in Sources */,
 				ACB6A1A120966BC0004C64BC /* DefaultNotificationBanner.swift in Sources */,
@@ -3289,6 +3124,7 @@
 				9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */,
 				ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */,
 				AC72AEEA204F038300E9D3B0 /* OrderTradeError.swift in Sources */,
+				AC83859D20DF361C00438B25 /* UpdatedUnlockWalletViewController+ImportUsingPrivateKey.swift in Sources */,
 				AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */,
 				AC13B30E2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift in Sources */,
 				6654923720D75C5C006CB3B2 /* SendViewController.swift in Sources */,
@@ -3595,6 +3431,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loopr-ios.app/loopr-ios";
@@ -3618,6 +3455,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loopr-ios.app/loopr-ios";

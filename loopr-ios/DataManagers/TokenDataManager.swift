@@ -36,12 +36,11 @@ class TokenDataManager {
 
     func getTokenList() -> [String] {
         return tokenList
-        // return whiteList
     }
 
     func getTokenListFromLocalStorage() {
         let defaults = UserDefaults.standard
-        tokenList = defaults.array(forKey: UserDefaultsKeys.tokenList.rawValue) as? [String] ?? ["ETH"]
+        tokenList = defaults.array(forKey: UserDefaultsKeys.tokenList.rawValue) as? [String] ?? ["ETH", "LRC"]
         tokenList = Array(NSOrderedSet(array: tokenList)) as! [String]
     }
     
