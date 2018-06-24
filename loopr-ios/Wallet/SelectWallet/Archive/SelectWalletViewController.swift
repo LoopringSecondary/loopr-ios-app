@@ -79,7 +79,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @objc func pressedImportButton(_ sender: UIButton) {
-        let viewController = UnlockWalletViewController()
+        let viewController = UnlockWalletViewController_Archive()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

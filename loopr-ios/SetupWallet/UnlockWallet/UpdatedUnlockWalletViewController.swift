@@ -31,7 +31,8 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
     var infoImage: UIImageView = UIImageView()
     var infoLabel: UILabel = UILabel()
 
-    var importMethod: QRCodeMethod = .importUsingKeystore
+    // var importMethod: QRCodeMethod = .importUsingKeystore
+    var importMethod: QRCodeMethod = .importUsingPrivateKey
     var importMethodSelection: UIButton = UIButton()
     
     var contentTextView: UITextView = UITextView()
@@ -139,6 +140,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             doneBarButton]
         numberToolbar.sizeToFit()
         
+        contentTextView.inputAccessoryView = numberToolbar
         passwordTextField.inputAccessoryView = numberToolbar
     }
 
@@ -222,6 +224,10 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
     }
     
     @objc func pressedContinueButton(_ sender: Any) {
+        let viewController = UpdatedImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        /*
         if importMethod == .importUsingKeystore {
             let keystoreString = self.contentTextView.text ?? ""
             let password = passwordTextField.text ?? ""
@@ -232,6 +238,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         } else if importMethod == .importUsingMnemonic {
             continueImportUsingMnemonic()
         }
+        */
     }
     
     

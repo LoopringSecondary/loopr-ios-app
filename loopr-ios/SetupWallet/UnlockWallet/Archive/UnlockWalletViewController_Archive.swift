@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UnlockWalletViewController: UIViewController {
+class UnlockWalletViewController_Archive: UIViewController {
 
     @IBOutlet weak var statusBarBackgroundView: UIView!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!    

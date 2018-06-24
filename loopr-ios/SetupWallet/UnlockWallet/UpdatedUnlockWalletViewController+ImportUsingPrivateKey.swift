@@ -79,4 +79,9 @@ extension UpdatedUnlockWalletViewController {
         }
     }
     
+    func continueImportUsingPrivateKeyJumpToNextViewController() {
+        let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }

@@ -50,14 +50,18 @@ extension UpdatedUnlockWalletViewController {
                     self.present(alert, animated: true, completion: nil)
                     return
                 }
-                let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
-                self.navigationController?.pushViewController(viewController, animated: true)
+                self.continueImportUsingKeystoreJumpToNextViewController()
             } else {
                 let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
                 banner.duration = 1.5
                 banner.show()
             }
         }
+    }
+    
+    func continueImportUsingKeystoreJumpToNextViewController() {
+        let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

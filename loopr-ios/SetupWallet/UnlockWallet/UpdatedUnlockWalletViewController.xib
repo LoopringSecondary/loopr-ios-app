@@ -59,7 +59,7 @@
                     <state key="normal" image="Tokenest-setup-back-button"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHD-p6-GcY">
-                    <rect key="frame" x="43" y="66" width="316" height="40"/>
+                    <rect key="frame" x="43" y="65" width="316" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="t6e-JL-d7S"/>
                     </constraints>
@@ -80,7 +80,7 @@
             <constraints>
                 <constraint firstItem="QHD-p6-GcY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="43" id="58v-si-mCz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QHD-p6-GcY" secondAttribute="trailing" constant="16" id="5b0-aM-qem"/>
-                <constraint firstItem="QHD-p6-GcY" firstAttribute="top" secondItem="nM1-Sa-Lln" secondAttribute="bottom" constant="2" id="6Q0-Eu-HiR"/>
+                <constraint firstItem="QHD-p6-GcY" firstAttribute="top" secondItem="iyk-zw-gqr" secondAttribute="bottom" constant="2" id="6Q0-Eu-HiR"/>
                 <constraint firstItem="965-jF-1jK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9L5-TG-O3w"/>
                 <constraint firstItem="iyk-zw-gqr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-1" id="Gh8-ao-wMM"/>
                 <constraint firstItem="965-jF-1jK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HPy-TX-iDr"/>
