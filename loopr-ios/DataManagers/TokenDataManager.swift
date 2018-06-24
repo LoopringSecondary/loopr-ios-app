@@ -131,6 +131,4 @@ class TokenDataManager {
             return nil
         }
     }
-    
-    
 }

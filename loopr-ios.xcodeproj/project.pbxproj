@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66329C7220DF62BD0038DCF8 /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66329C7020DF62BD0038DCF8 /* SendConfirmViewController.swift */; };
+		66329C7320DF62BD0038DCF8 /* SendConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66329C7120DF62BD0038DCF8 /* SendConfirmViewController.xib */; };
+		66329C7620DFB65D0038DCF8 /* SendResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66329C7420DFB65D0038DCF8 /* SendResultViewController.swift */; };
+		66329C7720DFB65D0038DCF8 /* SendResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66329C7520DFB65D0038DCF8 /* SendResultViewController.xib */; };
 		6654923720D75C5C006CB3B2 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6654923520D75C5C006CB3B2 /* SendViewController.swift */; };
 		6654923820D75C5C006CB3B2 /* SendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6654923620D75C5C006CB3B2 /* SendViewController.xib */; };
 		940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */; };
@@ -553,6 +557,10 @@
 		313AB53F5B8B485D1FE9A61C /* Pods-loopr-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosUITests/Pods-loopr-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		39749EB6C85A60ED73F83B9E /* Pods-loopr-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-ios/Pods-loopr-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66329C7020DF62BD0038DCF8 /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
+		66329C7120DF62BD0038DCF8 /* SendConfirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendConfirmViewController.xib; sourceTree = "<group>"; };
+		66329C7420DFB65D0038DCF8 /* SendResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultViewController.swift; sourceTree = "<group>"; };
+		66329C7520DFB65D0038DCF8 /* SendResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendResultViewController.xib; sourceTree = "<group>"; };
 		6654923520D75C5C006CB3B2 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		6654923620D75C5C006CB3B2 /* SendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendViewController.xib; sourceTree = "<group>"; };
 		69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1542,6 +1550,10 @@
 				AC5E3E6F205DFB700051ACFC /* SendAssetViewController.xib */,
 				6654923520D75C5C006CB3B2 /* SendViewController.swift */,
 				6654923620D75C5C006CB3B2 /* SendViewController.xib */,
+				66329C7020DF62BD0038DCF8 /* SendConfirmViewController.swift */,
+				66329C7120DF62BD0038DCF8 /* SendConfirmViewController.xib */,
+				66329C7420DFB65D0038DCF8 /* SendResultViewController.swift */,
+				66329C7520DFB65D0038DCF8 /* SendResultViewController.xib */,
 			);
 			path = SendAsset;
 			sourceTree = "<group>";
@@ -2640,6 +2652,8 @@
 				AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */,
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
+				66329C7320DF62BD0038DCF8 /* SendConfirmViewController.xib in Resources */,
+				66329C7720DFB65D0038DCF8 /* SendResultViewController.xib in Resources */,
 				AC30C65C20D99393004436D8 /* WalletBalanceTableViewCellViewController.xib in Resources */,
 				AC54FD88204FC6F8007E1DEB /* OpenSans-Regular.ttf in Resources */,
 			);
@@ -2987,6 +3001,7 @@
 				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				943C1CAE20CE1E0B008A8CED /* AuthorizeDataManager.swift in Sources */,
+				66329C7220DF62BD0038DCF8 /* SendConfirmViewController.swift in Sources */,
 				94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */,
 				AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
@@ -3019,6 +3034,7 @@
 				ACFEFE9820C338BC00013921 /* TxType.swift in Sources */,
 				AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
+				66329C7620DFB65D0038DCF8 /* SendResultViewController.swift in Sources */,
 				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,
 				94C11FDA208C2DE40050E180 /* SettingCurrencyTableViewCell.swift in Sources */,
 				ACB9119020266EC200F14644 /* AddCustomizedTokenViewController.swift in Sources */,

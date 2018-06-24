@@ -302,8 +302,5 @@
         <namedColor name="Tokenest-tip-font">
             <color red="0.52941176470588236" green="0.5607843137254902" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="Tokenest-tip-font">
-            <color red="0.52941176470588236" green="0.5607843137254902" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
     </resources>
 </document>

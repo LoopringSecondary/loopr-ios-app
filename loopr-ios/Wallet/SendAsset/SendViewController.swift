@@ -8,7 +8,6 @@
 
 import UIKit
 import Geth
-import SVProgressHUD
 
 class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -26,6 +25,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var maskView: UIView!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var totalMaskView: UIView!
     
     // Address
     var addressY: CGFloat = 0.0
@@ -67,9 +67,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // TODO: able to switch tokens.
-        asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
 
         // Do any additional setup after loading the view.
         maskView.alpha = 0
@@ -175,13 +172,13 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         scrollView.addSubview(transactionSpeedSlider)
         
         transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
-        transactionAmountMinLabel.font = FontConfigManager.shared.getLabelENFont()
+        transactionAmountMinLabel.font = FontConfigManager.shared.getLabelSCFont()
         transactionAmountMinLabel.text = NSLocalizedString("Slow", comment: "")
         scrollView.addSubview(transactionAmountMinLabel)
         
         transactionAmountCurrentLabel.textAlignment = .center
         transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
-        transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelENFont()
+        transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelSCFont()
         transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
         
         scrollView.addSubview(transactionAmountCurrentLabel)
@@ -194,7 +191,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         
         transactionAmountMaxLabel.textAlignment = .right
         transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
-        transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelENFont()
+        transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelSCFont()
         transactionAmountMaxLabel.text = NSLocalizedString("Fast", comment: "")
         scrollView.addSubview(transactionAmountMaxLabel)
         
@@ -202,6 +199,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         sendButton.title = "转出"
         sendButton.frame = CGRect(x: padding*4, y: transactionAmountMaxLabel.frame.maxY + padding*3, width: screenWidth-padding*8, height: 48)
         sendButton.addTarget(self, action: #selector(pressedSendButton(_:)), for: .touchUpInside)
+        sendButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16)
         scrollView.addSubview(sendButton)
         self.sendButton.setupRoundPurpleWithShadow()
 
@@ -225,6 +223,19 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 self.updateTransactionFeeAmountLabel(self.gasPriceInGwei)
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
+        if asset == nil {
+            asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
+        }
+        self.tokenImage.image = asset.icon
+        self.tokenLabel.text = asset.symbol
+        self.nameLabel.text = asset.name
+        self.amountLabel.text = asset.display
     }
 
     override func didReceiveMemoryWarning() {
@@ -251,13 +262,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             transactionCurrencyLabel.text = "  ≈\(transactionFeeInFiat.currency)"
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
-    }
-    
+   
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -265,7 +270,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     func hideCollectionView() {
         moreTokensButton.setImage(#imageLiteral(resourceName: "Tokenest-moretoken"), for: .normal)
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: { () -> Void in
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: { () -> Void in
             self.maskView.alpha = 0
             self.tokensCollectionView.alpha = 0
             self.view.layoutIfNeeded()
@@ -279,7 +284,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         showCollection = !showCollection
         if showCollection {
             moreTokensButton.setImage(#imageLiteral(resourceName: "Tokenest-lesstoken"), for: .normal)
-            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: { () -> Void in
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: { () -> Void in
                 self.maskView.alpha = 0.7
                 self.tokensCollectionView.alpha = 1
                 self.view.bringSubview(toFront: self.tokensCollectionView)
@@ -373,23 +378,16 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     }
     
     func pushController() {
-        let toAddress = addressTextField.text!
-        if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
-            let gethAmount = GethBigInt.generate(valueInEther: Double(amountTextField.text!)!, symbol: token.symbol)!
-            var error: NSError? = nil
-            let toAddress = GethNewAddressFromHex(toAddress, &error)!
-            if token.symbol.uppercased() == "ETH" {
-                SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, toAddress: toAddress, completion: completion)
-            } else {
-                // TODO: Error handling for invalid protocol value
-                if !token.protocol_value.isHexAddress() {
-                    print("token protocol \(token.protocol_value) is invalid")
-                    return
-                }
-                let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
-                SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, tokenAmount: gethAmount, completion: completion)
-            }
-        }
+        totalMaskView.alpha = 0.75
+        let vc = SendConfirmViewController()
+        vc.sendAsset = self.asset
+        vc.sendAmount = self.amountTextField.text
+        vc.receiveAddress = self.addressTextField.text
+        vc.gasAmountInETH = self.transactionValueLabel.text
+        vc.dismissClosure = { self.totalMaskView.alpha = 0 }
+        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        vc.parentNavController = self.navigationController
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func pressedSendButton(_ sender: Any) {
@@ -401,7 +399,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         let isAmountValid = validateAmount()
         let isAddressValid = validateAddress()
         if isAmountValid && isAddressValid {
-            SVProgressHUD.show(withStatus: "Processing the transaction ...")
             self.pushController()
         }
         if !isAmountValid && amountInfoLabel.textColor != .red {
@@ -575,7 +572,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         let viewController = ScanQRCodeViewController()
         viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true
-        
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -596,33 +592,5 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         amountTextField.resignFirstResponder()
         self.view.endEditing(true)
         hideNumericKeyboard()
-    }
-}
-
-extension SendViewController {
-    
-    func completion(_ txHash: String?, _ error: Error?) {
-        SVProgressHUD.dismiss()
-        guard error == nil && txHash != nil else {
-            DispatchQueue.main.async {
-                let title = NSLocalizedString("Failed to send the transaction", comment: "")
-                let message = String(describing: error)
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: .default, handler: { _ in
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }
-            return
-        }
-        print("Result of transfer is \(txHash!)")
-        DispatchQueue.main.async {
-            let title = NSLocalizedString("Sent the transaction successfully", comment: "")
-            let message = "Result of transfer is \(txHash!)"
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
-                self.navigationController?.popViewController(animated: true)
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
     }
 }

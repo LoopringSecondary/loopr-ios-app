@@ -26,6 +26,7 @@
                 <outlet property="tokenImage" destination="vWS-9o-hok" id="oWI-4E-FlT"/>
                 <outlet property="tokenLabel" destination="skD-YS-cuX" id="FHj-Dz-JmB"/>
                 <outlet property="tokensCollectionView" destination="SEd-EQ-XnW" id="Elo-y9-JGv"/>
+                <outlet property="totalMaskView" destination="lqk-sT-muL" id="hs8-bH-6yy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -157,12 +158,17 @@
                     <rect key="frame" x="0.0" y="148" width="375" height="519"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqk-sT-muL" userLabel="Total Mask View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fGS-cZ-SL6" firstAttribute="top" secondItem="SD6-xa-mpX" secondAttribute="bottom" constant="8" id="3la-FW-fpq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fGS-cZ-SL6" secondAttribute="trailing" id="8F1-rD-NBj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="pbg-MI-La4" secondAttribute="leading" id="9ue-gF-7Zf"/>
+                <constraint firstItem="lqk-sT-muL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="A7O-iF-R7j"/>
                 <constraint firstItem="b3X-WY-fjv" firstAttribute="height" secondItem="kWy-7K-zP6" secondAttribute="height" id="B89-Za-fS9"/>
                 <constraint firstItem="SD6-xa-mpX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BP1-HK-baT"/>
                 <constraint firstItem="SEd-EQ-XnW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CW2-L3-bdY"/>
@@ -171,12 +177,15 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kWy-7K-zP6" secondAttribute="bottom" id="GTp-p6-Uz2"/>
                 <constraint firstItem="kWy-7K-zP6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="H21-bI-350"/>
                 <constraint firstItem="b3X-WY-fjv" firstAttribute="width" secondItem="kWy-7K-zP6" secondAttribute="width" id="HVt-Iv-wPj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lqk-sT-muL" secondAttribute="trailing" id="Mx9-Oh-QuT"/>
                 <constraint firstItem="9Yk-xz-iTb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Pld-fQ-oci"/>
                 <constraint firstItem="kWy-7K-zP6" firstAttribute="leading" secondItem="b3X-WY-fjv" secondAttribute="leading" id="T0b-hF-KwC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="pbg-MI-La4" secondAttribute="bottom" id="Vot-N4-gAk"/>
                 <constraint firstItem="9Yk-xz-iTb" firstAttribute="top" secondItem="SD6-xa-mpX" secondAttribute="bottom" id="XqA-uB-hhZ"/>
                 <constraint firstItem="kWy-7K-zP6" firstAttribute="top" secondItem="fGS-cZ-SL6" secondAttribute="bottom" constant="4" id="YTG-Sd-6vN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="lqk-sT-muL" secondAttribute="bottom" id="Zdb-YK-42a"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9Yk-xz-iTb" secondAttribute="bottom" id="cS6-tE-Roe"/>
+                <constraint firstItem="lqk-sT-muL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eGj-QC-Sgu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pbg-MI-La4" secondAttribute="trailing" id="eJq-4o-33X"/>
                 <constraint firstItem="SEd-EQ-XnW" firstAttribute="top" secondItem="fGS-cZ-SL6" secondAttribute="bottom" id="j0b-9T-eLz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SD6-xa-mpX" secondAttribute="trailing" id="k9v-v0-5bO"/>

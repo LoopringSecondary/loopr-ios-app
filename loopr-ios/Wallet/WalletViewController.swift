@@ -14,19 +14,15 @@ import SideMenu
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceDelegate, QRCodeScanProtocol, UpdatedSelectWalletViewControllerDelegate {
 
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    @IBOutlet weak var assetTableView: UITableView!
     
     private let refreshControl = UIRefreshControl()
-
-    @IBOutlet weak var assetTableView: UITableView!
     var headerViewView = WalletBalanceTableViewCellViewController()
     var headerHeightConstraint: NSLayoutConstraint!
-
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
-
     let buttonInNavigationBar =  UIButton()
     var numberOfRowsInSection1: Int = 0
-    
     var previousY: CGFloat = 0.0
     let backgroundImageHeight: CGFloat = 345 - 20 + 32
     let leftViewController = UpdatedSelectWalletViewController()
@@ -57,7 +53,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
  
         getBalanceFromRelay()
-
         setupNavigationBar()
         bringSubviewsToFront()
     }
@@ -253,7 +248,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
             assetTableView.reloadData()
-            // self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
     
@@ -261,7 +255,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             assetTableView.reloadData()
-            // self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
     
@@ -281,9 +274,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             headerViewView.view.y = -scrollView.contentOffset.y
             headerViewView.balanceLabel.alpha = (70 - scrollView.contentOffset.y)/70
             headerViewView.addTokenButton.alpha = (70 - scrollView.contentOffset.y)/70
-            
-            // TODO: add more animation if needed. We can even update the navigation bar title.
-
             if headerViewView.view.y <= -200 {
                 headerViewView.view.y = -200
             }
@@ -332,14 +322,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let nib = Bundle.main.loadNibNamed("WalletClearTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? WalletClearTableViewCell
                 cell?.selectionStyle = .none
-                // cell?.delegate = self
             }
-            /*
-            cell?.setup()
-            if isLaunching {
-                cell?.balanceLabel.setText("", animated: false)
-            }
-            */
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell

@@ -75,4 +75,19 @@ extension UIButton {
         self.superview?.addSubview(shadowLayer)
         self.superview?.bringSubview(toFront: self)
     }
+    
+    func setupRoundPurpleWithOutlineAndShadow(height: CGFloat = 47*UIStyleConfig.scale) {
+        setupRoundPurpleOutline(height: height)
+        let shadowLayer = UIView(frame: self.frame)
+        shadowLayer.backgroundColor = UIColor.clear
+        shadowLayer.layer.shadowColor = UIColor.tokenestBackground.cgColor
+        shadowLayer.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: self.cornerRadius).cgPath
+        shadowLayer.layer.shadowOffset = CGSize(width: 4, height: 4)
+        shadowLayer.layer.shadowOpacity = 0.3
+        shadowLayer.layer.shadowRadius = 4
+        shadowLayer.layer.masksToBounds = true
+        shadowLayer.clipsToBounds = false
+        self.superview?.addSubview(shadowLayer)
+        self.superview?.bringSubview(toFront: self)
+    }
 }
