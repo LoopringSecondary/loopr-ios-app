@@ -90,13 +90,17 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         infoLabel.attributedText = attr
         mainScrollView.addSubview(infoLabel)
         
-        importMethodSelection.frame = CGRect(x: 74, y: 80, width: 200, height: 17)
+        importMethodSelection.frame = CGRect(x: 74, y: 94, width: 90, height: 17)
         importMethodSelection.setTitleColor(UIColor.black, for: .normal)
-        importMethodSelection.setTitle("keystore", for: .normal)
+        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection"), title: importMethod.description, titlePosition: .left, additionalSpacing: 0, state: .normal)
+        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection")?.alpha(0.6), title: importMethod.description, titlePosition: .left, additionalSpacing: 0, state: .highlighted)
+        importMethodSelection.setTitleColor(GlobalPicker.themeColor, for: .normal)
+        importMethodSelection.setTitleColor(GlobalPicker.themeColor.withAlphaComponent(0.7), for: .normal)
+        importMethodSelection.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         importMethodSelection.addTarget(self, action: #selector(pressedImportMethodSelection), for: .touchUpInside)
         mainScrollView.addSubview(importMethodSelection)
         
-        contentTextView.frame = CGRect(x: paddingLeft, y: 100, width: screenWidth-paddingLeft*2, height: 70)
+        contentTextView.frame = CGRect(x: paddingLeft, y: 117, width: screenWidth-paddingLeft*2, height: 120)
         contentTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         contentTextView.cornerRadius = 12
         contentTextView.font = FontConfigManager.shared.getLabelENFont()
@@ -109,7 +113,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
 
         passwordInfoLabel.textColor = UIColor.tokenestTip
         passwordInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
-        passwordInfoLabel.frame = CGRect(x: 74, y: 186, width: 200, height: 17)
+        passwordInfoLabel.frame = CGRect(x: 74, y: 252, width: 200, height: 17)
         passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
         mainScrollView.addSubview(passwordInfoLabel)
         
@@ -118,7 +122,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         passwordTextField.autocorrectionType = .no
         passwordTextField.delegate = self
         passwordTextField.tag = 1
-        passwordTextField.frame = CGRect(x: paddingLeft, y: 209, width: screenWidth-paddingLeft*2, height: textFieldHeight)
+        passwordTextField.frame = CGRect(x: paddingLeft, y: 275, width: screenWidth-paddingLeft*2, height: textFieldHeight)
         passwordTextField.setTokenestStyle()
         mainScrollView.addSubview(passwordTextField)
         
