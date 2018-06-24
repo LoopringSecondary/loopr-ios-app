@@ -193,8 +193,6 @@
 "Cancel Order(s)" = "Cancel Order(s)";
 "Enter the amount you have" = "Please input the amount you wish to sell";
 "Enter the amount you get" = "Please input the amount you wish to get";
-"Available \(balance) \(tokens)" = "Available \(balance) \(tokens)";
-"Available 0.0 \(tokens)" = "Available 0.0 \(tokens)";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
 "However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";
@@ -325,4 +323,4 @@
 "Add Token" = "Add Token";
 "Tx_Failed_Result" = "Transaction Failed";
 "Tx_Success_Result" = "Transaction Success";
-
+"Authorization" = "Authorization";

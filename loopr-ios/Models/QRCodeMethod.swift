@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum QRCodeMethod: String, CustomStringConvertible {
+enum QRCodeMethod: String {
 
     case create = "SetupWalletMethod.create"
     case importUsingMnemonic = "SetupWalletMethod.importUsingMnemonic"
@@ -18,11 +18,11 @@ enum QRCodeMethod: String, CustomStringConvertible {
 
     var description: String {
         switch self {
-        case .create: return "Create"
-        case .importUsingMnemonic: return "Mnemonics"
-        case .importUsingKeystore: return "Keystore"
-        case .importUsingPrivateKey: return "Private Key"
-        case .authorization: return "Authorization"
+        case .create: return NSLocalizedString("Create", comment: "")
+        case .importUsingMnemonic: return NSLocalizedString("Mnemonic", comment: "")
+        case .importUsingKeystore: return NSLocalizedString("Keystore", comment: "")
+        case .importUsingPrivateKey: return NSLocalizedString("Private Key", comment: "")
+        case .authorization: return NSLocalizedString("Authorization", comment: "")
         }
     }
     

@@ -11,7 +11,7 @@ import NotificationBannerSwift
 import SVProgressHUD
 
 class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
-
+    
     @IBOutlet weak var statusBarBackgroundView: UIView!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
     
@@ -26,19 +26,23 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
     
     // Scrollable UI components
     var mainScrollView: UIScrollView = UIScrollView()
-    let scrollViewHeight: CGFloat = 360  // measured in sketch file.
+    let scrollViewHeight: CGFloat = 360 + 60  // measured in sketch file.
     
     var infoImage: UIImageView = UIImageView()
     var infoLabel: UILabel = UILabel()
 
-    // var importMethod: QRCodeMethod = .importUsingKeystore
-    var importMethod: QRCodeMethod = .importUsingPrivateKey
+    // var currentImportMethod: QRCodeMethod = .importUsingKeystore
+    var currentImportMethod: QRCodeMethod = .importUsingPrivateKey
     var importMethodSelection: UIButton = UIButton()
     
     var contentTextView: UITextView = UITextView()
     
     var passwordInfoLabel: UILabel = UILabel()
     var passwordTextField: UITextField = UITextField()
+    
+    var selectWalletInfoLabel: UILabel = UILabel()
+    var selectWalletBackground: UIView = UIView()
+    var selectWalletType: UIButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,10 +94,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         infoLabel.attributedText = attr
         mainScrollView.addSubview(infoLabel)
         
-        importMethodSelection.frame = CGRect(x: 74, y: 94, width: 90, height: 17)
         importMethodSelection.setTitleColor(UIColor.black, for: .normal)
-        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection"), title: importMethod.description, titlePosition: .left, additionalSpacing: 0, state: .normal)
-        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection")?.alpha(0.6), title: importMethod.description, titlePosition: .left, additionalSpacing: 0, state: .highlighted)
         importMethodSelection.setTitleColor(GlobalPicker.themeColor, for: .normal)
         importMethodSelection.setTitleColor(GlobalPicker.themeColor.withAlphaComponent(0.7), for: .normal)
         importMethodSelection.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 12)
@@ -107,7 +108,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         contentTextView.backgroundColor = UIColor.tokenestTextFieldBackground
         contentTextView.delegate = self
         // contentTextView.text = NSLocalizedString("Please enter the keystore", comment: "")
-        contentTextView.textColor = .lightGray
+        contentTextView.textColor = .black
         contentTextView.tintColor = UIColor.black
         mainScrollView.addSubview(contentTextView)
 
@@ -125,6 +126,19 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         passwordTextField.frame = CGRect(x: paddingLeft, y: 275, width: screenWidth-paddingLeft*2, height: textFieldHeight)
         passwordTextField.setTokenestStyle()
         mainScrollView.addSubview(passwordTextField)
+        
+        selectWalletInfoLabel.frame = CGRect(x: 74, y: 333, width: 200, height: 17)
+        selectWalletInfoLabel.textColor = UIColor.tokenestTip
+        selectWalletInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        selectWalletInfoLabel.text = NSLocalizedString("Select Your Wallet Type", comment: "")
+        mainScrollView.addSubview(selectWalletInfoLabel)
+        
+        selectWalletBackground.frame = CGRect(x: 47, y: 356, width: screenWidth - 47*2, height: 43)
+        selectWalletBackground.layer.borderWidth = 0.5
+        selectWalletBackground.layer.borderColor = UIColor.tokenestBorder.cgColor
+        selectWalletBackground.layer.cornerRadius = 47 * 0.5
+        selectWalletBackground.backgroundColor = UIColor.tokenestTextFieldBackground
+        mainScrollView.addSubview(selectWalletBackground)
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
@@ -151,6 +165,8 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar()
+        updateImportMethodSelection()
+        contentTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -158,6 +174,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         // TODO: have to update the color here. We may not need this function
         // customizedNavigationBar.isTranslucent = false
         // customizedNavigationBar.barTintColor = UIColor.init(rgba: "#2E2BA4")
+        contentTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -184,6 +201,28 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
     
     @objc func pressedImportMethodSelection(_ sender: Any) {
         print("pressedImportMethodSelection")
+        let viewController = SwitchImportWalletMethodViewController()
+        viewController.delegate = self
+        viewController.currentImportMethod = currentImportMethod
+        // TODO: This needs an animation...
+        viewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        self.navigationController?.present(viewController, animated: true, completion: {
+            
+        })
+    }
+    
+    func updateImportMethodSelection() {
+        
+        if currentImportMethod == .importUsingKeystore {
+            importMethodSelection.frame = CGRect(x: 70, y: 94, width: 50, height: 17)
+        } else if currentImportMethod == .importUsingPrivateKey {
+            importMethodSelection.frame = CGRect(x: 67, y: 94, width: 50, height: 17)
+        } else if currentImportMethod == .importUsingMnemonic {
+            importMethodSelection.frame = CGRect(x: 70, y: 94, width: 50, height: 17)
+        }
+        
+        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection"), title: currentImportMethod.description, titlePosition: .left, additionalSpacing: 10, state: .normal)
+        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection")?.alpha(0.6), title: currentImportMethod.description, titlePosition: .left, additionalSpacing: 10, state: .highlighted)
     }
     
     @objc func scrollViewTapped() {
@@ -196,6 +235,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
 
     @objc func systemKeyboardWillShow(_ notification: Notification) {
         print("systemKeyboardWillShow")
+        contentTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         self.backgroundImageTopLayoutConstraint.constant = -backgroundImageHeightLayoutConstraint.constant
         
         guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
@@ -227,25 +267,57 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         }
     }
     
-    @objc func pressedContinueButton(_ sender: Any) {
-        let viewController = UpdatedImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
-        self.navigationController?.pushViewController(viewController, animated: true)
+    func validation() -> Bool {
+        var validWalletName = true
+        let contentText = contentTextView.text ?? ""
+        let password = passwordTextField.text ?? ""
+
+        if currentImportMethod == .importUsingKeystore {
+            
+            if contentText.trim() == "" || QRCodeMethod.isKeystore(content: contentText) {
+                contentTextView.shake()
+                validWalletName = false
+            }
+            
+            if password == "" {
+                passwordTextField.shake()
+                passwordTextField.textColor = UIStyleConfig.red
+                validWalletName = false
+            }
+            
+            return validWalletName
+        }
         
-        /*
-        if importMethod == .importUsingKeystore {
+        return false
+    }
+    
+    @objc func pressedContinueButton(_ sender: Any) {
+        // let viewController = UpdatedImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
+        // self.navigationController?.pushViewController(viewController, animated: true)
+
+        guard validation() else {
+            return
+        }
+
+        if currentImportMethod == .importUsingKeystore {
             let keystoreString = self.contentTextView.text ?? ""
             let password = passwordTextField.text ?? ""
             continueImportUsingKeystore(keystoreString: keystoreString, password: password)
-        } else if importMethod == .importUsingPrivateKey {
+        } else if currentImportMethod == .importUsingPrivateKey {
             let privateKey = self.contentTextView.text ?? ""
             continueImportUsingPrivateKey(privateKey: privateKey)
-        } else if importMethod == .importUsingMnemonic {
+        } else if currentImportMethod == .importUsingMnemonic {
             continueImportUsingMnemonic()
         }
-        */
     }
-    
-    
-    
 
+}
+
+extension UpdatedUnlockWalletViewController: SwitchImportWalletMethodViewControllerDelegate {
+    func selectedImportWalletMethod(_ selectedImportMethod: QRCodeMethod?) {
+        if selectedImportMethod != nil {
+            currentImportMethod = selectedImportMethod!
+            updateImportMethodSelection()
+        }
+    }
 }

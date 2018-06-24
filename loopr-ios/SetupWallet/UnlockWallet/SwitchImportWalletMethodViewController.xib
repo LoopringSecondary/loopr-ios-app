@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SwitchImportWalletMethodViewController" customModule="loopr_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="W9Q-Kt-JEU" id="O47-bu-g6x"/>
+                <outlet property="headerView" destination="khI-NI-qxd" id="Ins-Fa-eF2"/>
+                <outlet property="imporWalletArrowButton" destination="vZ1-pK-2uq" id="lLo-vY-eru"/>
+                <outlet property="importWalletButton" destination="zTP-Ia-8th" id="DgB-Df-ION"/>
+                <outlet property="seperateLine" destination="iFK-Tx-Hg9" id="SnP-zd-4wF"/>
+                <outlet property="tableView" destination="Wxt-JN-yb8" id="0Xn-VG-OYL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9Q-Kt-JEU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wxt-JN-yb8">
+                    <rect key="frame" x="0.0" y="499" width="375" height="168"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="168" id="2gv-5A-Su9"/>
+                    </constraints>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="khI-NI-qxd">
+                    <rect key="frame" x="0.0" y="441" width="375" height="58"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFK-Tx-Hg9">
+                            <rect key="frame" x="0.0" y="57" width="375" height="1"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="GdD-qR-eFd"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTP-Ia-8th">
+                            <rect key="frame" x="31" y="9" width="313" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="UHN-df-0gh"/>
+                            </constraints>
+                            <state key="normal" title="Import Wallet">
+                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZ1-pK-2uq">
+                            <rect key="frame" x="309" y="4" width="66" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="66" id="1rP-D8-4hV"/>
+                                <constraint firstAttribute="height" constant="50" id="5YT-hG-PQQ"/>
+                            </constraints>
+                            <state key="normal" image="Tokenest-arrow-down"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="zTP-Ia-8th" firstAttribute="leading" secondItem="khI-NI-qxd" secondAttribute="leading" constant="31" id="1GP-ld-FmM"/>
+                        <constraint firstAttribute="height" constant="58" id="3IU-ey-zF9"/>
+                        <constraint firstItem="zTP-Ia-8th" firstAttribute="centerY" secondItem="khI-NI-qxd" secondAttribute="centerY" id="8mn-t3-z6m"/>
+                        <constraint firstItem="iFK-Tx-Hg9" firstAttribute="leading" secondItem="khI-NI-qxd" secondAttribute="leading" id="Atw-Sd-Nmd"/>
+                        <constraint firstAttribute="trailing" secondItem="vZ1-pK-2uq" secondAttribute="trailing" id="Gmt-1k-wei"/>
+                        <constraint firstAttribute="trailing" secondItem="zTP-Ia-8th" secondAttribute="trailing" constant="31" id="IdO-gp-qh5"/>
+                        <constraint firstAttribute="bottom" secondItem="iFK-Tx-Hg9" secondAttribute="bottom" id="Zd1-pO-xai"/>
+                        <constraint firstItem="vZ1-pK-2uq" firstAttribute="centerY" secondItem="khI-NI-qxd" secondAttribute="centerY" id="fpk-gE-rBS"/>
+                        <constraint firstAttribute="trailing" secondItem="iFK-Tx-Hg9" secondAttribute="trailing" id="orZ-6G-EVd"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="khI-NI-qxd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2oW-h1-Amp"/>
+                <constraint firstItem="W9Q-Kt-JEU" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Coc-2E-wcZ"/>
+                <constraint firstItem="Wxt-JN-yb8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DlI-Vr-mFi"/>
+                <constraint firstItem="W9Q-Kt-JEU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GjI-de-sKe"/>
+                <constraint firstItem="W9Q-Kt-JEU" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Jmc-0k-phw"/>
+                <constraint firstItem="Wxt-JN-yb8" firstAttribute="top" secondItem="khI-NI-qxd" secondAttribute="bottom" id="KIU-Cd-4TB"/>
+                <constraint firstItem="Wxt-JN-yb8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="tkf-8v-Xgj"/>
+                <constraint firstItem="Wxt-JN-yb8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="yIj-O4-Sra"/>
+                <constraint firstItem="khI-NI-qxd" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="zQM-gf-3Vo"/>
+                <constraint firstItem="W9Q-Kt-JEU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zl8-7w-74d"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34.5" y="115.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Tokenest-arrow-down" width="12" height="7"/>
+    </resources>
+</document>
