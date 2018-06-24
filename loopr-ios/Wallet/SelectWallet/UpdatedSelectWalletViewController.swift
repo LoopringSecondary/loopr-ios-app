@@ -72,9 +72,9 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
     }
     
     @objc func pressedImportButton(_ sender: UIButton) {
-        let viewController = UpdatedUnlockWalletViewController()
+        let viewController = UnlockWalletSwipeViewController()
         viewController.hidesBottomBarWhenPushed = true
-        viewController.isPushedInParentViewController = false
+        // viewController.isPushedInParentViewController = false
         viewController.modalPresentationStyle = .overFullScreen
         
         let newNavigationController = UINavigationController()
