@@ -56,7 +56,7 @@ class UpdatedSetupViewController: UIViewController {
 
     @objc func unlockWalletButtonPressed(_ sender: Any) {
         print("unlockWalletButtonPressed")
-        let viewController = UnlockWalletSwipeViewController()
+        let viewController = UpdatedUnlockWalletViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
