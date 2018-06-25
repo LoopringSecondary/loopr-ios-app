@@ -102,7 +102,8 @@ class SwitchImportWalletMethodViewController: UIViewController, UITableViewDeleg
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedImportMethod = types[indexPath.row]
-        tableView.reloadData()
+        // tableView.reloadData()
+        dismissViewController()
     }
     
     @objc func dismissViewController() {

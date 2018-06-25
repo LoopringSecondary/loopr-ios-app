@@ -117,7 +117,8 @@ class SwitchImportWalletWalletTypeViewController: UIViewController, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedWalletType = walletTypes[indexPath.row]
-        tableView.reloadData()
+        // tableView.reloadData()
+        dismissViewController()
     }
     
     @objc func dismissViewController() {
