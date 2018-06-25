@@ -21,6 +21,7 @@
                 <outlet property="backgroundImageTopLayoutConstraint" destination="HPy-TX-iDr" id="lUv-Fs-oYL"/>
                 <outlet property="customizedNavigationBar" destination="nM1-Sa-Lln" id="CtH-2J-GcS"/>
                 <outlet property="nextButton" destination="Nqi-Nn-VIf" id="DCM-6c-f39"/>
+                <outlet property="presentedBackgroundView" destination="JpV-F0-T3f" id="HPr-bU-CMZ"/>
                 <outlet property="startInfolbel" destination="QHD-p6-GcY" id="ANq-Oq-DSE"/>
                 <outlet property="statusBarBackgroundView" destination="Jew-pS-O1g" id="QxD-1r-oTE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -75,6 +76,10 @@
                     </constraints>
                     <state key="normal" image="Tokenest-setup-next-button"/>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JpV-F0-T3f">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -85,10 +90,14 @@
                 <constraint firstItem="iyk-zw-gqr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-1" id="Gh8-ao-wMM"/>
                 <constraint firstItem="965-jF-1jK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HPy-TX-iDr"/>
                 <constraint firstItem="Jew-pS-O1g" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HhZ-Mt-tP3"/>
+                <constraint firstItem="JpV-F0-T3f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HoN-jc-UTP"/>
+                <constraint firstItem="JpV-F0-T3f" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="ORu-6P-D6q"/>
                 <constraint firstItem="Nqi-Nn-VIf" firstAttribute="top" secondItem="965-jF-1jK" secondAttribute="top" constant="158" id="Onx-1f-2vP"/>
                 <constraint firstItem="Jew-pS-O1g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ud8-4o-Wdv"/>
+                <constraint firstItem="JpV-F0-T3f" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VUm-7b-rs5"/>
                 <constraint firstItem="nM1-Sa-Lln" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="X3W-Pr-OlR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nqi-Nn-VIf" secondAttribute="trailing" constant="34" id="XAO-WB-Hph"/>
+                <constraint firstItem="JpV-F0-T3f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bvj-iY-UTU"/>
                 <constraint firstItem="nM1-Sa-Lln" firstAttribute="top" secondItem="Jew-pS-O1g" secondAttribute="bottom" id="eRC-9r-dIj"/>
                 <constraint firstItem="965-jF-1jK" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="g6B-Da-BG7"/>
                 <constraint firstItem="nM1-Sa-Lln" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jeZ-1S-Krz"/>

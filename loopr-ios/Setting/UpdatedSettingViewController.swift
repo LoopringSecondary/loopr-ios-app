@@ -27,6 +27,8 @@ class UpdatedSettingViewController: UIViewController {
     @IBOutlet weak var item5: UIButton!
     @IBOutlet weak var item6: UIButton!
     
+    @IBOutlet weak var presentedBackgroundView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +37,7 @@ class UpdatedSettingViewController: UIViewController {
 
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode"), for: .normal)
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode")?.alpha(0.6), for: .highlighted)
+        qrcodeButton.addTarget(self, action: #selector(self.pressedQRCodeButton(_:)), for: .touchUpInside)
 
         myAddressInfoLabel.text = NSLocalizedString("My Wallet Address", comment: "")
         myAddressInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
@@ -109,6 +112,10 @@ class UpdatedSettingViewController: UIViewController {
         item6.setTitleColor(UIColor.black, for: .normal)
         item6.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
         item6.addTarget(self, action: #selector(self.pressedItem6Button(_:)), for: .touchUpInside)
+        
+        presentedBackgroundView.backgroundColor = UIColor.clear
+        presentedBackgroundView.isHidden = true
+        view.bringSubview(toFront: presentedBackgroundView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -141,15 +148,27 @@ class UpdatedSettingViewController: UIViewController {
         let qrScanButton = UIButton(type: UIButtonType.custom)
         qrScanButton.setImage(UIImage.init(named: "Scan-white"), for: .normal)
         qrScanButton.setImage(UIImage(named: "Scan")?.alpha(0.3), for: .highlighted)
-        qrScanButton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        qrScanButton.addTarget(self, action: #selector(self.pressedScanQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrScanButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
-        navigationItem.leftBarButtonItem = qrCodeBarButton
+        navigationItem.rightBarButtonItem = qrCodeBarButton
 
         customizedNavigationBar.setItems([navigationItem], animated: false)
     }
     
-    @objc func pressQRCodeButton(_ sender: Any) {
+    @objc func pressedQRCodeButton(_ sender: Any) {
+        let viewController = QRCodeViewController()
+        viewController.delegate = self
+        viewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        presentedBackgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        presentedBackgroundView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.presentedBackgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        }
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    @objc func pressedScanQRCodeButton(_ sender: Any) {
         print("Selected Scan QR code")
         let viewController = ScanQRCodeViewController()
         // viewController.delegate = self
@@ -199,5 +218,15 @@ class UpdatedSettingViewController: UIViewController {
     
     @objc func pressedItem6Button(_ button: UIButton) {
         print("pressedItem6Button")
+    }
+}
+
+extension UpdatedSettingViewController: QRCodeViewControllerDelegate {
+    func dismissQRCodeViewController() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.presentedBackgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        }, completion: { (_) in
+            self.presentedBackgroundView.isHidden = true
+        })
     }
 }

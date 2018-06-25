@@ -10,8 +10,14 @@ import UIKit
 import Social
 import NotificationBannerSwift
 
+protocol QRCodeViewControllerDelegate: class {
+    func dismissQRCodeViewController()
+}
+
 class QRCodeViewController: UIViewController {
     
+    weak var delegate: QRCodeViewControllerDelegate?
+
     var qrcodeImage: UIImage!
     @IBOutlet weak var qrcodeImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
@@ -85,6 +91,7 @@ class QRCodeViewController: UIViewController {
     }
     
     @IBAction func pressedCloseButton(_ sender: UIButton) {
+        delegate?.dismissQRCodeViewController()
         self.dismiss(animated: true, completion: nil)
     }
 }

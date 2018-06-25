@@ -86,7 +86,7 @@ class UpdatedImportWalletEnterWalletNameViewController: UIViewController, UIText
         
         infoLabel.textColor = UIColor.tokenestTip
         infoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
-        infoLabel.frame = CGRect(x: 72, y: 36, width: screenWidth - 72 - 35, height: 34)
+        infoLabel.frame = CGRect(x: 72, y: 36, width: screenWidth - 72 - 35, height: 17)
         infoLabel.numberOfLines = 1
         infoLabel.text = NSLocalizedString("Give your wallet an awesome name", comment: "")
         mainScrollView.addSubview(infoLabel)
@@ -174,7 +174,7 @@ class UpdatedImportWalletEnterWalletNameViewController: UIViewController, UIText
     }
     
     @objc func doneWithNumberPad(_ sender: Any) {
-        // pressedContinueButton(sender)
+        pressedContinueButton(sender)
     }
     
     @objc func pressedContinueButton(_ sender: Any) {

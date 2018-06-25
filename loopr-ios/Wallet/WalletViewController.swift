@@ -24,7 +24,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let buttonInNavigationBar =  UIButton()
     var numberOfRowsInSection1: Int = 0
     var previousY: CGFloat = 0.0
-    let backgroundImageHeight: CGFloat = 345 - 20 + 32
+    let backgroundImageHeight: CGFloat = 345  // Fixed value in the design.
     let leftViewController = UpdatedSelectWalletViewController()
     
     override func viewDidLoad() {
@@ -121,6 +121,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let banner = NotificationBanner.generate(title: "Sorry. Network error", style: .info)
                 banner.duration = 2.0
                 banner.show()
+                self.refreshControl.endRefreshing()
                 return
             }
             DispatchQueue.main.async {
@@ -146,6 +147,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         buttonInNavigationBar.title = buttonTitle
+        
+        customizedNavigationBar.topItem?.title = buttonTitle
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -308,8 +311,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            let backgroundImageHeight: CGFloat = 345 - 20 // self.view.frame.height * 0.6
-            return backgroundImageHeight + 32
+            return backgroundImageHeight - 10
         } else {
             return AssetTableViewCell.getHeight()
         }

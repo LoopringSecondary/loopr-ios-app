@@ -10,8 +10,13 @@ import Foundation
 
 extension UpdatedUnlockWalletViewController {
     
-    func continueImportUsingMnemonic() {
+    func continueImportUsingMnemonic(memonicString: String, password: String) {
+        ImportWalletUsingMnemonicDataManager.shared.mnemonic = memonicString.trim()
+        ImportWalletUsingMnemonicDataManager.shared.password = password
+        ImportWalletUsingMnemonicDataManager.shared.generateAddresses()
         
+        let viewController = UpdatedMnemonicSelectAddressViewController(nibName: "UpdatedMnemonicSelectAddressViewController", bundle: nil)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 }

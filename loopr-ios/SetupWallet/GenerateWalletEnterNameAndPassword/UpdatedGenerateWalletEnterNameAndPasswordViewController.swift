@@ -169,16 +169,10 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // TODO: have to update the color here. We may not need this function
-        // customizedNavigationBar.isTranslucent = false
-        // customizedNavigationBar.barTintColor = UIColor.init(rgba: "#2E2BA4")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        // TODO: have to update the color here. We may not need this function
-        // customizedNavigationBar.isTranslucent = false
-        // customizedNavigationBar.barTintColor = UIColor.init(rgba: "#2E2BA4")
     }
     
     @objc func backButtonPressed(_ sender: Any) {

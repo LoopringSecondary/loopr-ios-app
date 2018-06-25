@@ -80,7 +80,7 @@ extension UpdatedUnlockWalletViewController {
     }
     
     func continueImportUsingPrivateKeyJumpToNextViewController() {
-        let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
+        let viewController = UpdatedImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
