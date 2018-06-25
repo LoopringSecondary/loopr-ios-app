@@ -17,6 +17,7 @@ target 'loopr-ios' do
   pod 'SVProgressHUD'
   pod 'ESTabBarController-swift'
   pod 'SideMenu'
+  pod 'TagListView', '~> 1.0'
 
   pod 'Fabric'
   pod 'Crashlytics'

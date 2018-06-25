@@ -324,3 +324,5 @@
 "Tx_Failed_Result" = "交易失败";
 "Tx_Success_Result" = "交易成功";
 "Authorization" = "授权";
+"Clear" = "清空";
+

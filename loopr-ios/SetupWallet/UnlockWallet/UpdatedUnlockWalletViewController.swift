@@ -114,6 +114,8 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         
         contentTextViewBackground.frame = CGRect(x: paddingLeft, y: 117, width: screenWidth-paddingLeft*2, height: 120)
         contentTextViewBackground.cornerRadius = 21.5
+        contentTextViewBackground.layer.borderColor = UIColor.init(rgba: "#E5E7ED").cgColor
+        contentTextViewBackground.layer.borderWidth = 0.5
         contentTextViewBackground.backgroundColor = UIColor.tokenestTextFieldBackground
         mainScrollView.addSubview(contentTextViewBackground)
         
