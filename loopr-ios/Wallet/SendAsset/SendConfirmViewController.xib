@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -70,7 +69,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.33LRC ≈ ¥10.8890" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qq-0M-Gy4">
-                            <rect key="frame" x="75" y="179" width="225" height="32"/>
+                            <rect key="frame" x="0.0" y="179" width="375" height="32"/>
                             <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="32" id="v6Z-Ju-wab"/>
@@ -80,7 +79,7 @@
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="16"/>
+                                    <real key="value" value="0.0"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
@@ -207,7 +206,7 @@
                         <constraint firstAttribute="bottom" secondItem="Rnm-hY-5t8" secondAttribute="bottom" constant="32" id="sQK-K2-Yow"/>
                         <constraint firstItem="pbS-Zz-Ug8" firstAttribute="top" secondItem="7S6-cl-byY" secondAttribute="top" id="tbX-ez-nU5"/>
                         <constraint firstItem="Sa7-Pl-dvC" firstAttribute="leading" secondItem="6HJ-At-1gy" secondAttribute="leading" constant="16" id="tlI-d8-Pld"/>
-                        <constraint firstItem="0Qq-0M-Gy4" firstAttribute="width" secondItem="6HJ-At-1gy" secondAttribute="width" multiplier="0.6" id="wPX-W5-3JP"/>
+                        <constraint firstItem="0Qq-0M-Gy4" firstAttribute="width" secondItem="6HJ-At-1gy" secondAttribute="width" id="wPX-W5-3JP"/>
                     </constraints>
                 </view>
             </subviews>

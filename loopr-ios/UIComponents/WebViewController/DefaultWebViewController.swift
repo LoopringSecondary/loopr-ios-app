@@ -11,23 +11,24 @@ import WebKit
 
 class DefaultWebViewController: UIViewController {
 
+    @IBOutlet weak var progressBar: UIView!
+    @IBOutlet weak var customNaviBar: UINavigationBar!
     @IBOutlet weak var wkWebView: WKWebView!
+    @IBOutlet weak var progressView: UIProgressView!
+
     var url: URL?
     var navigationTitle: String = ""
-    
-    private var progressKVOhandle: NSKeyValueObservation?
-    @IBOutlet weak var progressView: UIProgressView!
     var showProgressView: Bool = true
+    private var progressKVOhandle: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        progressBar.backgroundColor = GlobalPicker.themeColor
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customNaviBar, title: navigationTitle)
         
-        setBackButton()
-        self.navigationItem.title = navigationTitle
-        view.theme_backgroundColor = ["#fff", "#000"]
-        progressView.tintColor = UIColor.black
+        progressView.tintColor = UIColor.tokenestBackground
         progressView.setProgress(0, animated: false)
         progressView.alpha = 0.0
         
