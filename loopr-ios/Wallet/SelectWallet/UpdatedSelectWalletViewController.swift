@@ -44,6 +44,8 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
         importButton.setTitle(NSLocalizedString("Import Wallet", comment: ""), for: .normal)
         importButton.setupRoundPurpleOutline(height: 48, font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16))
         importButton.addTarget(self, action: #selector(pressedImportButton(_:)), for: UIControlEvents.touchUpInside)
+        
+        getAllBalanceFromRelay()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +56,16 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getAllBalanceFromRelay() {
+        for wallet in AppWalletDataManager.shared.getWallets() {
+            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, completionHandler: { (totalCurrencyValue, error) in
+                print("getAllBalanceFromRelay \(totalCurrencyValue)")
+                wallet.totalCurrency = totalCurrencyValue
+                AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
+            })
+        }
     }
     
     @objc func pressedCreateButton(_ sender: UIButton) {
@@ -118,6 +130,7 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
                 preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                 CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
+                NotificationCenter.default.post(name: .currentAppWalletSwitched, object: nil)
                 self.walletTableView.reloadData()
             })
             alertController.addAction(defaultAction)

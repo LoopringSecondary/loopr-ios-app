@@ -76,6 +76,8 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         if updateBalanceLabelTimer == nil {
             updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(currentAppWalletSwitchedReceivedNotification), name: .currentAppWalletSwitched, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,9 +113,19 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     }
     
     @objc func updateBalance() {
+        print("updateBalance")
         var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText(balance, animated: true)
+        balanceLabel.setNeedsLayout()
+        balanceLabel.layoutIfNeeded()
     }
 
+    @objc func currentAppWalletSwitchedReceivedNotification() {
+        var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        balance.insert(" ", at: balance.index(after: balance.startIndex))
+        balanceLabel.setText(balance, animated: true)
+        balanceLabel.setNeedsLayout()
+        balanceLabel.layoutIfNeeded()
+    }
 }

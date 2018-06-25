@@ -19,4 +19,5 @@ extension Notification.Name {
     
     // In-app notifications
     static let appWalletDidUpdate = Notification.Name("appWalletDidUpdate")
+    static let currentAppWalletSwitched = Notification.Name("currentAppWalletSwitched")
 }

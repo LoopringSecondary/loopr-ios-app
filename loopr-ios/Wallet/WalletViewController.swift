@@ -21,7 +21,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var headerHeightConstraint: NSLayoutConstraint!
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
-    let buttonInNavigationBar =  UIButton()
     var numberOfRowsInSection1: Int = 0
     var previousY: CGFloat = 0.0
     let backgroundImageHeight: CGFloat = 345  // Fixed value in the design.
@@ -55,6 +54,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         getBalanceFromRelay()
         setupNavigationBar()
         bringSubviewsToFront()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(currentAppWalletSwitchedReceivedNotification), name: .currentAppWalletSwitched, object: nil)
     }
     
     func setupNavigationBar() {
@@ -145,9 +146,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.startUpdateBalanceLabelTimer()
         }
+
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
-        buttonInNavigationBar.title = buttonTitle
-        
         customizedNavigationBar.topItem?.title = buttonTitle
     }
 
@@ -259,6 +259,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             assetTableView.reloadData()
         }
+    }
+    
+    @objc func currentAppWalletSwitchedReceivedNotification() {
+        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
+        customizedNavigationBar.topItem?.title = buttonTitle
     }
     
     // Scroll view delegate

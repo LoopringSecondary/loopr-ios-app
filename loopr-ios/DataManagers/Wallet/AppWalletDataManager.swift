@@ -185,4 +185,50 @@ class AppWalletDataManager {
         completionHandler(newAppWallet, nil)
     }
 
+    func getTotalCurrencyValue(address: String, completionHandler: @escaping (_ totalCurrencyValue: Double, _ error: Error?) -> Void) {
+        print("getBalanceAndPriceQuote Current address: \(address)")
+        
+        var localAssets: [Asset] = []
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        let currency = SettingDataManager.shared.getCurrentCurrency().name
+        LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in
+            print("receive LoopringAPIRequest.getPriceQuote ....")
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
+            dispatchGroup.leave()
+        })
+        
+        dispatchGroup.enter()
+        LoopringAPIRequest.getBalance(owner: address) { assets, error in
+            print("receive LoopringAPIRequest.getBalance ...")
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            localAssets = assets
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            print("Both functions complete 👍")
+            
+            var totalCurrencyValue: Double = 0
+            for asset in localAssets {
+                // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
+                if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
+                    let total = asset.balance * price
+                    asset.total = total
+                    asset.currency = total.currency
+                    totalCurrencyValue += total
+                }
+            }
+            
+            completionHandler(totalCurrencyValue, nil)
+        }
+    }
 }
