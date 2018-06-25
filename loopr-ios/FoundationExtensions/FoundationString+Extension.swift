@@ -137,4 +137,32 @@ extension String {
         }
         return nil
     }
+    
+    func higlighted(words: [String], attributes: [NSAttributedStringKey: Any]) -> NSMutableAttributedString {
+        
+        let allAttributedText = NSMutableAttributedString.init(string: self)
+        var ranges = [NSRange]()
+        
+        for word in words {
+            var string = allAttributedText.string as NSString
+            var i = 0
+            while true {
+                var range = string.range(of: word)
+                if range.location == NSNotFound {
+                    break
+                }
+                i += range.location + word.count
+                string = string.substring(from: range.location + range.length) as NSString
+                range.location = i - word.count
+                print("\(range)  XX \(word)" )
+                
+                ranges.append(range)
+            }
+        }
+        for range in ranges {
+            allAttributedText.addAttributes(attributes, range: range)
+        }
+        return allAttributedText
+    }
+
 }

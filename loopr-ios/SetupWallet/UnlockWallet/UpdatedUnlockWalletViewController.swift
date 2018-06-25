@@ -92,7 +92,12 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         infoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         infoLabel.frame = CGRect(x: 72, y: 36, width: screenWidth - 72 - 35, height: 34)
         infoLabel.numberOfLines = 2
-        let attr = NSMutableAttributedString(string: "Tokenest支持keystore, 私钥及助记词的导入，请选择您要导入钱包的方式并将内容黏贴至下框")
+        
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#4C5669"),
+                          NSAttributedStringKey.font: FontConfigManager.shared.getLabelSCFont(size: 12, type: "Medium")]
+        let infoString = "Tokenest支持 keystore ,  私钥 及 助记词 的导入，请选择您要导入钱包的方式并将内容黏贴至下框"
+        let attr = infoString.higlighted(words: ["keystore", "私钥", "private key", "助记词", "mnemonic"], attributes: attributes)
+
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         attr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attr.length))
