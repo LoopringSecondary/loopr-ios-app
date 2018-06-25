@@ -17,7 +17,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var assetTableView: UITableView!
     
     private let refreshControl = UIRefreshControl()
-    var headerViewView = WalletBalanceTableViewCellViewController()
+    var headerBalanceViewController = WalletBalanceTableViewCellViewController()
     var headerHeightConstraint: NSLayoutConstraint!
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
@@ -101,7 +101,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func bringSubviewsToFront() {
-        view.bringSubview(toFront: headerViewView.view)
+        view.bringSubview(toFront: headerBalanceViewController.view)
         view.bringSubview(toFront: customizedNavigationBar)
     }
     
@@ -130,7 +130,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.isLaunching = false
                 }
                 self.assetTableView.reloadData()
-                self.headerViewView.setup()
+                self.headerBalanceViewController.setup()
                 self.refreshControl.endRefreshing()
             }
         })
@@ -251,7 +251,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
             assetTableView.reloadData()
-            headerViewView.setup()
+            headerBalanceViewController.setup()
         }
     }
     
@@ -259,11 +259,16 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             assetTableView.reloadData()
-            headerViewView.setup()
+            headerBalanceViewController.setup()
         }
     }
     
     @objc func currentAppWalletSwitchedReceivedNotification() {
+        assetTableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        // Update the headerBalanceViewController
+        headerBalanceViewController.view.y = 0
+        headerBalanceViewController.balanceLabel.alpha = 1.0
+        
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         customizedNavigationBar.topItem?.title = buttonTitle
     }
@@ -278,14 +283,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("change: \(scrollView.contentOffset.y)")
         if scrollView.contentOffset.y < 0 {
-            headerViewView.view.y = 0
-            headerViewView.balanceLabel.alpha = 1.0
+            headerBalanceViewController.view.y = 0
+            headerBalanceViewController.balanceLabel.alpha = 1.0
         } else {
-            headerViewView.view.y = -scrollView.contentOffset.y
-            headerViewView.balanceLabel.alpha = (70 - scrollView.contentOffset.y)/70
-            headerViewView.addTokenButton.alpha = (70 - scrollView.contentOffset.y)/70
-            if headerViewView.view.y <= -200 {
-                headerViewView.view.y = -200
+            headerBalanceViewController.view.y = -scrollView.contentOffset.y
+            headerBalanceViewController.balanceLabel.alpha = (70 - scrollView.contentOffset.y)/70
+            headerBalanceViewController.addTokenButton.alpha = (70 - scrollView.contentOffset.y)/70
+            if headerBalanceViewController.view.y <= -200 {
+                headerBalanceViewController.view.y = -200
             }
         }
     }
@@ -382,17 +387,17 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func setUpHeader() {
-        headerViewView.view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(headerViewView.view)
-        headerHeightConstraint = headerViewView.view.heightAnchor.constraint(equalToConstant: backgroundImageHeight)
+        headerBalanceViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(headerBalanceViewController.view)
+        headerHeightConstraint = headerBalanceViewController.view.heightAnchor.constraint(equalToConstant: backgroundImageHeight)
         headerHeightConstraint.isActive = true
         let constraints: [NSLayoutConstraint] = [
-            headerViewView.view.topAnchor.constraint(equalTo: view.topAnchor),
-            headerViewView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerViewView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            headerBalanceViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            headerBalanceViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerBalanceViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
-        headerViewView.delegate = self
+        headerBalanceViewController.delegate = self
     }
 
     // Keep the code. We may use it in the future.
