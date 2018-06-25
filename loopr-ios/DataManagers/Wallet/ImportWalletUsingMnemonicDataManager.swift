@@ -39,6 +39,8 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
     }
 
     func generateAddresses() {
+        addresses.removeAll()
+
         // append "/x"
         let pathValue = derivationPathValue + "/x"
 

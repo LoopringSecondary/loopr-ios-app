@@ -19,7 +19,20 @@ class SwitchImportWalletWalletTypeViewController: UIViewController, UITableViewD
     let walletTypes: [WalletType] = [
         WalletType.getDefault(),
         WalletType(name: "Loopring Wallet", derivationPath: "m/44'/60'/0'/0"),
+        WalletType(name: "imtoken", derivationPath: "m/44'/60'/0'/0"),
         WalletType(name: "Metamask", derivationPath: "m/44'/60'/0'/0"),
+        WalletType(name: "TREZOR (ETH)", derivationPath: "m/44'/60'/0'/0"),
+        WalletType(name: "Digital Bitbox", derivationPath: "m/44'/60'/0'/0"),
+        WalletType(name: "Exodus", derivationPath: "m/44'/60'/0'/0"),
+        WalletType(name: "Jaxx", derivationPath: "m/44'/60'/0'/0"),
+        WalletType(name: "Ledger (ETH)", derivationPath: "m/44'/60'/0'"),
+        WalletType(name: "TREZOR (ETC)", derivationPath: "m/44'/61'/0'/0"),
+        WalletType(name: "Ledger (ETC)", derivationPath: "m/44'/60'/160720'/0'"),
+        WalletType(name: "SingularDTV", derivationPath: "m/0'/0'/0'"),
+        WalletType(name: "Network: Testnets", derivationPath: "m/44'/1'/0'/0"),
+        WalletType(name: "Network: Expanse", derivationPath: "m/44'/40'/0'/0"),
+        WalletType(name: "Network: Ubiq", derivationPath: "m/44'/108'/0'/0"),
+        WalletType(name: "Network: Ellaism", derivationPath: "m/44'/163'/0'/0")
     ]
     var currentWalletType: WalletType = WalletType.getDefault()
     var selectedWalletType: WalletType?
@@ -43,8 +56,8 @@ class SwitchImportWalletWalletTypeViewController: UIViewController, UITableViewD
         scrollViewTap.numberOfTapsRequired = 1
         backgroundView.addGestureRecognizer(scrollViewTap)
         
-        importWalletButton.titleLabel?.text = NSLocalizedString("Select Your Wallet Type", comment: "")
-        importWalletButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16, type: "Medium")
+        importWalletButton.setTitle(NSLocalizedString("Select Your Wallet Type", comment: ""), for: .normal)
+        importWalletButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14, type: "Medium")
         importWalletButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
         importWalletButton.setTitleColor(UIColor.init(rgba: "#4A5668").withAlphaComponent(0.7), for: .highlighted)
         importWalletButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
@@ -53,10 +66,12 @@ class SwitchImportWalletWalletTypeViewController: UIViewController, UITableViewD
         
         imporWalletArrowButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 12))
+        headerView.backgroundColor = UIColor.clear
+        tableView.tableHeaderView = headerView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.isScrollEnabled = false
     }
 
     override func didReceiveMemoryWarning() {

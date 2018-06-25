@@ -39,7 +39,7 @@ class SwitchImportWalletMethodViewController: UIViewController, UITableViewDeleg
         scrollViewTap.numberOfTapsRequired = 1
         backgroundView.addGestureRecognizer(scrollViewTap)
         
-        importWalletButton.titleLabel?.text = NSLocalizedString("Import Wallet", comment: "")
+        importWalletButton.setTitle(NSLocalizedString("Import Wallet", comment: ""), for: .normal)
         importWalletButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16, type: "Medium")
         importWalletButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
         importWalletButton.setTitleColor(UIColor.init(rgba: "#4A5668").withAlphaComponent(0.7), for: .highlighted)
@@ -50,6 +50,9 @@ class SwitchImportWalletMethodViewController: UIViewController, UITableViewDeleg
         
         imporWalletArrowButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 12))
+        headerView.backgroundColor = UIColor.clear
+        tableView.tableHeaderView = headerView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -79,7 +82,7 @@ class SwitchImportWalletMethodViewController: UIViewController, UITableViewDeleg
         cell.textLabel?.textAlignment = .center
         cell.textLabel?.text = types[indexPath.row].description
         
-        cell.textLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16)
+        cell.textLabel?.font = FontConfigManager.shared.getLabelENFont(size: 16)
         if selectedImportMethod == nil {
             if currentImportMethod == types[indexPath.row] {
                 cell.textLabel?.textColor = GlobalPicker.themeColor

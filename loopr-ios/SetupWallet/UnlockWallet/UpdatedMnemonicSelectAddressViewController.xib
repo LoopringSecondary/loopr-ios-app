@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,12 +13,17 @@
         <array key="Futura.ttc">
             <string>Futura-Bold</string>
         </array>
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpdatedMnemonicSelectAddressViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="sJJ-nJ-Olp" id="kGP-j0-hcq"/>
+                <outlet property="infoLabel" destination="zbP-s9-P0V" id="r6H-Zt-cMQ"/>
                 <outlet property="nextButton" destination="Hdh-ZT-WE1" id="NaN-Un-E9L"/>
+                <outlet property="otherAddressesInfoLabel" destination="sWy-Vr-MwM" id="7di-5q-OAf"/>
                 <outlet property="selectedAddress" destination="2ZH-Fh-S2Z" id="ITi-pU-CZZ"/>
                 <outlet property="startInfolbel" destination="MWB-zp-ii8" id="h39-Id-88p"/>
                 <outlet property="tableView" destination="4nb-yz-292" id="E6E-sT-QHn"/>
@@ -85,30 +91,30 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="q2u-gN-qSm"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
+                    <color key="textColor" red="0.70980392156862748" green="0.72549019607843135" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZH-Fh-S2Z">
-                    <rect key="frame" x="48" y="304" width="279" height="40"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="local" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZH-Fh-S2Z">
+                    <rect key="frame" x="48" y="304" width="279" height="54"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="jRR-Ip-fqR"/>
+                        <constraint firstAttribute="height" constant="54" id="jRR-Ip-fqR"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
+                    <color key="textColor" name="Tokenest-table-font"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4nb-yz-292">
-                    <rect key="frame" x="48" y="389" width="279" height="230"/>
+                    <rect key="frame" x="48" y="402" width="279" height="217"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择其它地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWy-Vr-MwM">
-                    <rect key="frame" x="48" y="352" width="279" height="21"/>
+                    <rect key="frame" x="52" y="366" width="275" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="TKD-R9-EfW"/>
+                        <constraint firstAttribute="height" constant="20" id="TKD-R9-EfW"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                    <color key="textColor" name="Tokenest-background"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -145,7 +151,7 @@
                 <constraint firstItem="vPW-dw-OIX" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="upg-WU-FZy"/>
                 <constraint firstItem="8Yr-Ta-ZeT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="wZ7-7d-QSS"/>
                 <constraint firstItem="MWB-zp-ii8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="43" id="yHm-gO-K2i"/>
-                <constraint firstItem="sWy-Vr-MwM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="zOP-IN-Zew"/>
+                <constraint firstItem="sWy-Vr-MwM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="52" id="zOP-IN-Zew"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="97.5" y="93.5"/>
@@ -156,5 +162,11 @@
         <image name="Tokenest-setup-background-curve-image" width="375" height="240"/>
         <image name="Tokenest-setup-info-icon" width="17" height="17"/>
         <image name="Tokenest-setup-next-button" width="80" height="80"/>
+        <namedColor name="Tokenest-background">
+            <color red="0.1803921568627451" green="0.16862745098039217" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Tokenest-table-font">
+            <color red="0.19607843137254902" green="0.2196078431372549" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>

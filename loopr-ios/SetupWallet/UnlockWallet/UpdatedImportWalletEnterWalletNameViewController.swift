@@ -80,13 +80,13 @@ class UpdatedImportWalletEnterWalletNameViewController: UIViewController, UIText
         mainScrollView.frame = CGRect(x: 0, y: backgroundImageHeightLayoutConstraint.constant, width: screenWidth, height: scrollViewHeight)
         mainScrollView.contentSize = CGSize(width: screenWidth, height: scrollViewHeight)
         
-        infoImage.frame = CGRect(x: 48, y: 37, width: 16.5, height: 16.5)
+        infoImage.frame = CGRect(x: 48, y: 36, width: 18, height: 18)
         infoImage.image = UIImage.init(named: "Tokenest-setup-info-icon")
         mainScrollView.addSubview(infoImage)
         
         infoLabel.textColor = UIColor.tokenestTip
-        infoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
-        infoLabel.frame = CGRect(x: 72, y: 36, width: screenWidth - 72 - 35, height: 17)
+        infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
+        infoLabel.frame = CGRect(x: 72, y: infoImage.y+1, width: screenWidth - 72 - 35, height: 18)
         infoLabel.numberOfLines = 1
         infoLabel.text = NSLocalizedString("Give your wallet an awesome name", comment: "")
         mainScrollView.addSubview(infoLabel)

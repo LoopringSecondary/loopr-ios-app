@@ -264,6 +264,13 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
             self.passwordInfoLabel.textColor = UIStyleConfig.red
         }
         
+        if password.trim().count < 6 {
+            validPassword = false
+            self.passwordInfoLabel.shake()
+            self.passwordInfoLabel.textColor = UIStyleConfig.red
+            self.passwordInfoLabel.text = "密码长度应不少于6位"
+        }
+        
         let repeatPassword = repeatPasswordTextField.text ?? ""
         if repeatPassword.trim() == "" {
             validRepeatPassword = false
@@ -303,8 +310,12 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
                 walletNameInfoLabel.textColor = UIStyleConfig.red
             }
         case passwordTextField.tag:
-            if newLength > 0 {
+            if newLength > 0 && newLength < 6 {
                 passwordInfoLabel.textColor = UIColor.tokenestTip
+                passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
+            } else if newLength >= 6 {
+                passwordInfoLabel.textColor = UIColor.green
+                passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
             } else {
                 passwordInfoLabel.shake()
                 passwordInfoLabel.textColor = UIStyleConfig.red

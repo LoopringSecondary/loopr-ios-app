@@ -121,11 +121,11 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         balanceLabel.layoutIfNeeded()
     }
 
+    // This doesn't work very well.
     @objc func currentAppWalletSwitchedReceivedNotification() {
-        var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
-        balance.insert(" ", at: balance.index(after: balance.startIndex))
-        balanceLabel.setText(balance, animated: true)
-        balanceLabel.setNeedsLayout()
-        balanceLabel.layoutIfNeeded()
+        // var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        // balance.insert(" ", at: balance.index(after: balance.startIndex))
+        // balanceLabel.setText(balance, animated: true)
+        // balanceLabel.layoutCharacterLabels()
     }
 }

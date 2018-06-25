@@ -251,6 +251,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
             assetTableView.reloadData()
+            headerViewView.setup()
         }
     }
     
@@ -258,6 +259,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             assetTableView.reloadData()
+            headerViewView.setup()
         }
     }
     
