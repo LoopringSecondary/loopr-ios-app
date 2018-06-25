@@ -15,6 +15,8 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
 
     var webView: WKWebView!
 
+    var dexRequest: DexRequest!
+    
     var start = Date()
     var end = Date()
     
@@ -23,8 +25,8 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
 
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = true
-        
         createWebView()
+        H5DexDataManager.shared.sendClosure = self.sendDataToHtml
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,11 +41,7 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
         config.userContentController = contentController
 
         webView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), configuration: config)
-        
-        // let url = Bundle.main.url(forResource: "my_page", withExtension: "html")!
-        // webView.loadFileURL(url, allowingReadAccessTo: url)
-
-        let url = URL(string: "https://loopring.io/h5dex/#/")
+        let url = URL(string: "http://10.137.110.138:8000/#/loopr")
         let request = URLRequest(url: url!)
         webView.load(request)
         
@@ -56,7 +54,6 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
         let rigthConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
         
         NSLayoutConstraint.activate([topConst, botConst, leftConst, rigthConst])
-        
         self.webView.translatesAutoresizingMaskIntoConstraints = false
         
         webView.navigationDelegate = self
@@ -87,26 +84,28 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print("userContentController didReceive message")
         if message.name == "nativeCallbackHandler" {
-            print(message.body)
-        }
-    }
-
-    func sendDataToHtml() {
-        let dict = [
-            "data1": "hello",
-            "data2": "world"
-        ]
-        let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: [])
-        let jsonString = String(data: jsonData, encoding: String.Encoding.utf8)!
-        print(jsonString)
-        
-        // Send the location update to the page
-        self.webView.evaluateJavaScript("updateData(\(jsonString))") { result, error in
-            guard error == nil else {
-                print(error)
-                return
+            if let objStr = message.body as? String {
+                let data: Data = objStr.data(using: .utf8)!
+                let json = JSON(data)
+                self.dexRequest = DexRequest(json: json) // dexRequest.data == JSON.null
+                H5DexDataManager.shared.handle(request: dexRequest)
             }
         }
     }
 
+    func sendDataToHtml(json: JSON) {
+        
+        let a = json.rawString(.utf8)!
+        print(a)
+        print(self.dexRequest.callback)
+        
+        if let jsonString = json.rawString(.utf8), let callback = self.dexRequest.callback {
+            self.webView.evaluateJavaScript("\(callback)(\(jsonString))") { result, error in
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+            }
+        }
+    }
 }

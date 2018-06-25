@@ -14,8 +14,8 @@ class AssetTableViewCell: UITableViewCell {
     
     // TODO: We may deprecate IBOutlet
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var seperateLine: UIView!
@@ -27,13 +27,12 @@ class AssetTableViewCell: UITableViewCell {
         // Initialization code
         
         theme_backgroundColor = GlobalPicker.backgroundColor
-        symbolLabel.setHeaderFont()
-        amountLabel.setTitleFont()
-        amountLabel.baselineAdjustment = .alignCenters
-        balanceLabel.setSubTitleFont()
-        balanceLabel.baselineAdjustment = .alignCenters
+        symbolLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
+        nameLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        amountLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
+        balanceLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-        accessoryType = .disclosureIndicator
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,21 +43,11 @@ class AssetTableViewCell: UITableViewCell {
     
     func update() {
         if let asset = asset {
-            if asset.icon != nil {
-                iconImageView.image = asset.icon
-                iconImageView.isHidden = false
-                iconView.isHidden = true
-            } else {
-                iconView.isHidden = false
-                iconView.symbol = asset.symbol
-                iconView.symbolLabel.text = asset.symbol
-                iconImageView.isHidden = true
-            }
-
+            nameLabel.text = asset.name
             symbolLabel.text = asset.symbol
-            // TODO: price unit get from setting
-            balanceLabel.text = asset.currency
-            amountLabel.text = "\(asset.display) \(asset.symbol)"
+            iconImageView.image = asset.icon
+            balanceLabel.text = "≈\(asset.currency)"
+            amountLabel.text = "\(asset.display)"
         }
     }
     

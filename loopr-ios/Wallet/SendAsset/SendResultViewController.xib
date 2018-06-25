@@ -52,10 +52,41 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ld-xg-k4s">
                     <rect key="frame" x="64" y="475" width="247" height="48"/>
+                    <color key="backgroundColor" name="Tokenest-background"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="8ku-P7-jqh"/>
                     </constraints>
                     <state key="normal" title="查看详情">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.29999999999999999"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" name="Tokenest-background"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="pressedDetailButton:" destination="-1" eventType="touchUpInside" id="5i1-q8-Z98"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ak-xt-wdo">
+                    <rect key="frame" x="63.5" y="555" width="247" height="48"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="mKL-Iy-bU2"/>
+                    </constraints>
+                    <state key="normal" title="返回">
                         <color key="titleColor" name="Tokenest-background"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -68,29 +99,11 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                             <real key="value" value="0.29999999999999999"/>
                         </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="pressedDetailButton:" destination="-1" eventType="touchUpInside" id="5i1-q8-Z98"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ak-xt-wdo">
-                    <rect key="frame" x="63.5" y="555" width="247" height="48"/>
-                    <color key="backgroundColor" name="Tokenest-background"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="48" id="mKL-Iy-bU2"/>
-                    </constraints>
-                    <state key="normal" title="返回">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="24"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" name="Tokenest-background"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                            <real key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                            <real key="value" value="0.29999999999999999"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -125,6 +138,12 @@
     </objects>
     <resources>
         <image name="Tokenest-success" width="68" height="68"/>
+        <namedColor name="Tokenest-background">
+            <color red="0.18039215689999999" green="0.16862745100000001" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Tokenest-background">
+            <color red="0.18039215689999999" green="0.16862745100000001" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Tokenest-background">
             <color red="0.1803921568627451" green="0.16862745098039217" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

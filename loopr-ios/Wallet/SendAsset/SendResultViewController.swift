@@ -26,21 +26,27 @@ class SendResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
+        self.navigationItem.setHidesBackButton(true, animated: true)
         if let errorMessage = self.errorMessage {
+            self.navigationItem.title = "转账失败"
             resultTipLabel.text = "代币发送失败"
             resultImageVIew.image = #imageLiteral(resourceName: "Tokenest-failed")
             detailButton.isHidden = true
             failReasonLabel.isHidden = false
             failReasonLabel.text = errorMessage
-            self.navigationItem.title = "转账失败"
         } else {
             self.navigationItem.title = "转账成功"
             resultTipLabel.text = "代币发送成功"
-            detailButton.setupRoundPurpleWithOutlineAndShadow()
+            detailButton.layer.shadowRadius = 4
+            detailButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
+            detailButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+            detailButton.clipsToBounds = false
         }
-        doneButton.setupRoundPurpleWithShadow()
-        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
-        self.navigationItem.setHidesBackButton(true, animated: true)
+        doneButton.layer.shadowRadius = 4
+        doneButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
+        doneButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        doneButton.clipsToBounds = false
     }
 
     override func didReceiveMemoryWarning() {

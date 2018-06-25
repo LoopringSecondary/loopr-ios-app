@@ -414,9 +414,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     */
     
     func pressedSendButton() {
-        let viewController = SendViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
+        let vc = SendViewController()
+//        let vc = SendResultViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     func pressedReceiveButton() {
