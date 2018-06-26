@@ -121,15 +121,20 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let rightButton = UIButton(type: UIButtonType.custom)
         rightButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         rightButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -16)
+        rightButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         barButton = UIBarButtonItem(customView: rightButton)
         navigationItem.rightBarButtonItem = barButton
-        if self.asset?.symbol.uppercased() == "ETH" || self.asset?.symbol.uppercased() == "WETH" {
+        
+        if self.asset?.symbol.uppercased() == "WETH" {
             rightButton.setImage(#imageLiteral(resourceName: "Tokenest-more-button"), for: .normal)
             rightButton.setImage(#imageLiteral(resourceName: "Tokenest-more-button").alpha(0.3), for: .highlighted)
             rightButton.addTarget(self, action: #selector(pressedMoreButton(_:)), for: UIControlEvents.touchUpInside)
+        } else if self.asset?.symbol.uppercased() == "ETH" {
+            rightButton.title = "转换"
+            rightButton.addTarget(self, action: #selector(pushConvertController), for: UIControlEvents.touchUpInside)
         } else {
             rightButton.title = "交易"
-            rightButton.addTarget(self, action: #selector(pressedTradeButton(_:)), for: UIControlEvents.touchUpInside)
+            rightButton.addTarget(self, action: #selector(pushTradeController), for: UIControlEvents.touchUpInside)
         }
         customizedNavigationBar.setItems([navigationItem], animated: false)
     }
@@ -166,7 +171,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         if !isLaunching {
             getTransactionsFromRelay()
         }
@@ -177,16 +182,19 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    func a() {
+    @objc func pushTradeController() {
         let viewController = TradeViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @objc func pressedTradeButton(_ sender: UIBarButtonItem) {
-        a()
+    @objc func pushConvertController() {
+        let viewController = ConvertETHViewController()
+        viewController.asset = self.asset
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
     @objc func pressedMoreButton(_ sender: UIBarButtonItem) {
         contextMenuSourceView.frame = CGRect(x: self.view.frame.width-10, y: 44, width: 1, height: 1)
         view.addSubview(contextMenuSourceView)
@@ -196,12 +204,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let menuViewController = AddMenuViewController(rows: 2, titles: titles, icons: icons)
         menuViewController.didSelectRowClosure = { (index) -> Void in
             if index == 0 {
-                self.a()
+                self.pushConvertController()
             } else if index == 1 {
-                let viewController = ConvertETHViewController()
-                viewController.asset = self.asset
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
+                self.pushTradeController()
             }
         }
         ContextMenu.shared.show(
