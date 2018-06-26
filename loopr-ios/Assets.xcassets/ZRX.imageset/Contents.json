@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ZRX@2x.png",
+      "filename" : "ZRX Copy@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ZRX@4x.png",
+      "filename" : "ZRX Copy@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ZRX@6x.png",
+      "filename" : "ZRX Copy@3x.png",
       "scale" : "3x"
     }
   ],

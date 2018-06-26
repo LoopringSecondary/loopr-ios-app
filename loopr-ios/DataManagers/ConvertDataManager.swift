@@ -13,7 +13,6 @@ class ConvertDataManager {
     static let shared = ConvertDataManager()
     
     var amount: Double
-    
     private var maxAmount: Double = 0
     
     private init() {

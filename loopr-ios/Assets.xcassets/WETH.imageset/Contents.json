@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "WETH@2x.png",
+      "filename" : "WETH Copy@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "WETH@4x.png",
+      "filename" : "WETH Copy@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "WETH@6x.png",
+      "filename" : "WETH Copy@3x.png",
       "scale" : "3x"
     }
   ],
