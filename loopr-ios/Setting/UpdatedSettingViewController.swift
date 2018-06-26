@@ -9,7 +9,7 @@
 import UIKit
 import NotificationBannerSwift
 
-class UpdatedSettingViewController: UIViewController {
+class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
 
@@ -18,6 +18,8 @@ class UpdatedSettingViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var copyButton: UIButton!
     
+    @IBOutlet weak var settingsTableView: UITableView!
+
     @IBOutlet weak var selectionGridView: UIView!
     
     @IBOutlet weak var item1: UIButton!
@@ -34,6 +36,9 @@ class UpdatedSettingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setupNavigationBar()
+        
+        settingsTableView.delegate = self
+        settingsTableView.dataSource = self
 
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode"), for: .normal)
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode")?.alpha(0.6), for: .highlighted)
@@ -58,10 +63,11 @@ class UpdatedSettingViewController: UIViewController {
         copyButton.layer.cornerRadius = 28 * 0.5
         copyButton.addTarget(self, action: #selector(self.pressedCopyButton(_:)), for: .touchUpInside)
         
+        /*
         selectionGridView.backgroundColor = UIColor.init(white: 1, alpha: 0.98)
         selectionGridView.cornerRadius = 7.5
         selectionGridView.clipsToBounds = true
-        
+ 
         // Update grid
         let iconTitlePadding: CGFloat = 15
         
@@ -112,6 +118,8 @@ class UpdatedSettingViewController: UIViewController {
         item6.setTitleColor(UIColor.black, for: .normal)
         item6.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
         item6.addTarget(self, action: #selector(self.pressedItem6Button(_:)), for: .touchUpInside)
+        
+        */
         
         presentedBackgroundView.backgroundColor = UIColor.clear
         presentedBackgroundView.isHidden = true
@@ -218,6 +226,41 @@ class UpdatedSettingViewController: UIViewController {
     
     @objc func pressedItem6Button(_ button: UIButton) {
         print("pressedItem6Button")
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UpdatedSettingTableViewCell.getHeight()
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: UpdatedSettingTableViewCell.getCellIdentifier()) as? UpdatedSettingTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("UpdatedSettingTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? UpdatedSettingTableViewCell
+            cell?.selectionStyle = .none
+        }
+        
+        switch indexPath.row {
+        case 0:
+            cell?.nameLabel.text = NSLocalizedString("Wallet Management", comment: "")
+        case 1:
+            cell?.nameLabel.text = NSLocalizedString("Trading_settings_in_grid", comment: "")
+        case 2:
+            cell?.nameLabel.text = NSLocalizedString("Settings_in_grid", comment: "")
+        case 3:
+            cell?.nameLabel.text = NSLocalizedString("Trade FAQ", comment: "")
+        default:
+            break
+        }
+        return cell!
     }
 }
 
