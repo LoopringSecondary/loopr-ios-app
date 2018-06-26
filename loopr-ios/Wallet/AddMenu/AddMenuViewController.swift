@@ -12,21 +12,18 @@ class AddMenuViewController: UITableViewController {
     
     var rows: UInt8
     var titles: [String]
-    var icons: [UIImage]
     
     var didSelectRowClosure: ((_ index: Int) -> Void)?
 
-    convenience init(rows: UInt8, titles: [String], icons: [UIImage]) {
+    convenience init(rows: UInt8, titles: [String]) {
         self.init(nibName: nil, bundle: nil)
         self.rows = rows
         self.titles = titles
-        self.icons = icons
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.rows = 2
         self.titles = []
-        self.icons = []
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -58,7 +55,7 @@ class AddMenuViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+        return 54
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,7 +64,6 @@ class AddMenuViewController: UITableViewController {
             let nib = Bundle.main.loadNibNamed("AddMenuTableViewCell", owner: self, options: nil)
             cell = nib![0] as? AddMenuTableViewCell
         }
-        cell?.iconImageView.image = icons[indexPath.row]
         cell?.titleLabel.text = titles[indexPath.row]
         if indexPath.row == rows - 1 {
             cell?.seperateLabel.isHidden = true

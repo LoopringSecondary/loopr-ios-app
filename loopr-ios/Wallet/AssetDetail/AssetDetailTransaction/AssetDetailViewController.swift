@@ -196,12 +196,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     @objc func pressedMoreButton(_ sender: UIBarButtonItem) {
-        contextMenuSourceView.frame = CGRect(x: self.view.frame.width-10, y: 44, width: 1, height: 1)
+        contextMenuSourceView.frame = CGRect(x: self.view.frame.width + 10, y: customizedNavigationBar.bottomY, width: 1, height: 1)
         view.addSubview(contextMenuSourceView)
         
-        let icons = [#imageLiteral(resourceName: "Tokenest-convert"), #imageLiteral(resourceName: "Tokenest-convert")]
         let titles = ["转换为ETH", "交易"]
-        let menuViewController = AddMenuViewController(rows: 2, titles: titles, icons: icons)
+        let menuViewController = AddMenuViewController(rows: 2, titles: titles)
         menuViewController.didSelectRowClosure = { (index) -> Void in
             if index == 0 {
                 self.pushConvertController()

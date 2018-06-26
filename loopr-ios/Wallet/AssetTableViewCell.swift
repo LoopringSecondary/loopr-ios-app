@@ -46,7 +46,7 @@ class AssetTableViewCell: UITableViewCell {
             nameLabel.text = asset.name
             symbolLabel.text = asset.symbol
             iconImageView.image = asset.icon
-            balanceLabel.text = "≈\(asset.currency)"
+            balanceLabel.text = "\(asset.currency)"
             amountLabel.text = "\(asset.display)"
         }
     }
@@ -56,6 +56,6 @@ class AssetTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 72*UIStyleConfig.scale
+        return 64
     }
 }
