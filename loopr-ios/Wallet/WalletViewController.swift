@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import NotificationBannerSwift
 import SwiftTheme
 import SideMenu
+import NotificationBannerSwift
 
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WalletBalanceDelegate, QRCodeScanProtocol, UpdatedSelectWalletViewControllerDelegate {
 

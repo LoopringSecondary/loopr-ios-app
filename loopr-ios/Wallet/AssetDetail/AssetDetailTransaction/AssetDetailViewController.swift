@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ContextMenuDelegate {
     
     @IBOutlet weak var statusBarBackgroundView: UIView!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
@@ -20,25 +20,25 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var typeButton: UIButton!
-    
-    var asset: Asset?
-    var isLaunching: Bool = true
-    
-    var transactions: [String: [Transaction]] = [:]
-    var transactionDates: [String] = []
+    @IBOutlet weak var moreButton: UIBarButtonItem!
     
     @IBOutlet weak var tableView: UITableView!
-    private let refreshControl = UIRefreshControl()
-    
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var buttonHeightLayoutConstraint: NSLayoutConstraint!
 
+    var asset: Asset?
+    var isLaunching: Bool = true
+    var transactions: [String: [Transaction]] = [:]
+    var transactionDates: [String] = []
+    let refreshControl = UIRefreshControl()
+    var contextMenuSourceView: UIView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
         // Do any additional setup after loading the view.
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: asset?.symbol ?? "")
+        setup()
+        setupNavigationBar()
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -56,7 +56,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Receive button
         receiveButton.setTitle(NSLocalizedString("Receive", comment: ""), for: .normal)
-        
         // Send button
         sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
         
@@ -101,6 +100,40 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         titleView.layer.masksToBounds = false
     }
     
+    func setupNavigationBar() {
+        let title = asset?.symbol ?? ""
+        
+        // left bar button
+        let backButton = UIButton(type: UIButtonType.custom)
+        backButton.setImage(#imageLiteral(resourceName: "BackButtonImage-white"), for: .normal)
+        backButton.setImage(#imageLiteral(resourceName: "BackButtonImage-white").alpha(0.3), for: .highlighted)
+        backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -16, bottom: 0, right: 8)
+        backButton.addTarget(self, action: #selector(pressedBackButton(_:)), for: UIControlEvents.touchUpInside)
+        backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        var barButton = UIBarButtonItem(customView: backButton)
+        let navigationLeftItem = UINavigationItem()
+        navigationLeftItem.leftBarButtonItem = barButton
+        let navigationItem = UINavigationItem()
+        navigationItem.title = title
+        navigationItem.leftBarButtonItem = barButton
+        
+        // right bar button
+        let rightButton = UIButton(type: UIButtonType.custom)
+        rightButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        rightButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -16)
+        barButton = UIBarButtonItem(customView: rightButton)
+        navigationItem.rightBarButtonItem = barButton
+        if self.asset?.symbol.uppercased() == "ETH" || self.asset?.symbol.uppercased() == "WETH" {
+            rightButton.setImage(#imageLiteral(resourceName: "Tokenest-more-button"), for: .normal)
+            rightButton.setImage(#imageLiteral(resourceName: "Tokenest-more-button").alpha(0.3), for: .highlighted)
+            rightButton.addTarget(self, action: #selector(pressedMoreButton(_:)), for: UIControlEvents.touchUpInside)
+        } else {
+            rightButton.title = "交易"
+            rightButton.addTarget(self, action: #selector(pressedTradeButton(_:)), for: UIControlEvents.touchUpInside)
+        }
+        customizedNavigationBar.setItems([navigationItem], animated: false)
+    }
+    
     @objc private func refreshData(_ sender: Any) {
         // Fetch Data
         getTransactionsFromRelay()
@@ -142,6 +175,42 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func a() {
+        let viewController = TradeViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func pressedTradeButton(_ sender: UIBarButtonItem) {
+        a()
+    }
+    
+    @objc func pressedMoreButton(_ sender: UIBarButtonItem) {
+        contextMenuSourceView.frame = CGRect(x: self.view.frame.width-10, y: 44, width: 1, height: 1)
+        view.addSubview(contextMenuSourceView)
+        
+        let icons = [#imageLiteral(resourceName: "Tokenest-convert"), #imageLiteral(resourceName: "Tokenest-convert")]
+        let titles = ["转换为ETH", "交易"]
+        let menuViewController = AddMenuViewController(rows: 2, titles: titles, icons: icons)
+        menuViewController.didSelectRowClosure = { (index) -> Void in
+            if index == 0 {
+                self.a()
+            } else if index == 1 {
+                let viewController = ConvertETHViewController()
+                viewController.asset = self.asset
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+        ContextMenu.shared.show(
+            sourceViewController: self,
+            viewController: menuViewController,
+            options: ContextMenu.Options(containerStyle: ContextMenu.ContainerStyle(backgroundColor: UIColor.white), menuStyle: .minimal),
+            sourceView: contextMenuSourceView,
+            delegate: self
+        )
     }
     
     @IBAction func pressedSendButton(_ sender: Any) {
@@ -202,5 +271,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         vc.transaction = transaction
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func contextMenuWillDismiss(viewController: UIViewController, animated: Bool) {
+    }
+    
+    func contextMenuDidDismiss(viewController: UIViewController, animated: Bool) {
+        contextMenuSourceView.removeFromSuperview()
     }
 }
