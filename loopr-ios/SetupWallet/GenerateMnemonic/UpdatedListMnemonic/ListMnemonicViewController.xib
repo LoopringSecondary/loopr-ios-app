@@ -42,7 +42,7 @@
                     </constraints>
                     <state key="normal" image="Tokenest-setup-next-button"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-vr-neH">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great, Go Ahead" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-vr-neH">
                     <rect key="frame" x="43" y="89" width="316" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="80J-i0-Lxw"/>
@@ -88,6 +88,13 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-5-3-record" translatesAutoresizingMaskIntoConstraints="NO" id="Qhw-DN-aH8">
+                    <rect key="frame" x="44" y="139" width="151" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="64h-2w-Mpg"/>
+                        <constraint firstAttribute="width" constant="151" id="Fr0-6D-QCx"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -108,12 +115,15 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ehA-jp-RfT" secondAttribute="trailing" constant="30" id="kQ5-6I-Tn0"/>
                 <constraint firstItem="e3g-Nu-gh5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="sZ6-Xu-kLZ"/>
                 <constraint firstItem="XbE-vr-neH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="43" id="wDC-9N-Kdb"/>
+                <constraint firstItem="Qhw-DN-aH8" firstAttribute="top" secondItem="XbE-vr-neH" secondAttribute="bottom" constant="10" id="yEX-2X-Sln"/>
+                <constraint firstItem="Qhw-DN-aH8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="44" id="zzX-zN-DUB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="118"/>
         </view>
     </objects>
     <resources>
+        <image name="Tokenest-setup-5-3-record" width="149" height="17"/>
         <image name="Tokenest-setup-back-button" width="17" height="16"/>
         <image name="Tokenest-setup-background-curve-image" width="375" height="240"/>
         <image name="Tokenest-setup-info-icon" width="17" height="17"/>

@@ -76,6 +76,13 @@
                     </constraints>
                     <state key="normal" image="Tokenest-setup-next-button"/>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-5-2-import-wallet" translatesAutoresizingMaskIntoConstraints="NO" id="TGF-tW-DmN">
+                    <rect key="frame" x="46.5" y="115" width="72" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="72" id="9xG-0z-Vk6"/>
+                        <constraint firstAttribute="height" constant="25" id="AAb-gg-Bdv"/>
+                    </constraints>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JpV-F0-T3f">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,6 +94,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QHD-p6-GcY" secondAttribute="trailing" constant="16" id="5b0-aM-qem"/>
                 <constraint firstItem="QHD-p6-GcY" firstAttribute="top" secondItem="iyk-zw-gqr" secondAttribute="bottom" constant="2" id="6Q0-Eu-HiR"/>
                 <constraint firstItem="965-jF-1jK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9L5-TG-O3w"/>
+                <constraint firstItem="TGF-tW-DmN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="46.5" id="DRk-tz-IhW"/>
                 <constraint firstItem="iyk-zw-gqr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-1" id="Gh8-ao-wMM"/>
                 <constraint firstItem="965-jF-1jK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HPy-TX-iDr"/>
                 <constraint firstItem="Jew-pS-O1g" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HhZ-Mt-tP3"/>
@@ -97,6 +105,7 @@
                 <constraint firstItem="JpV-F0-T3f" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VUm-7b-rs5"/>
                 <constraint firstItem="nM1-Sa-Lln" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="X3W-Pr-OlR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nqi-Nn-VIf" secondAttribute="trailing" constant="34" id="XAO-WB-Hph"/>
+                <constraint firstItem="TGF-tW-DmN" firstAttribute="top" secondItem="QHD-p6-GcY" secondAttribute="bottom" constant="10" id="XXZ-lD-z28"/>
                 <constraint firstItem="JpV-F0-T3f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bvj-iY-UTU"/>
                 <constraint firstItem="nM1-Sa-Lln" firstAttribute="top" secondItem="Jew-pS-O1g" secondAttribute="bottom" id="eRC-9r-dIj"/>
                 <constraint firstItem="965-jF-1jK" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="g6B-Da-BG7"/>
@@ -110,6 +119,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Tokenest-setup-5-2-import-wallet" width="70" height="17"/>
         <image name="Tokenest-setup-back-button" width="17" height="16"/>
         <image name="Tokenest-setup-background-curve-image" width="375" height="240"/>
         <image name="Tokenest-setup-next-button" width="80" height="80"/>

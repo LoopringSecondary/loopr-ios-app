@@ -19,7 +19,6 @@ class UpdatedMnemonicSelectAddressViewController: UIViewController, UITableViewD
     
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var selectedAddress: UILabel!
-    @IBOutlet weak var otherAddressesInfoLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -32,7 +31,6 @@ class UpdatedMnemonicSelectAddressViewController: UIViewController, UITableViewD
         nextButton.addTarget(self, action: #selector(pressedNextButton), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         
-        
         infoLabel.textColor = UIColor.init(rgba: "#B5B9C0")
         infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         
@@ -40,9 +38,6 @@ class UpdatedMnemonicSelectAddressViewController: UIViewController, UITableViewD
         selectedAddress.font = FontConfigManager.shared.getLabelSCFont(size: 18)
         selectedAddress.numberOfLines = 2
         selectedAddress.text = ImportWalletUsingMnemonicDataManager.shared.addresses[0].eip55String
-        
-        otherAddressesInfoLabel.textColor = GlobalPicker.themeColor
-        otherAddressesInfoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         
         tableView.dataSource = self
         tableView.delegate = self

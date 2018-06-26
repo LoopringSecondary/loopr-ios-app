@@ -75,15 +75,24 @@
                     </constraints>
                     <state key="normal" image="Tokenest-setup-ok-button"/>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-5-2-enter-wallet-name" translatesAutoresizingMaskIntoConstraints="NO" id="Mwd-HZ-Exz">
+                    <rect key="frame" x="41" y="115" width="134" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="DkX-5j-c3N"/>
+                        <constraint firstAttribute="width" constant="134" id="Dlo-Q7-UXT"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SMc-bk-YmL" secondAttribute="trailing" constant="16" id="0n0-Ou-HNY"/>
+                <constraint firstItem="Mwd-HZ-Exz" firstAttribute="top" secondItem="SMc-bk-YmL" secondAttribute="bottom" constant="10" id="1Ap-BK-lxe"/>
                 <constraint firstItem="SMc-bk-YmL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="43" id="5X1-tX-7od"/>
                 <constraint firstItem="icN-YD-TKn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6Td-xn-Bp4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Slt-md-dBO" secondAttribute="trailing" constant="34" id="8C8-ie-ugq"/>
                 <constraint firstAttribute="trailing" secondItem="gsg-GY-BcV" secondAttribute="trailing" id="9mZ-Ua-V5g"/>
                 <constraint firstItem="SMc-bk-YmL" firstAttribute="top" secondItem="CO6-3U-YdM" secondAttribute="bottom" constant="2" id="Ncp-Pp-cQP"/>
+                <constraint firstItem="Mwd-HZ-Exz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="41" id="Ntf-j9-cCa"/>
                 <constraint firstItem="icN-YD-TKn" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="YAI-cQ-MHV"/>
                 <constraint firstItem="Ulf-2x-ZSi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Yv2-6k-lTU"/>
                 <constraint firstItem="icN-YD-TKn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aEg-tp-mNp"/>
@@ -101,6 +110,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Tokenest-setup-5-2-enter-wallet-name" width="129" height="17"/>
         <image name="Tokenest-setup-back-button" width="17" height="16"/>
         <image name="Tokenest-setup-background-curve-image" width="375" height="240"/>
         <image name="Tokenest-setup-ok-button" width="80" height="80"/>
