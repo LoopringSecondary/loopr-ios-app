@@ -13,6 +13,8 @@ import NotificationBannerSwift
 
 class TradeConfirmationViewController: UIViewController {
     
+    @IBOutlet weak var progressBar: UIView!
+    @IBOutlet weak var customNavBar: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
     
@@ -40,9 +42,7 @@ class TradeConfirmationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
-        setBackButton()
-        
+        progressBar.backgroundColor = GlobalPicker.themeColor
         // Token View
         let paddingTop: CGFloat = 100
         let padding: CGFloat = 15
@@ -132,9 +132,16 @@ class TradeConfirmationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: "交易确认")
         if let order = self.order {
             updateLabels(order: order)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func updateLabels(order: OriginalOrder) {
@@ -218,6 +225,7 @@ extension TradeConfirmationViewController {
     }
     
     func handleVerifyInfo() {
+        SVProgressHUD.show(withStatus: "正在撮合并提交P2P订单...")
         if isBalanceEnough() {
             if needApprove() {
                 approve()
@@ -307,8 +315,8 @@ extension TradeConfirmationViewController {
     }
 
     func complete(_ txHash: String?, _ error: Error?) {
-        SVProgressHUD.dismiss()
         guard error == nil && txHash != nil else {
+            SVProgressHUD.dismiss()
             DispatchQueue.main.async {
                 print("TradeViewController \(error.debugDescription)")
                 let message = (error! as NSError).userInfo["message"] as! String

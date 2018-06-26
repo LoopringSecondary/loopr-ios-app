@@ -58,6 +58,10 @@ enum QRCodeMethod: String {
         }
     }
     
+    static func isP2POrder(content: String) -> Bool {
+        return content.contains("-")
+    }
+    
     static func isSubmitOrder(content: String) -> Bool {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)

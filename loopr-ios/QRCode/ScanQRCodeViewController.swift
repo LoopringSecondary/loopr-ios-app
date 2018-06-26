@@ -22,6 +22,7 @@ enum QRCodeType: String {
     case convert = "Convert"
     case submitOrder = "Submit Order"
     case cancelOrder = "Cancel Order"
+    case p2pOrder = "P2P Order"
     case undefined = "Undefined"
     
     var detectedDescription: String {
@@ -34,6 +35,7 @@ enum QRCodeType: String {
         case .login: return NSLocalizedString("Login message detected", comment: "")
         case .cancelOrder: return ""
         case .convert: return ""
+        case .p2pOrder: return ""
         case .undefined: return NSLocalizedString("Undefined", comment: "")
         }
     }
@@ -273,7 +275,9 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func qrCodeContentDetector (qrContent: String) -> QRCodeType {
-        if qrContent.starts (with: "0x") {
+        if QRCodeMethod.isP2POrder(content: qrContent) {
+            return QRCodeType.p2pOrder
+        } else if qrContent.starts (with: "0x") {
             return QRCodeType.address
         } else if QRCodeMethod.isSubmitOrder(content: qrContent) {
             return QRCodeType.submitOrder
@@ -289,7 +293,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             return QRCodeType.privateKey
         } else if QRCodeMethod.isKeystore(content: qrContent) {
             return QRCodeType.keystore
+        } else {
+            return QRCodeType.undefined
         }
-        return QRCodeType.undefined
     }
 }

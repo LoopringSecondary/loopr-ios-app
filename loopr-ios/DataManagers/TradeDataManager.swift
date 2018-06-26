@@ -92,6 +92,21 @@ class TradeDataManager {
         defaults.set(token.symbol, forKey: UserDefaultsKeys.tradeTokenB.rawValue)
     }
     
+    func handleResult(of scanning: String) {
+        let values = scanning.components(separatedBy: TradeDataManager.seperator)
+        guard values.count == 2 else { return }
+        let makerHash = values[0]
+        let makerPrivateKey = values[1]
+        if let maker = getOrder(by: makerHash) {
+            let taker = constructTaker(from: maker)
+            maker.hash = makerHash
+            isTaker = true
+            self.orders.insert(maker, at: 0)
+            self.orders.insert(taker, at: 1)
+            self.makerPrivateKey = makerPrivateKey
+        }
+    }
+    
     func getOrder(by hash: String) -> OriginalOrder? {
         var result: OriginalOrder? = nil
         let semaphore = DispatchSemaphore(value: 0)        

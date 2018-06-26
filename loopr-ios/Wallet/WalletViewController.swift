@@ -221,6 +221,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
+        } else if type == .p2pOrder {
+            TradeDataManager.shared.handleResult(of: valueSent)
+            let vc = TradeConfirmationViewController()
+            vc.order = TradeDataManager.shared.orders[1]
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -235,7 +240,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("pressScanQRCodeButton")
         if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
             let viewController = ScanQRCodeViewController()
-            // viewController.delegate = self
+            viewController.delegate = self
             viewController.shouldPop = false
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
