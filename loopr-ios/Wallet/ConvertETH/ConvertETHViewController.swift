@@ -42,12 +42,9 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.isNavigationBarHidden = true
-
         self.customizedNavigationBar.shadowImage = UIImage()
         self.statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
 
-        setBackButton()
         scrollViewBottomLayoutConstraint.constant = 0
         
         // Convert button
@@ -81,7 +78,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Convert", comment: ""))
     }
     

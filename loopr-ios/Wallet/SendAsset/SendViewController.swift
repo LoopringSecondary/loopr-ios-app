@@ -227,7 +227,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
         if asset == nil {
             asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
@@ -265,7 +265,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func hideCollectionView() {
