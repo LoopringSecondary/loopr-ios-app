@@ -28,6 +28,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
     @IBOutlet weak var scrollViewBottomLayoutConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var convertButton: UIButton!
+    @IBOutlet weak var totalMaskView: UIView!
     
     var asset: Asset?
     
@@ -171,23 +172,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
             })
         }
     }
-
-    func completion(_ txHash: String?, _ error: Error?) {
-        guard error == nil && txHash != nil else {
-            DispatchQueue.main.async {
-                let banner = NotificationBanner.generate(title: "Insufficient funds for gas x price + value", style: .danger)
-                banner.duration = 3
-                banner.show()
-            }
-            return
-        }
-        print("Result of transfer is \(txHash!)")
-        DispatchQueue.main.async {
-            let banner = NotificationBanner.generate(title: "Success. Result of transfer is \(txHash!)", style: .success)
-            banner.duration = 3
-            banner.show()
-        }
-    }
     
     func validate() -> GethBigInt? {
         var result: GethBigInt? = nil
@@ -226,17 +210,24 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
     }
     
     @IBAction func pressedConvertButton(_ sender: UIButton) {
-        guard let amount = validate() else {
+        guard validate() != nil else {
             tipLabel.textColor = .red
             tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
             tipLabel.shake()
             return
         }
-        if asset!.symbol.uppercased() == "ETH" {
-            SendCurrentAppWalletDataManager.shared._deposit(amount: amount, completion: completion)
-        } else if asset!.symbol.uppercased() == "WETH" {
-            SendCurrentAppWalletDataManager.shared._withDraw(amount: amount, completion: completion)
-        }
+        self.pushController()
+    }
+    
+    func pushController() {
+        self.totalMaskView.alpha = 0.75
+        let vc = ConvertConfirmViewController()
+        vc.convertAsset = self.asset
+        vc.convertAmount = self.amountSTextField.text
+        vc.dismissClosure = { self.totalMaskView.alpha = 0 }
+        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        vc.parentNavController = self.navigationController
+        self.present(vc, animated: true, completion: nil)
     }
 
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {

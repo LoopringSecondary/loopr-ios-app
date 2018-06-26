@@ -37,8 +37,8 @@ struct RandomBytesSequence: Sequence {
                 }
 
                 var value: UInt8 = 0
-                let result = read(fd, &value, MemoryLayout<UInt8>.size)
-                precondition(result == 1)
+                let type = read(fd, &value, MemoryLayout<UInt8>.size)
+                precondition(type == 1)
 
                 close(fd)
                 return value

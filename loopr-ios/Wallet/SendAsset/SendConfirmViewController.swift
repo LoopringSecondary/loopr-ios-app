@@ -79,7 +79,9 @@ extension SendConfirmViewController {
         SVProgressHUD.dismiss()
         DispatchQueue.main.async {
             let vc = SendResultViewController()
+            vc.type = "发送代币"
             vc.asset = self.sendAsset
+            vc.navigationItem.title = "转账"
             if let error = error as NSError?, let message = error.userInfo["message"] as? String {
                 vc.errorMessage = message
             }

@@ -14,6 +14,7 @@ import UIKit
 class SendResultViewController: UIViewController {
 
     @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customNavBar: UINavigationBar!
     @IBOutlet weak var resultImageVIew: UIImageView!
     @IBOutlet weak var resultTipLabel: UILabel!
     @IBOutlet weak var failReasonLabel: UILabel!
@@ -21,6 +22,7 @@ class SendResultViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     
     var asset: Asset!
+    var type: String!
     var errorMessage: String?
     
     override func viewDidLoad() {
@@ -28,16 +30,15 @@ class SendResultViewController: UIViewController {
         // Do any additional setup after loading the view.
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         self.navigationItem.setHidesBackButton(true, animated: true)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: "\(type!)")
         if let errorMessage = self.errorMessage {
-            self.navigationItem.title = "转账失败"
-            resultTipLabel.text = "代币发送失败"
+            resultTipLabel.text = "\(self.type!)失败"
             resultImageVIew.image = #imageLiteral(resourceName: "Tokenest-failed")
             detailButton.isHidden = true
             failReasonLabel.isHidden = false
             failReasonLabel.text = errorMessage
         } else {
-            self.navigationItem.title = "转账成功"
-            resultTipLabel.text = "代币发送成功"
+            resultTipLabel.text = "\(self.type!)成功"
             detailButton.layer.shadowRadius = 4
             detailButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
             detailButton.layer.shadowOffset = CGSize(width: 4, height: 4)

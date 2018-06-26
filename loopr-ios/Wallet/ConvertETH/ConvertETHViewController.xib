@@ -26,6 +26,7 @@
                 <outlet property="tipLabel" destination="nud-Lc-1dr" id="cPM-NP-Bh7"/>
                 <outlet property="tokenBLabel" destination="SSv-uD-HCk" id="HHs-pS-C5k"/>
                 <outlet property="tokenSLabel" destination="Srb-nd-7MY" id="euP-NR-ObU"/>
+                <outlet property="totalMaskView" destination="1E9-o7-8YH" id="9bb-EX-HWL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wethAmountLabel" destination="3D4-Nu-kE1" id="eCm-wf-Beo"/>
             </connections>
@@ -39,6 +40,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iT4-id-nx2">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Title" id="ehq-30-6Yb"/>
+                    </items>
+                </navigationBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fg-6E-3Gb" userLabel="Header View">
                     <rect key="frame" x="0.0" y="64" width="375" height="128"/>
                     <subviews>
@@ -256,25 +263,26 @@
                         <constraint firstAttribute="trailing" secondItem="nud-Lc-1dr" secondAttribute="trailing" constant="16" id="y25-Ev-E8R"/>
                     </constraints>
                 </scrollView>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iT4-id-nx2">
-                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                    <items>
-                        <navigationItem title="Title" id="ehq-30-6Yb"/>
-                    </items>
-                </navigationBar>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1E9-o7-8YH">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5fg-6E-3Gb" secondAttribute="trailing" id="0WK-Xk-6sR"/>
                 <constraint firstItem="iT4-id-nx2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4oQ-2V-n6M"/>
                 <constraint firstItem="dvl-Qe-k6q" firstAttribute="top" secondItem="iT4-id-nx2" secondAttribute="bottom" constant="128" id="5AA-Mg-J4A"/>
+                <constraint firstItem="1E9-o7-8YH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6zI-Tk-Lmn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jgg-vL-AdJ" secondAttribute="bottom" id="8db-BH-pTg"/>
+                <constraint firstItem="1E9-o7-8YH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="K5Z-qX-4PU"/>
                 <constraint firstItem="jgg-vL-AdJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="K6N-nq-Tc6"/>
                 <constraint firstItem="dvl-Qe-k6q" firstAttribute="top" secondItem="5fg-6E-3Gb" secondAttribute="bottom" id="KPr-8A-o3R"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dvl-Qe-k6q" secondAttribute="bottom" id="KUK-2q-acG"/>
                 <constraint firstItem="5fg-6E-3Gb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="O2s-Tz-TiT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iT4-id-nx2" secondAttribute="trailing" id="PN7-0i-8hh"/>
                 <constraint firstItem="jgg-vL-AdJ" firstAttribute="top" secondItem="5fg-6E-3Gb" secondAttribute="bottom" constant="16" id="Qaq-GA-uXr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1E9-o7-8YH" secondAttribute="trailing" id="QdT-cP-8Ph"/>
                 <constraint firstItem="LIH-kU-TOB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SzF-gV-ssa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="iT4-id-nx2" secondAttribute="leading" id="Uf7-Ge-yVG"/>
                 <constraint firstItem="LIH-kU-TOB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ux6-o4-Ibp"/>
@@ -282,6 +290,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dvl-Qe-k6q" secondAttribute="trailing" id="XdD-IU-Jtl"/>
                 <constraint firstItem="LIH-kU-TOB" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YyN-9X-Eph"/>
                 <constraint firstItem="dvl-Qe-k6q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="d3S-yX-dAe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1E9-o7-8YH" secondAttribute="bottom" id="eSm-YA-O81"/>
                 <constraint firstItem="jgg-vL-AdJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kRw-fM-eZE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SendResultViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="customNavBar" destination="b3w-O9-Ud0" id="JQZ-EC-Uql"/>
                 <outlet property="detailButton" destination="7ld-xg-k4s" id="Zg7-F8-XeV"/>
                 <outlet property="doneButton" destination="8Ak-xt-wdo" id="eAf-bF-kUy"/>
                 <outlet property="failReasonLabel" destination="TOY-iW-1dI" id="oNR-Md-H7Q"/>
@@ -31,6 +32,15 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3w-O9-Ud0">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="DUb-Yh-UAe"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Title" id="lL3-Fj-nrS"/>
+                    </items>
+                </navigationBar>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-success" translatesAutoresizingMaskIntoConstraints="NO" id="jJc-5A-cs3">
                     <rect key="frame" x="155.5" y="164" width="64" height="64"/>
                     <constraints>
@@ -118,6 +128,7 @@
                 <constraint firstItem="clm-O6-Snn" firstAttribute="top" secondItem="jJc-5A-cs3" secondAttribute="bottom" constant="64" id="727-hS-G0v"/>
                 <constraint firstItem="clm-O6-Snn" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="HJr-12-Bhy"/>
                 <constraint firstItem="clm-O6-Snn" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="JlE-0O-9mT"/>
+                <constraint firstItem="b3w-O9-Ud0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="K19-45-i0u"/>
                 <constraint firstItem="TOY-iW-1dI" firstAttribute="width" secondItem="clm-O6-Snn" secondAttribute="width" id="KTt-qH-F8P"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Glq-oQ-5hz" secondAttribute="trailing" id="NX8-jK-8wp"/>
                 <constraint firstItem="jJc-5A-cs3" firstAttribute="top" secondItem="Glq-oQ-5hz" secondAttribute="bottom" constant="144" id="O3S-gu-EQ4"/>
@@ -126,8 +137,10 @@
                 <constraint firstItem="8Ak-xt-wdo" firstAttribute="top" secondItem="7ld-xg-k4s" secondAttribute="bottom" constant="32" id="Toz-Dl-k32"/>
                 <constraint firstItem="8Ak-xt-wdo" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Xv7-HE-iHS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="Glq-oQ-5hz" secondAttribute="bottom" id="bqW-6c-zR7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="b3w-O9-Ud0" secondAttribute="trailing" id="fww-A1-LhH"/>
                 <constraint firstItem="8Ak-xt-wdo" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="-128" id="l4m-Z4-oKG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8Ak-xt-wdo" secondAttribute="bottom" constant="64" id="r51-Mn-7WL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="b3w-O9-Ud0" secondAttribute="leading" id="tqZ-yt-Ema"/>
                 <constraint firstItem="TOY-iW-1dI" firstAttribute="top" secondItem="clm-O6-Snn" secondAttribute="bottom" constant="64" id="uP8-KZ-3AN"/>
                 <constraint firstItem="TOY-iW-1dI" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="v4z-iq-0fZ"/>
                 <constraint firstItem="jJc-5A-cs3" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="zeW-W5-FWx"/>
@@ -140,12 +153,6 @@
         <image name="Tokenest-success" width="68" height="68"/>
         <namedColor name="Tokenest-background">
             <color red="0.18039215689999999" green="0.16862745100000001" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Tokenest-background">
-            <color red="0.18039215689999999" green="0.16862745100000001" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Tokenest-background">
-            <color red="0.1803921568627451" green="0.16862745098039217" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>
