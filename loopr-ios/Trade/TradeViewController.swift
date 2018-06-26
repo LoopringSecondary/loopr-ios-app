@@ -11,6 +11,8 @@ import Geth
 
 class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
 
+    @IBOutlet weak var progressBar: UIView!
+    @IBOutlet weak var customNaviBar: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextBackgroundView: UIView!
@@ -43,8 +45,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        progressBar.backgroundColor = GlobalPicker.themeColor
         scrollViewButtonLayoutConstraint.constant = 0
-        self.navigationItem.title = NSLocalizedString("Trade", comment: "")
         
         let qrScanButton = UIButton(type: UIButtonType.custom)
         // TODO: smaller images.
@@ -156,6 +158,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customNaviBar, title: "P2P交易")
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
         tokenSButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)

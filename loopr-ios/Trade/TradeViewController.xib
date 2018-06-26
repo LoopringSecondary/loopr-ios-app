@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,8 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TradeViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="customNaviBar" destination="vKw-Ba-ccQ" id="m5r-Qf-Ec2"/>
                 <outlet property="nextBackgroundView" destination="KOm-5M-oep" id="tdb-PS-7F7"/>
                 <outlet property="nextButton" destination="Fb9-mL-KG5" id="9JP-fm-qQp"/>
+                <outlet property="progressBar" destination="90W-Rw-e3I" id="y66-mG-9lh"/>
                 <outlet property="scrollView" destination="2G6-mE-e9W" id="mXT-jS-2gr"/>
                 <outlet property="scrollViewButtonLayoutConstraint" destination="f46-uZ-8gg" id="dIS-G4-bjt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,6 +25,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90W-Rw-e3I">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKw-Ba-ccQ">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Title" id="vL7-r2-ohW"/>
+                    </items>
+                </navigationBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOm-5M-oep">
                     <rect key="frame" x="0.0" y="590" width="375" height="77"/>
                     <subviews>
@@ -50,21 +61,28 @@
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2G6-mE-e9W">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="526"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="2G6-mE-e9W" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1Oa-gL-qPM"/>
+                <constraint firstItem="vKw-Ba-ccQ" firstAttribute="top" secondItem="90W-Rw-e3I" secondAttribute="bottom" id="0SL-TM-HjP"/>
+                <constraint firstItem="2G6-mE-e9W" firstAttribute="top" secondItem="vKw-Ba-ccQ" secondAttribute="bottom" id="1Oa-gL-qPM"/>
                 <constraint firstItem="2G6-mE-e9W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4Ha-G9-Bta"/>
+                <constraint firstAttribute="top" secondItem="90W-Rw-e3I" secondAttribute="top" id="JAB-Z3-KJI"/>
                 <constraint firstItem="KOm-5M-oep" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Lfb-4r-vpu"/>
                 <constraint firstItem="KOm-5M-oep" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="OOb-X0-HtD"/>
+                <constraint firstItem="90W-Rw-e3I" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OQm-oj-06o"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="90W-Rw-e3I" secondAttribute="trailing" id="V3F-CM-b0C"/>
                 <constraint firstItem="2G6-mE-e9W" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="W8o-bq-dkr"/>
+                <constraint firstItem="90W-Rw-e3I" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="X8j-e3-tFc"/>
                 <constraint firstItem="KOm-5M-oep" firstAttribute="top" secondItem="2G6-mE-e9W" secondAttribute="bottom" id="f46-uZ-8gg"/>
                 <constraint firstItem="KOm-5M-oep" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="joq-qT-Q1v"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="vKw-Ba-ccQ" secondAttribute="leading" id="krc-m4-KMZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vKw-Ba-ccQ" secondAttribute="trailing" id="yW3-Gg-eO5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="69.5" y="125.5"/>
+            <point key="canvasLocation" x="56.5" y="127.5"/>
         </view>
     </objects>
 </document>
