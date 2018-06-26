@@ -137,6 +137,7 @@ class SendCurrentAppWalletDataManager {
         
         guard gethAccount!.getAddress().getHex() == wallet?.address else {
             print("keystoreStringValue: \(keystoreStringValue)")
+            print("wallet address: \(wallet?.address)")
             preconditionFailure("Fail to use keystore to get the current wallet address.")
         }
         

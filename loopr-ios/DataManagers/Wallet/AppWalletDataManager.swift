@@ -140,7 +140,7 @@ class AppWalletDataManager {
         }
         
         // Private key
-        let privateKey = wallet.getKey(at: 0).privateKey
+        let privateKey = wallet.getKey(at: key).privateKey
         print(privateKey.hexString)
         
         // Generate keystore
@@ -152,6 +152,7 @@ class AppWalletDataManager {
         }
         do {
             print("Generating keystore")
+            let start = Date()
             
             var localPassword = password
             if password == "" {
@@ -159,7 +160,12 @@ class AppWalletDataManager {
             }
             
             let key = try KeystoreKey(password: localPassword, key: data)
+            
+            let end = Date()
+            let timeInterval: Double = end.timeIntervalSince(start)
+            print("##########Time to generate keystore: \(timeInterval) seconds############")
             print("Finished generating keystore")
+            
             let keystoreData = try JSONEncoder().encode(key)
             let json = try JSON(data: keystoreData)
             

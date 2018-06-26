@@ -89,7 +89,6 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
     }
     
     @IBAction func pressedNextButton(_ sender: Any) {
-        ImportWalletUsingMnemonicDataManager.shared.clearAddresses()
         ImportWalletUsingMnemonicDataManager.shared.generateAddresses()
 
         let viewController = MnemonicSelectAddressViewController()

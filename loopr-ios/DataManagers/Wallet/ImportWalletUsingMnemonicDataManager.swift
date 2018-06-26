@@ -33,12 +33,8 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         return Mnemonic.isValid(mnemonic)
     }
 
-    func clearAddresses() {
-        selectedKey = 0
-        addresses = []
-    }
-
     func generateAddresses() {
+        selectedKey = 0
         addresses.removeAll()
 
         // append "/x"
