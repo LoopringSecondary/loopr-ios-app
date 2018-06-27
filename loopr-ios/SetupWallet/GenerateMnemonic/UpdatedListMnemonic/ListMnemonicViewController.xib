@@ -12,11 +12,15 @@
         <array key="Futura.ttc">
             <string>Futura-Bold</string>
         </array>
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListMnemonicViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="ex5-CK-3Ip" id="qkE-BL-Hmo"/>
+                <outlet property="infoLabel" destination="t6d-kK-598" id="LiL-6T-i11"/>
                 <outlet property="nextButton" destination="Jwl-2l-KjS" id="1IV-LJ-Rz0"/>
                 <outlet property="skipButton" destination="e3g-Nu-gh5" id="3z1-2g-yO5"/>
                 <outlet property="startInfolbel" destination="XbE-vr-neH" id="Qdi-Ou-i2P"/>
@@ -59,17 +63,6 @@
                     </constraints>
                     <state key="normal" image="Tokenest-setup-back-button"/>
                 </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehA-jp-RfT">
-                    <rect key="frame" x="68.666666666666657" y="271" width="276.33333333333337" height="65"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="65" id="Z0w-gS-AGd"/>
-                    </constraints>
-                    <string key="text">讲助记词按顺序记录到本子上，千万不要截图或保存到互联网上。
-这对您的账户安全至关重要，一旦丢失无法恢复！</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-info-icon" translatesAutoresizingMaskIntoConstraints="NO" id="qzm-4T-NtF">
                     <rect key="frame" x="48" y="277" width="16.666666666666671" height="16.666666666666686"/>
                     <constraints>
@@ -95,25 +88,34 @@
                         <constraint firstAttribute="width" constant="151" id="Fr0-6D-QCx"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="讲助记词按顺序记录到本子上，千万不要截图或保存到互联网上。\n这对您的账户安全至关重要，一旦丢失无法恢复！" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6d-kK-598">
+                    <rect key="frame" x="68.666666666666657" y="269" width="276.33333333333337" height="65"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="DOx-36-z8p"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="e3g-Nu-gh5" secondAttribute="trailing" constant="17" id="10D-4m-2h1"/>
+                <constraint firstItem="t6d-kK-598" firstAttribute="top" secondItem="qzm-4T-NtF" secondAttribute="top" constant="-8" id="1zI-2X-Q3a"/>
                 <constraint firstItem="Jwl-2l-KjS" firstAttribute="trailing" secondItem="qZa-8t-k2D" secondAttribute="trailing" constant="-34" id="8By-Bn-dAl"/>
                 <constraint firstItem="ex5-CK-3Ip" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="29" id="BGz-mF-JA9"/>
+                <constraint firstItem="t6d-kK-598" firstAttribute="leading" secondItem="qzm-4T-NtF" secondAttribute="trailing" constant="4" id="C35-Xc-lzE"/>
                 <constraint firstItem="qzm-4T-NtF" firstAttribute="top" secondItem="qZa-8t-k2D" secondAttribute="bottom" constant="37" id="PZO-8A-LNW"/>
                 <constraint firstItem="qZa-8t-k2D" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="RU2-04-UXt"/>
-                <constraint firstItem="ehA-jp-RfT" firstAttribute="top" secondItem="qzm-4T-NtF" secondAttribute="top" constant="-6" id="S6y-Sq-WQf"/>
                 <constraint firstItem="ex5-CK-3Ip" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-1" id="U8q-eC-u0d"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XbE-vr-neH" secondAttribute="trailing" constant="16" id="WGY-y9-m23"/>
                 <constraint firstItem="qzm-4T-NtF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="YVd-fM-pLM"/>
                 <constraint firstItem="qZa-8t-k2D" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b8S-eU-H1f"/>
                 <constraint firstItem="XbE-vr-neH" firstAttribute="top" secondItem="ex5-CK-3Ip" secondAttribute="bottom" constant="2" id="bpa-KG-3Hh"/>
-                <constraint firstItem="ehA-jp-RfT" firstAttribute="leading" secondItem="qzm-4T-NtF" secondAttribute="trailing" constant="4" id="fki-6d-tCZ"/>
                 <constraint firstItem="qZa-8t-k2D" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hFA-Hq-rGS"/>
                 <constraint firstItem="Jwl-2l-KjS" firstAttribute="top" secondItem="qZa-8t-k2D" secondAttribute="top" constant="158" id="hwG-fQ-CP3"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ehA-jp-RfT" secondAttribute="trailing" constant="30" id="kQ5-6I-Tn0"/>
                 <constraint firstItem="e3g-Nu-gh5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="sZ6-Xu-kLZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="t6d-kK-598" secondAttribute="trailing" constant="30" id="vMz-Zi-iI9"/>
                 <constraint firstItem="XbE-vr-neH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="43" id="wDC-9N-Kdb"/>
                 <constraint firstItem="Qhw-DN-aH8" firstAttribute="top" secondItem="XbE-vr-neH" secondAttribute="bottom" constant="10" id="yEX-2X-Sln"/>
                 <constraint firstItem="Qhw-DN-aH8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="44" id="zzX-zN-DUB"/>

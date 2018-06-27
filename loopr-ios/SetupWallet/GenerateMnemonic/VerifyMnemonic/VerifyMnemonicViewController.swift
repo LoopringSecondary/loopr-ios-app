@@ -162,6 +162,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     
     @objc func pressedConfrimButton(_ sender: Any) {
         print("pressedConfrimButton")
+        /*
         if GenerateWalletDataManager.shared.verify() {
             // Store the new wallet to the local storage and exit the view controller.
             exit()
@@ -193,6 +194,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
 
             self.present(alertController, animated: true, completion: nil)
         }
+        */
     }
 
     func exit() {

@@ -16,6 +16,8 @@ class ListMnemonicViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     
+    @IBOutlet weak var infoLabel: UILabel!
+
     @IBOutlet weak var startInfolbel: UILabel!
 
     var mnemonicCollectionViewController0: MnemonicCollectionViewController!
@@ -48,6 +50,20 @@ class ListMnemonicViewController: UIViewController {
 
         startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31)
         
+        infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
+        infoLabel.textColor = UIColor.init(rgba: "#B5B9C0")
+        infoLabel.numberOfLines = 3
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#4C5669"),
+                          NSAttributedStringKey.font: FontConfigManager.shared.getLabelSCFont(size: 12, type: "Medium")]
+        let infoString = "讲助记词按顺序记录到本子上，千万不要截图或保存到互联网上。\n这对您的账户安全至关重要，一旦丢失无法恢复！"
+        let attr = infoString.higlighted(words: ["按顺序记录", "千万不要截图或保存到互联网上"], attributes: attributes)
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        attr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attr.length))
+        
+        infoLabel.attributedText = attr
+
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width

@@ -42,6 +42,7 @@ class GenerateWalletDataManager {
         self.password = password
     }
     
+    // TODO: deprecated. will be removed in the future.
     func getMnemonics() -> [String] {
         return mnemonics
     }
@@ -62,7 +63,7 @@ class GenerateWalletDataManager {
         _ = userInputMnemonics.popLast()
     }
 
-    func verify() -> Bool {
+    func verify(userInputMnemonics: [String]) -> Bool {
         guard mnemonics.count == userInputMnemonics.count else {
             isVerified = false
             return false
