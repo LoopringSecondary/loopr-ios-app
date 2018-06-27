@@ -17,6 +17,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextBackgroundView: UIView!
     @IBOutlet weak var nextButton: UIButton!
+    
+    var qrCodeBarButton: UIBarButtonItem!
+    var historyBarButton: UIBarButtonItem!
 
     // TokenS
     var tokenSButton: UIButton = UIButton()
@@ -54,8 +57,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         qrScanButton.setImage(UIImage(named: "Scan")?.alpha(0.3), for: .highlighted)
         qrScanButton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrScanButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        let qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
-        self.navigationItem.leftBarButtonItem = qrCodeBarButton
+        qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
         
         let historyButton = UIButton(type: UIButtonType.custom)
         // TODO: smaller images.
@@ -63,8 +65,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         historyButton.setImage(UIImage(named: "Order-history-black")?.alpha(0.3), for: .highlighted)
         historyButton.addTarget(self, action: #selector(self.pressedOrderHistoryButton(_:)), for: UIControlEvents.touchUpInside)
         historyButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        let historyBarButton = UIBarButtonItem(customView: historyButton)
-        self.navigationItem.rightBarButtonItem = historyBarButton
+        historyBarButton = UIBarButtonItem(customView: historyButton)
         
         nextButton.title = NSLocalizedString("Next", comment: "")
         nextButton.setupRoundBlack()
@@ -160,12 +161,22 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.setBackButtonAndUpdateTitle(customizedNavigationBar: customNaviBar, title: "P2P交易")
+        
+        // A hack solution to bring history icon back. It's not a perfect soluction
+        customNaviBar.topItem?.leftBarButtonItem = qrCodeBarButton
+        customNaviBar.topItem?.rightBarButtonItem = historyBarButton
+        
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
         tokenSButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)
         tokenBButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         updateTipLabel()
         updateInfoLabel()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func updateInfoLabel() {
