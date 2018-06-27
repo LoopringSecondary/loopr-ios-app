@@ -314,7 +314,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
                 passwordInfoLabel.textColor = UIColor.tokenestTip
                 passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
             } else if newLength >= 6 {
-                passwordInfoLabel.textColor = UIColor.green
+                passwordInfoLabel.textColor = UIColor.tokenestTip
                 passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
             } else {
                 passwordInfoLabel.shake()

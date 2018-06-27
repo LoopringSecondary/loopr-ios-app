@@ -10,13 +10,14 @@ import UIKit
 
 class UpdatedSettingTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
+        backgroundColor = UIColor.init(white: 1, alpha: 0.98)
         nameLabel.font = FontConfigManager.shared.getLabelSCFont(size: 16)
         nameLabel.textColor = UIColor.init(rgba: "#32384C")
     }

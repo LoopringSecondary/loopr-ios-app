@@ -37,8 +37,15 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         // Do any additional setup after loading the view.
         setupNavigationBar()
         
+        // settingsTableView.backgroundColor = UIColor.clear
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
+        settingsTableView.separatorStyle = .none
+        
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 11))
+        // TODO: only top-left and top-right corner of a UIView
+        // headerView.cornerRadius = 2
+        settingsTableView.tableHeaderView = headerView
 
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode"), for: .normal)
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode")?.alpha(0.6), for: .highlighted)
@@ -62,65 +69,7 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         copyButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 14)
         copyButton.layer.cornerRadius = 28 * 0.5
         copyButton.addTarget(self, action: #selector(self.pressedCopyButton(_:)), for: .touchUpInside)
-        
-        /*
-        selectionGridView.backgroundColor = UIColor.init(white: 1, alpha: 0.98)
-        selectionGridView.cornerRadius = 7.5
-        selectionGridView.clipsToBounds = true
- 
-        // Update grid
-        let iconTitlePadding: CGFloat = 15
-        
-        item1.backgroundColor = UIColor.clear
-        item1.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
-        item1.set(image: UIImage.init(named: "Tokenest-airdrop"), title: NSLocalizedString("Airdrop", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        item1.set(image: UIImage.init(named: "Tokenest-airdrop")?.alpha(0.6), title: NSLocalizedString("Airdrop", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
-        item1.setTitleColor(UIColor.black, for: .normal)
-        item1.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
-        item1.addTarget(self, action: #selector(self.pressedItem1Button(_:)), for: .touchUpInside)
-        
-        item2.backgroundColor = UIColor.clear
-        item2.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
-        item2.set(image: UIImage.init(named: "Tokenest-trading-faq"), title: NSLocalizedString("Trade FAQ", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        item2.set(image: UIImage.init(named: "Tokenest-trading-faq")?.alpha(0.6), title: NSLocalizedString("Trade FAQ", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
-        item2.setTitleColor(UIColor.black, for: .normal)
-        item2.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
-        item2.addTarget(self, action: #selector(self.pressedItem2Button(_:)), for: .touchUpInside)
-        
-        item3.backgroundColor = UIColor.clear
-        item3.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
-        item3.set(image: UIImage.init(named: "Tokenest-question-feedback"), title: NSLocalizedString("Feedback", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        item3.set(image: UIImage.init(named: "Tokenest-question-feedback")?.alpha(0.6), title: NSLocalizedString("Feedback", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
-        item3.setTitleColor(UIColor.black, for: .normal)
-        item3.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
-        item3.addTarget(self, action: #selector(self.pressedItem3Button(_:)), for: .touchUpInside)
-        
-        item4.backgroundColor = UIColor.clear
-        item4.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
-        item4.set(image: UIImage.init(named: "Tokenest-app-settings"), title: NSLocalizedString("Settings_in_grid", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        item4.set(image: UIImage.init(named: "Tokenest-app-settings")?.alpha(0.6), title: NSLocalizedString("Settings_in_grid", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
-        item4.setTitleColor(UIColor.black, for: .normal)
-        item4.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
-        item4.addTarget(self, action: #selector(self.pressedItem4Button(_:)), for: .touchUpInside)
 
-        item5.backgroundColor = UIColor.clear
-        item5.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
-        item5.set(image: UIImage.init(named: "Tokenest-trading-setting"), title: NSLocalizedString("Trading_settings_in_grid", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        item5.set(image: UIImage.init(named: "Tokenest-trading-setting")?.alpha(0.6), title: NSLocalizedString("Trading_settings_in_grid", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
-        item5.setTitleColor(UIColor.black, for: .normal)
-        item5.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
-        item5.addTarget(self, action: #selector(self.pressedItem5Button(_:)), for: .touchUpInside)
-
-        item6.backgroundColor = UIColor.clear
-        item6.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 14.0)
-        item6.set(image: UIImage.init(named: "Tokenest-settings-quit"), title: NSLocalizedString("Quit", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        item6.set(image: UIImage.init(named: "Tokenest-settings-quit")?.alpha(0.6), title: NSLocalizedString("Quit", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
-        item6.setTitleColor(UIColor.black, for: .normal)
-        item6.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
-        item6.addTarget(self, action: #selector(self.pressedItem6Button(_:)), for: .touchUpInside)
-        
-        */
-        
         presentedBackgroundView.backgroundColor = UIColor.clear
         presentedBackgroundView.isHidden = true
         view.bringSubview(toFront: presentedBackgroundView)
@@ -134,7 +83,7 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar()
-        addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
+        addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address.getAddressFormat()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -194,39 +143,6 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         banner.duration = 1
         banner.show()
     }
-
-    @objc func pressedItem1Button(_ button: UIButton) {
-        print("pressedItem1Button")
-    }
-
-    @objc func pressedItem2Button(_ button: UIButton) {
-        print("pressedItem2Button")
-    }
-    
-    @objc func pressedItem3Button(_ button: UIButton) {
-        print("pressedItem3Button")
-        let viewController = TradeFAQViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    @objc func pressedItem4Button(_ button: UIButton) {
-        print("pressedItem4Button")
-        let viewController = AppSettingViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    @objc func pressedItem5Button(_ button: UIButton) {
-        print("pressedItem5Button")
-        let viewController = TradingSettingViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    @objc func pressedItem6Button(_ button: UIButton) {
-        print("pressedItem6Button")
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -245,22 +161,52 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("UpdatedSettingTableViewCell", owner: self, options: nil)
             cell = nib![0] as? UpdatedSettingTableViewCell
-            cell?.selectionStyle = .none
+            
+            // TODO: what is the selection style?
+            // cell?.selectionStyle = .none
         }
         
         switch indexPath.row {
         case 0:
+            cell?.iconImageView.image = UIImage.init(named: "Tokenest-setting-wallet-management")
             cell?.nameLabel.text = NSLocalizedString("Wallet Management", comment: "")
         case 1:
+            cell?.iconImageView.image = UIImage.init(named: "Tokenest-trading-setting")
             cell?.nameLabel.text = NSLocalizedString("Trading_settings_in_grid", comment: "")
         case 2:
+            cell?.iconImageView.image = UIImage.init(named: "Tokenest-app-settings")
             cell?.nameLabel.text = NSLocalizedString("Settings_in_grid", comment: "")
         case 3:
+            cell?.iconImageView.image = UIImage.init(named: "Tokenest-trading-faq")
             cell?.nameLabel.text = NSLocalizedString("Trade FAQ", comment: "")
         default:
             break
         }
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.row {
+        case 0:
+            let viewController = SettingManageWalletViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case 1:
+            let viewController = TradingSettingViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case 2:
+            let viewController = AppSettingViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case 3:
+            let viewController = TradeFAQViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        default:
+            break
+        }
     }
 }
 

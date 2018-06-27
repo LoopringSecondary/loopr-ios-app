@@ -165,4 +165,10 @@ extension String {
         return allAttributedText
     }
 
+    func getAddressFormat() -> String {
+        let header = String(self.prefix(6))
+        let footer = String(self.suffix(6))
+        return "\(header)...\(footer)"
+    }
+
 }

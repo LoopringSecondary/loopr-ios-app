@@ -143,9 +143,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         getBalanceFromRelay()
 
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
-        if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
-            cell.startUpdateBalanceLabelTimer()
-        }
 
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         customizedNavigationBar.topItem?.title = buttonTitle
@@ -172,10 +169,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         isListeningSocketIO = false
         NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
         NotificationCenter.default.removeObserver(self, name: .priceQuoteResponseReceived, object: nil)
-        
-        if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
-            cell.stopUpdateBalanceLabelTimer()
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -404,24 +397,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         NSLayoutConstraint.activate(constraints)
         headerBalanceViewController.delegate = self
     }
-
-    // Keep the code. We may use it in the future.
-    /*
-    func setUpTableView() {
-        assetTableView = UITableView()
-        assetTableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(assetTableView)
-        let constraints: [NSLayoutConstraint] = [
-            assetTableView.topAnchor.constraint(equalTo: view.topAnchor),
-            assetTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            assetTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            assetTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
-        assetTableView.dataSource = self
-        assetTableView.delegate = self
-    }
-    */
     
     func pressedSendButton() {
         let vc = SendViewController()

@@ -313,8 +313,6 @@
 		AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DD5203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib */; };
 		AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */; };
 		AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */; };
-		AC5E0DDE203B447700AF03C7 /* WalletBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */; };
-		AC5E0DDF203B447700AF03C7 /* WalletBalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */; };
 		AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DE3203BC4B100AF03C7 /* FloatLabelTextField.swift */; };
 		AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */; };
 		AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */; };
@@ -842,8 +840,6 @@
 		AC5E0DD5203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetBalanceTableViewCell.xib; sourceTree = "<group>"; };
 		AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionTableViewCell.xib; sourceTree = "<group>"; };
-		AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceTableViewCell.swift; sourceTree = "<group>"; };
-		AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletBalanceTableViewCell.xib; sourceTree = "<group>"; };
 		AC5E0DE3203BC4B100AF03C7 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeCompleteViewController.swift; sourceTree = "<group>"; };
 		AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeCompleteViewController.xib; sourceTree = "<group>"; };
@@ -2060,8 +2056,6 @@
 				AC30C65E20D9C486004436D8 /* WalletClearTableViewCell.xib */,
 				AC30C65920D99393004436D8 /* WalletBalanceTableViewCellViewController.swift */,
 				AC30C65A20D99393004436D8 /* WalletBalanceTableViewCellViewController.xib */,
-				AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */,
-				AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */,
 				ACB9115820242B9D00F14644 /* AssetTableViewCell.swift */,
 				ACB9115920242B9D00F14644 /* AssetTableViewCell.xib */,
 				ACC8D0A420CC95A00049A741 /* UpdatedAssetTableViewCell.swift */,
@@ -2562,7 +2556,6 @@
 				FF9C7DDA208D55F8004687AD /* Settings.bundle in Resources */,
 				AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */,
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
-				AC5E0DDF203B447700AF03C7 /* WalletBalanceTableViewCell.xib in Resources */,
 				ACFEFEB020C3CA4800013921 /* AssetMarketTableViewCell.xib in Resources */,
 				94E665EA207234C5001328BF /* OrderTableViewCell.xib in Resources */,
 				94C5E79520738ADE0074B939 /* OrderSearchViewController.xib in Resources */,
@@ -3001,7 +2994,6 @@
 				ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */,
 				9457417020D0E9CD00110CFD /* CancelOrder.swift in Sources */,
 				AC2D2C072089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift in Sources */,
-				AC5E0DDE203B447700AF03C7 /* WalletBalanceTableViewCell.swift in Sources */,
 				AC31B962204A8E4F00B16155 /* DerivationPath.Index.swift in Sources */,
 				ACB91171202557B100F14644 /* MarketViewController.swift in Sources */,
 				AC4F601220773E9D00F1D954 /* EthFunctionEncoder.swift in Sources */,
