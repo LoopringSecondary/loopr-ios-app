@@ -57,7 +57,9 @@ class SendResultViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.setHidesBackButton(true, animated: false)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: "\(type!)")
+        let navigationItem = UINavigationItem()
+        navigationItem.title = type
+        customNavBar.setItems([navigationItem], animated: false)
     }
  
     @IBAction func pressedDetailButton(_ sender: UIButton) {

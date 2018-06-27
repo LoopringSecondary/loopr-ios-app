@@ -567,7 +567,13 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                     amountLabel.text = asset.display
                 }
             }
+            if symbol.uppercased() == "ETH" {
+                amountETHTipLabel.isHidden = false
+            } else {
+                amountETHTipLabel.isHidden = true
+            }
         }
+        showCollection = false
         tokensCollectionView.reloadData()
     }
     
