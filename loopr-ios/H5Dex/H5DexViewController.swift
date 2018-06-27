@@ -41,7 +41,7 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
         config.userContentController = contentController
 
         webView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), configuration: config)
-        let url = URL(string: "http://10.137.110.138:8000/#/loopr")
+        let url = URL(string: "http://10.137.110.138:8000/#/auth/loopr")
         let request = URLRequest(url: url!)
         webView.load(request)
         

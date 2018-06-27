@@ -68,7 +68,8 @@ class H5DexDataManager {
     
     func signMessage(_ json: JSON?) {
         if let json = json {
-            let data = Data(bytes: json.stringValue.hexBytes)
+            var data: Data = Data()
+            data.append(contentsOf: json.stringValue.hexBytes)
             SendCurrentAppWalletDataManager.shared._keystore()
             if case (let signature?, _) = web3swift.sign(message: data) {
                 self.completion(signature, nil)

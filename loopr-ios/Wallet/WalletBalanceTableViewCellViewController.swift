@@ -51,8 +51,8 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         addTokenButton.setImage(UIImage.init(named: "Tokenest-asset-add-token")?.alpha(0.7), for: .highlighted)
         addTokenButton.addTarget(self, action: #selector(self.pressedAddTokenButton(_:)), for: .touchUpInside)
 
-        buttonBackgroundView.backgroundColor = UIColor.init(white: 1, alpha: 0.98)
-        buttonBackgroundView.cornerRadius = 7.5
+        buttonBackgroundView.backgroundColor = UIColor.init(white: 1, alpha: 1)
+        buttonBackgroundView.cornerRadius = 7
         buttonBackgroundView.clipsToBounds = true
         
         let iconTitlePadding: CGFloat = 14

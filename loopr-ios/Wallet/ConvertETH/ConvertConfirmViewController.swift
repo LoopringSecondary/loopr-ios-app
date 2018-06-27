@@ -77,7 +77,9 @@ extension ConvertConfirmViewController {
             vc.type = "转换"
             vc.asset = self.convertAsset
             vc.navigationItem.title = "转换\(self.convertAsset.symbol)"
-            if let error = error as NSError?, let message = error.userInfo["message"] as? String {
+            if let error = error as NSError?,
+                let json = error.userInfo["message"] as? JSON,
+                let message = json.string {
                 vc.errorMessage = message
             }
             if let closure = self.dismissClosure {
