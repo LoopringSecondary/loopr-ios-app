@@ -38,6 +38,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     var amountInfoLabel: UILabel = UILabel()
     var amountTextField: UITextField = UITextField()
     var amountMaxButton: UIButton = UIButton()
+    var amountETHTipLabel: UILabel = UILabel()
     
     // Transaction Fee
     var transactionFeeLabel = UILabel()
@@ -137,8 +138,16 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         amountMaxButton.addTarget(self, action: #selector(pressedMaxButton(_:)), for: .touchUpInside)
         scrollView.addSubview(amountMaxButton)
         
+        amountETHTipLabel.isHidden = true
+        amountETHTipLabel.text = "我们为您保留0.001 ETH作为油费以保证后续可以发送交易"
+        amountETHTipLabel.textAlignment = .right
+        amountETHTipLabel.frame = CGRect(x: padding, y: amountTextField.frame.maxY, width: screenWidth-padding*2, height: 40)
+        amountETHTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 10)
+        amountETHTipLabel.textColor = UIColor.tokenestTip
+        scrollView.addSubview(amountETHTipLabel)
+        
         // 3rd Row: Transaction
-        transactionFeeLabel.frame = CGRect(x: padding, y: amountTextField.frame.maxY + padding, width: screenWidth, height: 40)
+        transactionFeeLabel.frame = CGRect(x: padding, y: amountETHTipLabel.frame.maxY + padding, width: screenWidth, height: 40)
         transactionFeeLabel.font = FontConfigManager.shared.getLabelSCFont()
         transactionFeeLabel.textColor = UIColor.tokenestTip
         transactionFeeLabel.text = "矿工费(ETH)"
@@ -231,6 +240,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
         if asset == nil {
             asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
+        }
+        if asset.symbol.uppercased() == "ETH" {
+            amountETHTipLabel.isHidden = false
         }
         self.tokenImage.image = asset.icon
         self.tokenLabel.text = asset.symbol
