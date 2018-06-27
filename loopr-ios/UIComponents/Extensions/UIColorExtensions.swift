@@ -83,4 +83,8 @@ extension UIColor {
         return UIColor(named: "Tokenest-pending")!
     }
     
+    class var tokenestLightShadow: UIColor {
+        return UIColor(named: "Tokenest-light-shadow")!
+    }
+    
 }

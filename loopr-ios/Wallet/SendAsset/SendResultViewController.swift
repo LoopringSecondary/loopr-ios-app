@@ -43,8 +43,8 @@ class SendResultViewController: UIViewController {
             detailButton.layer.shadowOffset = CGSize(width: 4, height: 4)
             detailButton.clipsToBounds = false
         }
-        doneButton.layer.shadowRadius = 4
-        doneButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
+        doneButton.layer.shadowRadius = 8
+        doneButton.layer.shadowColor = UIColor.tokenestLightShadow.cgColor
         doneButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         doneButton.clipsToBounds = false
     }

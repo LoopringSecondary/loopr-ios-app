@@ -397,7 +397,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func pressedSendButton() {
-        let vc = SendViewController()
+//        let vc = SendViewController()
+        
+        let vc = SendResultViewController()
+        vc.type = "发送代币"
+        vc.asset = Asset(symbol: "ETH")
+        vc.navigationItem.title = "转账"
+        
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
