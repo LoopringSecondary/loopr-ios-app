@@ -283,8 +283,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
 //        let since = Int64(Date().timeIntervalSince1970)
 //        let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
         
-        let since = Int64(1530071147) // test
-        let until = Int64(1530071447) // test
+        let since = Int64(1530078002) // test
+        let until = Int64(1530079142) // test
         
         var order = OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder)
         PlaceOrderDataManager.shared.completeOrder(&order)
@@ -494,6 +494,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             let taker = TradeDataManager.shared.constructTaker(from: maker)
             maker.hash = makerHash
             TradeDataManager.shared.isTaker = true
+            TradeDataManager.shared.orders = []
             TradeDataManager.shared.orders.insert(maker, at: 0)
             TradeDataManager.shared.orders.insert(taker, at: 1)
             TradeDataManager.shared.makerPrivateKey = makerPrivateKey

@@ -23,7 +23,7 @@ class MainTabController: ESTabBarController {
         
         v1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-asset"), selectedImage: UIImage(named: "Tokenest-asset-selected"))
         v2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-market"), selectedImage: UIImage(named: "Tokenest-market-selected"))
-        v3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-orders"), selectedImage: UIImage(named: "Tokenest-orders-selected"))
+        v3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-p2p"), selectedImage: UIImage(named: "Tokenest-p2p-selected"))
         v4.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-orders"), selectedImage: UIImage(named: "Tokenest-orders-selected"))
         v5.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-settings"), selectedImage: UIImage(named: "Tokenest-settings-selected"))
 

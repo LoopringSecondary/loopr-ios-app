@@ -60,13 +60,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         // manager?.startListening()
+        
         let tbController = self.window!.rootViewController as! UITabBarController
         tbController.tabBar.barTintColor = UIColor.white
-        tbController.tabBar.layer.shadowColor = UIColor.black.cgColor
-        tbController.tabBar.layer.shadowOffset = CGSize(width: 0, height: -4)
-        tbController.tabBar.layer.shadowRadius = 2
-        tbController.tabBar.layer.shadowOpacity = 0.05
-        
+        tbController.tabBar.clipsToBounds = true
+        tbController.tabBar.layer.borderWidth = 0.3
+        tbController.tabBar.layer.borderColor = UIColor.tokenestBorder.cgColor
+
         SettingsBundleHelper.setVersionAndBuildNumber()
 
         return true
