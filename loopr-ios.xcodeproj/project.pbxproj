@@ -15,6 +15,7 @@
 		6654923820D75C5C006CB3B2 /* SendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6654923620D75C5C006CB3B2 /* SendViewController.xib */; };
 		6662052920E1D1AC00004D5D /* ConvertConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662052720E1D1AC00004D5D /* ConvertConfirmViewController.swift */; };
 		6662052A20E1D1AC00004D5D /* ConvertConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6662052820E1D1AC00004D5D /* ConvertConfirmViewController.xib */; };
+		667B518020E36DAA006C1AC5 /* H5DexDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B517F20E36DAA006C1AC5 /* H5DexDataManagerTests.swift */; };
 		667BDB5420E0B30800EE2224 /* H5DexDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BDB5320E0B30800EE2224 /* H5DexDataManager.swift */; };
 		667BDB5620E0B60E00EE2224 /* DexRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BDB5520E0B60E00EE2224 /* DexRequest.swift */; };
 		940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */; };
@@ -576,6 +577,7 @@
 		6654923620D75C5C006CB3B2 /* SendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendViewController.xib; sourceTree = "<group>"; };
 		6662052720E1D1AC00004D5D /* ConvertConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertConfirmViewController.swift; sourceTree = "<group>"; };
 		6662052820E1D1AC00004D5D /* ConvertConfirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConvertConfirmViewController.xib; sourceTree = "<group>"; };
+		667B517F20E36DAA006C1AC5 /* H5DexDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexDataManagerTests.swift; sourceTree = "<group>"; };
 		667BDB5320E0B30800EE2224 /* H5DexDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexDataManager.swift; sourceTree = "<group>"; };
 		667BDB5520E0B60E00EE2224 /* DexRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DexRequest.swift; sourceTree = "<group>"; };
 		69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1651,6 +1653,7 @@
 				94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */,
 				943C6579209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift */,
 				9464595D20AA9A4C00574485 /* TradeDataManagerTests.swift */,
+				667B517F20E36DAA006C1AC5 /* H5DexDataManagerTests.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -3246,6 +3249,7 @@
 				AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */,
 				943C657A209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift in Sources */,
 				AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */,
+				667B518020E36DAA006C1AC5 /* H5DexDataManagerTests.swift in Sources */,
 				AC1E4BBC204B420D00C6B1FA /* KeystoreIntegrationTests.swift in Sources */,
 				AC9280DD202E0F9F0009B574 /* EthereumAPIRequestTests.swift in Sources */,
 			);

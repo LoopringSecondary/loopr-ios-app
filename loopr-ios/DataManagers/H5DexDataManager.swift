@@ -67,7 +67,8 @@ class H5DexDataManager {
     }
     
     func signMessage(_ json: JSON?) {
-        if let json = json, let data = json.stringValue.data(using: .utf8) {
+        if let json = json {
+            let data = Data(bytes: json.stringValue.hexBytes)
             SendCurrentAppWalletDataManager.shared._keystore()
             if case (let signature?, _) = web3swift.sign(message: data) {
                 self.completion(signature, nil)
@@ -107,9 +108,7 @@ class H5DexDataManager {
             body["errorCode"] = JSON(error.code)
             body["message"] = JSON(error.userInfo["message"] ?? "unknown error")
         } else if let result = result {
-            body["result"]["r"] = JSON(result.r)
-            body["result"]["s"] = JSON(result.s)
-            body["result"]["v"] = JSON(Int(result.v)!)
+            body["result"] = ["r": JSON(result.r), "s": JSON(result.s), "v": JSON(Int(result.v)!)]
         }
         if let closure = self.sendClosure {
             closure(body)

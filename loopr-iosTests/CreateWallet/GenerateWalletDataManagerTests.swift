@@ -24,9 +24,8 @@ class GenerateWalletDataManagerTests: XCTestCase {
     func test1() {
         GenerateWalletDataManager.shared.new()
         XCTAssertEqual(GenerateWalletDataManager.shared.getMnemonics().count, 12)
-        
         XCTAssertFalse(GenerateWalletDataManager.shared.verify(userInputMnemonics: []))
-        
+
         GenerateWalletDataManager.shared.setWalletName("hello world")
         GenerateWalletDataManager.shared.setPassword("123456")
         
