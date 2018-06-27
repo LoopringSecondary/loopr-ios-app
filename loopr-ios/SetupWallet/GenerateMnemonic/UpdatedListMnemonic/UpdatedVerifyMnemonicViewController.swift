@@ -102,10 +102,14 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
     
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("Tag pressed: \(title), \(sender)")
-        tagView.isSelected = true
-        
-        let copyMnemonicText = mnemonicTextVeiw.text ?? ""
-        mnemonicTextVeiw.text = copyMnemonicText + "  " + title
+        if !tagView.isSelected {
+            tagView.isSelected = true
+            userInputMnemonics.append(title)
+        } else {
+            tagView.isSelected = false
+            userInputMnemonics = userInputMnemonics.filter { $0 != title }
+        }
+        mnemonicTextVeiw.text = userInputMnemonics.joined(separator: " ")
     }
     
     @objc func pressedCompleteButton(_ sender: Any) {
