@@ -141,9 +141,14 @@ class TradeDataManager {
         
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
+        
         // P2P 订单 默认 1hour 过期，或增加ui调整
-        let since = Int64(Date().timeIntervalSince1970)
-        let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
+//        let since = Int64(Date().timeIntervalSince1970)
+//        let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
+        
+        let since = Int64(1530071147) // test
+        let until = Int64(1530071447) // test
+        
         var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order

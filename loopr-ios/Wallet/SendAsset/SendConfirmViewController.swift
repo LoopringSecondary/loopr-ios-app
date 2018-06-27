@@ -58,14 +58,18 @@ class SendConfirmViewController: UIViewController {
     
     @IBAction func pressedSendButton(_ sender: UIButton) {
         SVProgressHUD.show(withStatus: "Processing the transaction ...")
-        if let toAddress = self.receiveAddress, let amount = Double(self.sendAmount),
-            let token = TokenDataManager.shared.getTokenBySymbol(self.sendAsset.symbol),
-            let gethAmount = GethBigInt.generate(valueInEther: amount, symbol: token.symbol) {
+        if let toAddress = self.receiveAddress,
+            let token = TokenDataManager.shared.getTokenBySymbol(self.sendAsset.symbol)
+             {
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
             if token.symbol.uppercased() == "ETH" {
+                let amount = Double(self.sendAmount)! - 0.001
+                let gethAmount = GethBigInt.generate(valueInEther: amount, symbol: token.symbol)!
                 SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, toAddress: toAddress, completion: completion)
             } else {
+                let amount = Double(self.sendAmount)!
+                let gethAmount = GethBigInt.generate(valueInEther: amount, symbol: token.symbol)!
                 let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
                 SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, tokenAmount: gethAmount, completion: completion)
             }
@@ -82,7 +86,9 @@ extension SendConfirmViewController {
             vc.type = "发送代币"
             vc.asset = self.sendAsset
             vc.navigationItem.title = "转账"
-            if let error = error as NSError?, let message = error.userInfo["message"] as? String {
+            if let error = error as NSError?,
+                let json = error.userInfo["message"] as? JSON,
+                let message = json.string {
                 vc.errorMessage = message
             }
             if let closure = self.dismissClosure {

@@ -143,7 +143,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         getBalanceFromRelay()
 
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
-
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         customizedNavigationBar.topItem?.title = buttonTitle
     }
@@ -160,7 +159,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         showNavigationBar()
-
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }

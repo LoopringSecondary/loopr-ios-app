@@ -56,6 +56,6 @@ class AssetTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 64
+        return 72
     }
 }

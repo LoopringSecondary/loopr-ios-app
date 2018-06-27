@@ -29,8 +29,7 @@ class SendResultViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: "\(type!)")
+        
         if let errorMessage = self.errorMessage {
             resultTipLabel.text = "\(self.type!)失败"
             resultImageVIew.image = #imageLiteral(resourceName: "Tokenest-failed")
@@ -53,6 +52,12 @@ class SendResultViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: "\(type!)")
     }
  
     @IBAction func pressedDetailButton(_ sender: UIButton) {

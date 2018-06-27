@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,51 +20,51 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8vB-Bh-nJn">
-                        <rect key="frame" x="32.5" y="21" width="30" height="30"/>
+                        <rect key="frame" x="24" y="16" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="Nu4-WL-m4k"/>
-                            <constraint firstAttribute="height" constant="30" id="hED-Oy-lNb"/>
+                            <constraint firstAttribute="width" constant="40" id="Nu4-WL-m4k"/>
+                            <constraint firstAttribute="height" constant="40" id="hED-Oy-lNb"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="-3" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VR9-fL-S9Y">
-                        <rect key="frame" x="77" y="14" width="100" height="52"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VR9-fL-S9Y">
+                        <rect key="frame" x="80" y="10" width="150" height="52"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzi-Me-Sla">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="32.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.21960784310000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1W-nu-5dJ">
-                                <rect key="frame" x="0.0" y="13.5" width="100" height="38.5"/>
+                                <rect key="frame" x="0.0" y="22" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="Tokenest-tip-font"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="FWn-hW-Jzw"/>
+                            <constraint firstAttribute="width" constant="150" id="FWn-hW-Jzw"/>
                             <constraint firstAttribute="height" constant="52" id="wTl-dm-pTc"/>
                         </constraints>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="-3" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gvg-n7-Dn3">
-                        <rect key="frame" x="151" y="14" width="200" height="52"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gvg-n7-Dn3">
+                        <rect key="frame" x="221" y="10" width="150" height="52"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjM-Ph-pMw">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="32.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.21960784310000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHg-k2-b9U">
-                                <rect key="frame" x="0.0" y="13.5" width="200" height="38.5"/>
+                                <rect key="frame" x="0.0" y="22" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="Tokenest-tip-font"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="5Gd-85-4w0"/>
+                            <constraint firstAttribute="width" constant="150" id="5Gd-85-4w0"/>
                             <constraint firstAttribute="height" constant="52" id="dco-wN-3kv"/>
                         </constraints>
                     </stackView>
@@ -77,12 +77,12 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gvg-n7-Dn3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="4" id="OTQ-n4-T3p"/>
+                    <constraint firstItem="gvg-n7-Dn3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OTQ-n4-T3p"/>
                     <constraint firstItem="2K3-aV-tP8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="OYN-17-ueD"/>
-                    <constraint firstAttribute="trailing" secondItem="gvg-n7-Dn3" secondAttribute="trailing" constant="44" id="VW1-Sg-DPY"/>
-                    <constraint firstItem="VR9-fL-S9Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="4" id="Xdp-kn-icr"/>
-                    <constraint firstItem="8vB-Bh-nJn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32.5" id="ebc-ZQ-gWO"/>
-                    <constraint firstItem="VR9-fL-S9Y" firstAttribute="leading" secondItem="8vB-Bh-nJn" secondAttribute="trailing" constant="14.5" id="p40-JD-naM"/>
+                    <constraint firstAttribute="trailing" secondItem="gvg-n7-Dn3" secondAttribute="trailing" constant="24" id="VW1-Sg-DPY"/>
+                    <constraint firstItem="VR9-fL-S9Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xdp-kn-icr"/>
+                    <constraint firstItem="8vB-Bh-nJn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="ebc-ZQ-gWO"/>
+                    <constraint firstItem="VR9-fL-S9Y" firstAttribute="leading" secondItem="8vB-Bh-nJn" secondAttribute="trailing" constant="16" id="p40-JD-naM"/>
                     <constraint firstAttribute="bottom" secondItem="2K3-aV-tP8" secondAttribute="bottom" id="qhI-ji-mfe"/>
                     <constraint firstAttribute="trailing" secondItem="2K3-aV-tP8" secondAttribute="trailing" constant="20" id="uA9-x4-CJA"/>
                     <constraint firstItem="8vB-Bh-nJn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="z0c-yY-bjz"/>
