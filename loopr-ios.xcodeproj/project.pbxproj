@@ -17,7 +17,6 @@
 		6662052A20E1D1AC00004D5D /* ConvertConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6662052820E1D1AC00004D5D /* ConvertConfirmViewController.xib */; };
 		667BDB5420E0B30800EE2224 /* H5DexDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BDB5320E0B30800EE2224 /* H5DexDataManager.swift */; };
 		667BDB5620E0B60E00EE2224 /* DexRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BDB5520E0B60E00EE2224 /* DexRequest.swift */; };
-		667BDB5720E0C26800EE2224 /* SendCurrentAppWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58A20D393F200ABB7BA /* SendCurrentAppWalletDataManager.swift */; };
 		940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */; };
 		940B44D52060F45B00ADE2B9 /* SendAssetDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B44D42060F45B00ADE2B9 /* SendAssetDataManagerTests.swift */; };
 		940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45102060F67B00ADE2B9 /* GenerateWalletDataManager.swift */; };
@@ -3247,7 +3246,6 @@
 				AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */,
 				943C657A209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift in Sources */,
 				AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */,
-				667BDB5720E0C26800EE2224 /* SendCurrentAppWalletDataManager.swift in Sources */,
 				AC1E4BBC204B420D00C6B1FA /* KeystoreIntegrationTests.swift in Sources */,
 				AC9280DD202E0F9F0009B574 /* EthereumAPIRequestTests.swift in Sources */,
 			);
