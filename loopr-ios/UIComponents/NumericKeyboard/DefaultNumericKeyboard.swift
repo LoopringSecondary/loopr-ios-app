@@ -57,6 +57,8 @@ open class DefaultNumericKeyboard: NumericKeyboard, NumericKeyboardDelegate {
     }
 
     public func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
+        // TODO: Disable the long press action due to a bug.
+        /*
         print("Long pressed keyboard: (\(position.row), \(position.column))")
         if (position.row, position.column) == (3, 2) {
             if currentText.count > 0 {
@@ -65,6 +67,7 @@ open class DefaultNumericKeyboard: NumericKeyboard, NumericKeyboardDelegate {
         }
         delegate2?.numericKeyboard(self, currentTextDidUpdate: currentText)
         collectionView.reloadData()
+        */
     }
 }
 
