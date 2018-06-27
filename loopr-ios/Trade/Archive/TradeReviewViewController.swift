@@ -85,14 +85,12 @@ class TradeReviewViewController: UIViewController {
         // self.navigationController?.isNavigationBarHidden = false
         tokenSView.update(title: "You send", symbol: order.tokenSell, amount: order.amountSell)
         tokenBView.update(title: "You get", symbol: order.tokenBuy, amount: order.amountBuy)
-        
         generateQRCode(order: order)
         qrcodeImageView.image = qrcodeImage
         
         // Remove the blur effect
         let scaleX = qrcodeImageView.frame.size.width / qrcodeImageCIImage.extent.size.width
         let scaleY = qrcodeImageView.frame.size.height / qrcodeImageCIImage.extent.size.height
-        
         let transformedImage = qrcodeImageCIImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
     }
@@ -105,11 +103,9 @@ class TradeReviewViewController: UIViewController {
         let ciContext = CIContext()
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 2, y: 2)
+            let transform = CGAffineTransform(scaleX: 10, y: 10)
             let upScaledImage = filter.outputImage?.transformed(by: transform)
-            
             qrcodeImageCIImage = upScaledImage!
-            
             let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
             qrcodeImage = UIImage(cgImage: cgImage!)
         }
