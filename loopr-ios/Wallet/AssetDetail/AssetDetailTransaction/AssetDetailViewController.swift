@@ -122,9 +122,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         rightButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         rightButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -16)
         rightButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14)
-        barButton = UIBarButtonItem(customView: rightButton)
-        navigationItem.rightBarButtonItem = barButton
-        
         if self.asset?.symbol.uppercased() == "WETH" {
             rightButton.setImage(#imageLiteral(resourceName: "Tokenest-more-button"), for: .normal)
             rightButton.setImage(#imageLiteral(resourceName: "Tokenest-more-button").alpha(0.3), for: .highlighted)
@@ -136,6 +133,10 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
             rightButton.title = "交易"
             rightButton.addTarget(self, action: #selector(pushTradeController), for: UIControlEvents.touchUpInside)
         }
+        
+        // navigation item
+        barButton = UIBarButtonItem(customView: rightButton)
+        navigationItem.rightBarButtonItem = barButton
         customizedNavigationBar.setItems([navigationItem], animated: false)
     }
     
@@ -184,7 +185,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @objc func pushTradeController() {
         let viewController = TradeViewController()
-        viewController.hidesBottomBarWhenPushed = true
+        viewController.hidesBottomBarWhenPushed = false
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

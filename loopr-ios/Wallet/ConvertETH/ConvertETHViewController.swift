@@ -47,14 +47,14 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
 
         scrollViewBottomLayoutConstraint.constant = 0
         
-        // Convert button
-        convertButton.title = NSLocalizedString("Yes, convert now!", comment: "")
-        convertButton.setupRoundPurpleWithShadow()
+        // token labels
+        tokenSLabel.text = asset?.symbol
+        tokenBLabel.text = getAnotherAsset()?.symbol
         
         // amount textfield
         amountSTextField.delegate = self
         amountSTextField.inputView = UIView()
-        
+ 
         // Labels
         availableLabels["ETH"] = ethAmountLabel
         availableLabels["WETH"] = wethAmountLabel
@@ -64,7 +64,11 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
         wethAmountLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         wethAmountLabel.text = ConvertDataManager.shared.getMaxAmountString("WETH")
         availableTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
-
+        
+        // Convert button
+        convertButton.title = NSLocalizedString("Yes, convert now!", comment: "")
+        convertButton.setupRoundPurpleWithShadow()
+        
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
@@ -174,8 +178,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
         var result: GethBigInt? = nil
         let symbol = asset!.symbol.uppercased()
         let tipMessage = NSLocalizedString("Convert_TipInfo", comment: "")
-        let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-        if let text = amountSTextField.text, let inputAmount = Double(text) {
+        if let text = amountSTextField.text, let inputAmount = Double(text),
+           let amount = availableLabels[symbol]?.text, let maxAmount = Double(amount) {
             if inputAmount > 0 {
                 if inputAmount > maxAmount {
                     availableLabels[symbol]?.shake()

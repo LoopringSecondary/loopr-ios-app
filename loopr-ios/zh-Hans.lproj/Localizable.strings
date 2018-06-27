@@ -40,7 +40,7 @@
 "Verification" = "验证";
 "Copy Wallet Address" = "复制钱包地址";
 "Copy Private Key" = "复制私钥";
-"Save to Album" = "保持到相册";
+"Save to Album" = "保存到相册";
 "Market" = "市场";
 "Markets" = "市场";
 "Order History" = "历史订单";
@@ -317,9 +317,9 @@
 "My Wallet Address" = "我的钱包地址";
 "Copy" = "复制";
 "Complete" = "完成";
-"Get Recommended Gas Price" = "获取推荐油费";
+"Recommended Gas Price" = "推荐油费";
 "Save QR code to Photo successfully." = "成功保存二维码到照片应用";
-"Convert_TipInfo" = "我们为您保留0.001 ETH作为油费以保证后续可以发送交易。";
+"Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易。";
 "Add Token" = "添加代币";
 "Tx_Failed_Result" = "交易失败";
 "Tx_Success_Result" = "交易成功";

@@ -16,10 +16,11 @@ protocol QRCodeViewControllerDelegate: class {
 
 class QRCodeViewController: UIViewController {
     
+    var qrcodeImage: UIImage!
     weak var delegate: QRCodeViewControllerDelegate?
 
-    var qrcodeImage: UIImage!
     @IBOutlet weak var qrcodeImageView: UIImageView!
+    @IBOutlet weak var addressTipLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var copyAddressButton: UIButton!
     @IBOutlet weak var saveToAlbumButton: UIButton!
@@ -31,11 +32,13 @@ class QRCodeViewController: UIViewController {
         self.modalPresentationStyle = .custom
         view.theme_backgroundColor = GlobalPicker.textColor
         addressLabel.theme_textColor = GlobalPicker.textColor
-        addressLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        addressLabel.font = FontConfigManager.shared.getLabelENFont(size: 14)
+        addressTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         
-        copyAddressButton.layer.shadowColor = UIColor.black.cgColor
+        copyAddressButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 13)
+        copyAddressButton.layer.shadowColor = UIColor.tokenestLightShadow.cgColor
         copyAddressButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        copyAddressButton.layer.shadowRadius = 4
+        copyAddressButton.layer.shadowRadius = 8
         copyAddressButton.clipsToBounds = false
 
         saveToAlbumButton.setTitle(NSLocalizedString("Save to Album", comment: ""), for: .normal)

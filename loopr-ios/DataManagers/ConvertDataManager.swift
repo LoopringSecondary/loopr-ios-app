@@ -37,7 +37,7 @@ class ConvertDataManager {
             maxAmount = asset.balance
         }
         if symbol.uppercased() == "ETH" {
-            maxAmount -= 0.001
+            maxAmount -= 0.01
         }
         return maxAmount > 0 ? maxAmount : 0
     }

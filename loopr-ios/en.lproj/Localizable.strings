@@ -317,9 +317,9 @@
 "My Wallet Address" = "My Wallet Address";
 "Copy" = "Copy";
 "Complete" = "Complete";
-"Get Recommended Gas Price" = "Get Recommended Gas Price";
+"Recommended Gas Price" = "Recommended Gas Price";
 "Save QR code to Photo successfully." = "Save QR code to Photo successfully.";
-"Convert_TipInfo" = "我们为您保留0.001 ETH作为油费以保证后续可以发送交易.";
+"Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易.";
 "Add Token" = "Add Token";
 "Tx_Failed_Result" = "Transaction Failed";
 "Tx_Success_Result" = "Transaction Success";

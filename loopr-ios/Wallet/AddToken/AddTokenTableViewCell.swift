@@ -14,7 +14,6 @@ class AddTokenTableViewCell: UITableViewCell {
 
     // TODO: We may deprecate IBOutlet
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var addSwitch: UISwitch!
     @IBOutlet weak var seperateLine: UIView!
@@ -31,19 +30,8 @@ class AddTokenTableViewCell: UITableViewCell {
 
     func update() {
         if let token = token {
-            let icon = UIImage(named: token.symbol) ?? nil
-            if icon != nil {
-                iconImageView.image = icon
-                iconImageView.isHidden = false
-                iconView.isHidden = true
-            } else {
-                iconView.isHidden = false
-                iconView.symbol = token.symbol
-                iconView.symbolLabel.text = token.symbol
-                iconImageView.isHidden = true
-            }
+            iconImageView.image = UIImage(named: token.symbol) ?? nil
             symbolLabel.text = "\(token.symbol)"
-
             if TokenDataManager.shared.getTokenList().contains(token.symbol) {
                 addSwitch.setOn(true, animated: false)
             } else {

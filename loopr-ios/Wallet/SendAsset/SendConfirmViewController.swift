@@ -59,12 +59,11 @@ class SendConfirmViewController: UIViewController {
     @IBAction func pressedSendButton(_ sender: UIButton) {
         SVProgressHUD.show(withStatus: "Processing the transaction ...")
         if let toAddress = self.receiveAddress,
-            let token = TokenDataManager.shared.getTokenBySymbol(self.sendAsset.symbol)
-             {
+            let token = TokenDataManager.shared.getTokenBySymbol(self.sendAsset.symbol) {
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
             if token.symbol.uppercased() == "ETH" {
-                let amount = Double(self.sendAmount)! - 0.001
+                let amount = Double(self.sendAmount)!
                 let gethAmount = GethBigInt.generate(valueInEther: amount, symbol: token.symbol)!
                 SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, toAddress: toAddress, completion: completion)
             } else {

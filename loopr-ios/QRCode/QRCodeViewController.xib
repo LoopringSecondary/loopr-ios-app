@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRCodeViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="addressLabel" destination="pSD-WS-ef8" id="PCU-V3-OIx"/>
+                <outlet property="addressTipLabel" destination="edC-Mr-nnR" id="Syv-Jx-7gS"/>
                 <outlet property="copyAddressButton" destination="lUP-l3-OtM" id="xAj-Il-h6n"/>
                 <outlet property="qrcodeImageView" destination="Jxo-fS-cjo" id="Z5I-ZU-tdP"/>
                 <outlet property="saveToAlbumButton" destination="7NU-nI-gps" id="6Sj-tN-4FF"/>
@@ -96,13 +97,15 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUP-l3-OtM">
-                    <rect key="frame" x="263" y="237" width="64" height="30"/>
+                    <rect key="frame" x="263" y="247.33333333333337" width="64" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="64" id="3h0-bM-cOa"/>
                         <constraint firstAttribute="height" constant="30" id="9Nw-zF-rpN"/>
                     </constraints>
-                    <state key="normal" title="复制"/>
+                    <state key="normal" title="复制">
+                        <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="15"/>
@@ -124,8 +127,11 @@
                         <action selector="pressedCopyAddressButton:" destination="-1" eventType="touchUpInside" id="HgD-3E-sS7"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSD-WS-ef8">
-                    <rect key="frame" x="48" y="276" width="31" height="14.666666666666686"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSD-WS-ef8">
+                    <rect key="frame" x="48" y="276" width="160" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" id="p0J-38-wXH"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -148,6 +154,7 @@
                 <constraint firstItem="elc-oh-t7d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Fc2-cg-1wA"/>
                 <constraint firstItem="7NU-nI-gps" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="J5n-u9-xxE"/>
                 <constraint firstItem="edC-Mr-nnR" firstAttribute="leading" secondItem="elc-oh-t7d" secondAttribute="leading" constant="32" id="KCC-Dw-yzm"/>
+                <constraint firstItem="lUP-l3-OtM" firstAttribute="centerY" secondItem="Ria-tk-td6" secondAttribute="centerY" id="OHx-if-HKo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vya-Hx-Gla" secondAttribute="bottom" constant="32" id="PYP-Ea-0uM"/>
                 <constraint firstItem="7NU-nI-gps" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="Tqb-pr-w2I"/>
                 <constraint firstItem="T3e-GW-rgK" firstAttribute="top" secondItem="Ria-tk-td6" secondAttribute="bottom" constant="-1" id="UDz-f4-JU2"/>
@@ -166,7 +173,6 @@
                 <constraint firstItem="Jxo-fS-cjo" firstAttribute="top" secondItem="T3e-GW-rgK" secondAttribute="bottom" constant="56" id="pgM-Qc-iHt"/>
                 <constraint firstItem="IVT-zb-3Lb" firstAttribute="centerY" secondItem="elc-oh-t7d" secondAttribute="top" constant="5" id="qjw-fT-eE0"/>
                 <constraint firstItem="edC-Mr-nnR" firstAttribute="top" secondItem="elc-oh-t7d" secondAttribute="top" constant="48" id="r6c-Z9-8Mv"/>
-                <constraint firstItem="lUP-l3-OtM" firstAttribute="bottom" secondItem="edC-Mr-nnR" secondAttribute="bottom" id="s5O-pu-WEs"/>
                 <constraint firstItem="T3e-GW-rgK" firstAttribute="leading" secondItem="Ria-tk-td6" secondAttribute="leading" constant="10" id="tjY-rE-lIc"/>
                 <constraint firstItem="7NU-nI-gps" firstAttribute="top" secondItem="Jxo-fS-cjo" secondAttribute="bottom" constant="56" id="va5-qy-fNb"/>
             </constraints>

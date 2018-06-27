@@ -87,4 +87,8 @@ extension UIColor {
         return UIColor(named: "Tokenest-light-shadow")!
     }
     
+    class var tokenestTableFont: UIColor {
+        return UIColor(named: "Tokenest-table-font")!
+    }
+    
 }

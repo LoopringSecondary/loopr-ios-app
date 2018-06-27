@@ -48,33 +48,33 @@ class AssetTransactionTableViewCell: UITableViewCell {
     
     private func updateConvertIncome() {
         amountLabel.text = "+\(transaction!.value)"
-        amountLabel.textColor = UIColor.tokenestUps
+        amountLabel.textColor = UIColor.tokenestBackground
     }
     
     private func updateConvertOutcome() {
         amountLabel.text = "-\(transaction!.value)"
-        amountLabel.textColor = UIColor.tokenestDowns
+        amountLabel.textColor = UIColor.tokenestTableFont
     }
     
     private func updateApprove() {
         let gas = GasDataManager.shared.getGasAmountInETH(by: "approve")
         amountLabel.text = "-\(gas.withCommas(6))"
-        amountLabel.textColor = UIColor.tokenestDowns
+        amountLabel.textColor = UIColor.tokenestTableFont
     }
     
     private func udpateCutoffAndCanceledOrder() {
         let gas = GasDataManager.shared.getGasAmountInETH(by: "cancelOrder")
         amountLabel.text = "-\(gas.withCommas(6))"
-        amountLabel.textColor = UIColor.tokenestDowns
+        amountLabel.textColor = UIColor.tokenestTableFont
     }
     
     private func updateDefault() {
         if let tx = self.transaction {
             if tx.type == .bought || tx.type == .received {
-                amountLabel.textColor = UIColor.tokenestUps
+                amountLabel.textColor = UIColor.tokenestBackground
                 amountLabel.text = "+\(transaction!.value)"
             } else if tx.type == .sold || tx.type == .sent {
-                amountLabel.textColor = UIColor.tokenestDowns
+                amountLabel.textColor = UIColor.tokenestTableFont
                 amountLabel.text = "-\(transaction!.value)"
             }
         }
@@ -95,11 +95,11 @@ class AssetTransactionTableViewCell: UITableViewCell {
     private func updateStatusLabel() {
         if let tx = self.transaction {
             if tx.status == .success {
-                statusLabel.textColor = UIColor.tokenestBackground
+                statusLabel.textColor = UIColor.tokenestDowns
             } else if tx.status == .failed {
                 statusLabel.textColor = UIColor.tokenestFailed
             } else if tx.status == .pending {
-                statusLabel.textColor = UIColor.tokenestPending
+                statusLabel.textColor = UIColor.init(rgba: "#8997F3")
             }
             statusLabel.text = tx.status.description
         }
