@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMessageComposeViewControllerDelegate {
+class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var appWallet: AppWallet!
 
@@ -17,30 +17,45 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
         
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var switchWalletButton: UIButton!
-
-    @IBOutlet weak var shareAddressThroughSMSButton: UIButton!
+    
+    @IBOutlet weak var deleteWalletButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setBackButton()
-        
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        switchWalletButton.title = NSLocalizedString("Switch to this Wallet", comment: "")
-        switchWalletButton.setupRoundBlack()
-        
-        shareAddressThroughSMSButton.title = NSLocalizedString("Share Address through SMS", comment: "")
-        shareAddressThroughSMSButton.setupRoundWhite()
+        deleteWalletButton.setTitle(NSLocalizedString("Delete Wallet", comment: ""), for: .normal)
+        deleteWalletButton.setTitleColor(UIColor.init(rgba: "#E83769"), for: .normal)
+        deleteWalletButton.setTitleColor(UIColor.init(rgba: "#E83769").withAlphaComponent(0.3), for: .highlighted)
+        deleteWalletButton.addTarget(self, action: #selector(pressedDeleteWalletButton(_:)), for: UIControlEvents.touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         print(appWallet.name)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: appWallet.name)
         self.tableView.reloadData()
+        
+        let shadowSize: CGFloat = 1.0
+        let shadowPath = UIBezierPath(rect: CGRect(x: -shadowSize / 2,
+                                                   y: -shadowSize / 2,
+                                                   width: self.deleteWalletButton.frame.size.width + shadowSize,
+                                                   height: self.deleteWalletButton.frame.size.height + shadowSize))
+        self.deleteWalletButton.layer.masksToBounds = false
+        self.deleteWalletButton.layer.shadowColor = UIColor.init(rgba: "#939BB1").cgColor
+        self.deleteWalletButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.deleteWalletButton.layer.shadowOpacity = 0.5
+        self.deleteWalletButton.layer.shadowPath = shadowPath.cgPath
+        deleteWalletButton.setBackgroundColor(UIColor.white, for: .normal)
+        
+        // TODO: not sure about the background color
+        deleteWalletButton.setBackgroundColor(UIColor.white, for: .highlighted)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,10 +63,8 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func pressedSwitchWalletButton(_ sender: Any) {
-        print("pressedSwitchWalletButton")
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
-        self.navigationController?.popViewController(animated: true)
+    @objc func pressedDeleteWalletButton(_ sender: UIButton) {
+        presentAlertControllerToConfirmClearRecords()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -140,18 +153,4 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         self.present(alertController, animated: true, completion: nil)
     }
 
-    @IBAction func pressedShareAddressThroughSMS(_ sender: Any) {
-        if MFMessageComposeViewController.canSendText() {
-            let controller = MFMessageComposeViewController()
-            controller.body = appWallet.address
-            controller.recipients = []
-            controller.messageComposeDelegate = self
-            self.present(controller, animated: true, completion: nil)
-        }
-    }
-    
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        //... handle sms screen actions
-        self.dismiss(animated: true, completion: nil)
-    }
 }

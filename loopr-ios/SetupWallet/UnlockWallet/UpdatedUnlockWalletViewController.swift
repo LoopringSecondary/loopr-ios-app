@@ -303,7 +303,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             passwordInfoLabel.frame = CGRect(x: 74, y: secordRowY, width: 200, height: 17)
             passwordTextField.frame = CGRect(x: paddingLeft, y: passwordInfoLabel.y + 23, width: screenWidth-paddingLeft*2, height: textFieldHeight)
 
-        } else if currentImportMethod == .importUsingMnemonic {            
+        } else if currentImportMethod == .importUsingMnemonic {
             passwordInfoLabel.textColor = UIColor.tokenestTip
             passwordInfoLabel.isHidden = true
             passwordTextField.isHidden = true
