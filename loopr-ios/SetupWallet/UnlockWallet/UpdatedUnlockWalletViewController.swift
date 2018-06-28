@@ -270,11 +270,9 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             currentImportMethodDescription += " " + NSLocalizedString("File", comment: "")
         }
         let titleWidth = currentImportMethodDescription.textWidth(font: FontConfigManager.shared.getLabelSCFont(size: 12))
+        importMethodSelection.frame = CGRect(x: 76, y: 94, width: titleWidth, height: 17)
         
         if currentImportMethod == .importUsingKeystore {
-            // This is not correct.
-            importMethodSelection.frame = CGRect(x: 76, y: 94, width: titleWidth, height: 17)
-            
             passwordInfoLabel.isHidden = false
             passwordTextField.isHidden = false
             selectWalletTypeInfoLabel.isHidden = true
@@ -284,19 +282,13 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             passwordTextField.frame = CGRect(x: paddingLeft, y: passwordInfoLabel.y + 23, width: screenWidth-paddingLeft*2, height: textFieldHeight)
 
         } else if currentImportMethod == .importUsingPrivateKey {
-            importMethodSelection.frame = CGRect(x: 76, y: 94, width: titleWidth, height: 17)
-            
             passwordInfoLabel.isHidden = true
             passwordTextField.isHidden = true
             selectWalletTypeInfoLabel.isHidden = true
             selectWalletTypeBackground.isHidden = true
             selectWalletTypeButton.isHidden = true
-            // passwordInfoLabel.frame = CGRect(x: 74, y: firstRowY, width: 200, height: 17)
-            // passwordTextField.frame = CGRect(x: paddingLeft, y: passwordInfoLabel.y + 23, width: screenWidth-paddingLeft*2, height: textFieldHeight)
 
-        } else if currentImportMethod == .importUsingMnemonic {
-            importMethodSelection.frame = CGRect(x: 76, y: 94, width: titleWidth, height: 17)
-            
+        } else if currentImportMethod == .importUsingMnemonic && currentWalletType == WalletType.getLoopringWallet() {
             passwordInfoLabel.textColor = UIColor.tokenestTip
             passwordInfoLabel.isHidden = false
             passwordTextField.isHidden = false
@@ -310,6 +302,18 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             
             passwordInfoLabel.frame = CGRect(x: 74, y: secordRowY, width: 200, height: 17)
             passwordTextField.frame = CGRect(x: paddingLeft, y: passwordInfoLabel.y + 23, width: screenWidth-paddingLeft*2, height: textFieldHeight)
+
+        } else if currentImportMethod == .importUsingMnemonic {            
+            passwordInfoLabel.textColor = UIColor.tokenestTip
+            passwordInfoLabel.isHidden = true
+            passwordTextField.isHidden = true
+            selectWalletTypeInfoLabel.isHidden = false
+            selectWalletTypeBackground.isHidden = false
+            selectWalletTypeButton.isHidden = false
+            
+            selectWalletTypeInfoLabel.frame = CGRect(x: 74, y: firstRowY, width: 200, height: 17)
+            selectWalletTypeBackground.frame = CGRect(x: 47, y: selectWalletTypeInfoLabel.y + 23, width: screenWidth - 47*2, height: 43)
+            selectWalletTypeButton.frame = CGRect(x: selectWalletTypeBackground.x + 27, y: selectWalletTypeBackground.y, width: selectWalletTypeBackground.width - 2*27, height: selectWalletTypeBackground.height)
         }
         
         importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection"), title: currentImportMethodDescription, titlePosition: .left, additionalSpacing: 10, state: .normal)
