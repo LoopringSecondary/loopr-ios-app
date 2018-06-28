@@ -1,4 +1,3 @@
-
 //
 //  SendViewController.swift
 //  loopr-ios
@@ -10,7 +9,7 @@
 import UIKit
 import Geth
 
-class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
+class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var statusBarBackgroundView: UIView!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
@@ -263,7 +262,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     func getCollectionHeight() -> CGFloat {
         var height: CGFloat = 0
         if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
-            let rows = ceil(Double(wallet.assetSequence.count / 4))
+            let rows = ceil(Double(wallet.assetSequence.count) / 4)
             height = CGFloat(rows * 55)
         }
         return height
@@ -532,37 +531,53 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
-            return wallet.assetSequence.count / 4
+            return Int(ceil(Double(wallet.assetSequence.count) / 4))
         } else {
             return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        var result = 0
+        if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
+            if wallet.assetSequence.count - 4 * section > 4 {
+                result = 4
+            } else {
+                result = wallet.assetSequence.count - 4 * section
+            }
+        }
+        return result
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (UIScreen.main.bounds.width - 99) / 4, height: 32)
+    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let index = indexPath.row + (indexPath.section * 4)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetCollectionViewCell.getCellIdentifier(), for: indexPath) as? AssetCollectionViewCell
         if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
-            cell?.asset = wallet.assetSequence[indexPath.row + (indexPath.section*4)]
+            if wallet.assetSequence.count > index {
+                cell?.asset = wallet.assetSequence[index]
+            }
         }
         if selectedIndexPath != nil && selectedIndexPath == indexPath || cell?.asset?.lowercased() == self.asset.symbol.lowercased() {
-            cell?.highlightEffect()
+            cell?.isHighlighted = true
         } else {
-            cell?.removeHighlight()
+            cell?.isHighlighted = false
         }
         cell?.update()
         return cell!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedIndexPath = indexPath
-        let cell = collectionView.cellForItem(at: indexPath) as! AssetCollectionViewCell
-        cell.highlightEffect()
-        hideCollectionView()
+        
+        self.hideCollectionView()
+        
         if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
-            let symbol = wallet.assetSequence[indexPath.row + (indexPath.section*4)]
+            let index = indexPath.row + (indexPath.section * 4)
+            guard index < wallet.assetSequence.count else { return }
+            let symbol = wallet.assetSequence[index]
             if let token = TokenDataManager.shared.getTokenBySymbol(symbol) {
                 tokenImage.image = token.icon
                 nameLabel.text = token.source
@@ -579,8 +594,13 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 amountETHTipLabel.isHidden = true
             }
         }
-        showCollection = false
-        tokensCollectionView.reloadData()
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! AssetCollectionViewCell
+        cell.isHighlighted = true
+        
+        self.showCollection = false
+        self.selectedIndexPath = indexPath
+        self.tokensCollectionView.reloadData()
     }
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {

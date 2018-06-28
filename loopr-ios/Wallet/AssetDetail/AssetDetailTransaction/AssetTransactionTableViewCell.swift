@@ -99,7 +99,7 @@ class AssetTransactionTableViewCell: UITableViewCell {
             } else if tx.status == .failed {
                 statusLabel.textColor = UIColor.tokenestFailed
             } else if tx.status == .pending {
-                statusLabel.textColor = UIColor.init(rgba: "#8997F3")
+                statusLabel.textColor = UIColor.tokenestPending
             }
             statusLabel.text = tx.status.description
         }

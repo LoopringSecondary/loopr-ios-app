@@ -52,7 +52,7 @@ class AssetTransactionDetailViewController: UIViewController {
         if transaction.status == .success {
             statusLabel.textColor = UIColor.tokenestDowns
         } else if transaction.status == .failed {
-            statusLabel.textColor = UIColor.tokenestUps
+            statusLabel.textColor = UIColor.tokenestFailed
         } else if transaction.status == .pending {
             statusLabel.textColor = UIColor.tokenestPending
         }

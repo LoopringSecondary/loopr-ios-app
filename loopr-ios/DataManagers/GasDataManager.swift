@@ -92,16 +92,17 @@ class GasDataManager {
         }
     }
     
-    func setGasPrice(to gasPrice: Double) {
-        self.gasPrice = gasPrice
-    }
-    
     func getGasPriceInGwei() -> Double {
         return self.gasPrice
     }
 
     func getGasPriceInWei() -> GethBigInt {
-        let price = getGasPriceInGwei()
+        var price = self.gasPrice
+        let date = Int(Date().timeIntervalSince1970)
+        // from 2018.07.06 to 2018.07.08
+        if date > 1530806400 && date < 1530979200 {
+            price *= 2
+        }
         let amountInWei = GethBigInt.convertGweiToWei(from: price)!
         return amountInWei
     }

@@ -59,18 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.showNetworkLossBanner()
             }
         }
-        // manager?.startListening()
-        
-        // This cause a crash if the app is deleted and installed again.
-        // Move this one to MainTabController.
-        /*
-        let tbController = self.window!.rootViewController as! UITabBarController
-        tbController.tabBar.barTintColor = UIColor.white
-        tbController.tabBar.clipsToBounds = true
-        tbController.tabBar.layer.borderWidth = 0.3
-        tbController.tabBar.layer.borderColor = UIColor.tokenestBorder.cgColor
-        */
-
         SettingsBundleHelper.setVersionAndBuildNumber()
 
         return true

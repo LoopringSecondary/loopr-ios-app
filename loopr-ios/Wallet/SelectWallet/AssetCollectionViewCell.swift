@@ -11,6 +11,7 @@ import UIKit
 class AssetCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
+    
     var asset: String?
     
     override func awakeFromNib() {
@@ -21,18 +22,19 @@ class AssetCollectionViewCell: UICollectionViewCell {
     
     func update() {
         if let asset = self.asset {
+            nameLabel.cornerRadius = 16
+            nameLabel.borderWidth = 0.5
+            nameLabel.borderColor = UIColor.tokenestBackground
+            nameLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
             nameLabel.text = asset
+            if isHighlighted {
+                nameLabel.backgroundColor = UIColor.tokenestBackground
+                nameLabel.textColor = UIColor.white
+            } else {
+                nameLabel.backgroundColor = UIColor.white
+                nameLabel.textColor = UIColor.tokenestBackground
+            }
         }
-    }
-    
-    func highlightEffect() {
-        self.nameLabel.backgroundColor = UIColor.tokenestBackground
-        self.nameLabel.textColor = UIColor.white
-    }
-    
-    func removeHighlight() {
-        self.nameLabel.backgroundColor = UIColor.white
-        self.nameLabel.textColor = UIColor.tokenestBackground
     }
     
     class func getCellIdentifier() -> String {
