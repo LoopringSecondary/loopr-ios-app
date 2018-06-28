@@ -4,14 +4,24 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingManageWalletViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="createButton" destination="fzt-jM-8j7" id="2LP-fv-XCS"/>
+                <outlet property="customizedNavigationBar" destination="3Mz-ZE-Q00" id="DhD-M9-1eX"/>
+                <outlet property="importButton" destination="Cx5-QQ-Z2Z" id="VeC-fg-wXt"/>
+                <outlet property="statusBarBackgroundView" destination="KuI-vX-VrI" id="wBp-e0-xWM"/>
                 <outlet property="tableView" destination="4ax-Wx-3Mw" id="kwb-QV-N2k"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,19 +32,68 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ax-Wx-3Mw">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="540"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KuI-vX-VrI">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Mz-ZE-Q00">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="7Ib-tg-eip"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Title" id="1Sn-C4-mrg"/>
+                    </items>
+                </navigationBar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cx5-QQ-Z2Z">
+                    <rect key="frame" x="187.5" y="604" width="187.5" height="63"/>
+                    <color key="backgroundColor" name="Tokenest-background"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="63" id="m9v-SY-DTM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="15"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzt-jM-8j7">
+                    <rect key="frame" x="0.0" y="604" width="187.5" height="63"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="63" id="LuX-G1-ua5"/>
+                    </constraints>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="4ax-Wx-3Mw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HbJ-aq-Mvu"/>
+                <constraint firstItem="Cx5-QQ-Z2Z" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.5" id="0Pe-gr-JYv"/>
+                <constraint firstItem="fzt-jM-8j7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1aa-3T-qpq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fzt-jM-8j7" secondAttribute="bottom" id="5hc-vd-TvJ"/>
+                <constraint firstItem="KuI-vX-VrI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Af1-yZ-VwN"/>
+                <constraint firstItem="4ax-Wx-3Mw" firstAttribute="top" secondItem="3Mz-ZE-Q00" secondAttribute="bottom" id="DmT-bY-xiW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="KuI-vX-VrI" secondAttribute="bottom" id="ERW-KM-KV9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Cx5-QQ-Z2Z" secondAttribute="trailing" id="Jqo-ks-QOk"/>
+                <constraint firstItem="3Mz-ZE-Q00" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="P81-xE-bfj"/>
+                <constraint firstItem="3Mz-ZE-Q00" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Psd-eq-uu1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Cx5-QQ-Z2Z" secondAttribute="bottom" id="bAj-Xj-SCv"/>
+                <constraint firstItem="3Mz-ZE-Q00" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="dfy-Nz-bxZ"/>
                 <constraint firstItem="4ax-Wx-3Mw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eeJ-J0-jcy"/>
+                <constraint firstItem="KuI-vX-VrI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ejW-1X-OZJ"/>
+                <constraint firstItem="Cx5-QQ-Z2Z" firstAttribute="leading" secondItem="fzt-jM-8j7" secondAttribute="trailing" id="ids-vr-VTP"/>
                 <constraint firstItem="4ax-Wx-3Mw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="p4J-Px-JUS"/>
-                <constraint firstItem="4ax-Wx-3Mw" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="sg0-Hx-OUY"/>
+                <constraint firstAttribute="trailing" secondItem="KuI-vX-VrI" secondAttribute="trailing" id="pZ1-te-Rum"/>
+                <constraint firstItem="Cx5-QQ-Z2Z" firstAttribute="top" secondItem="4ax-Wx-3Mw" secondAttribute="bottom" id="vc1-Dh-UKW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="67.5"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="Tokenest-background">
+            <color red="0.1803921568627451" green="0.16862745098039217" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>

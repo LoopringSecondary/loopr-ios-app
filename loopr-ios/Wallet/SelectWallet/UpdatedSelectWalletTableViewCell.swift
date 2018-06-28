@@ -52,7 +52,7 @@ class UpdatedSelectWalletTableViewCell: UITableViewCell {
     func update() {
         if let wallet = wallet {
             nameLabel.text = wallet.name
-            addressLabel.text = wallet.address
+            addressLabel.text = wallet.address.getAddressFormat()
             toatalBalanceLabel.text = wallet.totalCurrency.currency
             setNoCurrentWallet()
             

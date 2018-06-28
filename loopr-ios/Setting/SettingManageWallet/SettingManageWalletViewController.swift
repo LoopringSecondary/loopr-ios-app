@@ -10,29 +10,54 @@ import UIKit
 
 class SettingManageWalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var importButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
 
-        self.navigationItem.title = NSLocalizedString("Manage Wallet", comment: "")
-        setBackButton()
-        
+        view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
+        tableView.backgroundColor = UIColor.init(rgba: "#F3F6F8")
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        
-        let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        self.navigationItem.rightBarButtonItem = addBarButton
+
+        createButton.setTitle(NSLocalizedString("Generate Wallet", comment: ""), for: .normal)
+        createButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
+        createButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16, type: "Medium")
+        createButton.addTarget(self, action: #selector(pressedCreateButton(_:)), for: UIControlEvents.touchUpInside)
+        createButton.layer.shadowColor = UIColor.init(rgba: "#939BB1").cgColor
+        createButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        createButton.layer.masksToBounds = false
+
+        importButton.setTitle(NSLocalizedString("Import Wallet", comment: ""), for: .normal)
+        importButton.setTitleColor(UIColor.white, for: .normal)
+        importButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16, type: "Medium")
+        importButton.addTarget(self, action: #selector(pressedImportButton(_:)), for: UIControlEvents.touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Manage Wallet", comment: ""))
+        
+        // Reload data if the data is updated.
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +65,32 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func pressAddButton(_ button: UIBarButtonItem) {
-        let setupViewController: SetupNavigationController? = SetupNavigationController(nibName: nil, bundle: nil)
-        setupViewController?.isCreatingFirstWallet = false
-        self.present(setupViewController!, animated: true) {
-        }
+    @objc func pressedCreateButton(_ sender: UIButton) {
+        let viewController = UpdatedGenerateWalletEnterNameAndPasswordViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        viewController.isPushedInParentViewController = false
+        viewController.modalPresentationStyle = .overFullScreen
+        
+        let newNavigationController = UINavigationController()
+        newNavigationController.modalPresentationStyle = .overFullScreen
+        newNavigationController.setViewControllers([viewController], animated: false)
+        self.navigationController?.present(newNavigationController, animated: true, completion: {
+            
+        })
+    }
+    
+    @objc func pressedImportButton(_ sender: UIButton) {
+        let viewController = UpdatedUnlockWalletViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        viewController.isPushedInParentViewController = false
+        viewController.modalPresentationStyle = .overFullScreen
+        
+        let newNavigationController = UINavigationController()
+        newNavigationController.modalPresentationStyle = .overFullScreen
+        newNavigationController.setViewControllers([viewController], animated: false)
+        self.navigationController?.present(newNavigationController, animated: true, completion: {
+            
+        })
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,11 +111,6 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         // Configure the cell...
         cell?.wallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
         cell?.update()
-        if cell?.wallet == CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
-            cell?.accessoryType = .checkmark
-        } else {
-            cell?.accessoryType = .none
-        }
         return cell!
     }
     
