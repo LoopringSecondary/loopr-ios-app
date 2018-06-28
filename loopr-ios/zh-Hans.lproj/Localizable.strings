@@ -35,6 +35,7 @@
 "Please input your private key" = "请输入您的私钥";
 "Please use space to seperate the mnemonic words" = "请用空格隔开助记词";
 "Backup Mnemonic" = "备份助记词";
+"Verify Mnemonic" = "验证助记词";
 "Verify Now" = "马上验证";
 "Skip Verification" = "跳过验证";
 "Verification" = "验证";
@@ -327,3 +328,4 @@
 "Clear" = "清空";
 "No network" = "无网络";
 "Wallet Management" = "钱包管理";
+"Backup_Mnemonic_in_SettingManageWallet" = "未备份助记词";

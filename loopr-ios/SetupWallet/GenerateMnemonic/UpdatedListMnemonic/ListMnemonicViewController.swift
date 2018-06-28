@@ -10,16 +10,20 @@ import UIKit
 
 class ListMnemonicViewController: UIViewController {
 
+    var isCreatingWalletMode: Bool = true
+    var wallet: AppWallet?
+    
     var mnemonics: [String] = []
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var skipMnemonicButton: UIButton!
     
     @IBOutlet weak var infoLabel: UILabel!
-
     @IBOutlet weak var startInfolbel: UILabel!
-
+    @IBOutlet weak var subStartInfoImageView: UIImageView!
+    @IBOutlet weak var subStartInfoLabel: UILabel!
+    
     var mnemonicCollectionViewController0: MnemonicCollectionViewController!
     
     var collectionViewY: CGFloat = 200
@@ -38,17 +42,39 @@ class ListMnemonicViewController: UIViewController {
         // Do any additional setup after loading the view.
         // Add swipe to go-back feature back which is a system default gesture
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        
-        mnemonics = GenerateWalletDataManager.shared.getMnemonics()
+
+        if isCreatingWalletMode {
+            mnemonics = GenerateWalletDataManager.shared.getMnemonics()
+        } else {
+            mnemonics = wallet?.mnemonics ?? []
+        }
         
         nextButton.addTarget(self, action: #selector(pressedNextButton), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-        skipButton.addTarget(self, action: #selector(pressedSkipButton), for: .touchUpInside)
-        skipButton.title = NSLocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
-        skipButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 12)
-        skipButton.setTitleColor(UIColor.init(rgba: "#F2F5F7"), for: .normal)
+        skipMnemonicButton.addTarget(self, action: #selector(pressedSkipButton), for: .touchUpInside)
+        skipMnemonicButton.title = NSLocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
+        skipMnemonicButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 12)
+        skipMnemonicButton.setTitleColor(UIColor.init(rgba: "#F2F5F7"), for: .normal)
+        if isCreatingWalletMode {
+            skipMnemonicButton.isHidden = false
+        } else {
+            skipMnemonicButton.isHidden = true
+        }
 
         startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31)
+        subStartInfoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 18)
+        subStartInfoLabel.textColor = UIColor.white
+        
+        if isCreatingWalletMode {
+            startInfolbel.text = "Great, Go Ahead"
+            subStartInfoImageView.isHidden = false
+            subStartInfoLabel.isHidden = true
+        } else {
+            startInfolbel.text = "Backup help word"
+            subStartInfoImageView.isHidden = true
+            subStartInfoLabel.isHidden = false
+            subStartInfoLabel.text = NSLocalizedString("Backup Mnemonic", comment: "")
+        }
         
         infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         infoLabel.textColor = UIColor.init(rgba: "#B5B9C0")
@@ -103,12 +129,15 @@ class ListMnemonicViewController: UIViewController {
             
             firstAppear = false
         }
-
     }
     
     @objc func pressedNextButton(_ sender: Any) {
         print("pressedNextButton")
         let viewController = UpdatedVerifyMnemonicViewController()
+        if !isCreatingWalletMode {
+            viewController.isCreatingWalletMode = false
+            viewController.wallet = wallet
+        }
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -119,7 +148,9 @@ class ListMnemonicViewController: UIViewController {
     
     @objc func pressedSkipButton(_ sender: Any) {
         print("pressedSkipButton")
-        exit()
+        if isCreatingWalletMode {
+            exit()
+        }
     }
     
     func exit() {

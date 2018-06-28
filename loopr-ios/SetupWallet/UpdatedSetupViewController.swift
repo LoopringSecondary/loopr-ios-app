@@ -29,7 +29,7 @@ class UpdatedSetupViewController: UIViewController {
         unlockWalletButton.title = NSLocalizedString("Import", comment: "")
         unlockWalletButton.setTitleColor(UIColor.white, for: .normal)
         unlockWalletButton.setTitleColor(UIColor.black.withAlphaComponent(0.7), for: .highlighted)
-        unlockWalletButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+        unlockWalletButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 13)
         unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
         
         unlockIconWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
@@ -38,7 +38,7 @@ class UpdatedSetupViewController: UIViewController {
         generateWalletButton.title = NSLocalizedString("Create", comment: "")
         generateWalletButton.setTitleColor(UIColor.white, for: .normal)
         generateWalletButton.setTitleColor(UIColor.black.withAlphaComponent(0.7), for: .highlighted)
-        generateWalletButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+        generateWalletButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 13)
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
         
         generateIconWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)

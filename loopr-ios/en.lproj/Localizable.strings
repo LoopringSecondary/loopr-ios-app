@@ -35,6 +35,7 @@
 "Please input your private key" = "Please input your private key";
 "Please use space to seperate the mnemonic words" = "Please use space to seperate the mnemonic words";
 "Backup Mnemonic" = "Backup Mnemonic";
+"Verify Mnemonic" = "Verify Mnemonic";
 "Verify Now" = "Verify Now";
 "Skip Verification" = "Skip Verification";
 "Verification" = "Verification";
@@ -327,3 +328,4 @@
 "Clear" = "Clear";
 "No network" = "No network";
 "Wallet Management" = "Wallet Management";
+"Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";

@@ -14,6 +14,11 @@ class MainTabController: ESTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBar.barTintColor = UIColor.white
+        self.tabBar.clipsToBounds = true
+        self.tabBar.layer.borderWidth = 0.3
+        self.tabBar.layer.borderColor = UIColor.tokenestBorder.cgColor
+        
         // Do any additional setup after loading the view.
         let v1 = WalletNavigationViewController()
         let v2 = MarketNavigationViewController()

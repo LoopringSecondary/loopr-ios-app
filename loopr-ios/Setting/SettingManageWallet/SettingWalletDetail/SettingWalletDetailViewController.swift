@@ -13,6 +13,9 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     
     var appWallet: AppWallet!
 
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+        
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var switchWalletButton: UIButton!
 

@@ -106,12 +106,9 @@ class AppWalletDataManager {
             appWallets.insert(newAppWallet, at: 0)
         }
 
-        // TODO: if the size of encodedData is large, the perfomance may drop.
-        DispatchQueue.global().async {
-            let defaults = UserDefaults.standard
-            let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.appWallets)
-            defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
-        }
+        let defaults = UserDefaults.standard
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.appWallets)
+        defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
     }
 
     // Used in GenerateWallet and ImportMnemonic

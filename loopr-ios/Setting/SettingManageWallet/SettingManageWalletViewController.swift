@@ -27,6 +27,9 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
         tableView.backgroundColor = UIColor.init(rgba: "#F3F6F8")
 
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 8))
+        headerView.backgroundColor = UIColor.init(rgba: "#F3F6F8")
+        tableView.tableHeaderView = headerView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -57,7 +60,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        // self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,6 +114,12 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         // Configure the cell...
         cell?.wallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
         cell?.update()
+        cell?.pressedNeedVerifiedButtonClosure = {
+            let viewController = ListMnemonicViewController()
+            viewController.isCreatingWalletMode = false
+            viewController.wallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
         return cell!
     }
     

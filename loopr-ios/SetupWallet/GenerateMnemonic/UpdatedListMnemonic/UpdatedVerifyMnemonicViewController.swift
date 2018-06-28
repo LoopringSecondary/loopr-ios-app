@@ -11,6 +11,9 @@ import TagListView
 
 class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate {
 
+    var isCreatingWalletMode: Bool = true
+    var wallet: AppWallet?
+    
     var sortedMnemonics: [String] = []
     var userInputMnemonics: [String] = []
 
@@ -18,7 +21,9 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var startInfolbel: UILabel!
-    
+    @IBOutlet weak var subStartInfoImageView: UIImageView!
+    @IBOutlet weak var subStartInfoLabel: UILabel!
+
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var clearButton: UIButton!
     
@@ -34,7 +39,12 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         // mnemonics.shuffle()
-        sortedMnemonics = GenerateWalletDataManager.shared.getMnemonics()
+        if isCreatingWalletMode {
+            sortedMnemonics = GenerateWalletDataManager.shared.getMnemonics()
+        } else {
+            sortedMnemonics = wallet?.mnemonics ?? []
+        }
+        
         sortedMnemonics.sort { (a, b) -> Bool in
             return a < b
         }
@@ -44,7 +54,20 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
         clearButton.addTarget(self, action: #selector(pressedClearButton), for: .touchUpInside)
         
         startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31)
-
+        subStartInfoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 18)
+        subStartInfoLabel.textColor = UIColor.white
+        
+        if isCreatingWalletMode {
+            startInfolbel.text = "Almost Get It"
+            subStartInfoImageView.isHidden = false
+            subStartInfoLabel.isHidden = true
+        } else {
+            startInfolbel.text = "Backup help word"
+            subStartInfoImageView.isHidden = true
+            subStartInfoLabel.isHidden = false
+            subStartInfoLabel.text = NSLocalizedString("Verify Mnemonic", comment: "")
+        }
+        
         infoLabel.textColor = UIColor.tokenestTip
         infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         infoLabel.numberOfLines = 1
@@ -77,13 +100,21 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
         mnemonicWordTagView.marginX = 16
         mnemonicWordTagView.paddingY = 8
         mnemonicWordTagView.marginY = 14
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @objc func backButtonPressed(_ sender: Any) {
@@ -114,10 +145,40 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
     
     @objc func pressedCompleteButton(_ sender: Any) {
         print("pressedCompleteButton")
-        if GenerateWalletDataManager.shared.verify(userInputMnemonics: userInputMnemonics) {
-            // Store the new wallet to the local storage and exit the view controller.
-            exit()
+        var isVerified = false
+
+        if isCreatingWalletMode {
+            if GenerateWalletDataManager.shared.verify(userInputMnemonics: userInputMnemonics) {
+                // Store the new wallet to the local storage and exit the view controller.
+                exit()
+                return
+            } else {
+                isVerified = false
+            }
         } else {
+            if let wallet = wallet {
+                if wallet.mnemonics.count == userInputMnemonics.count {
+                    for i in 0..<wallet.mnemonics.count {
+                        if wallet.mnemonics[i] != userInputMnemonics[i] {
+                            isVerified = false
+                            break
+                        }
+                    }
+                    isVerified = true
+                    wallet.isVerified = true
+                    AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
+                    for controller in self.navigationController!.viewControllers as Array {
+                        if controller.isKind(of: SettingManageWalletViewController.self) {
+                            self.navigationController!.popToViewController(controller, animated: true)
+                            break
+                        }
+                    }
+                    return
+                }
+            }
+        }
+        
+        if !isVerified {
             print("User input Mnemonic doesn't match")
             var title = ""
             if GenerateWalletDataManager.shared.getUserInputMnemonics().count == 0 {
@@ -181,4 +242,3 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
         }
     }
 }
-
