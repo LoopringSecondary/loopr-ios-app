@@ -129,6 +129,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         contentTextView.tintColor = UIColor.black
         mainScrollView.addSubview(contentTextView)
 
+        passwordInfoLabel.textAlignment = .left
         passwordInfoLabel.textColor = UIColor.tokenestTip
         passwordInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
@@ -142,6 +143,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         passwordTextField.setTokenestStyle()
         mainScrollView.addSubview(passwordTextField)
         
+        selectWalletTypeInfoLabel.textAlignment = .left
         selectWalletTypeInfoLabel.textColor = UIColor.tokenestTip
         selectWalletTypeInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         selectWalletTypeInfoLabel.text = NSLocalizedString("Select Your Wallet Type", comment: "")
@@ -262,10 +264,16 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         // let originY: CGFloat = 345
         let paddingLeft: CGFloat = 47
         let textFieldHeight: CGFloat = 43
-
+        
+        var currentImportMethodDescription = currentImportMethod.description
+        if currentImportMethod == .importUsingKeystore {
+            currentImportMethodDescription += " " + NSLocalizedString("File", comment: "")
+        }
+        let titleWidth = currentImportMethodDescription.textWidth(font: FontConfigManager.shared.getLabelSCFont(size: 12))
+        
         if currentImportMethod == .importUsingKeystore {
             // This is not correct.
-            importMethodSelection.frame = CGRect(x: 70, y: 94, width: 50, height: 17)
+            importMethodSelection.frame = CGRect(x: 76, y: 94, width: titleWidth, height: 17)
             
             passwordInfoLabel.isHidden = false
             passwordTextField.isHidden = false
@@ -274,9 +282,9 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             selectWalletTypeButton.isHidden = true
             passwordInfoLabel.frame = CGRect(x: 74, y: firstRowY, width: 200, height: 17)
             passwordTextField.frame = CGRect(x: paddingLeft, y: passwordInfoLabel.y + 23, width: screenWidth-paddingLeft*2, height: textFieldHeight)
-            
+
         } else if currentImportMethod == .importUsingPrivateKey {
-            importMethodSelection.frame = CGRect(x: 67, y: 94, width: 50, height: 17)
+            importMethodSelection.frame = CGRect(x: 76, y: 94, width: titleWidth, height: 17)
             
             passwordInfoLabel.isHidden = true
             passwordTextField.isHidden = true
@@ -287,7 +295,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             // passwordTextField.frame = CGRect(x: paddingLeft, y: passwordInfoLabel.y + 23, width: screenWidth-paddingLeft*2, height: textFieldHeight)
 
         } else if currentImportMethod == .importUsingMnemonic {
-            importMethodSelection.frame = CGRect(x: 70, y: 94, width: 50, height: 17)
+            importMethodSelection.frame = CGRect(x: 76, y: 94, width: titleWidth, height: 17)
             
             passwordInfoLabel.textColor = UIColor.tokenestTip
             passwordInfoLabel.isHidden = false
@@ -304,8 +312,8 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             passwordTextField.frame = CGRect(x: paddingLeft, y: passwordInfoLabel.y + 23, width: screenWidth-paddingLeft*2, height: textFieldHeight)
         }
         
-        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection"), title: currentImportMethod.description, titlePosition: .left, additionalSpacing: 10, state: .normal)
-        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection")?.alpha(0.6), title: currentImportMethod.description, titlePosition: .left, additionalSpacing: 10, state: .highlighted)
+        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection"), title: currentImportMethodDescription, titlePosition: .left, additionalSpacing: 10, state: .normal)
+        importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection")?.alpha(0.6), title: currentImportMethodDescription, titlePosition: .left, additionalSpacing: 10, state: .highlighted)
     }
     
     @objc func scrollViewTapped() {

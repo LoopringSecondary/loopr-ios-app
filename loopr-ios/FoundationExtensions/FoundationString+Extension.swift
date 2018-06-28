@@ -170,5 +170,10 @@ extension String {
         let footer = String(self.suffix(6))
         return "\(header)...\(footer)"
     }
+    
+    func textWidth(font: UIFont) -> CGFloat {
+        let attributes = [NSAttributedStringKey.font: font]
+        return self.size(withAttributes: attributes).width
+    }
 
 }
