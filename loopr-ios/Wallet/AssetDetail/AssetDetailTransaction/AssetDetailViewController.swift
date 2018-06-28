@@ -239,9 +239,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
         headerView.backgroundColor = UIColor.white
-        let headerLabel = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
+        let headerLabel = UILabel(frame: CGRect(x: 16, y: 7, width: view.frame.size.width, height: 25))
         headerLabel.textColor = UIColor.gray
         headerLabel.text = transactionDates[section]
+        headerLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
+        headerLabel.textColor = UIColor.tokenestFailed
         headerView.addSubview(headerLabel)
         return headerView
     }

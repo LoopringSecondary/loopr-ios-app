@@ -146,8 +146,8 @@ class TradeDataManager {
 //        let since = Int64(Date().timeIntervalSince1970)
 //        let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
         
-        let since = Int64(1530089734) // test
-        let until = Int64(1530089974) // test
+        let since = Int64(1530168020) // test
+        let until = Int64(1530168620) // test
         
         var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder)
         PlaceOrderDataManager.shared.completeOrder(&order)
@@ -156,7 +156,7 @@ class TradeDataManager {
     
     func validate(completion: @escaping (String?, Error?) -> Void) -> Bool {
         var result = false
-        if self.orders.count == 2 {
+        if self.orders.count >= 2 {
             let maker = orders[0]
             let taker = orders[1]
             if self.makerPrivateKey != nil && maker.hash != ""

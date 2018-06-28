@@ -47,7 +47,7 @@ class AssetTransactionDetailViewController: UIViewController {
         transactionIDButton.title = transaction.txHash
         receiveButton.title = transaction.to
         let gas = GasDataManager.shared.getGasAmountInETH(by: "transfer")
-        gasLabel.text = "\(gas) ETH"
+        gasLabel.text = "\(gas.withCommas(6)) ETH"
         dateLabel.text = transaction.createTime
         if transaction.status == .success {
             statusLabel.textColor = UIColor.tokenestDowns

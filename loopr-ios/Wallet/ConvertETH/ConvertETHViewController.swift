@@ -59,14 +59,16 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
         availableLabels["ETH"] = ethAmountLabel
         availableLabels["WETH"] = wethAmountLabel
         tipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 10)
-        ethAmountLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        ethAmountLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
         ethAmountLabel.text = ConvertDataManager.shared.getMaxAmountString("ETH")
-        wethAmountLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        wethAmountLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
         wethAmountLabel.text = ConvertDataManager.shared.getMaxAmountString("WETH")
         availableTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
+        availableTipLabel.alpha = 0.8
         
         // Convert button
-        convertButton.title = NSLocalizedString("Yes, convert now!", comment: "")
+        convertButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14)
+        convertButton.title = NSLocalizedString("Convert", comment: "")
         convertButton.setupRoundPurpleWithShadow()
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))

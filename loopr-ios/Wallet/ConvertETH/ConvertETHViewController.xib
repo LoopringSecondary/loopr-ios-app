@@ -59,19 +59,19 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDf-2j-r8i" userLabel="Content View">
+                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDf-2j-r8i" userLabel="Content View">
                             <rect key="frame" x="16" y="48" width="343" height="64"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fj1-76-OI9" userLabel="Seperator">
+                                <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fj1-76-OI9" userLabel="Seperator">
                                     <rect key="frame" x="170.5" y="14" width="1" height="36"/>
-                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="VsR-de-OeL"/>
-                                        <constraint firstAttribute="width" constant="1" id="ZgL-1N-bv6"/>
+                                        <constraint firstAttribute="width" constant="0.5" id="ZgL-1N-bv6"/>
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.51764705882352935" green="0.57647058823529407" blue="0.95294117647058818" alpha="0.16" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="fj1-76-OI9" firstAttribute="centerX" secondItem="iDf-2j-r8i" secondAttribute="centerX" id="7T0-68-YZB"/>
                                 <constraint firstAttribute="height" constant="64" id="RKj-al-IGU"/>
@@ -84,14 +84,14 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myK-9e-381">
-                            <rect key="frame" x="86.5" y="64" width="31" height="19.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <rect key="frame" x="88.5" y="64" width="27.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rb-Y0-hVG">
-                            <rect key="frame" x="251.5" y="64" width="46" height="19.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <rect key="frame" x="253.5" y="64" width="41" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -184,9 +184,9 @@
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Bs-0T-dLI" userLabel="Seperator">
                                     <rect key="frame" x="80" y="89.5" width="295" height="1"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="Y0j-nq-Ugr"/>
+                                        <constraint firstAttribute="height" constant="0.5" id="Y0j-nq-Ugr"/>
                                     </constraints>
                                 </view>
                             </subviews>
