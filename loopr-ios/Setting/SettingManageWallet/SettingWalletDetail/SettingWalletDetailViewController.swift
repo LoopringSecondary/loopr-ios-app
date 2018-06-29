@@ -7,11 +7,13 @@
 //
 
 import UIKit
-import MessageUI
+import NotificationBannerSwift
+import SVProgressHUD
 
 class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var appWallet: AppWallet!
+    var keystore: String = ""
 
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
     
@@ -36,7 +38,9 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         totalBalanceLabel.textColor = UIColor.white
         totalBalanceLabel.font = FontConfigManager.shared.getLabelSCFont(size: 24)
         totalBalanceLabel.textAlignment = .left
-        totalBalanceLabel.text = appWallet.totalCurrency.currency
+        var balance = appWallet.totalCurrency.currency
+        balance.insert(" ", at: balance.index(after: balance.startIndex))
+        totalBalanceLabel.text = balance
 
         addressLabel.textAlignment = .center
         addressLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
@@ -123,17 +127,15 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         case .backupMnemonic:
-            let viewController = ExportMnemonicViewController()
-            viewController.appWallet = appWallet
+            let viewController = ListMnemonicViewController()
+            viewController.isCreatingWalletMode = false
+            viewController.isExportingWalletMode = true
+            viewController.wallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         case .exportPrivateKey:
-            let viewController = DisplayPrivateKeyViewController()
-            viewController.appWallet = appWallet
-            self.navigationController?.pushViewController(viewController, animated: true)
+            exportingPrivateKey()
         case .exportKeystore:
-            let viewController = ExportKeystoreEnterPasswordViewController()
-            viewController.appWallet = appWallet
-            self.navigationController?.pushViewController(viewController, animated: true)
+            exportingKeystoreEnterPassword()
         default:
             return
         }
@@ -167,5 +169,105 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         alertController.addAction(defaultAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    func exportingPrivateKey() {
+        let alertController = UIAlertController(title: NSLocalizedString("Export Private Key", comment: ""), message: "", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.text = self.appWallet.privateKey
+            textField.isEnabled = false
+        }
+        
+        let copyAction = UIAlertAction(title: NSLocalizedString("Copy", comment: ""), style: .default) { (_) in
+            print("Copy private key")
+            UIPasteboard.general.string = self.appWallet.privateKey
+        }
+        alertController.addAction(copyAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 
+    func exportingKeystoreEnterPassword() {
+        let alertController = UIAlertController(title: NSLocalizedString("Please Enter Password", comment: ""), message: "", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = NSLocalizedString("Password", comment: "")
+            textField.isSecureTextEntry = true
+        }
+
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { (action) in
+            
+        }
+        alertController.addAction(cancelAction)
+        
+        let saveAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { (action) in
+            let firstTextField = alertController.textFields![0] as UITextField
+            self.exportingKeystoreConfirmPassword(password: firstTextField.text!)
+        }
+        alertController.addAction(saveAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func exportingKeystoreConfirmPassword(password: String) {
+        print("nextButtonPressed")
+        guard password != "" else {
+            return
+        }
+        
+        if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
+            var isSucceeded: Bool = false
+            SVProgressHUD.show(withStatus: NSLocalizedString("Exporting keystore", comment: "") + "...")
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+            DispatchQueue.global().async {
+                do {
+                    guard let data = Data(hexString: self.appWallet.privateKey) else {
+                        print("Invalid private key")
+                        return // .failure(KeystoreError.failedToImportPrivateKey)
+                    }
+                    
+                    print("Generating keystore")
+                    let key = try KeystoreKey(password: password, key: data)
+                    print("Finished generating keystore")
+                    let keystoreData = try JSONEncoder().encode(key)
+                    let json = try JSON(data: keystoreData)
+                    self.keystore = json.description
+                    
+                    isSucceeded = true
+                    dispatchGroup.leave()
+                } catch {
+                    isSucceeded = false
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                SVProgressHUD.dismiss()
+                if isSucceeded {
+                    let viewController = ExportKeystoreSwipeViewController()
+                    viewController.keystore = self.keystore
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                } else {
+                    let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
+                    banner.duration = 1.5
+                    banner.show()
+                }
+            }
+        } else {
+            // Validate the password
+            var validPassword = true
+            if password != appWallet.getPassword() {
+                validPassword = false
+            }
+            
+            guard validPassword else {
+                let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
+                banner.duration = 1.5
+                banner.show()
+                return
+            }
+
+            let viewController = ExportKeystoreSwipeViewController()
+            viewController.keystore = appWallet.getKeystore()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }

@@ -335,3 +335,6 @@
 "Total Balance" = "Total Balance";
 "Update Wallet Name" = "Update Wallet Name";
 "Backup" = "Backup";
+"New Wallet Name" = "New Wallet Name";
+"New wallet name can't be empty" = "New wallet name can't be empty";
+"Please Enter Password" = "Please Enter Password";

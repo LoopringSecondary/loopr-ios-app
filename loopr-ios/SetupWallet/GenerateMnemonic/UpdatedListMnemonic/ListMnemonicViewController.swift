@@ -11,6 +11,7 @@ import UIKit
 class ListMnemonicViewController: UIViewController {
 
     var isCreatingWalletMode: Bool = true
+    var isExportingWalletMode: Bool = false
     var wallet: AppWallet?
     
     var mnemonics: [String] = []
@@ -50,6 +51,10 @@ class ListMnemonicViewController: UIViewController {
         }
         
         nextButton.addTarget(self, action: #selector(pressedNextButton), for: .touchUpInside)
+        if isExportingWalletMode {
+            nextButton.isHidden = true
+        }
+        
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         skipMnemonicButton.addTarget(self, action: #selector(pressedSkipButton), for: .touchUpInside)
         skipMnemonicButton.title = NSLocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")

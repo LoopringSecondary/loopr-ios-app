@@ -335,4 +335,6 @@
 "Total Balance" = "总资产";
 "Update Wallet Name" = "修改钱包名";
 "Backup" = "备份";
-
+"New Wallet Name" = "新钱包名称";
+"New wallet name can't be empty" = "新钱包名称不能为空";
+"Please Enter Password" = "请输入密码";

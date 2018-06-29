@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingChangeWalletNameViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingChangeWalletNameViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="customizedNavigationBar" destination="8W1-uY-SZS" id="fpn-xM-pLD"/>
+                <outlet property="nameTextField" destination="OHn-yD-Rr9" id="ocl-QH-whK"/>
+                <outlet property="statusBarBackgroundView" destination="Mgo-zg-MsD" id="pjC-7c-YeE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,8 +21,57 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mgo-zg-MsD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8W1-uY-SZS">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="xOV-44-IFP"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Title" id="0Ls-YF-yDp"/>
+                    </items>
+                </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEC-yF-EKK">
+                    <rect key="frame" x="0.0" y="79" width="375" height="49"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OHn-yD-Rr9">
+                            <rect key="frame" x="30" y="9" width="315" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="gKQ-3U-Iqo"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="OHn-yD-Rr9" secondAttribute="trailing" constant="30" id="NTl-BY-DGx"/>
+                        <constraint firstItem="OHn-yD-Rr9" firstAttribute="leading" secondItem="hEC-yF-EKK" secondAttribute="leading" constant="30" id="agF-Af-gav"/>
+                        <constraint firstAttribute="height" constant="49" id="cPW-Sn-F8y"/>
+                        <constraint firstItem="OHn-yD-Rr9" firstAttribute="centerY" secondItem="hEC-yF-EKK" secondAttribute="centerY" id="zMQ-6z-05O"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hEC-yF-EKK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5uo-ex-84o"/>
+                <constraint firstItem="8W1-uY-SZS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9Eg-tb-Qzu"/>
+                <constraint firstItem="hEC-yF-EKK" firstAttribute="top" secondItem="8W1-uY-SZS" secondAttribute="bottom" constant="15" id="EN8-dK-QSE"/>
+                <constraint firstItem="Mgo-zg-MsD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GIH-CM-t7X"/>
+                <constraint firstItem="hEC-yF-EKK" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="HOs-QU-1PJ"/>
+                <constraint firstItem="Mgo-zg-MsD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Mq1-HT-fe4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="Mgo-zg-MsD" secondAttribute="bottom" id="rlz-Rk-UGg"/>
+                <constraint firstItem="8W1-uY-SZS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="tft-aU-AfO"/>
+                <constraint firstAttribute="trailing" secondItem="Mgo-zg-MsD" secondAttribute="trailing" id="u2W-ZY-K02"/>
+                <constraint firstItem="8W1-uY-SZS" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="zOA-xM-GlJ"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="55.5" y="164.5"/>
         </view>
     </objects>
 </document>
