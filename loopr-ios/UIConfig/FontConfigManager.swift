@@ -106,7 +106,7 @@ class FontConfigManager {
     }
     
     func getNavigationTitleFont() -> UIFont {
-        return getRegularFont(size: 17)
+        return getLabelSCFont(size: 18, type: "Medium")
     }
     
     func getHeaderFont() -> UIFont {

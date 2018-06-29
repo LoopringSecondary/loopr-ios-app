@@ -15,14 +15,68 @@ class SettingWalletDetailTableViewCell: UITableViewCell {
         case backupMnemonic
         case exportPrivateKey
         case exportKeystore
-        case clearRecords
     }
     
     var contentType: ContentType!
     
+    @IBOutlet weak var contentTypeLabel: UILabel!
+    @IBOutlet weak var arrowRightIcon: UIImageView!
+    @IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet weak var seperateLine: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        contentTypeLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
+        contentTypeLabel.textColor = UIColor.init(rgba: "#939BB1")
+        
+        actionLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
+        actionLabel.textColor = GlobalPicker.themeColor
+        
+        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+    }
+    
+    func setup() {
+        switch contentType {
+        case .walletName:
+            setupWalletName()
+        case .backupMnemonic:
+            setupBackupMnemonic()
+        case .exportPrivateKey:
+            setupExportPrivateKey()
+        case .exportKeystore:
+            setupExportKeystore()
+        default:
+            break
+        }
+    }
+    
+    func setupWalletName() {
+        contentTypeLabel.text = NSLocalizedString("Update Wallet Name", comment: "")
+        arrowRightIcon.isHidden = false
+        actionLabel.isHidden = true
+    }
+    
+    func setupBackupMnemonic() {
+        contentTypeLabel.text = NSLocalizedString("Backup Mnemonic", comment: "")
+        arrowRightIcon.isHidden = true
+        actionLabel.isHidden = false
+        actionLabel.text = NSLocalizedString("Backup", comment: "")
+    }
+    
+    func setupExportPrivateKey() {
+        contentTypeLabel.text = NSLocalizedString("Export Private Key", comment: "")
+        arrowRightIcon.isHidden = true
+        actionLabel.isHidden = false
+        actionLabel.text = NSLocalizedString("Export", comment: "")
+    }
+    
+    func setupExportKeystore() {
+        contentTypeLabel.text = NSLocalizedString("Export Keystore", comment: "")
+        arrowRightIcon.isHidden = true
+        actionLabel.isHidden = false
+        actionLabel.text = NSLocalizedString("Export", comment: "")
     }
 
     class func getCellIdentifier() -> String {
@@ -30,6 +84,6 @@ class SettingWalletDetailTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 45
+        return 54
     }
 }

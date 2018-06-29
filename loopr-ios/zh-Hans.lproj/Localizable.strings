@@ -62,8 +62,9 @@
 "Order QR Code" = "订单二维码";
 "Scan QR Code" = "二维码扫描";
 "QR Code" = "二维码";
+"Export" = "导出";
 "Export Private Key" = "导出私钥";
-"Export Keystore" = "导出Keystore";
+"Export Keystore" = "导出Keystore文件";
 "Wallet Name" = "钱包名字";
 "Change Wallet Name" = "更改钱包名字";
 "Exchange" = "交易";
@@ -331,3 +332,7 @@
 "Backup_Mnemonic_in_SettingManageWallet" = "未备份助记词";
 "File" = "文件";
 "Delete Wallet" = "删除钱包";
+"Total Balance" = "总资产";
+"Update Wallet Name" = "修改钱包名";
+"Backup" = "备份";
+
