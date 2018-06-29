@@ -49,6 +49,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
     var selectWalletTypeInfoLabel: UILabel = UILabel()
     var selectWalletTypeBackground: UIView = UIView()
     var selectWalletTypeButton: UIButton = UIButton()
+    var selectWalletTypeArrowIcon: UIImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,9 +107,9 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         mainScrollView.addSubview(infoLabel)
         
         importMethodSelection.setTitleColor(UIColor.black, for: .normal)
-        importMethodSelection.setTitleColor(GlobalPicker.themeColor, for: .normal)
+        importMethodSelection.setTitleColor(UIColor.init(rgba: "#2E2BA4"), for: .normal)
         importMethodSelection.setTitleColor(GlobalPicker.themeColor.withAlphaComponent(0.7), for: .normal)
-        importMethodSelection.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 12)
+        importMethodSelection.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         importMethodSelection.addTarget(self, action: #selector(pressedImportMethodSelection), for: .touchUpInside)
         mainScrollView.addSubview(importMethodSelection)
         
@@ -154,6 +155,14 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         selectWalletTypeBackground.layer.cornerRadius = 47 * 0.5
         selectWalletTypeBackground.backgroundColor = UIColor.tokenestTextFieldBackground
         mainScrollView.addSubview(selectWalletTypeBackground)
+        
+        let selectWalletTypeBackgroundTap = UITapGestureRecognizer(target: self, action: #selector(pressedSelectWalletTypeButton))
+        selectWalletTypeBackgroundTap.numberOfTapsRequired = 1
+        selectWalletTypeBackground.addGestureRecognizer(selectWalletTypeBackgroundTap)
+        
+        selectWalletTypeArrowIcon.image = UIImage.init(named: "Tokenest-walletTypeSelection")
+        selectWalletTypeArrowIcon.contentMode = .center
+        mainScrollView.addSubview(selectWalletTypeArrowIcon)
         
         selectWalletTypeButton.setTitle(currentWalletType.name, for: .normal)
         selectWalletTypeButton.contentHorizontalAlignment = .left
@@ -269,7 +278,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         if currentImportMethod == .importUsingKeystore {
             currentImportMethodDescription += " " + NSLocalizedString("File", comment: "")
         }
-        let titleWidth = currentImportMethodDescription.textWidth(font: FontConfigManager.shared.getLabelSCFont(size: 12))
+        let titleWidth = currentImportMethodDescription.textWidth(font: FontConfigManager.shared.getLabelSCFont(size: 14))
         importMethodSelection.frame = CGRect(x: 76, y: 94, width: titleWidth, height: 17)
         
         if currentImportMethod == .importUsingKeystore {
@@ -278,6 +287,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             selectWalletTypeInfoLabel.isHidden = true
             selectWalletTypeBackground.isHidden = true
             selectWalletTypeButton.isHidden = true
+            selectWalletTypeArrowIcon.isHidden = true
             passwordInfoLabel.frame = CGRect(x: 74, y: firstRowY, width: 200, height: 17)
             passwordTextField.frame = CGRect(x: paddingLeft, y: passwordInfoLabel.y + 23, width: screenWidth-paddingLeft*2, height: textFieldHeight)
 
@@ -287,6 +297,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             selectWalletTypeInfoLabel.isHidden = true
             selectWalletTypeBackground.isHidden = true
             selectWalletTypeButton.isHidden = true
+            selectWalletTypeArrowIcon.isHidden = true
 
         } else if currentImportMethod == .importUsingMnemonic && currentWalletType == WalletType.getLoopringWallet() {
             passwordInfoLabel.textColor = UIColor.tokenestTip
@@ -295,10 +306,12 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             selectWalletTypeInfoLabel.isHidden = false
             selectWalletTypeBackground.isHidden = false
             selectWalletTypeButton.isHidden = false
+            selectWalletTypeArrowIcon.isHidden = false
             
             selectWalletTypeInfoLabel.frame = CGRect(x: 74, y: firstRowY, width: 200, height: 17)
             selectWalletTypeBackground.frame = CGRect(x: 47, y: selectWalletTypeInfoLabel.y + 23, width: screenWidth - 47*2, height: 43)
             selectWalletTypeButton.frame = CGRect(x: selectWalletTypeBackground.x + 27, y: selectWalletTypeBackground.y, width: selectWalletTypeBackground.width - 2*27, height: selectWalletTypeBackground.height)
+            selectWalletTypeArrowIcon.frame = CGRect(x: selectWalletTypeBackground.frame.maxX - 8 - 22, y: selectWalletTypeBackground.frame.midY-5.0/2, width: 8, height: 5)
             
             passwordInfoLabel.frame = CGRect(x: 74, y: secordRowY, width: 200, height: 17)
             passwordTextField.frame = CGRect(x: paddingLeft, y: passwordInfoLabel.y + 23, width: screenWidth-paddingLeft*2, height: textFieldHeight)
@@ -310,10 +323,12 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             selectWalletTypeInfoLabel.isHidden = false
             selectWalletTypeBackground.isHidden = false
             selectWalletTypeButton.isHidden = false
+            selectWalletTypeArrowIcon.isHidden = false
             
             selectWalletTypeInfoLabel.frame = CGRect(x: 74, y: firstRowY, width: 200, height: 17)
             selectWalletTypeBackground.frame = CGRect(x: 47, y: selectWalletTypeInfoLabel.y + 23, width: screenWidth - 47*2, height: 43)
             selectWalletTypeButton.frame = CGRect(x: selectWalletTypeBackground.x + 27, y: selectWalletTypeBackground.y, width: selectWalletTypeBackground.width - 2*27, height: selectWalletTypeBackground.height)
+            selectWalletTypeArrowIcon.frame = CGRect(x: selectWalletTypeBackground.frame.maxX - 8 - 22, y: selectWalletTypeBackground.frame.midY-5.0/2, width: 8, height: 5)
         }
         
         importMethodSelection.set(image: UIImage.init(named: "Tokenest-importMethodSelection"), title: currentImportMethodDescription, titlePosition: .left, additionalSpacing: 10, state: .normal)

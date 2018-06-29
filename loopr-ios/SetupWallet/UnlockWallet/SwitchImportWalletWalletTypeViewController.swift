@@ -45,7 +45,7 @@ class SwitchImportWalletWalletTypeViewController: UIViewController, UITableViewD
         importWalletButton.setTitleColor(UIColor.init(rgba: "#4A5668").withAlphaComponent(0.7), for: .highlighted)
         importWalletButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
-        seperateLine.backgroundColor = UIColor.init(rgba: "#979797")
+        seperateLine.backgroundColor = UIColor.init(rgba: "#E5E7ED")
         
         imporWalletArrowButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         

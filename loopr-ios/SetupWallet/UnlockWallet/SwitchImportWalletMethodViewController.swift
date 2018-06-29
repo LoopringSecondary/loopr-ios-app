@@ -46,7 +46,7 @@ class SwitchImportWalletMethodViewController: UIViewController, UITableViewDeleg
         importWalletButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         importWalletButton.isEnabled = false
 
-        seperateLine.backgroundColor = UIColor.init(rgba: "#979797")
+        seperateLine.backgroundColor = UIColor.init(rgba: "#E5E7ED")
         
         imporWalletArrowButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
@@ -80,8 +80,13 @@ class SwitchImportWalletMethodViewController: UIViewController, UITableViewDeleg
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "SwitchImportWalletMethodTableViewCell")
         cell.selectionStyle = .none
         cell.textLabel?.textAlignment = .center
-        cell.textLabel?.text = types[indexPath.row].description
-        
+
+        if types[indexPath.row] == .importUsingKeystore {
+            cell.textLabel?.text = types[indexPath.row].description + " " + NSLocalizedString("File", comment: "")
+        } else {
+            cell.textLabel?.text = types[indexPath.row].description
+        }
+
         cell.textLabel?.font = FontConfigManager.shared.getLabelENFont(size: 16)
         if selectedImportMethod == nil {
             if currentImportMethod == types[indexPath.row] {
