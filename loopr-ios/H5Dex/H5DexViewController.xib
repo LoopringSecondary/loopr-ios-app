@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="urlTextField" destination="VKg-Nj-mms" id="rm1-j7-tfi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="webView" destination="e8x-r6-RV5" id="UU0-cw-K80"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,24 +26,12 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                 </textField>
-                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8x-r6-RV5">
-                    <rect key="frame" x="0.0" y="50" width="375" height="617"/>
-                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <wkWebViewConfiguration key="configuration">
-                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                        <wkPreferences key="preferences"/>
-                    </wkWebViewConfiguration>
-                </wkWebView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="e8x-r6-RV5" secondAttribute="bottom" id="BdR-gJ-GtR"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="e8x-r6-RV5" secondAttribute="trailing" id="L1U-mc-cyx"/>
-                <constraint firstItem="e8x-r6-RV5" firstAttribute="top" secondItem="VKg-Nj-mms" secondAttribute="bottom" id="YvR-9v-9c2"/>
                 <constraint firstItem="VKg-Nj-mms" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Zjd-Ng-Fwi"/>
                 <constraint firstItem="VKg-Nj-mms" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="aKc-K5-zVV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VKg-Nj-mms" secondAttribute="trailing" constant="16" id="dfe-pC-oqr"/>
-                <constraint firstItem="e8x-r6-RV5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wky-sh-WXZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

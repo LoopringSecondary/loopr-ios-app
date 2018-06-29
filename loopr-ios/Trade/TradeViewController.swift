@@ -9,7 +9,7 @@
 import UIKit
 import Geth
 
-class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
+class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, AmountStackViewDelegate {
 
     @IBOutlet weak var progressBar: UIView!
     @IBOutlet weak var customNaviBar: UINavigationBar!
@@ -50,14 +50,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         // Do any additional setup after loading the view.
         progressBar.backgroundColor = GlobalPicker.themeColor
         scrollViewButtonLayoutConstraint.constant = 0
-        
-        let qrScanButton = UIButton(type: UIButtonType.custom)
-        // TODO: smaller images.
-        qrScanButton.theme_setImage(["Scan", "Scan-white"], forState: UIControlState.normal)
-        qrScanButton.setImage(UIImage(named: "Scan")?.alpha(0.3), for: .highlighted)
-        qrScanButton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
-        qrScanButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
         
         let historyButton = UIButton(type: UIButtonType.custom)
         // TODO: smaller images.
@@ -220,15 +212,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         hideNumericKeyboard()
     }
     
-    @objc func pressQRCodeButton(_ sender: Any) {
-        print("Selected Scan QR code")
-        let viewController = ScanQRCodeViewController()
-        viewController.delegate = self
-        viewController.shouldPop = false
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     @objc func pressedOrderHistoryButton(_ sender: Any) {
         print("pressedOrderHistoryButton")
         let viewController = P2POrderHistoryViewController()
@@ -278,26 +261,26 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     func constructMaker() -> OriginalOrder? {
         var buyNoMoreThanAmountB: Bool
-        var tokenSell, tokenBuy: String
-        var amountBuy, amountSell, lrcFee: Double
+        var amountBuy, amountSell: Double
+        var tokenSell, tokenBuy, market: String
+        
         tokenBuy = TradeDataManager.shared.tokenB.symbol
         tokenSell = TradeDataManager.shared.tokenS.symbol
+        market = "\(tokenSell)/\(tokenBuy)"
         amountBuy = Double(amountBuyTextField.text!)!
         amountSell = Double(amountSellTextField.text!)!
+        
         buyNoMoreThanAmountB = false
-        
-        lrcFee = 0
-        
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         
-//        let since = Int64(Date().timeIntervalSince1970)
-//        let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
+        // P2P 订单 默认 1hour 过期，或增加ui调整
+        // let since = Int64(Date().timeIntervalSince1970)
+        // let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
+        let since = Int64(1530806400)
+        let until = Int64(1530979200)
         
-        let since = Int64(1530806400) // test
-        let until = Int64(1530979200) // test
-        
-        var order = OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder)
+        var order = OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, market: market)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order
     }
@@ -493,25 +476,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
                 currentText = String(currentText.dropLast())
             }
             activeTextField!.text = currentText
-        }
-    }
-    
-    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
-        let values = valueSent.components(separatedBy: TradeDataManager.seperator)
-        guard values.count == 2 else { return }
-        let makerHash = values[0]
-        let makerPrivateKey = values[1]
-        if let maker = TradeDataManager.shared.getOrder(by: makerHash) {
-            let taker = TradeDataManager.shared.constructTaker(from: maker)
-            maker.hash = makerHash
-            TradeDataManager.shared.isTaker = true
-            TradeDataManager.shared.orders = []
-            TradeDataManager.shared.orders.insert(maker, at: 0)
-            TradeDataManager.shared.orders.insert(taker, at: 1)
-            TradeDataManager.shared.makerPrivateKey = makerPrivateKey
-            let vc = TradeConfirmationViewController()
-            vc.order = taker
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

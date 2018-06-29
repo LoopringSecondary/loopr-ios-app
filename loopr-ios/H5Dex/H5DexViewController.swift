@@ -13,11 +13,10 @@ import JavaScriptCore
 
 class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIScrollViewDelegate, UITextFieldDelegate {
 
-    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var urlTextField: UITextField!
     
+    var webView: WKWebView!
     var dexRequest: DexRequest!
-    
     var start = Date()
     var end = Date()
     
@@ -29,11 +28,28 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
         H5DexDataManager.shared.sendClosure = self.sendDataToHtml
         urlTextField.delegate = self
         urlTextField.returnKeyType = UIReturnKeyType.done
-        webView.navigationDelegate = self
-        webView.scrollView.delegate = self
-        self.webView.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    func createWebView(url: URL) {
+        let contentController = WKUserContentController()
+        contentController.add(self, name: "nativeCallbackHandler")
+        let config = WKWebViewConfiguration()
+        config.userContentController = contentController
+        webView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), configuration: config)
+        let request = URLRequest(url: url)
+        webView.load(request)
+        self.view.addSubview(webView)
+        // Auto Layout
+        let topConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: UIApplication.shared.statusBarFrame.height)
+        let botConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+        let leftConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
+        let rigthConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+        NSLayoutConstraint.activate([topConst, botConst, leftConst, rigthConst])
+        self.webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.navigationDelegate = self
+        webView.scrollView.delegate = self
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,8 +67,7 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         let url = URL(string: textField.text!)
-        let request = URLRequest(url: url!)
-        webView.load(request)
+        self.createWebView(url: url!)
     }
     
     func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {

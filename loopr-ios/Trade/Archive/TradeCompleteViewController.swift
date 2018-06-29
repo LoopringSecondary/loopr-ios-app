@@ -76,17 +76,15 @@ class TradeCompleteViewController: UIViewController {
     }
     
     func setupLabels() {
-        guard let order = self.order else { return }
         exchangedLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
-        exchangedLabel.text = NSLocalizedString("Completed!", comment: "")
         exchangedLabel.font = FontConfigManager.shared.getRegularFont(size: 20.0)
         exchangedInfoLabel.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
-        let text = NSLocalizedString("Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!", comment: "")
         if isBalanceEnough() {
-            exchangedInfoLabel.text = text
+            exchangedLabel.text = NSLocalizedString("Placed!", comment: "")
+            exchangedInfoLabel.text = NSLocalizedString("Congradualations! Your order has been submited!", comment: "")
         } else {
-            let errorInfo = NSLocalizedString("However, please make sure you have enough balance to complete the trade.", comment: "")
-            exchangedInfoLabel.text = text + errorInfo
+            exchangedLabel.text = NSLocalizedString("Attention!", comment: "")
+            exchangedInfoLabel.text = NSLocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
         }
     }
     
@@ -136,11 +134,6 @@ class TradeCompleteViewController: UIViewController {
     }
     
     @IBAction func pressedDoneButton(_ sender: Any) {
-        for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: TradeViewController.self) {
-                self.navigationController!.popToViewController(controller, animated: true)
-                break
-            }
-        }
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

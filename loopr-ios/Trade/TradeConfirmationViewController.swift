@@ -28,7 +28,6 @@ class TradeConfirmationViewController: UIViewController {
     
     var priceLabel: UILabel = UILabel()
     var priceValueLabel: UILabel = UILabel()
-    var priceTipLabel: UILabel = UILabel()
     var priceUnderLine: UIView = UIView()
     var tokenSView: TradeTokenView!
     var tokenBView: TradeTokenView!
@@ -69,18 +68,10 @@ class TradeConfirmationViewController: UIViewController {
         priceLabel.frame = CGRect(x: padding, y: screenHeight * 0.57, width: 160, height: rowHeight)
         scrollView.addSubview(priceLabel)
         
-        priceTipLabel.text = "(" + NSLocalizedString("Irrational", comment: "") + ")"
-        priceTipLabel.textColor = .red
-        priceTipLabel.textAlignment = .right
-        priceTipLabel.font = FontConfigManager.shared.getLabelENFont()
-        priceTipLabel.frame = CGRect(x: screenWidth - padding - 100, y: priceLabel.frame.minY, width: 100, height: rowHeight)
-        priceTipLabel.isHidden = true
-        scrollView.addSubview(priceTipLabel)
-        
         priceValueLabel.textColor = UIColor.black
         priceValueLabel.textAlignment = .right
         priceValueLabel.font = FontConfigManager.shared.getLabelENFont()
-        priceValueLabel.frame = CGRect(x: priceTipLabel.frame.minX - padding - 200, y: priceLabel.frame.minY, width: 200, height: rowHeight)
+        priceValueLabel.frame = CGRect(x: screenWidth - padding - 200, y: priceLabel.frame.minY, width: 200, height: rowHeight)
         scrollView.addSubview(priceValueLabel)
         
         priceUnderLine.frame = CGRect(x: padding, y: priceLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 1)
@@ -141,20 +132,15 @@ class TradeConfirmationViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func updateLabels(order: OriginalOrder) {
         tokenSView.update(title: NSLocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
         tokenBView.update(title: NSLocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
-        let value = order.amountBuy / order.amountSell
-        priceValueLabel.text = "\(value.withCommas()) \(TradeDataManager.shared.tradePair)"
-        if !validateRational(price: value) {
-            priceTipLabel.isHidden = false
-            priceValueLabel.frame = CGRect(x: priceTipLabel.frame.minX - 200, y: priceLabel.frame.minY, width: 200, height: 40)
-        } else {
-            priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)
-        }
+        let value = order.amountSell / order.amountBuy
+        priceValueLabel.text = "\(value.withCommas()) \(order.market)"
+        priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let total = (price * order.lrcFee).currency
             LRCFeeValueLabel.text = "\(order.lrcFee)LRC ≈ \(total)"
@@ -162,39 +148,9 @@ class TradeConfirmationViewController: UIViewController {
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
     }
     
-    func validateRational(price: Double) -> Bool {
-        let pair = TradeDataManager.shared.tradePair
-        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            let header = NSLocalizedString("Your price is irrational, ", comment: "")
-            let footer = NSLocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
-            if price < 0.8 * market.balance {
-                self.message = header + NSLocalizedString("which may cause your asset wastage! ", comment: "") + footer
-                return false
-            } else if price > 1.2 * market.balance {
-                self.message = header + NSLocalizedString("which may cause your order abolished! ", comment: "") + footer
-                return false
-            }
-            return true
-        }
-        return true
-    }
-
     @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {
-        if !priceTipLabel.isHidden {
-            let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                DispatchQueue.main.async {
-                    self.verifyInfo = TradeDataManager.shared.verify(order: self.order!)
-                    self.handleVerifyInfo()
-                }
-            }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-            }))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            self.verifyInfo = TradeDataManager.shared.verify(order: order!)
-            self.handleVerifyInfo()
-        }
+        self.verifyInfo = TradeDataManager.shared.verify(order: order!)
+        self.handleVerifyInfo()
     }
 }
 
@@ -225,8 +181,8 @@ extension TradeConfirmationViewController {
     }
     
     func handleVerifyInfo() {
-        SVProgressHUD.show(withStatus: "正在撮合并提交P2P订单...")
         if isBalanceEnough() {
+            SVProgressHUD.show(withStatus: "正在撮合并提交P2P订单...")
             if needApprove() {
                 approve()
             } else {
@@ -321,7 +277,7 @@ extension TradeConfirmationViewController {
                 print("TradeViewController \(error.debugDescription)")
                 let message = (error! as NSError).userInfo["message"] as! String
                 let banner = NotificationBanner.generate(title: message, style: .danger)
-                banner.duration = 10
+                banner.duration = 5
                 banner.show()
             }
             return
@@ -336,17 +292,15 @@ extension TradeConfirmationViewController {
                 print("TradeViewController \(error.debugDescription)")
                 let message = (error! as NSError).userInfo["message"] as! String
                 let banner = NotificationBanner.generate(title: message, style: .danger)
-                banner.duration = 10
+                banner.duration = 5
                 banner.show()
             }
             return
         }
-        if !isTaker() {
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            if !self.isTaker() {
                 self.pushReviewController()
-            }
-        } else {
-            DispatchQueue.main.async {
+            } else {
                 self.pushCompleteController()
             }
         }

@@ -61,15 +61,16 @@ class TradeDataManager {
     }
     
     func setupErrorMessage() {
-        self.errorMessage =
-            ["10001": NSLocalizedString("10001", comment: ""),
-             "50001": NSLocalizedString("50001", comment: ""),
-             "50002": NSLocalizedString("50002", comment: ""),
-             "50003": NSLocalizedString("50003", comment: ""),
-             "50004": NSLocalizedString("50004", comment: ""),
-             "50005": NSLocalizedString("50005", comment: ""),
-             "50006": NSLocalizedString("50006", comment: ""),
-             "50008": NSLocalizedString("50008", comment: "")]
+        self.errorMessage = [
+            "10001": NSLocalizedString("10001", comment: ""),
+            "50001": NSLocalizedString("50001", comment: ""),
+            "50002": NSLocalizedString("50002", comment: ""),
+            "50003": NSLocalizedString("50003", comment: ""),
+            "50004": NSLocalizedString("50004", comment: ""),
+            "50005": NSLocalizedString("50005", comment: ""),
+            "50006": NSLocalizedString("50006", comment: ""),
+            "50008": NSLocalizedString("50008", comment: "")
+        ]
     }
     
     func updatePair() {
@@ -100,7 +101,8 @@ class TradeDataManager {
         if let maker = getOrder(by: makerHash) {
             let taker = constructTaker(from: maker)
             maker.hash = makerHash
-            isTaker = true
+            self.isTaker = true
+            self.orders = []
             self.orders.insert(maker, at: 0)
             self.orders.insert(taker, at: 1)
             self.makerPrivateKey = makerPrivateKey
@@ -123,33 +125,26 @@ class TradeDataManager {
 
     func constructTaker(from maker: OriginalOrder) -> OriginalOrder {
         var buyNoMoreThanAmountB: Bool
-        var side, tokenSell, tokenBuy: String
-        var amountBuy, amountSell, lrcFee: Double
-        if maker.side == "buy" {
-            side = "sell"
-            buyNoMoreThanAmountB = false
-        } else {
-            side = "buy"
-            buyNoMoreThanAmountB = true
-        }
+        var amountBuy, amountSell: Double
+        var tokenSell, tokenBuy, market: String
+        
+        buyNoMoreThanAmountB = true
         tokenBuy = maker.tokenSell
         tokenSell = maker.tokenBuy
+        market = "\(tokenSell)/\(tokenBuy)"
         amountBuy = maker.amountSell
         amountSell = maker.amountBuy
-        
-        lrcFee = 0
         
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         
         // P2P 订单 默认 1hour 过期，或增加ui调整
-//        let since = Int64(Date().timeIntervalSince1970)
-//        let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
+        // let since = Int64(Date().timeIntervalSince1970)
+        // let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
+        let since = Int64(1530806400)
+        let until = Int64(1530979200)
         
-        let since = Int64(1530806400) // test
-        let until = Int64(1530979200) // test
-        
-        var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder)
+        var order = OriginalOrder(delegate: delegate, address: address, side: "buy", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, market: market)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order
     }
