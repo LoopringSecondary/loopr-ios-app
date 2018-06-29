@@ -29,7 +29,7 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         
         baseView.backgroundColor = UIColor.white
         baseView.cornerRadius = 7.5
-        nameLabel.font = FontConfigManager.shared.getLabelENFont(size: 21)
+        nameLabel.font = FontConfigManager.shared.getLabelENFont(size: 18)
         addressLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         addressLabel.textColor = UIColor.init(rgba: "#878FA4")
         addressLabel.backgroundColor = UIColor.init(rgba: "#F4F6F8")

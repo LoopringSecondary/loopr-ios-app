@@ -225,7 +225,9 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
     }
     
     @objc func doneWithNumberPad(_ sender: Any) {
-        pressedContinueButton(sender)
+        // pressedContinueButton(sender)
+        contentTextView.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     @objc func pressedImportMethodSelection(_ sender: Any) {
@@ -425,6 +427,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
     
     @objc func pressedContinueButton(_ sender: Any) {
         guard validation() else {
+            print("validate failed")
             return
         }
 

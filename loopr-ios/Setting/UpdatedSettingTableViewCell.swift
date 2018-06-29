@@ -18,16 +18,11 @@ class UpdatedSettingTableViewCell: UITableViewCell {
         // Initialization code
         
         backgroundColor = UIColor.init(white: 1, alpha: 0.98)
+        iconImageView.contentMode = .scaleAspectFit
         nameLabel.font = FontConfigManager.shared.getLabelSCFont(size: 16)
         nameLabel.textColor = UIColor.init(rgba: "#32384C")
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     class func getCellIdentifier() -> String {
         return "UpdatedSettingTableViewCell"
     }

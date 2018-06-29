@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +37,7 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="THo-w0-yc1">
-                    <rect key="frame" x="119" y="95.5" width="137" height="104"/>
+                    <rect key="frame" x="119" y="126" width="137" height="104"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZo-c6-Cjb">
                             <rect key="frame" x="46.5" y="0.0" width="44" height="49"/>
@@ -71,7 +71,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBe-Wn-sPj">
-                    <rect key="frame" x="264" y="174.5" width="60" height="28"/>
+                    <rect key="frame" x="264" y="205" width="60" height="28"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="WAl-pd-wbb"/>
@@ -102,6 +102,7 @@
                 <constraint firstItem="bAa-KD-SWC" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="8eI-Vg-8gA"/>
                 <constraint firstItem="ASs-TZ-HlA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="B60-Uy-Y3c"/>
                 <constraint firstItem="Ojp-ue-C71" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="KUr-DC-Gq2"/>
+                <constraint firstItem="THo-w0-yc1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="106" id="MoY-DM-aai"/>
                 <constraint firstItem="fhl-ir-4jy" firstAttribute="top" secondItem="Ojp-ue-C71" secondAttribute="bottom" constant="-39" id="P4a-CQ-wsL"/>
                 <constraint firstItem="bAa-KD-SWC" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="c6G-uc-jLz"/>
                 <constraint firstItem="bAa-KD-SWC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gGs-8S-Saw"/>
@@ -113,7 +114,6 @@
                 <constraint firstItem="Ojp-ue-C71" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="l2E-tx-XQR"/>
                 <constraint firstItem="ASs-TZ-HlA" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="mUI-p7-jWP"/>
                 <constraint firstItem="ASs-TZ-HlA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="tWi-T1-y8D"/>
-                <constraint firstItem="THo-w0-yc1" firstAttribute="centerY" secondItem="Ojp-ue-C71" secondAttribute="centerY" constant="-10" id="wR5-m8-uU5"/>
                 <constraint firstItem="Ojp-ue-C71" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="whC-BS-eqz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

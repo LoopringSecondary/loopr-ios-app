@@ -99,7 +99,7 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         customizedNavigationBar.shadowImage = UIImage()
 
         let navigationItem = UINavigationItem()
-        navigationItem.title = "TOKENEST"
+        navigationItem.title = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name
         
         // TODO: Needs an icon
         let qrScanButton = UIButton(type: UIButtonType.custom)
