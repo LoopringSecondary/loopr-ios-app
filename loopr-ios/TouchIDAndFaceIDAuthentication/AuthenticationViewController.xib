@@ -1,13 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthenticationViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthenticationViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="unlockAppButton1" destination="LRU-Zb-mhi" id="o2h-Bg-fnl"/>
+                <outlet property="unlockAppButton2" destination="6dH-9E-Wwj" id="cjM-En-zcO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,8 +20,66 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-background-image" translatesAutoresizingMaskIntoConstraints="NO" id="e8I-Jr-i2I">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRU-Zb-mhi">
+                    <rect key="frame" x="158" y="529" width="58" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="58" id="LEq-uf-gSf"/>
+                        <constraint firstAttribute="width" constant="58" id="Yq9-M9-Hqy"/>
+                    </constraints>
+                    <state key="normal" image="Tokenest-auth-icon"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Y1Y-KA-meU">
+                    <rect key="frame" x="16" y="307" width="344" height="125"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="125" id="zFv-yk-DoL"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-slogan" translatesAutoresizingMaskIntoConstraints="NO" id="Uew-g7-j5P">
+                    <rect key="frame" x="35" y="55" width="11" height="166"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="166" id="9kS-4k-C0C"/>
+                        <constraint firstAttribute="width" constant="11" id="Vl9-xb-IFB"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dH-9E-Wwj">
+                    <rect key="frame" x="110.5" y="603" width="154" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="2bj-7m-itT"/>
+                        <constraint firstAttribute="width" constant="154" id="OmP-eI-Y5T"/>
+                    </constraints>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6dH-9E-Wwj" firstAttribute="top" secondItem="LRU-Zb-mhi" secondAttribute="bottom" constant="16" id="1rt-4j-SpN"/>
+                <constraint firstItem="LRU-Zb-mhi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="E6F-HL-cNY"/>
+                <constraint firstItem="e8I-Jr-i2I" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="JEj-5p-Osu"/>
+                <constraint firstItem="LRU-Zb-mhi" firstAttribute="top" secondItem="Y1Y-KA-meU" secondAttribute="bottom" constant="97" id="MAh-xZ-cH5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Y1Y-KA-meU" secondAttribute="trailing" constant="15" id="Rpv-6P-krn"/>
+                <constraint firstItem="e8I-Jr-i2I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sqy-sT-Vqf"/>
+                <constraint firstItem="Uew-g7-j5P" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="35" id="TK1-6V-GGo"/>
+                <constraint firstItem="e8I-Jr-i2I" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="X7w-2p-Pzh"/>
+                <constraint firstItem="e8I-Jr-i2I" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ePE-Aa-TYX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LRU-Zb-mhi" secondAttribute="bottom" constant="80" id="rcn-a7-tSY"/>
+                <constraint firstItem="Y1Y-KA-meU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="uVl-iu-eDB"/>
+                <constraint firstItem="Uew-g7-j5P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="wi9-bd-0vd"/>
+                <constraint firstItem="6dH-9E-Wwj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wxO-x8-eOl"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="90.5" y="117.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="Tokenest-auth-icon" width="60" height="60"/>
+        <image name="Tokenest-setup-background-image" width="375" height="667"/>
+        <image name="Tokenest-setup-logo" width="234" height="126"/>
+        <image name="Tokenest-setup-slogan" width="9" height="184"/>
+    </resources>
 </document>

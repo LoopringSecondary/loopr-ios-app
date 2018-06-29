@@ -10,25 +10,18 @@ import UIKit
 
 class AuthenticationViewController: UIViewController {
 
-    var unlockAppButton = UIButton()
-    var backgrondImageView = UIImageView()
-
+    @IBOutlet weak var unlockAppButton1: UIButton!
+    @IBOutlet weak var unlockAppButton2: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print("Show AuthenticationViewController")
 
-        let screenSize: CGRect = UIScreen.main.bounds
-        backgrondImageView.frame = screenSize
-        backgrondImageView.image = UIImage(named: "Background")
-        backgrondImageView.isUserInteractionEnabled = true
-        view.addSubview(backgrondImageView)
-
-        unlockAppButton.title = NSLocalizedString("Unlock", comment: "")
-        unlockAppButton.setupRoundBlack()
-        unlockAppButton.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
-        backgrondImageView.addSubview(unlockAppButton)
+        unlockAppButton1.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
+        unlockAppButton2.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
+        unlockAppButton2.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
 
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -40,13 +33,6 @@ class AuthenticationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // TODO: May need to use auto layout.
-        let screenSize: CGRect = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        let bottomPadding: CGFloat = UIDevice.current.iPhoneX ? 30 : 0
-        unlockAppButton.frame = CGRect(x: 15, y: screenHeight - bottomPadding - 47 - 63, width: screenWidth - 15 * 2, height: 47)
         AuthenticationDataManager.shared.authenticate { (error) in
             guard error == nil else { return }
             self.dismiss(animated: true, completion: nil)
