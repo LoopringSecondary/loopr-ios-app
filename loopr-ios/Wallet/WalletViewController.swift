@@ -281,12 +281,18 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if scrollView.contentOffset.y < 0 {
             headerBalanceViewController.view.y = 0
             headerBalanceViewController.balanceLabel.alpha = 1.0
+            headerBalanceViewController.addTokenButton.alpha = 1.0
         } else {
-            headerBalanceViewController.view.y = -scrollView.contentOffset.y
-            headerBalanceViewController.balanceLabel.alpha = (70 - scrollView.contentOffset.y)/70
-            headerBalanceViewController.addTokenButton.alpha = (70 - scrollView.contentOffset.y)/70
-            if headerBalanceViewController.view.y <= -200 {
-                headerBalanceViewController.view.y = -200
+            if scrollView.contentOffset.y > 210 {
+                headerBalanceViewController.view.y = -210
+            } else {
+                headerBalanceViewController.view.y = -scrollView.contentOffset.y
+            }
+            
+            if scrollView.contentOffset.y > 20 {
+                let diff = scrollView.contentOffset.y-20
+                headerBalanceViewController.balanceLabel.alpha = (60 - diff)/60
+                headerBalanceViewController.addTokenButton.alpha = (60 - diff)/60
             }
         }
     }
