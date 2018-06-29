@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="addTokenButton" destination="Mnt-wU-hi8" id="agX-RZ-dDV"/>
                 <outlet property="balanceLabel" destination="1nU-4m-F2g" id="fOT-h5-b0S"/>
+                <outlet property="buttonBackgroundImageView" destination="3Wr-EV-Dmb" id="R62-Jy-JJt"/>
                 <outlet property="buttonBackgroundView" destination="JtW-QQ-8am" id="r4W-rM-WpS"/>
                 <outlet property="receiveButton" destination="03m-r6-GOI" id="ZXe-8z-lut"/>
                 <outlet property="sendButton" destination="OhF-4h-aNV" id="DoP-s0-3Bf"/>
@@ -113,7 +114,7 @@
     <resources>
         <image name="Tokenest-asset-add-token" width="41" height="40"/>
         <image name="Tokenest-asset-background-image" width="375" height="315"/>
-        <image name="Tokenest-asset-button-background" width="373" height="86"/>
+        <image name="Tokenest-asset-button-background" width="345" height="60"/>
         <image name="Tokenest-center-seperate-line" width="1" height="19"/>
     </resources>
 </document>

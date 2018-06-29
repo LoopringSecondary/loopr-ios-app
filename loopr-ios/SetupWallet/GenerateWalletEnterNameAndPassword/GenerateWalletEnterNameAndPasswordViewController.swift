@@ -196,7 +196,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         }
         if password != repeatPassword {
             validRepeatPassword = false
-            self.walletRepeatPasswordInfoLabel.text = NSLocalizedString("Please input the consistant password.", comment: "")
+            self.walletRepeatPasswordInfoLabel.text = NSLocalizedString("Please input the consistant password", comment: "")
         }
         if !validRepeatPassword {
             self.walletRepeatPasswordInfoLabel.shake()

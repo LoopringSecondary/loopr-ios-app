@@ -400,6 +400,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         ]
         NSLayoutConstraint.activate(constraints)
         headerBalanceViewController.delegate = self
+        
+        addChildViewController(headerBalanceViewController)
     }
     
     func pressedSendButton() {

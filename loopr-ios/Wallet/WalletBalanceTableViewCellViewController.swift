@@ -28,6 +28,7 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var buttonBackgroundImageView: UIImageView!
     @IBOutlet weak var buttonBackgroundView: UIView!
     
     override func viewDidLoad() {
@@ -50,6 +51,9 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         addTokenButton.setImage(UIImage.init(named: "Tokenest-asset-add-token")?.alpha(0.7), for: .highlighted)
         addTokenButton.addTarget(self, action: #selector(self.pressedAddTokenButton(_:)), for: .touchUpInside)
 
+        buttonBackgroundImageView.cornerRadius = 7.5
+        buttonBackgroundImageView.clipsToBounds = true
+        
         buttonBackgroundView.backgroundColor = UIColor.init(white: 1, alpha: 0.98)
         buttonBackgroundView.isOpaque = true
         buttonBackgroundView.cornerRadius = 7.5
@@ -88,6 +92,15 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setup()
+        
+        let shadowSize: CGFloat = 0.5
+        let shadowPath = UIBezierPath(rect: CGRect(x: -shadowSize / 2, y: -shadowSize / 2, width: self.buttonBackgroundView.frame.size.width + shadowSize, height: self.buttonBackgroundView.frame.size.height + shadowSize))
+        self.buttonBackgroundView.layer.masksToBounds = false
+        self.buttonBackgroundView.layer.shadowColor = UIColor.init(rgba: "#878FA4").cgColor
+        self.buttonBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        self.buttonBackgroundView.layer.shadowOpacity = 0.2
+        self.buttonBackgroundView.layer.shadowRadius = 7.5
+        self.buttonBackgroundView.layer.shadowPath = shadowPath.cgPath
     }
     
     @objc func pressedReceiveButton(_ button: UIButton) {

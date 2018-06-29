@@ -277,7 +277,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         }
         if password != repeatPassword {
             validRepeatPassword = false
-            self.repeatPasswordInfoLabel.text = NSLocalizedString("Please input the consistant password.", comment: "")
+            self.repeatPasswordInfoLabel.text = NSLocalizedString("Please input the consistant password", comment: "")
         }
         if !validRepeatPassword {
             self.repeatPasswordInfoLabel.shake()
@@ -322,6 +322,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
             }
         case repeatPasswordTextField.tag:
             if newLength > 0 {
+                repeatPasswordInfoLabel.text = NSLocalizedString("Repeat Password", comment: "")
                 repeatPasswordInfoLabel.textColor = UIColor.tokenestTip
             } else {
                 repeatPasswordInfoLabel.shake()

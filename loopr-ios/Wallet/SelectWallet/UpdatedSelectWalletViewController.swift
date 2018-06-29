@@ -20,7 +20,8 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
     
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var importButton: UIButton!
-
+    @IBOutlet weak var alphaChangingView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +38,9 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 4))
         walletTableView.tableHeaderView = headerView
         
+        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 4))
+        walletTableView.tableFooterView = footerView
+
         createButton.setTitle(NSLocalizedString("Generate Wallet", comment: ""), for: .normal)
         createButton.setupRoundPurple(height: 48, font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16))
         createButton.addTarget(self, action: #selector(pressedCreateButton(_:)), for: UIControlEvents.touchUpInside)
@@ -44,6 +48,12 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
         importButton.setTitle(NSLocalizedString("Import Wallet", comment: ""), for: .normal)
         importButton.setupRoundPurpleOutline(height: 48, font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16))
         importButton.addTarget(self, action: #selector(pressedImportButton(_:)), for: UIControlEvents.touchUpInside)
+        
+        let layer = CAGradientLayer()
+        layer.colors = [UIColor.black.withAlphaComponent(0.0).cgColor, UIColor.black.cgColor]
+        layer.frame = alphaChangingView.bounds
+        layer.locations = [0, 1]
+        self.alphaChangingView.layer.mask = layer
         
         getAllBalanceFromRelay()
     }
