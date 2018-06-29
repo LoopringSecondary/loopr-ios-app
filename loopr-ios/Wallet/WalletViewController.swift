@@ -317,15 +317,18 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
+        } else if CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count == 0 {
+            return 1
         } else {
-            numberOfRowsInSection1 = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
-            return numberOfRowsInSection1
+            return CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
         }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return backgroundImageHeight - 10
+        } else if CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count == 0 {
+            return view.frame.height - backgroundImageHeight
         } else {
             return AssetTableViewCell.getHeight()
         }
@@ -337,6 +340,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("WalletClearTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? WalletClearTableViewCell
+                cell?.selectionStyle = .none
+            }
+            return cell!
+        } else if CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count == 0 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: WalletAssetEmptyDataTableViewCell.getCellIdentifier()) as? WalletAssetEmptyDataTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("WalletAssetEmptyDataTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? WalletAssetEmptyDataTableViewCell
                 cell?.selectionStyle = .none
             }
             return cell!
@@ -357,7 +368,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            
+           
+        } else if CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count == 0 {
+
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
             let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]

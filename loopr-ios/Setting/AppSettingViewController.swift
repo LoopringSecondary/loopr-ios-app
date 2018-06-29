@@ -50,7 +50,7 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -58,7 +58,7 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+        return 49
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,14 +69,8 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     func userPreferencesSectionForCell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            var currentWalletName = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name
-            if currentWalletName == nil {
-                currentWalletName = ""
-            }
-            return createDetailTableCell(title: NSLocalizedString("Manage Wallet", comment: ""), detailTitle: currentWalletName!)
-        case 1:
             return createDetailTableCell(title: NSLocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
-        case 2:
+        case 1:
             return createSettingPasscodeTableView()
         default:
             return UITableViewCell()
@@ -89,11 +83,6 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         case 0:
             switch indexPath.row {
             case 0:
-                print("Setting wallet")
-                let viewController = SettingManageWalletViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            case 1:
                 print("Setting currency")
                 let viewController = SettingCurrencyViewController()
                 viewController.hidesBottomBarWhenPushed = true
