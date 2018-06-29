@@ -57,7 +57,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         // Reload data if the data is updated.
         tableView.reloadData()
         
-        let shadowSize: CGFloat = 1.0
+        let shadowSize: CGFloat = 0.5
         let shadowPath = UIBezierPath(rect: CGRect(x: -shadowSize / 2, y: -shadowSize / 2, width: self.createButton.frame.size.width + shadowSize, height: self.createButton.frame.size.height + shadowSize))
         self.createButton.layer.masksToBounds = false
         self.createButton.layer.shadowColor = UIColor.init(rgba: "#939BB1").cgColor

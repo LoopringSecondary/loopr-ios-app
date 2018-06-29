@@ -28,7 +28,7 @@ class UpdatedSelectWalletTableViewCell: UITableViewCell {
         nameLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 14)
         addressLabel.font = FontConfigManager.shared.getLabelENFont(size: 11)
         addressLabel.lineBreakMode = .byTruncatingMiddle
-        toatalBalanceLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        toatalBalanceLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
 
         setNoCurrentWallet()
     }
@@ -68,15 +68,15 @@ class UpdatedSelectWalletTableViewCell: UITableViewCell {
         baseView.backgroundColor = UIColor.white
         baseView.layer.borderColor = UIColor.init(rgba: "#E5E7ED").cgColor
         nameLabel.textColor = UIColor.init(rgba: "#32384C")
-        addressLabel.textColor = UIColor.init(rgba: "#878FA4")
-        toatalBalanceLabel.textColor = UIColor.init(rgba: "#8997F3")
+        addressLabel.textColor = UIColor.init(rgba: "#8997F3")
+        toatalBalanceLabel.textColor = UIColor.init(rgba: "#32384C")
     }
     
     func setCurrentWallet() {
         baseView.backgroundColor = UIColor.init(rgba: "#2E2BA4")
         baseView.layer.borderColor = UIColor.clear.cgColor
         nameLabel.textColor = UIColor.white
-        addressLabel.textColor = UIColor.init(rgba: "#878FA4")
+        addressLabel.textColor = UIColor.init(rgba: "#8997F3")
         toatalBalanceLabel.textColor = UIColor.white
     }
     
