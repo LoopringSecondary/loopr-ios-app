@@ -12,20 +12,17 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
 
     @IBOutlet weak var tableView: UITableView!
     
-    var languages: [Language] = []
+    var languages: [Language] = SettingDataManager.shared.getSupportedLanguages()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        languages = SettingDataManager.shared.getSupportedLanguages()
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
 
-        self.navigationItem.title = NSLocalizedString("Language", comment: "")
+        self.navigationItem.title = LocalizedString("Language", comment: "")
         setBackButton()
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -62,8 +59,18 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let result = SetLanguage(languages[indexPath.row].name)
+        print(result)
+        // (UIApplication.shared.delegate as! AppDelegate).changeLanguage()
+
+        //if you want to check your string programatically on console print when  switch toggle value(testing purpose)
+        let check = LocalizedString("Night Mode", comment: "")
+        print(check)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         SettingDataManager.shared.setCurrentLanguage(languages[indexPath.row])
         tableView.reloadData()
     }
+
 }

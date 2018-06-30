@@ -133,6 +133,7 @@
 		AC13481420E75D5E00D922C0 /* asset_0.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480E20E75D4B00D922C0 /* asset_0.md */; };
 		AC13481820E80B4B00D922C0 /* SettingStyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13481620E80B4B00D922C0 /* SettingStyleTableViewCell.swift */; };
 		AC13481920E80B4B00D922C0 /* SettingStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13481720E80B4B00D922C0 /* SettingStyleTableViewCell.xib */; };
+		AC13481F20E82F9A00D922C0 /* Localizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13481E20E82F9A00D922C0 /* Localizator.swift */; };
 		AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */; };
 		AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */; };
 		AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B3082054A766008A72C0 /* BuyViewController.swift */; };
@@ -715,6 +716,9 @@
 		AC13480E20E75D4B00D922C0 /* asset_0.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = asset_0.md; sourceTree = "<group>"; };
 		AC13481620E80B4B00D922C0 /* SettingStyleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStyleTableViewCell.swift; sourceTree = "<group>"; };
 		AC13481720E80B4B00D922C0 /* SettingStyleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingStyleTableViewCell.xib; sourceTree = "<group>"; };
+		AC13481C20E8293800D922C0 /* NSBundle+Language.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
+		AC13481D20E8295E00D922C0 /* NSBundle+Language.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
+		AC13481E20E82F9A00D922C0 /* Localizator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizator.swift; sourceTree = "<group>"; };
 		AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSellSwipeViewController.swift; sourceTree = "<group>"; };
 		AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyAndSellSwipeViewController.xib; sourceTree = "<group>"; };
 		AC13B3082054A766008A72C0 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -1313,6 +1317,16 @@
 			path = Archive;
 			sourceTree = "<group>";
 		};
+		AC13481A20E828D800D922C0 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				AC13481C20E8293800D922C0 /* NSBundle+Language.h */,
+				AC13481D20E8295E00D922C0 /* NSBundle+Language.m */,
+				AC13481E20E82F9A00D922C0 /* Localizator.swift */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		AC13B305205488CF008A72C0 /* MarketPlaceOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1810,6 +1824,7 @@
 				ACB5DD83202ACBF800140A09 /* AfterEffectsAnimations */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
+				AC13481A20E828D800D922C0 /* Localizable */,
 				ACE5BFA920466EFD005D75DD /* Localizable.strings */,
 				AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */,
 				FF9C7DD9208D55F8004687AD /* Settings.bundle */,
@@ -3086,6 +3101,7 @@
 				AC4F601220773E9D00F1D954 /* EthFunctionEncoder.swift in Sources */,
 				ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */,
 				AC99CF462083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift in Sources */,
+				AC13481F20E82F9A00D922C0 /* Localizator.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
 				AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */,
 				94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */,
@@ -3584,13 +3600,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "loopr-iosTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/loopr-ios/loopr-ios-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loopr-ios.app/loopr-ios";
@@ -3615,6 +3632,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/loopr-ios/loopr-ios-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

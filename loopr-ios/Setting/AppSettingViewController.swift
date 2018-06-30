@@ -51,7 +51,7 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -75,6 +75,9 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
             cell?.rightLabel.text = SettingDataManager.shared.getCurrentCurrency().name
         case 1:
             return createSettingPasscodeTableView()
+        case 2:
+            cell?.leftLabel.text = NSLocalizedString("Language", comment: "")
+            cell?.rightLabel.text = SettingDataManager.shared.getCurrentCurrency().name
         default:
             break
         }
@@ -89,6 +92,12 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
             case 0:
                 print("Setting currency")
                 let viewController = SettingCurrencyViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 1:
+                break
+            case 2:
+                let viewController = SettingLanguageViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             default:
