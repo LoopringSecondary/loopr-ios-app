@@ -83,6 +83,7 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar()
+        setupNavigationBar()
         addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address.getAddressFormat()
     }
     

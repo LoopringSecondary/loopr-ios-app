@@ -269,9 +269,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         customizedNavigationBar.topItem?.title = buttonTitle
         
+        // Dismiss the side menu
         dismiss(animated: true, completion: nil)
-        // let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: leftViewController)
-        // SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
     }
     
     // Scroll view delegate

@@ -47,6 +47,8 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         importButton.setTitleColor(UIColor.white, for: .normal)
         importButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16, type: "Medium")
         importButton.addTarget(self, action: #selector(pressedImportButton(_:)), for: UIControlEvents.touchUpInside)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(currentAppWalletSwitchedReceivedNotification), name: .currentAppWalletSwitched, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +77,10 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func currentAppWalletSwitchedReceivedNotification() {
+        tableView.reloadData()
     }
     
     @objc func pressedCreateButton(_ sender: UIButton) {

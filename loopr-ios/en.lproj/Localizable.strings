@@ -138,7 +138,7 @@
 "All" = "All";
 "Favorite" = "Favorite";
 "Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
-"No access to save QR code. Please go to setting to enable the access" = "No access to save QR code. Please go to setting to enable the access";
+"No access to save QR code. Please go to setting to enable the access." = "No access to save QR code. Please go to setting to enable the access.";
 "Failed to sign/encode transaction" = "Failed to sign/encode transaction";
 "10001" = "Sorry, system error, please try again later";
 "50001" = "Sorry, selling order does not exist, could not complete this order";

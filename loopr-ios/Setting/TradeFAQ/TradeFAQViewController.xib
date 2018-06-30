@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TradeFAQViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="customizedNavigationBar" destination="Sce-HH-byo" id="Kmm-El-UHM"/>
+                <outlet property="statusBarBackgroundView" destination="m0Z-lk-sqD" id="u1h-pE-q0W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,8 +20,33 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0Z-lk-sqD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sce-HH-byo">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Zxq-Yi-R5M"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Title" id="tcw-6b-k3t"/>
+                    </items>
+                </navigationBar>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="m0Z-lk-sqD" secondAttribute="trailing" id="8f9-7D-ZY5"/>
+                <constraint firstItem="m0Z-lk-sqD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="95T-3C-sVH"/>
+                <constraint firstItem="Sce-HH-byo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JmK-Fg-PIF"/>
+                <constraint firstItem="m0Z-lk-sqD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OXK-EH-8bJ"/>
+                <constraint firstItem="Sce-HH-byo" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="PmJ-rF-mKL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="m0Z-lk-sqD" secondAttribute="bottom" id="X6r-XG-Wa9"/>
+                <constraint firstItem="Sce-HH-byo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aG4-ov-BMj"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34.5" y="144.5"/>
         </view>
     </objects>
 </document>

@@ -138,7 +138,7 @@
 "All" = "全部";
 "Favorite" = "收藏";
 "Align QR Code within Frame to Scan" = "请将二维码置于扫描框内";
-"No access to save QR code. Please go to setting to enable the access" = "No access to save QR code. Please go to setting to enable the access";
+"No access to save QR code. Please go to setting to enable the access." = "没有权限保存二维码，请到设置修改权限。";
 "Failed to sign/encode transaction" = "编码/签名交易失败";
 "10001" = "抱歉，系统错误，请稍后重试";
 "50001" = "抱歉，无法获取到扫描订单信息";

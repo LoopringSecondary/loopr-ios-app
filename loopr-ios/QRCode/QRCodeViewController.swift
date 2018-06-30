@@ -24,7 +24,8 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var copyAddressButton: UIButton!
     @IBOutlet weak var saveToAlbumButton: UIButton!
-    
+    @IBOutlet weak var dismissButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,7 +91,12 @@ class QRCodeViewController: UIViewController {
     @IBAction func pressedSaveToAlbum(_ sender: Any) {
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedSaveToAlbum address: \(address)")
-        QRCodeSaveToAlbum.shared.save(image: qrcodeImage)
+        
+        dismissButton.isHidden = true
+        let image = UIImage.imageWithView(view)
+        dismissButton.isHidden = false
+        QRCodeSaveToAlbum.shared.save(image: image)
+        // QRCodeSaveToAlbum.shared.save(image: qrcodeImage)
     }
     
     @IBAction func pressedCloseButton(_ sender: UIButton) {
