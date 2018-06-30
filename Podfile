@@ -18,6 +18,7 @@ target 'loopr-ios' do
   pod 'ESTabBarController-swift'
   pod 'SideMenu'
   pod 'TagListView', '~> 1.0'
+  pod 'SwiftyMarkdown'
 
   pod 'Fabric'
   pod 'Crashlytics'
