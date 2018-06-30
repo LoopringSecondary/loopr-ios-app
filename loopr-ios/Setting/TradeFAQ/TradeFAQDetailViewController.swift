@@ -25,12 +25,27 @@ class TradeFAQDetailViewController: UIViewController {
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
 
         contentTextView.contentInset = UIEdgeInsets.init(top: 0, left: 24, bottom: 0, right: 24)
-        if let url = Bundle.main.url(forResource: tradeFAQPage.fileName, withExtension: "md"), let md = SwiftyMarkdown(url: url ) {
-            md.h1.fontName = "PingfangSC-Medium"
+        
+        let fileName: String
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            fileName = "\(tradeFAQPage.fileName)_zh-Hans"
+        } else if SettingDataManager.shared.getCurrentLanguage().name == "en" {
+            fileName = "\(tradeFAQPage.fileName)_en"
+        } else {
+            fileName = tradeFAQPage.fileName
+        }
+
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "md"), let md = SwiftyMarkdown(url: url ) {
+            if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+                md.h1.fontName = "PingfangSC-Medium"
+                md.body.fontName = "PingfangSC-Regular"
+            } else {
+                md.h1.fontName = "DINNextLTPro-Medium"
+                md.body.fontName = "DINNextLTPro-Regular"
+            }
+
             md.h1.fontSize = 18
             md.h1.color = UIColor.init(rgba: "#32384C")
-            
-            md.body.fontName = "PingfangSC-Regular"
             md.body.fontSize = 14
             md.body.color = UIColor.init(rgba: "#32384C")
                         

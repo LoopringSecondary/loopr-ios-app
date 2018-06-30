@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingLanguageViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="customizedNavigationBar" destination="6sA-Q1-Drg" id="IYx-zQ-IpG"/>
+                <outlet property="statusBarBackgroundView" destination="hGs-cK-wyA" id="U7D-QV-hRp"/>
                 <outlet property="tableView" destination="vPz-W8-jsR" id="zJw-AH-Op8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,15 +23,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vPz-W8-jsR">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGs-cK-wyA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sA-Q1-Drg">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="P0r-Q2-k43"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Title" id="byS-4J-e06"/>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="hGs-cK-wyA" secondAttribute="trailing" id="4NR-PV-2XV"/>
+                <constraint firstItem="vPz-W8-jsR" firstAttribute="top" secondItem="6sA-Q1-Drg" secondAttribute="bottom" id="9lh-fx-A6k"/>
+                <constraint firstItem="hGs-cK-wyA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CaO-rJ-QPK"/>
                 <constraint firstItem="vPz-W8-jsR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="K2J-hV-z7r"/>
+                <constraint firstItem="6sA-Q1-Drg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LjZ-Z5-reY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="hGs-cK-wyA" secondAttribute="bottom" id="Qy7-tb-jZY"/>
                 <constraint firstItem="vPz-W8-jsR" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Z2m-Jk-cuW"/>
-                <constraint firstItem="vPz-W8-jsR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eq0-KC-SQk"/>
+                <constraint firstItem="hGs-cK-wyA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="clh-hS-PxP"/>
+                <constraint firstItem="6sA-Q1-Drg" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="jBY-Lt-kiW"/>
+                <constraint firstItem="6sA-Q1-Drg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lxb-sK-YLv"/>
                 <constraint firstItem="vPz-W8-jsR" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="xdP-p3-eTU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

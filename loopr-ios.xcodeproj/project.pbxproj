@@ -122,18 +122,27 @@
 		AC13480020E7542C00D922C0 /* TradeFAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1347FE20E7542C00D922C0 /* TradeFAQTableViewCell.swift */; };
 		AC13480120E7542C00D922C0 /* TradeFAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1347FF20E7542C00D922C0 /* TradeFAQTableViewCell.xib */; };
 		AC13480320E7555300D922C0 /* TradeFAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13480220E7555300D922C0 /* TradeFAQPage.swift */; };
-		AC13480420E7593100D922C0 /* fee_0.md in Resources */ = {isa = PBXBuildFile; fileRef = AC1347FB20E7539100D922C0 /* fee_0.md */; };
-		AC13480520E7593300D922C0 /* fee_1.md in Resources */ = {isa = PBXBuildFile; fileRef = AC1347FC20E7539B00D922C0 /* fee_1.md */; };
-		AC13480620E7593500D922C0 /* fee_2.md in Resources */ = {isa = PBXBuildFile; fileRef = AC1347FD20E753BD00D922C0 /* fee_2.md */; };
-		AC13480F20E75D5000D922C0 /* speed_0.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480920E75D0300D922C0 /* speed_0.md */; };
-		AC13481020E75D5400D922C0 /* speed_1.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480A20E75D0F00D922C0 /* speed_1.md */; };
-		AC13481120E75D5700D922C0 /* speed_2.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480B20E75D1B00D922C0 /* speed_2.md */; };
-		AC13481220E75D5900D922C0 /* deep_0.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480C20E75D2C00D922C0 /* deep_0.md */; };
-		AC13481320E75D5C00D922C0 /* deep_1.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480D20E75D3E00D922C0 /* deep_1.md */; };
-		AC13481420E75D5E00D922C0 /* asset_0.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480E20E75D4B00D922C0 /* asset_0.md */; };
+		AC13480420E7593100D922C0 /* fee_0_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC1347FB20E7539100D922C0 /* fee_0_zh-Hans.md */; };
+		AC13480520E7593300D922C0 /* fee_1_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC1347FC20E7539B00D922C0 /* fee_1_zh-Hans.md */; };
+		AC13480620E7593500D922C0 /* fee_2_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC1347FD20E753BD00D922C0 /* fee_2_zh-Hans.md */; };
+		AC13480F20E75D5000D922C0 /* speed_0_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480920E75D0300D922C0 /* speed_0_zh-Hans.md */; };
+		AC13481020E75D5400D922C0 /* speed_1_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480A20E75D0F00D922C0 /* speed_1_zh-Hans.md */; };
+		AC13481120E75D5700D922C0 /* speed_2_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480B20E75D1B00D922C0 /* speed_2_zh-Hans.md */; };
+		AC13481220E75D5900D922C0 /* deep_0_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480C20E75D2C00D922C0 /* deep_0_zh-Hans.md */; };
+		AC13481320E75D5C00D922C0 /* deep_1_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480D20E75D3E00D922C0 /* deep_1_zh-Hans.md */; };
+		AC13481420E75D5E00D922C0 /* asset_0_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480E20E75D4B00D922C0 /* asset_0_zh-Hans.md */; };
 		AC13481820E80B4B00D922C0 /* SettingStyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13481620E80B4B00D922C0 /* SettingStyleTableViewCell.swift */; };
 		AC13481920E80B4B00D922C0 /* SettingStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13481720E80B4B00D922C0 /* SettingStyleTableViewCell.xib */; };
 		AC13481F20E82F9A00D922C0 /* Localizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13481E20E82F9A00D922C0 /* Localizator.swift */; };
+		AC13482920E83ED100D922C0 /* deep_1_en.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13482020E83ECF00D922C0 /* deep_1_en.md */; };
+		AC13482A20E83ED100D922C0 /* fee_0_en.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13482120E83ECF00D922C0 /* fee_0_en.md */; };
+		AC13482B20E83ED100D922C0 /* fee_2_en.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13482220E83ECF00D922C0 /* fee_2_en.md */; };
+		AC13482C20E83ED100D922C0 /* asset_0_en.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13482320E83ED000D922C0 /* asset_0_en.md */; };
+		AC13482D20E83ED100D922C0 /* fee_1_en.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13482420E83ED000D922C0 /* fee_1_en.md */; };
+		AC13482E20E83ED100D922C0 /* deep_0_en.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13482520E83ED000D922C0 /* deep_0_en.md */; };
+		AC13482F20E83ED100D922C0 /* speed_0_en.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13482620E83ED000D922C0 /* speed_0_en.md */; };
+		AC13483020E83ED100D922C0 /* speed_1_en.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13482720E83ED000D922C0 /* speed_1_en.md */; };
+		AC13483120E83ED100D922C0 /* speed_2_en.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13482820E83ED100D922C0 /* speed_2_en.md */; };
 		AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */; };
 		AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */; };
 		AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B3082054A766008A72C0 /* BuyViewController.swift */; };
@@ -702,23 +711,30 @@
 		AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMenuTableViewCell.xib; sourceTree = "<group>"; };
 		AC1347EE20E751FB00D922C0 /* TradeFAQDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeFAQDetailViewController.swift; sourceTree = "<group>"; };
 		AC1347EF20E751FB00D922C0 /* TradeFAQDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeFAQDetailViewController.xib; sourceTree = "<group>"; };
-		AC1347FB20E7539100D922C0 /* fee_0.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = fee_0.md; sourceTree = "<group>"; };
-		AC1347FC20E7539B00D922C0 /* fee_1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = fee_1.md; sourceTree = "<group>"; };
-		AC1347FD20E753BD00D922C0 /* fee_2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = fee_2.md; sourceTree = "<group>"; };
+		AC1347FB20E7539100D922C0 /* fee_0_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "fee_0_zh-Hans.md"; sourceTree = "<group>"; };
+		AC1347FC20E7539B00D922C0 /* fee_1_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "fee_1_zh-Hans.md"; sourceTree = "<group>"; };
+		AC1347FD20E753BD00D922C0 /* fee_2_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "fee_2_zh-Hans.md"; sourceTree = "<group>"; };
 		AC1347FE20E7542C00D922C0 /* TradeFAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeFAQTableViewCell.swift; sourceTree = "<group>"; };
 		AC1347FF20E7542C00D922C0 /* TradeFAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeFAQTableViewCell.xib; sourceTree = "<group>"; };
 		AC13480220E7555300D922C0 /* TradeFAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeFAQPage.swift; sourceTree = "<group>"; };
-		AC13480920E75D0300D922C0 /* speed_0.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = speed_0.md; sourceTree = "<group>"; };
-		AC13480A20E75D0F00D922C0 /* speed_1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = speed_1.md; sourceTree = "<group>"; };
-		AC13480B20E75D1B00D922C0 /* speed_2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = speed_2.md; sourceTree = "<group>"; };
-		AC13480C20E75D2C00D922C0 /* deep_0.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = deep_0.md; sourceTree = "<group>"; };
-		AC13480D20E75D3E00D922C0 /* deep_1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = deep_1.md; sourceTree = "<group>"; };
-		AC13480E20E75D4B00D922C0 /* asset_0.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = asset_0.md; sourceTree = "<group>"; };
+		AC13480920E75D0300D922C0 /* speed_0_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "speed_0_zh-Hans.md"; sourceTree = "<group>"; };
+		AC13480A20E75D0F00D922C0 /* speed_1_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "speed_1_zh-Hans.md"; sourceTree = "<group>"; };
+		AC13480B20E75D1B00D922C0 /* speed_2_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "speed_2_zh-Hans.md"; sourceTree = "<group>"; };
+		AC13480C20E75D2C00D922C0 /* deep_0_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "deep_0_zh-Hans.md"; sourceTree = "<group>"; };
+		AC13480D20E75D3E00D922C0 /* deep_1_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "deep_1_zh-Hans.md"; sourceTree = "<group>"; };
+		AC13480E20E75D4B00D922C0 /* asset_0_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "asset_0_zh-Hans.md"; sourceTree = "<group>"; };
 		AC13481620E80B4B00D922C0 /* SettingStyleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStyleTableViewCell.swift; sourceTree = "<group>"; };
 		AC13481720E80B4B00D922C0 /* SettingStyleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingStyleTableViewCell.xib; sourceTree = "<group>"; };
-		AC13481C20E8293800D922C0 /* NSBundle+Language.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
-		AC13481D20E8295E00D922C0 /* NSBundle+Language.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
 		AC13481E20E82F9A00D922C0 /* Localizator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizator.swift; sourceTree = "<group>"; };
+		AC13482020E83ECF00D922C0 /* deep_1_en.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = deep_1_en.md; sourceTree = "<group>"; };
+		AC13482120E83ECF00D922C0 /* fee_0_en.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = fee_0_en.md; sourceTree = "<group>"; };
+		AC13482220E83ECF00D922C0 /* fee_2_en.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = fee_2_en.md; sourceTree = "<group>"; };
+		AC13482320E83ED000D922C0 /* asset_0_en.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = asset_0_en.md; sourceTree = "<group>"; };
+		AC13482420E83ED000D922C0 /* fee_1_en.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = fee_1_en.md; sourceTree = "<group>"; };
+		AC13482520E83ED000D922C0 /* deep_0_en.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = deep_0_en.md; sourceTree = "<group>"; };
+		AC13482620E83ED000D922C0 /* speed_0_en.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = speed_0_en.md; sourceTree = "<group>"; };
+		AC13482720E83ED000D922C0 /* speed_1_en.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = speed_1_en.md; sourceTree = "<group>"; };
+		AC13482820E83ED100D922C0 /* speed_2_en.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = speed_2_en.md; sourceTree = "<group>"; };
 		AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSellSwipeViewController.swift; sourceTree = "<group>"; };
 		AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyAndSellSwipeViewController.xib; sourceTree = "<group>"; };
 		AC13B3082054A766008A72C0 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -1292,15 +1308,8 @@
 		AC1347F220E7530400D922C0 /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				AC1347FB20E7539100D922C0 /* fee_0.md */,
-				AC1347FC20E7539B00D922C0 /* fee_1.md */,
-				AC1347FD20E753BD00D922C0 /* fee_2.md */,
-				AC13480920E75D0300D922C0 /* speed_0.md */,
-				AC13480A20E75D0F00D922C0 /* speed_1.md */,
-				AC13480B20E75D1B00D922C0 /* speed_2.md */,
-				AC13480C20E75D2C00D922C0 /* deep_0.md */,
-				AC13480D20E75D3E00D922C0 /* deep_1.md */,
-				AC13480E20E75D4B00D922C0 /* asset_0.md */,
+				AC13483320E83F0E00D922C0 /* English */,
+				AC13483220E83EEC00D922C0 /* Chinese_Simplified */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -1320,11 +1329,41 @@
 		AC13481A20E828D800D922C0 /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
-				AC13481C20E8293800D922C0 /* NSBundle+Language.h */,
-				AC13481D20E8295E00D922C0 /* NSBundle+Language.m */,
 				AC13481E20E82F9A00D922C0 /* Localizator.swift */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		AC13483220E83EEC00D922C0 /* Chinese_Simplified */ = {
+			isa = PBXGroup;
+			children = (
+				AC1347FB20E7539100D922C0 /* fee_0_zh-Hans.md */,
+				AC1347FC20E7539B00D922C0 /* fee_1_zh-Hans.md */,
+				AC1347FD20E753BD00D922C0 /* fee_2_zh-Hans.md */,
+				AC13480920E75D0300D922C0 /* speed_0_zh-Hans.md */,
+				AC13480A20E75D0F00D922C0 /* speed_1_zh-Hans.md */,
+				AC13480B20E75D1B00D922C0 /* speed_2_zh-Hans.md */,
+				AC13480C20E75D2C00D922C0 /* deep_0_zh-Hans.md */,
+				AC13480D20E75D3E00D922C0 /* deep_1_zh-Hans.md */,
+				AC13480E20E75D4B00D922C0 /* asset_0_zh-Hans.md */,
+			);
+			path = Chinese_Simplified;
+			sourceTree = "<group>";
+		};
+		AC13483320E83F0E00D922C0 /* English */ = {
+			isa = PBXGroup;
+			children = (
+				AC13482120E83ECF00D922C0 /* fee_0_en.md */,
+				AC13482420E83ED000D922C0 /* fee_1_en.md */,
+				AC13482220E83ECF00D922C0 /* fee_2_en.md */,
+				AC13482620E83ED000D922C0 /* speed_0_en.md */,
+				AC13482720E83ED000D922C0 /* speed_1_en.md */,
+				AC13482820E83ED100D922C0 /* speed_2_en.md */,
+				AC13482520E83ED000D922C0 /* deep_0_en.md */,
+				AC13482020E83ECF00D922C0 /* deep_1_en.md */,
+				AC13482320E83ED000D922C0 /* asset_0_en.md */,
+			);
+			path = English;
 			sourceTree = "<group>";
 		};
 		AC13B305205488CF008A72C0 /* MarketPlaceOrder */ = {
@@ -2646,6 +2685,7 @@
 				ACFEFEB020C3CA4800013921 /* AssetMarketTableViewCell.xib in Resources */,
 				94E665EA207234C5001328BF /* OrderTableViewCell.xib in Resources */,
 				94C5E79520738ADE0074B939 /* OrderSearchViewController.xib in Resources */,
+				AC13483020E83ED100D922C0 /* speed_1_en.md in Resources */,
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
 				ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
@@ -2654,17 +2694,19 @@
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
 				AC78FC3C20A4B0C300992AE8 /* OrderBookTableViewCell.xib in Resources */,
-				AC13481120E75D5700D922C0 /* speed_2.md in Resources */,
+				AC13481120E75D5700D922C0 /* speed_2_zh-Hans.md in Resources */,
 				ACD2D94420D8CD8A00580360 /* TradeFAQViewController.xib in Resources */,
 				AC30C66920DA3E47004436D8 /* ListMnemonicViewController.xib in Resources */,
-				AC13481420E75D5E00D922C0 /* asset_0.md in Resources */,
+				AC13481420E75D5E00D922C0 /* asset_0_zh-Hans.md in Resources */,
+				AC13482F20E83ED100D922C0 /* speed_0_en.md in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeViewController.xib in Resources */,
 				ACA677CA2079D5A000D34A2F /* DisplayPrivateKeyViewController.xib in Resources */,
 				ACA677C52079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib in Resources */,
 				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
-				AC13480F20E75D5000D922C0 /* speed_0.md in Resources */,
+				AC13480F20E75D5000D922C0 /* speed_0_zh-Hans.md in Resources */,
+				AC13482920E83ED100D922C0 /* deep_1_en.md in Resources */,
 				AC30C66020D9C486004436D8 /* WalletClearTableViewCell.xib in Resources */,
 				AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */,
 				ACD2D93C20D8977600580360 /* TradingSettingViewController.xib in Resources */,
@@ -2674,11 +2716,11 @@
 				AC54FD85204FC6F5007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
 				ACFEFEAA20C3986E00013921 /* AssetMarketViewController.xib in Resources */,
 				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
-				AC13480620E7593500D922C0 /* fee_2.md in Resources */,
+				AC13480620E7593500D922C0 /* fee_2_zh-Hans.md in Resources */,
 				AC13481920E80B4B00D922C0 /* SettingStyleTableViewCell.xib in Resources */,
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
 				ACC8D0A720CC95A00049A741 /* UpdatedAssetTableViewCell.xib in Resources */,
-				AC13480420E7593100D922C0 /* fee_0.md in Resources */,
+				AC13480420E7593100D922C0 /* fee_0_zh-Hans.md in Resources */,
 				ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */,
 				AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */,
 				AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
@@ -2686,7 +2728,7 @@
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
 				ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */,
 				AC6D34C820E04F70008FD404 /* UpdatedMnemonicSelectAddressViewController.xib in Resources */,
-				AC13481220E75D5900D922C0 /* deep_0.md in Resources */,
+				AC13481220E75D5900D922C0 /* deep_0_zh-Hans.md in Resources */,
 				AC31CE1D205A2F0100A30335 /* SwitchTradeTokenViewController.xib in Resources */,
 				ACC8D0AB20CCF6C30049A741 /* UpdatedAssetTransactionTableViewCell.xib in Resources */,
 				AC5E3E71205DFB700051ACFC /* SendAssetViewController.xib in Resources */,
@@ -2702,7 +2744,7 @@
 				AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */,
 				943C1CB320CE26CE008A8CED /* LoginResultViewController.xib in Resources */,
 				AC06193A208401EB0060F416 /* MnemonicAddressTableViewCell.xib in Resources */,
-				AC13481320E75D5C00D922C0 /* deep_1.md in Resources */,
+				AC13481320E75D5C00D922C0 /* deep_1_zh-Hans.md in Resources */,
 				ACB746E62043C5F5006C2BF5 /* QRCodeViewController.xib in Resources */,
 				AC8385A120DF4EB300438B25 /* UpdatedImportWalletEnterWalletNameViewController.xib in Resources */,
 				AC54FD73204FC6E1007E1DEB /* OpenSans-Bold.ttf in Resources */,
@@ -2713,6 +2755,7 @@
 				ACB8485A20BA75E7006B83AD /* SettingPasscodeTableViewCell.xib in Resources */,
 				AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */,
 				AC31CE46205B604800A30335 /* Linotype-DINNextW1G-Light.otf in Resources */,
+				AC13482E20E83ED100D922C0 /* deep_0_en.md in Resources */,
 				94EB84DD2095E69600FFE40E /* AssetCollectionViewCell.xib in Resources */,
 				AC99CF472083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.xib in Resources */,
 				AC31CE31205B602D00A30335 /* DIN-Bold.otf in Resources */,
@@ -2728,7 +2771,7 @@
 				AC99CF4F2083E4AF000AE4BD /* MnemonicSelectAddressViewController.xib in Resources */,
 				AC4C144C204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib in Resources */,
 				94C11FD7208C2DC60050E180 /* SettingCurrencyViewController.xib in Resources */,
-				AC13481020E75D5400D922C0 /* speed_1.md in Resources */,
+				AC13481020E75D5400D922C0 /* speed_1_zh-Hans.md in Resources */,
 				AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */,
 				AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */,
 				ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */,
@@ -2741,6 +2784,7 @@
 				AC6D34C220E0373E008FD404 /* SwitchImportWalletWalletTypeViewController.xib in Resources */,
 				940B45292060F67E00ADE2B9 /* gas_limit.json in Resources */,
 				AC30C66E20DA4572004436D8 /* UpdatedVerifyMnemonicViewController.xib in Resources */,
+				AC13482D20E83ED100D922C0 /* fee_1_en.md in Resources */,
 				9475A2EF207EF81300200155 /* OrderDetailViewController.xib in Resources */,
 				AC68E10320C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.xib in Resources */,
 				ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */,
@@ -2751,10 +2795,13 @@
 				AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
 				AC4D02EA20D717A0007F087B /* UpdatedSetupViewController.xib in Resources */,
+				AC13482A20E83ED100D922C0 /* fee_0_en.md in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
 				AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */,
 				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
+				AC13482C20E83ED100D922C0 /* asset_0_en.md in Resources */,
+				AC13483120E83ED100D922C0 /* speed_2_en.md in Resources */,
 				ACA677C1207997F400D34A2F /* DisplayKeystoreViewController.xib in Resources */,
 				AC31CE43205B604500A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */,
 				6654923820D75C5C006CB3B2 /* SendViewController.xib in Resources */,
@@ -2765,6 +2812,7 @@
 				ACC8D0A320CC6F080049A741 /* ExportMnemonicViewController.xib in Resources */,
 				AC5E0992205F256500801738 /* AddTokenViewController.xib in Resources */,
 				AC69913F20AA68F7003593AE /* SettingWalletDetailTableViewCell.xib in Resources */,
+				AC13482B20E83ED100D922C0 /* fee_2_en.md in Resources */,
 				ACB9119120266EC200F14644 /* AddCustomizedTokenViewController.xib in Resources */,
 				AC54FD7F204FC6EE007E1DEB /* OpenSans-Italic.ttf in Resources */,
 				AC6D34BE20E00DD9008FD404 /* SwitchImportWalletMethodViewController.xib in Resources */,
@@ -2786,7 +2834,7 @@
 				AC13B30B2054A766008A72C0 /* BuyViewController.xib in Resources */,
 				AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */,
 				94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */,
-				AC13480520E7593300D922C0 /* fee_1.md in Resources */,
+				AC13480520E7593300D922C0 /* fee_1_zh-Hans.md in Resources */,
 				AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */,
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,

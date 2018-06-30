@@ -147,18 +147,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CoreDataManager.shared.saveContext()
     }
 
-    //MARK:- Language Setter
-    public func changeLanguage() {
-        print(UserDefaults.standard.object(forKey: "AppleLanguages") ?? "")
-        if   var arr = (UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]) {
-            let changedKey  = "zh-Hans" // ? "en":"zh-Hans"
-            
-            //this will set current language key for future use
-            UserDefaults.standard.set([changedKey], forKey: "AppleLanguages")
-            UserDefaults.standard.synchronize()
-            
-            //Run time  conversion if you want
-            Bundle.setLanguage(changedKey)//Magic Line ;)
-        }
-    }
 }

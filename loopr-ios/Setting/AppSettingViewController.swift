@@ -77,7 +77,7 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
             return createSettingPasscodeTableView()
         case 2:
             cell?.leftLabel.text = LocalizedString("Language", comment: "")
-            cell?.rightLabel.text = SettingDataManager.shared.getCurrentCurrency().name
+            cell?.rightLabel.text = SettingDataManager.shared.getCurrentLanguage().displayName
         default:
             break
         }

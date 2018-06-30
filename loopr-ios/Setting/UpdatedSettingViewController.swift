@@ -51,7 +51,7 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode")?.alpha(0.6), for: .highlighted)
         qrcodeButton.addTarget(self, action: #selector(self.pressedQRCodeButton(_:)), for: .touchUpInside)
 
-        myAddressInfoLabel.text = LocalizedString("My Wallet Address", comment: "")
+        
         myAddressInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         myAddressInfoLabel.textColor = UIColor.init(rgba: "#8493F4")
 
@@ -61,7 +61,6 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         addressLabel.textAlignment = .center
         addressLabel.lineBreakMode = .byTruncatingMiddle
         
-        copyButton.setTitle(LocalizedString("Copy", comment: ""), for: .normal)
         copyButton.clipsToBounds = true
         copyButton.setTitleColor(.gray, for: .disabled)
         copyButton.setTitleColor(GlobalPicker.themeColor, for: .normal)
@@ -85,6 +84,11 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         hideNavigationBar()
         setupNavigationBar()
         addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address.getAddressFormat()
+        settingsTableView.reloadData()
+        
+        // All localizedString need to be in viewWillApear
+        myAddressInfoLabel.text = LocalizedString("My Wallet Address", comment: "")
+        copyButton.setTitle(LocalizedString("Copy", comment: ""), for: .normal)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
