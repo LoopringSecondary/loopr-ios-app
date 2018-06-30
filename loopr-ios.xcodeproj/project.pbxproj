@@ -131,6 +131,8 @@
 		AC13481220E75D5900D922C0 /* deep_0.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480C20E75D2C00D922C0 /* deep_0.md */; };
 		AC13481320E75D5C00D922C0 /* deep_1.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480D20E75D3E00D922C0 /* deep_1.md */; };
 		AC13481420E75D5E00D922C0 /* asset_0.md in Resources */ = {isa = PBXBuildFile; fileRef = AC13480E20E75D4B00D922C0 /* asset_0.md */; };
+		AC13481820E80B4B00D922C0 /* SettingStyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13481620E80B4B00D922C0 /* SettingStyleTableViewCell.swift */; };
+		AC13481920E80B4B00D922C0 /* SettingStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13481720E80B4B00D922C0 /* SettingStyleTableViewCell.xib */; };
 		AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */; };
 		AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */; };
 		AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B3082054A766008A72C0 /* BuyViewController.swift */; };
@@ -711,6 +713,8 @@
 		AC13480C20E75D2C00D922C0 /* deep_0.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = deep_0.md; sourceTree = "<group>"; };
 		AC13480D20E75D3E00D922C0 /* deep_1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = deep_1.md; sourceTree = "<group>"; };
 		AC13480E20E75D4B00D922C0 /* asset_0.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = asset_0.md; sourceTree = "<group>"; };
+		AC13481620E80B4B00D922C0 /* SettingStyleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStyleTableViewCell.swift; sourceTree = "<group>"; };
+		AC13481720E80B4B00D922C0 /* SettingStyleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingStyleTableViewCell.xib; sourceTree = "<group>"; };
 		AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSellSwipeViewController.swift; sourceTree = "<group>"; };
 		AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyAndSellSwipeViewController.xib; sourceTree = "<group>"; };
 		AC13B3082054A766008A72C0 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -1295,6 +1299,18 @@
 				AC13480E20E75D4B00D922C0 /* asset_0.md */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		AC13481520E80ACE00D922C0 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				ACB911822026388700F14644 /* SettingViewController.swift */,
+				ACB911832026388700F14644 /* SettingViewController.xib */,
+				ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */,
+				ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */,
+				C87E226D2031708000323584 /* ToggleTableViewCell.swift */,
+			);
+			path = Archive;
 			sourceTree = "<group>";
 		};
 		AC13B305205488CF008A72C0 /* MarketPlaceOrder */ = {
@@ -2208,6 +2224,7 @@
 		ACB9117D2026381A00F14644 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				AC13481520E80ACE00D922C0 /* Archive */,
 				94AD1FDF208B8F5600C443E6 /* SettingCurrency */,
 				AC4F863A209D4842002E62AB /* SettingLRCFeeRatio */,
 				AC4F8643209D488F002E62AB /* SettingMarginSplit */,
@@ -2221,14 +2238,11 @@
 				AC6EC87720D7678700A34DF0 /* AppSettingViewController.xib */,
 				ACD2D93920D8977600580360 /* TradingSettingViewController.swift */,
 				ACD2D93A20D8977600580360 /* TradingSettingViewController.xib */,
+				AC13481620E80B4B00D922C0 /* SettingStyleTableViewCell.swift */,
+				AC13481720E80B4B00D922C0 /* SettingStyleTableViewCell.xib */,
 				ACD2D94520D8CE2000580360 /* TradeFAQ */,
-				ACB911822026388700F14644 /* SettingViewController.swift */,
-				ACB911832026388700F14644 /* SettingViewController.xib */,
-				ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */,
-				ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */,
 				ACB8485720BA75E7006B83AD /* SettingPasscodeTableViewCell.swift */,
 				ACB8485820BA75E7006B83AD /* SettingPasscodeTableViewCell.xib */,
-				C87E226D2031708000323584 /* ToggleTableViewCell.swift */,
 				ACBA47DF20788E690032C2B4 /* SettingManageWallet */,
 				AC76E47520493CB7008BA229 /* SettingLanguage */,
 			);
@@ -2646,6 +2660,7 @@
 				ACFEFEAA20C3986E00013921 /* AssetMarketViewController.xib in Resources */,
 				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
 				AC13480620E7593500D922C0 /* fee_2.md in Resources */,
+				AC13481920E80B4B00D922C0 /* SettingStyleTableViewCell.xib in Resources */,
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
 				ACC8D0A720CC95A00049A741 /* UpdatedAssetTableViewCell.xib in Resources */,
 				AC13480420E7593100D922C0 /* fee_0.md in Resources */,
@@ -3256,6 +3271,7 @@
 				AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
+				AC13481820E80B4B00D922C0 /* SettingStyleTableViewCell.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
 				AC4F8641209D4889002E62AB /* SettingMarginSplitViewController.swift in Sources */,
 				9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */,

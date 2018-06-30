@@ -17,6 +17,8 @@ class TradeFAQTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         seperateLine.backgroundColor = UIColor.init(rgba: "#E5E7ED")
+        nameLabel.font = FontConfigManager.shared.getLabelSCFont(size: 16)
+        nameLabel.textColor = UIColor.init(rgba: "#32384C")
     }
 
     class func getCellIdentifier() -> String {

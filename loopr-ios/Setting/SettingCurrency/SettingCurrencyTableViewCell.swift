@@ -19,7 +19,9 @@ class SettingCurrencyTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         theme_backgroundColor = GlobalPicker.backgroundColor
-        tintColor = UIColor.black
+        tintColor = GlobalPicker.themeColor
+        currencyDisplayLabel.textColor = UIColor.init(rgba: "#878FA4")
+        currencyDisplayLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
     }
 
     class func getCellIdentifier() -> String {

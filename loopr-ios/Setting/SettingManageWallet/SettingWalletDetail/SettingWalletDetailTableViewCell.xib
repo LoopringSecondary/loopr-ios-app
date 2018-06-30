@@ -28,7 +28,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="RK3-NK-bcD">
+                    <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="RK3-NK-bcD">
                         <rect key="frame" x="292" y="21" width="7" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="7" id="ETV-RS-mig"/>
@@ -36,7 +36,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4u-Y7-dZd">
-                        <rect key="frame" x="223" y="16" width="81" height="21"/>
+                        <rect key="frame" x="219" y="16" width="81" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="81" id="0qf-or-wsE"/>
                             <constraint firstAttribute="height" constant="21" id="Ohm-BR-ofP"/>
@@ -61,7 +61,7 @@
                     <constraint firstItem="RK3-NK-bcD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KZ0-2n-q6b"/>
                     <constraint firstItem="2Kb-BC-RPk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eaL-Hs-zkm"/>
                     <constraint firstAttribute="trailing" secondItem="RK3-NK-bcD" secondAttribute="trailing" constant="21" id="fan-ma-guW"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="K4u-Y7-dZd" secondAttribute="trailing" id="jqh-k1-Xcy"/>
+                    <constraint firstAttribute="trailing" secondItem="K4u-Y7-dZd" secondAttribute="trailing" constant="20" id="jqh-k1-Xcy"/>
                     <constraint firstItem="2Kb-BC-RPk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="kle-8d-eqb"/>
                     <constraint firstAttribute="trailing" secondItem="uQf-EI-Rsq" secondAttribute="trailing" constant="14" id="v0X-uI-LH6"/>
                 </constraints>

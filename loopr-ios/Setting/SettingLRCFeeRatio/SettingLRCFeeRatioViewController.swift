@@ -8,66 +8,74 @@
 
 import UIKit
 
-// It's designed not to merge SettingLRCFeeRatioViewController and SettingMarginSplitViewController
 class SettingLRCFeeRatioViewController: UIViewController {
 
-    var slider = UISlider()
-    var currentValueLabel = UILabel()
-    var minLabel = UILabel()
-    var maxLabel = UILabel()
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var textFieldBackgroundView: UIView!
 
+    @IBOutlet weak var slider: UISlider!
+    
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var maxLabel: UILabel!
+    
     var saveButton: UIButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // self.navigationItem.title = NSLocalizedString("LRC Fee Ratio", comment: "")
-        setBackButton()
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
-        // Setup UI in the scroll view
-        let screensize: CGRect = UIScreen.main.bounds
-        let screenWidth = screensize.width
+        typeLabel.font = FontConfigManager.shared.getLabelENFont()
+        typeLabel.text = NSLocalizedString("LRC Fee Ratio", comment: "")
         
-        let originY: CGFloat = 30
-        let padding: CGFloat = 15
-        
-        currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 30)
-        currentValueLabel.font = FontConfigManager.shared.getLabelENFont()
-        currentValueLabel.text = NSLocalizedString("LRC Fee Ratio", comment: "") + ": \(SettingDataManager.shared.getLrcFeeRatioDescription())"
-        view.addSubview(currentValueLabel)
+        textFieldBackgroundView.layer.borderColor = UIColor.init(rgba: "#E5E7ED").cgColor
+        textFieldBackgroundView.layer.borderWidth = 1.0
+        textFieldBackgroundView.layer.cornerRadius = 7.5
+        textFieldBackgroundView.clipsToBounds = true
 
-        slider.frame = CGRect(x: padding, y: currentValueLabel.frame.maxY + padding + 10, width: screenWidth-padding*2, height: 20)
         slider.minimumValue = 1
         slider.maximumValue = 50
         slider.value = Float(SettingDataManager.shared.getLrcFeeRatio() * 1000.0)
         
         slider.isContinuous = true
-        slider.tintColor = UIColor.black
+        slider.tintColor = GlobalPicker.themeColor
         slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         view.addSubview(slider)
 
-        minLabel.frame = CGRect(x: padding, y: slider.frame.maxY + 10, width: 100, height: 30)
         minLabel.font = FontConfigManager.shared.getLabelENFont()
-        minLabel.text = "slow"
+        minLabel.text = NSLocalizedString("Slow", comment: "")
         view.addSubview(minLabel)
         
         maxLabel.textAlignment = .right
-        maxLabel.frame = CGRect(x: screenWidth-padding-100, y: minLabel.frame.minY, width: 100, height: 30)
         maxLabel.font = FontConfigManager.shared.getLabelENFont()
-        maxLabel.text = "fast"
+        maxLabel.text = NSLocalizedString("Fast", comment: "")
         view.addSubview(maxLabel)
         
+        /*
         saveButton.setupRoundBlack()
         saveButton.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
-        saveButton.frame = CGRect(x: padding, y: minLabel.frame.maxY + padding*2 + 10, width: screenWidth - padding*2, height: 47)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
         view.addSubview(saveButton)
+        */
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("LRC Fee Ratio", comment: ""))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 
     // To avoid gesture conflicts in swiping to back and UISlider
@@ -82,7 +90,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         let step: Float = 1
         let roundedStepValue = Int(round(sender.value / step))
         let perMillSymbol = NumberFormatter().perMillSymbol!
-        currentValueLabel.text = NSLocalizedString("LRC Fee Ratio", comment: "") + ": \(roundedStepValue)\(perMillSymbol)"
+        typeLabel.text = "\(roundedStepValue)\(perMillSymbol)"
     }
 
     @objc func pressedSaveButton(_ sender: Any) {

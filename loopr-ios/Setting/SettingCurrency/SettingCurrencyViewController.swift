@@ -10,21 +10,23 @@ import UIKit
 
 class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+
     @IBOutlet weak var tableView: UITableView!
     
-    var currencies: [Currency] = []
+    var currencies: [Currency] = SettingDataManager.shared.getSupportedCurrencies()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        currencies = SettingDataManager.shared.getSupportedCurrencies()
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        
-        self.navigationItem.title = NSLocalizedString("Currency", comment: "")
-        setBackButton()
+
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
     }
@@ -32,6 +34,16 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Currency", comment: ""))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

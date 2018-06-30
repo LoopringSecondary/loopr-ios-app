@@ -24,6 +24,7 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,23 +59,26 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 49
+        return SettingStyleTableViewCell.getHeight()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return userPreferencesSectionForCell(row: indexPath.row)
-    }
-    
-    // Sections
-    func userPreferencesSectionForCell(row: Int) -> UITableViewCell {
-        switch row {
+        var cell = tableView.dequeueReusableCell(withIdentifier: SettingStyleTableViewCell.getCellIdentifier()) as? SettingStyleTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("SettingStyleTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? SettingStyleTableViewCell
+        }
+        
+        switch indexPath.row {
         case 0:
-            return createDetailTableCell(title: NSLocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
+            cell?.leftLabel.text = NSLocalizedString("Currency", comment: "")
+            cell?.rightLabel.text = SettingDataManager.shared.getCurrentCurrency().name
         case 1:
             return createSettingPasscodeTableView()
         default:
-            return UITableViewCell()
+            break
         }
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

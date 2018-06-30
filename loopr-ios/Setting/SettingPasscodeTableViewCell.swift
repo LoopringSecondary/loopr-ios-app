@@ -20,7 +20,7 @@ class SettingPasscodeTableViewCell: UITableViewCell {
         passcodeLabel.text = BiometricType.get().description
         passcodeLabel.font = FontConfigManager.shared.getLabelENFont()
         
-        passcodeSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
+        passcodeSwitch.transform = CGAffineTransform(scaleX: 0.81, y: 0.81)
         passcodeSwitch.setOn(AuthenticationDataManager.shared.getPasscodeSetting(), animated: false)
     }
     

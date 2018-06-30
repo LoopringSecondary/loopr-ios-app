@@ -24,6 +24,7 @@ class TradingSettingViewController: UIViewController, UITableViewDelegate, UITab
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +50,7 @@ class TradingSettingViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -57,24 +58,27 @@ class TradingSettingViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 49
+        return SettingStyleTableViewCell.getHeight()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tradingSectionForCell(row: indexPath.row)
-    }
-    
-    func tradingSectionForCell(row: Int) -> UITableViewCell {
-        switch row {
-        case 0:
-            return createBasicTableCell(title: NSLocalizedString("Contract Version", comment: ""), detailTitle: RelayAPIConfiguration.delegateAddress)
-        case 1:
-            return createDetailTableCell(title: NSLocalizedString("LRC Fee Ratio", comment: ""), detailTitle: SettingDataManager.shared.getLrcFeeRatioDescription())
-        case 2:
-            return createDetailTableCell(title: NSLocalizedString("Margin Split", comment: ""), detailTitle: SettingDataManager.shared.getMarginSplitDescription())
-        default:
-            return UITableViewCell()
+        var cell = tableView.dequeueReusableCell(withIdentifier: SettingStyleTableViewCell.getCellIdentifier()) as? SettingStyleTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("SettingStyleTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? SettingStyleTableViewCell
         }
+        
+        switch indexPath.row {
+        case 0:
+            cell?.leftLabel.text = NSLocalizedString("LRC Fee Ratio", comment: "")
+            cell?.rightLabel.text = SettingDataManager.shared.getLrcFeeRatioDescription()
+        case 1:
+            cell?.leftLabel.text = NSLocalizedString("Margin Split", comment: "")
+            cell?.rightLabel.text = SettingDataManager.shared.getMarginSplitDescription()
+        default:
+            break
+        }
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -83,13 +87,11 @@ class TradingSettingViewController: UIViewController, UITableViewDelegate, UITab
         case 0:
             switch indexPath.row {
             case 0:
-                print("contract version")
-            case 1:
                 print("LRC Fee ratio")
                 let viewController = SettingLRCFeeRatioViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
-            case 2:
+            case 1:
                 print("Margin split")
                 let viewController = SettingMarginSplitViewController()
                 viewController.hidesBottomBarWhenPushed = true
