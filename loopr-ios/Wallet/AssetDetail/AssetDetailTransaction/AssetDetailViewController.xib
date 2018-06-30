@@ -148,7 +148,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ze1-7w-Ov8">
-                    <rect key="frame" x="0.0" y="176" width="375" height="427"/>
+                    <rect key="frame" x="0.0" y="176" width="375" height="443"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -160,10 +160,10 @@
                     </userDefinedRuntimeAttributes>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="U8R-q4-vAw">
-                    <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                    <rect key="frame" x="0.0" y="619" width="375" height="48"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oU0-Pm-y7X">
-                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="64"/>
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="48"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="16"/>
                             <state key="normal" title="转入">
@@ -174,7 +174,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IV9-Ck-OQ7">
-                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="64"/>
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="48"/>
                             <color key="backgroundColor" name="Tokenest-background"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="16"/>
                             <state key="normal" title="转出">
@@ -186,7 +186,7 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="64" id="To1-dR-8PD"/>
+                        <constraint firstAttribute="height" constant="48" id="To1-dR-8PD"/>
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLh-rN-FhO">
