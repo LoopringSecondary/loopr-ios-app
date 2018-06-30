@@ -139,10 +139,8 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
                 message: nil,
                 preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                // setCurrentAppWallet will publish a currentAppWalletSwitchedReceivedNotification to dismiss 
                 CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
-                NotificationCenter.default.post(name: .currentAppWalletSwitched, object: nil)
-                // self.walletTableView.reloadData()
-                self.dismiss(animated: true, completion: nil)
             })
             alertController.addAction(defaultAction)
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in

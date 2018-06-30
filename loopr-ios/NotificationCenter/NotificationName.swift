@@ -18,6 +18,5 @@ extension Notification.Name {
     static let orderResponseReceived = Notification.Name("orderResponseReceived")
     
     // In-app notifications
-    static let appWalletDidUpdate = Notification.Name("appWalletDidUpdate")
     static let currentAppWalletSwitched = Notification.Name("currentAppWalletSwitched")
 }

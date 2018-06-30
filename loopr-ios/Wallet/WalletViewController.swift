@@ -89,8 +89,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Left menu
         leftViewController.delegate = self
-        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: leftViewController)
-        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         SideMenuManager.default.menuPresentMode = .menuSlideIn
         SideMenuManager.default.menuAnimationFadeStrength = 0.71
         SideMenuManager.default.menuShadowColor = UIColor.clear
@@ -240,6 +238,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc func pressedSwitchWalletButton(_ button: UIBarButtonItem) {
         print("pressedSwitchWalletButton")
+        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: leftViewController)
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
 
@@ -264,9 +264,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Update the headerBalanceViewController
         headerBalanceViewController.view.y = 0
         headerBalanceViewController.balanceLabel.alpha = 1.0
+        headerBalanceViewController.addTokenButton.alpha = 1.0
         
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         customizedNavigationBar.topItem?.title = buttonTitle
+        
+        dismiss(animated: true, completion: nil)
+        // let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: leftViewController)
+        // SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
     }
     
     // Scroll view delegate

@@ -42,6 +42,9 @@ class CurrentAppWalletDataManager {
         defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
         currentAppWallet = appWallet
         
+        // Update websocket
+        startGetBalance()
+        
         // TODO: This needs to join TokenLists
         self.assetsInHideSmallMode = []
         self.assets = []
@@ -69,10 +72,10 @@ class CurrentAppWalletDataManager {
         // Get nonce. It's a slow API request.
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
 
-        // Push a notification
-        NotificationCenter.default.post(name: .appWalletDidUpdate, object: nil)
-        
-        startGetBalance()
+        // Publish a notification to update UI
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .currentAppWalletSwitched, object: nil)
+        }
     }
     
     func getCurrentAppWallet() -> AppWallet? {
