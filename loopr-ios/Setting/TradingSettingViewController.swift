@@ -35,7 +35,7 @@ class TradingSettingViewController: UIViewController, UITableViewDelegate, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Trading_settings_in_grid", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Trading_settings_in_grid", comment: ""))
         // Reload data if the data is updated.
         tableView.reloadData()
     }
@@ -70,10 +70,10 @@ class TradingSettingViewController: UIViewController, UITableViewDelegate, UITab
         
         switch indexPath.row {
         case 0:
-            cell?.leftLabel.text = NSLocalizedString("LRC Fee Ratio", comment: "")
+            cell?.leftLabel.text = LocalizedString("LRC Fee Ratio", comment: "")
             cell?.rightLabel.text = SettingDataManager.shared.getLrcFeeRatioDescription()
         case 1:
-            cell?.leftLabel.text = NSLocalizedString("Margin Split", comment: "")
+            cell?.leftLabel.text = LocalizedString("Margin Split", comment: "")
             cell?.rightLabel.text = SettingDataManager.shared.getMarginSplitDescription()
         default:
             break

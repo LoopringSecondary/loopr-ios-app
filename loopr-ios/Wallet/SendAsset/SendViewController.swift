@@ -103,7 +103,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         addressTextField.keyboardType = .alphabet
         addressTextField.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         addressTextField.theme_tintColor = GlobalPicker.textColor
-        addressTextField.placeholder = NSLocalizedString("Enter the address", comment: "")
+        addressTextField.placeholder = LocalizedString("Enter the address", comment: "")
         addressTextField.text = self.address ?? ""
         addressTextField.borderStyle = .roundedRect
         addressTextField.setLeftPaddingPoints(8)
@@ -133,7 +133,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         amountTextField.setRightPaddingPoints(100)
         amountTextField.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.placeholder = NSLocalizedString("Enter the amount", comment: "")
+        amountTextField.placeholder = LocalizedString("Enter the amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: amountInfoLabel.frame.maxY, width: screenWidth-padding*2, height: 48)
         scrollView.addSubview(amountTextField)
@@ -176,7 +176,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         transactionTipButton.titleColor = UIColor.tokenestBackground
         transactionTipButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont()
         transactionTipButton.contentHorizontalAlignment = .right
-        transactionTipButton.title = NSLocalizedString("Recommended Gas Price", comment: "")
+        transactionTipButton.title = LocalizedString("Recommended Gas Price", comment: "")
         transactionTipButton.addTarget(self, action: #selector(pressedTipButton(_:)), for: .touchUpInside)
         scrollView.addSubview(transactionTipButton)
         
@@ -190,13 +190,13 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         
         transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMinLabel.font = FontConfigManager.shared.getLabelSCFont()
-        transactionAmountMinLabel.text = NSLocalizedString("Slow", comment: "")
+        transactionAmountMinLabel.text = LocalizedString("Slow", comment: "")
         scrollView.addSubview(transactionAmountMinLabel)
         
         transactionAmountCurrentLabel.textAlignment = .center
         transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
         transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelSCFont()
-        transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
+        transactionAmountCurrentLabel.text = LocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
         
         scrollView.addSubview(transactionAmountCurrentLabel)
         
@@ -209,7 +209,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         transactionAmountMaxLabel.textAlignment = .right
         transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelSCFont()
-        transactionAmountMaxLabel.text = NSLocalizedString("Fast", comment: "")
+        transactionAmountMaxLabel.text = LocalizedString("Fast", comment: "")
         scrollView.addSubview(transactionAmountMaxLabel)
         
         // send button
@@ -244,7 +244,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
+        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Send", comment: ""))
         self.tokenImage.image = asset.icon
         self.tokenLabel.text = asset.symbol
         self.nameLabel.text = asset.name
@@ -271,7 +271,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     func updateTransactionFeeAmountLabel(_ gasPriceInGwei: Double) {
         let amountInEther = gasPriceInGwei / 1000000000
         let totalGasInEther = amountInEther * Double(GasDataManager.shared.getGasLimit(by: "eth_transfer")!)
-        transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
+        transactionAmountCurrentLabel.text = LocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
             let transactionFeeInFiat = totalGasInEther * etherPrice
             transactionValueLabel.text = "\(totalGasInEther.withCommas(5))"
@@ -328,9 +328,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                         return true
                     }
                 }
-                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please input a correct address", comment: ""), textColor: .red)
+                updateLabel(label: addressInfoLabel, text: LocalizedString("Please input a correct address", comment: ""), textColor: .red)
             } else {
-                updateLabel(label: addressInfoLabel, text: NSLocalizedString("转账地址", comment: ""), textColor: .tokenestTip)
+                updateLabel(label: addressInfoLabel, text: LocalizedString("转账地址", comment: ""), textColor: .tokenestTip)
             }
         }
         return false
@@ -376,11 +376,11 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                         }
                     }
                 } else {
-                    let title = NSLocalizedString("Available Balance", comment: "")
+                    let title = LocalizedString("Available Balance", comment: "")
                     updateLabel(label: amountInfoLabel, text: "\(title) \(amountLabel.text!) \(asset.symbol)", textColor: .red)
                 }
             } else {
-                let text = NSLocalizedString("Please input a valid amount", comment: "")
+                let text = LocalizedString("Please input a valid amount", comment: "")
                 updateLabel(label: amountInfoLabel, text: text, textColor: .red)
             }
         } else {
@@ -388,7 +388,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             if amountTextField.text == "" {
                 text = "转账金额(\(asset.symbol))"
             } else {
-                text = NSLocalizedString("Please input a valid amount", comment: "")
+                text = LocalizedString("Please input a valid amount", comment: "")
             }
             updateLabel(label: amountInfoLabel, text: text, textColor: .tokenestTip)
         }
@@ -451,12 +451,12 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             self.pushController()
         }
         if !isAmountValid && amountInfoLabel.textColor != .red {
-            amountInfoLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            amountInfoLabel.text = LocalizedString("Please input a valid amount", comment: "")
             amountInfoLabel.textColor = .red
             amountInfoLabel.shake()
         }
         if !isAddressValid && addressInfoLabel.textColor != .red {
-            addressInfoLabel.text = NSLocalizedString("Please input a correct address", comment: "")
+            addressInfoLabel.text = LocalizedString("Please input a correct address", comment: "")
             addressInfoLabel.textColor = .red
             addressInfoLabel.shake()
         }
@@ -653,12 +653,12 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     }
     
     @objc func pressedHelpButton(_ sender: Any) {
-        let title = NSLocalizedString("What is gas?", comment: "")
-        let message = NSLocalizedString("Gas is...", comment: "") // TODO
+        let title = LocalizedString("What is gas?", comment: "")
+        let message = LocalizedString("Gas is...", comment: "") // TODO
         let alertController = UIAlertController(title: title,
                                                 message: message,
                                                 preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .cancel, handler: { _ in
+        let cancelAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .cancel, handler: { _ in
         })
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)

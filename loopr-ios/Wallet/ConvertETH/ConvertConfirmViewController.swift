@@ -52,7 +52,7 @@ class ConvertConfirmViewController: UIViewController {
     
     @IBAction func pressedConvertButton(_ sender: UIButton) {
         let amount = GethBigInt.generate(Double(self.convertAmount)!)!
-        SVProgressHUD.show(withStatus: NSLocalizedString("正在转换", comment: "") + "...")
+        SVProgressHUD.show(withStatus: LocalizedString("正在转换", comment: "") + "...")
         if convertAsset!.symbol.uppercased() == "ETH" {
             SendCurrentAppWalletDataManager.shared._deposit(amount: amount, completion: completion)
         } else if convertAsset!.symbol.uppercased() == "WETH" {

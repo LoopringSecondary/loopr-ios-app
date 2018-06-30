@@ -35,7 +35,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
 
-        createButton.setTitle(NSLocalizedString("Generate Wallet", comment: ""), for: .normal)
+        createButton.setTitle(LocalizedString("Generate Wallet", comment: ""), for: .normal)
         createButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
         createButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16, type: "Medium")
         createButton.addTarget(self, action: #selector(pressedCreateButton(_:)), for: UIControlEvents.touchUpInside)
@@ -43,7 +43,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         createButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         createButton.layer.masksToBounds = false
 
-        importButton.setTitle(NSLocalizedString("Import Wallet", comment: ""), for: .normal)
+        importButton.setTitle(LocalizedString("Import Wallet", comment: ""), for: .normal)
         importButton.setTitleColor(UIColor.white, for: .normal)
         importButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16, type: "Medium")
         importButton.addTarget(self, action: #selector(pressedImportButton(_:)), for: UIControlEvents.touchUpInside)
@@ -54,7 +54,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Manage Wallet", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Manage Wallet", comment: ""))
         
         // Reload data if the data is updated.
         tableView.reloadData()

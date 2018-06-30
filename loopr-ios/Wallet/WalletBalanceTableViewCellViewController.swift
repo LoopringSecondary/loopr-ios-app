@@ -63,16 +63,16 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         
         receiveButton.backgroundColor = UIColor.clear
         receiveButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14.0, type: "Medium")
-        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive"), title: NSLocalizedString("Receive", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
-        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive")?.alpha(0.6), title: NSLocalizedString("Receive", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .highlighted)
+        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive"), title: LocalizedString("Receive", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
+        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive")?.alpha(0.6), title: LocalizedString("Receive", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .highlighted)
         receiveButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
         receiveButton.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
         receiveButton.addTarget(self, action: #selector(self.pressedReceiveButton(_:)), for: .touchUpInside)
         
         sendButton.backgroundColor = UIColor.clear
         sendButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14.0, type: "Medium")
-        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send"), title: NSLocalizedString("Send", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
-        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: NSLocalizedString("Send", comment: ""), titlePosition: .left, additionalSpacing: iconTitlePadding, state: .highlighted)
+        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send"), title: LocalizedString("Send", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
+        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: LocalizedString("Send", comment: ""), titlePosition: .left, additionalSpacing: iconTitlePadding, state: .highlighted)
         sendButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
         sendButton.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
         sendButton.addTarget(self, action: #selector(self.pressedSendButton(_:)), for: .touchUpInside)

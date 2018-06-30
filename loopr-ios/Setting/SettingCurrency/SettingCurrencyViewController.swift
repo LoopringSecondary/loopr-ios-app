@@ -39,7 +39,7 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Currency", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Currency", comment: ""))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

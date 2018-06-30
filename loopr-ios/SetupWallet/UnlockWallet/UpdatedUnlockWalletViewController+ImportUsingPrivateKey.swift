@@ -20,8 +20,8 @@ extension UpdatedUnlockWalletViewController {
             
             // Check if it's duplicated.
             if AppWalletDataManager.shared.isDuplicatedAddress(address: ImportWalletUsingPrivateKeyDataManager.shared.address) {
-                let alert = UIAlertController(title: NSLocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                let alert = UIAlertController(title: LocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
                     
                 }))
                 self.present(alert, animated: true, completion: nil)
@@ -32,7 +32,7 @@ extension UpdatedUnlockWalletViewController {
             generateTempKeystore()
             
         } catch {
-            let banner = NotificationBanner.generate(title: NSLocalizedString("Invalid private key. Please enter again.", comment: ""), style: .danger)
+            let banner = NotificationBanner.generate(title: LocalizedString("Invalid private key. Please enter again.", comment: ""), style: .danger)
             banner.duration = 1.5
             banner.show()
         }
@@ -40,7 +40,7 @@ extension UpdatedUnlockWalletViewController {
     
     func generateTempKeystore() {
         var isSucceeded: Bool = false
-        SVProgressHUD.show(withStatus: NSLocalizedString("Initializing the wallet", comment: "") + "...")
+        SVProgressHUD.show(withStatus: LocalizedString("Initializing the wallet", comment: "") + "...")
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         DispatchQueue.global().async {

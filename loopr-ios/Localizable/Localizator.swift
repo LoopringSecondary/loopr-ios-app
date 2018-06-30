@@ -24,9 +24,8 @@ class Localizator {
     
     private let userDefaults                    = UserDefaults.standard
     private var availableLanguagesArray         = ["DeviceLanguage", "en", "zh-Hans"]
-    private var dicoLocalisation:NSDictionary!
-    
-    
+    private var dicoLocalisation: NSDictionary!
+
     private let kSaveLanguageDefaultKey         = "kSaveLanguageDefaultKey"
     
     // MARK: - Public properties
@@ -35,7 +34,7 @@ class Localizator {
     
     // MARK: - Public computed properties
     
-    var saveInUserDefaults:Bool {
+    var saveInUserDefaults: Bool {
         get {
             return (userDefaults.object(forKey: kSaveLanguageDefaultKey) != nil)
         }
@@ -74,13 +73,10 @@ class Localizator {
         return availableLanguagesArray
     }
     
-    
     // MARK: - Private instance methods
     
-    fileprivate func loadDictionaryForLanguage(_ newLanguage:String) -> Bool {
-        
+    fileprivate func loadDictionaryForLanguage(_ newLanguage: String) -> Bool {
         let arrayExt = newLanguage.components(separatedBy: "_")
-        
         for ext in arrayExt {
             if let path = Bundle(for: object_getClass(self)!).url(forResource: "Localizable", withExtension: "strings", subdirectory: nil, localization: ext)?.path {
                 if FileManager.default.fileExists(atPath: path) {
@@ -93,8 +89,7 @@ class Localizator {
         return false
     }
     
-    fileprivate func localizedStringForKey(_ key:String) -> String {
-        
+    fileprivate func localizedStringForKey(_ key: String) -> String {
         if let dico = dicoLocalisation {
             if let localizedString = dico[key] as? String {
                 return localizedString
@@ -106,8 +101,7 @@ class Localizator {
         }
     }
     
-    fileprivate func setLanguage(_ newLanguage:String) -> Bool {
-        
+    fileprivate func setLanguage(_ newLanguage: String) -> Bool {
         if (newLanguage == currentLanguage) || !availableLanguagesArray.contains(newLanguage) {
             return false
         }
@@ -119,6 +113,11 @@ class Localizator {
             NotificationCenter.default.post(name: kNotificationLanguageChanged, object: nil)
             return true
         } else if loadDictionaryForLanguage(newLanguage) {
+            // Update the setting. It only works when the application is restarted.
+            UserDefaults.standard.set([newLanguage], forKey: "AppleLanguages")
+            UserDefaults.standard.synchronize()
+            
+            // runtime
             NotificationCenter.default.post(name: kNotificationLanguageChanged, object: nil)
             if saveInUserDefaults {
                 userDefaults.set(currentLanguage, forKey: kSaveLanguageDefaultKey)

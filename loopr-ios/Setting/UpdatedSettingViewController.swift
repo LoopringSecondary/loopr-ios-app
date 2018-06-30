@@ -51,7 +51,7 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         qrcodeButton.setImage(UIImage.init(named: "Tokenest-setting-qrcode")?.alpha(0.6), for: .highlighted)
         qrcodeButton.addTarget(self, action: #selector(self.pressedQRCodeButton(_:)), for: .touchUpInside)
 
-        myAddressInfoLabel.text = NSLocalizedString("My Wallet Address", comment: "")
+        myAddressInfoLabel.text = LocalizedString("My Wallet Address", comment: "")
         myAddressInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         myAddressInfoLabel.textColor = UIColor.init(rgba: "#8493F4")
 
@@ -61,7 +61,7 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         addressLabel.textAlignment = .center
         addressLabel.lineBreakMode = .byTruncatingMiddle
         
-        copyButton.setTitle(NSLocalizedString("Copy", comment: ""), for: .normal)
+        copyButton.setTitle(LocalizedString("Copy", comment: ""), for: .normal)
         copyButton.clipsToBounds = true
         copyButton.setTitleColor(.gray, for: .disabled)
         copyButton.setTitleColor(GlobalPicker.themeColor, for: .normal)
@@ -170,16 +170,16 @@ class UpdatedSettingViewController: UIViewController, UITableViewDelegate, UITab
         switch indexPath.row {
         case 0:
             cell?.iconImageView.image = UIImage.init(named: "Tokenest-setting-wallet-management")
-            cell?.nameLabel.text = NSLocalizedString("Wallet Management", comment: "")
+            cell?.nameLabel.text = LocalizedString("Wallet Management", comment: "")
         case 1:
             cell?.iconImageView.image = UIImage.init(named: "Tokenest-trading-setting")
-            cell?.nameLabel.text = NSLocalizedString("Trading_settings_in_grid", comment: "")
+            cell?.nameLabel.text = LocalizedString("Trading_settings_in_grid", comment: "")
         case 2:
             cell?.iconImageView.image = UIImage.init(named: "Tokenest-app-settings")
-            cell?.nameLabel.text = NSLocalizedString("Settings_in_grid", comment: "")
+            cell?.nameLabel.text = LocalizedString("Settings_in_grid", comment: "")
         case 3:
             cell?.iconImageView.image = UIImage.init(named: "Tokenest-trading-faq")
-            cell?.nameLabel.text = NSLocalizedString("Trade FAQ", comment: "")
+            cell?.nameLabel.text = LocalizedString("Trade FAQ", comment: "")
         default:
             break
         }

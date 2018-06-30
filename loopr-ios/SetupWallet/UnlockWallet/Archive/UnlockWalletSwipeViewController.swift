@@ -135,7 +135,7 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     }
     
     func showAlert(decodedURL: String) {
-        let title = NSLocalizedString("QR Code type doesn't fit here", comment: "")
+        let title = LocalizedString("QR Code type doesn't fit here", comment: "")
         let alertPrompt = UIAlertController(title: title, message: "\(decodedURL)", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)

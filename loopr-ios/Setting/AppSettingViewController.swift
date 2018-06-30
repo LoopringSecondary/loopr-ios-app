@@ -35,7 +35,7 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Settings_in_grid", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Settings_in_grid", comment: ""))
         
         // Reload data if the data is updated.
         tableView.reloadData()
@@ -71,12 +71,12 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         
         switch indexPath.row {
         case 0:
-            cell?.leftLabel.text = NSLocalizedString("Currency", comment: "")
+            cell?.leftLabel.text = LocalizedString("Currency", comment: "")
             cell?.rightLabel.text = SettingDataManager.shared.getCurrentCurrency().name
         case 1:
             return createSettingPasscodeTableView()
         case 2:
-            cell?.leftLabel.text = NSLocalizedString("Language", comment: "")
+            cell?.leftLabel.text = LocalizedString("Language", comment: "")
             cell?.rightLabel.text = SettingDataManager.shared.getCurrentCurrency().name
         default:
             break

@@ -42,7 +42,7 @@ class QRCodeViewController: UIViewController {
         copyAddressButton.layer.shadowRadius = 8
         copyAddressButton.clipsToBounds = false
 
-        saveToAlbumButton.setTitle(NSLocalizedString("Save to Album", comment: ""), for: .normal)
+        saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
         saveToAlbumButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         saveToAlbumButton.layer.shadowRadius = 4

@@ -40,7 +40,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationItem.rightBarButtonItems = [searchButton]
         
         searchBar.showsCancelButton = false
-        searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        searchBar.placeholder = LocalizedString("Search", comment: "")
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
         searchBar.keyboardType = .alphabet
@@ -55,7 +55,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Add Token", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Add Token", comment: ""))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,7 +88,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.resignFirstResponder()
         searchBar.text = nil
         navigationItem.titleView = nil
-        self.navigationItem.title = NSLocalizedString("Tokens", comment: "")
+        self.navigationItem.title = LocalizedString("Tokens", comment: "")
         searchTextDidUpdate(searchText: "")
     }
     

@@ -57,7 +57,7 @@ class UpdatedImportWalletEnterWalletNameViewController: UIViewController, UIText
         
         // Update the navigation bar
         let navigationItem = UINavigationItem()
-        navigationItem.title = NSLocalizedString("Import Wallet", comment: "")
+        navigationItem.title = LocalizedString("Import Wallet", comment: "")
         customizedNavigationBar.setItems([navigationItem], animated: false)
         
         statusBarBackgroundView.backgroundColor = UIColor.init(rgba: "#2E2BA4")
@@ -88,13 +88,13 @@ class UpdatedImportWalletEnterWalletNameViewController: UIViewController, UIText
         infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         infoLabel.frame = CGRect(x: 72, y: infoImage.y+1, width: screenWidth - 72 - 35, height: 18)
         infoLabel.numberOfLines = 1
-        infoLabel.text = NSLocalizedString("Give your wallet an awesome name", comment: "")
+        infoLabel.text = LocalizedString("Give your wallet an awesome name", comment: "")
         mainScrollView.addSubview(infoLabel)
         
         walletNameInfoLabel.textColor = UIColor.tokenestTip
         walletNameInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         walletNameInfoLabel.frame = CGRect(x: 74, y: 105, width: 200, height: 17)
-        walletNameInfoLabel.text = NSLocalizedString("Wallet Name", comment: "")
+        walletNameInfoLabel.text = LocalizedString("Wallet Name", comment: "")
         mainScrollView.addSubview(walletNameInfoLabel)
         
         walletNameTextField.delegate = self
@@ -111,7 +111,7 @@ class UpdatedImportWalletEnterWalletNameViewController: UIViewController, UIText
         
         let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         numberToolbar.barStyle = .default
-        let doneBarButton = UIBarButtonItem(title: NSLocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(doneWithNumberPad))
+        let doneBarButton = UIBarButtonItem(title: LocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(doneWithNumberPad))
         doneBarButton.setTitleTextAttributes([
             NSAttributedStringKey.foregroundColor: UIColor(rgba: "#4350CC"),
             NSAttributedStringKey.font: FontConfigManager.shared.getLabelENFont(size: 16)
@@ -179,9 +179,9 @@ class UpdatedImportWalletEnterWalletNameViewController: UIViewController, UIText
     
     @objc func pressedContinueButton(_ sender: Any) {
         guard AppWalletDataManager.shared.isNewWalletNameToken(newWalletname: walletNameTextField.text ?? "") else {
-            let title = NSLocalizedString("The name is token, please try another one", comment: "")
+            let title = LocalizedString("The name is token, please try another one", comment: "")
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
                 
             }))
             self.present(alert, animated: true, completion: nil)

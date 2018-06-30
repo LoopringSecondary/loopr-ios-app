@@ -30,7 +30,7 @@ class AuthenticationDataManager {
     
     func authenticate(completion: @escaping (_ error: Error?) -> Void) {
         let context = LAContext()
-        let reason = NSLocalizedString("Authenticate to access your wallet", comment: "")
+        let reason = LocalizedString("Authenticate to access your wallet", comment: "")
         var authError: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, error in

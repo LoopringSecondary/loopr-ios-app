@@ -30,7 +30,7 @@ class UnlockWalletViewController_Archive: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Import Wallet", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Import Wallet", comment: ""))
         
         let screensize: CGRect = self.view.frame
         let screenWidth = screensize.width

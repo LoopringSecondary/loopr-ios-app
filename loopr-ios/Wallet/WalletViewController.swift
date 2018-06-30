@@ -141,7 +141,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         getBalanceFromRelay()
 
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
-        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
+        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
         customizedNavigationBar.topItem?.title = buttonTitle
     }
 
@@ -271,7 +271,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         headerBalanceViewController.balanceLabel.alpha = 1.0
         headerBalanceViewController.addTokenButton.alpha = 1.0
         
-        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
+        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
         customizedNavigationBar.topItem?.title = buttonTitle
         
         // Dismiss the side menu

@@ -69,7 +69,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountSellTextField.inputView = UIView()
         amountSellTextField.font = FontConfigManager.shared.getLabelENFont(size: 18)
         amountSellTextField.theme_tintColor = GlobalPicker.textColor
-        amountSellTextField.placeholder = NSLocalizedString("Enter the amount you have", comment: "")
+        amountSellTextField.placeholder = LocalizedString("Enter the amount you have", comment: "")
         amountSellTextField.textAlignment = .right
         scrollView.addSubview(amountSellTextField)
         
@@ -97,7 +97,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountBuyTextField.inputView = UIView()
         amountBuyTextField.font = FontConfigManager.shared.getLabelENFont(size: 18)
         amountBuyTextField.theme_tintColor = GlobalPicker.textColor
-        amountBuyTextField.placeholder = NSLocalizedString("Enter the amount you get", comment: "")
+        amountBuyTextField.placeholder = LocalizedString("Enter the amount you get", comment: "")
         amountBuyTextField.textAlignment = .right
         scrollView.addSubview(amountBuyTextField)
 
@@ -149,7 +149,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             }
         } else {
             let tokens = TradeDataManager.shared.tokenS.symbol
-            let title = NSLocalizedString("Available Balance", comment: "")
+            let title = LocalizedString("Available Balance", comment: "")
             if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
                 estimateValueInCurrency.text = "\(title) \(balance) \(tokens)"
             } else {
@@ -200,13 +200,13 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             self.pushController()
         }
         if !isSellValid && estimateValueInCurrency.textColor != .red {
-            estimateValueInCurrency.text = NSLocalizedString("Please input a valid amount", comment: "")
+            estimateValueInCurrency.text = LocalizedString("Please input a valid amount", comment: "")
             estimateValueInCurrency.textColor = .red
             estimateValueInCurrency.shake()
         }
         if !isBuyValid {
             availableLabel.isHidden = false
-            availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            availableLabel.text = LocalizedString("Please input a valid amount", comment: "")
             availableLabel.textColor = .red
             availableLabel.shake()
         }
@@ -258,7 +258,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     func validateAmountSell() -> Bool {
         var text: String
         let tokens = TradeDataManager.shared.tokenS.symbol
-        let title = NSLocalizedString("Available Balance", comment: "")
+        let title = LocalizedString("Available Balance", comment: "")
         if let amounts = amountSellTextField.text, let amountSell = Double(amounts) {
             if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
                 if amountSell > balance {

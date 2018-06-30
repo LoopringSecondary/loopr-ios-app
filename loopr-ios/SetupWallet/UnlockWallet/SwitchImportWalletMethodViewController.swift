@@ -39,7 +39,7 @@ class SwitchImportWalletMethodViewController: UIViewController, UITableViewDeleg
         scrollViewTap.numberOfTapsRequired = 1
         backgroundView.addGestureRecognizer(scrollViewTap)
         
-        importWalletButton.setTitle(NSLocalizedString("Import Wallet", comment: ""), for: .normal)
+        importWalletButton.setTitle(LocalizedString("Import Wallet", comment: ""), for: .normal)
         importWalletButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16, type: "Medium")
         importWalletButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
         importWalletButton.setTitleColor(UIColor.init(rgba: "#4A5668").withAlphaComponent(0.7), for: .highlighted)
@@ -82,7 +82,7 @@ class SwitchImportWalletMethodViewController: UIViewController, UITableViewDeleg
         cell.textLabel?.textAlignment = .center
 
         if types[indexPath.row] == .importUsingKeystore {
-            cell.textLabel?.text = types[indexPath.row].description + " " + NSLocalizedString("File", comment: "")
+            cell.textLabel?.text = types[indexPath.row].description + " " + LocalizedString("File", comment: "")
         } else {
             cell.textLabel?.text = types[indexPath.row].description
         }

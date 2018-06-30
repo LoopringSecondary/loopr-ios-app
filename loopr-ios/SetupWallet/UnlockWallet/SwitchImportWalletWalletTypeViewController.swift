@@ -39,7 +39,7 @@ class SwitchImportWalletWalletTypeViewController: UIViewController, UITableViewD
         scrollViewTap.numberOfTapsRequired = 1
         backgroundView.addGestureRecognizer(scrollViewTap)
         
-        importWalletButton.setTitle(NSLocalizedString("Select Your Wallet Type", comment: ""), for: .normal)
+        importWalletButton.setTitle(LocalizedString("Select Your Wallet Type", comment: ""), for: .normal)
         importWalletButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14, type: "Medium")
         importWalletButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
         importWalletButton.setTitleColor(UIColor.init(rgba: "#4A5668").withAlphaComponent(0.7), for: .highlighted)

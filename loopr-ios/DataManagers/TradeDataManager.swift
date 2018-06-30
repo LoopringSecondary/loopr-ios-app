@@ -62,14 +62,14 @@ class TradeDataManager {
     
     func setupErrorMessage() {
         self.errorMessage = [
-            "10001": NSLocalizedString("10001", comment: ""),
-            "50001": NSLocalizedString("50001", comment: ""),
-            "50002": NSLocalizedString("50002", comment: ""),
-            "50003": NSLocalizedString("50003", comment: ""),
-            "50004": NSLocalizedString("50004", comment: ""),
-            "50005": NSLocalizedString("50005", comment: ""),
-            "50006": NSLocalizedString("50006", comment: ""),
-            "50008": NSLocalizedString("50008", comment: "")
+            "10001": LocalizedString("10001", comment: ""),
+            "50001": LocalizedString("50001", comment: ""),
+            "50002": LocalizedString("50002", comment: ""),
+            "50003": LocalizedString("50003", comment: ""),
+            "50004": LocalizedString("50004", comment: ""),
+            "50005": LocalizedString("50005", comment: ""),
+            "50006": LocalizedString("50006", comment: ""),
+            "50008": LocalizedString("50008", comment: "")
         ]
     }
     
@@ -160,7 +160,7 @@ class TradeDataManager {
             }
         } else {
             var userInfo: [String: Any] = [:]
-            userInfo["message"] = NSLocalizedString("Information of two orders not complete!", comment: "")
+            userInfo["message"] = LocalizedString("Information of two orders not complete!", comment: "")
             let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
             completion(nil, error)
         }

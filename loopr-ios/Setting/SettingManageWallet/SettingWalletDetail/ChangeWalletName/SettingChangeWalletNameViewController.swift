@@ -26,11 +26,11 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         nameTextField.tag = 0
         nameTextField.font = FontConfigManager.shared.getLabelSCFont(size: 16)
         nameTextField.theme_tintColor = GlobalPicker.textColor
-        nameTextField.placeholder = NSLocalizedString("New Wallet Name", comment: "")
+        nameTextField.placeholder = LocalizedString("New Wallet Name", comment: "")
         
         let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         numberToolbar.barStyle = .default
-        let doneBarButton = UIBarButtonItem(title: NSLocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(pressedSaveButton))
+        let doneBarButton = UIBarButtonItem(title: LocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(pressedSaveButton))
         doneBarButton.setTitleTextAttributes([
             NSAttributedStringKey.foregroundColor: UIColor(rgba: "#4350CC"),
             NSAttributedStringKey.font: FontConfigManager.shared.getLabelENFont(size: 16)
@@ -45,13 +45,13 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Update Wallet Name", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Update Wallet Name", comment: ""))
         
         let rightButton = UIButton(type: UIButtonType.custom)
         rightButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         rightButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -16)
         rightButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14)
-        rightButton.title = NSLocalizedString("Confirmation", comment: "")
+        rightButton.title = LocalizedString("Confirmation", comment: "")
         rightButton.addTarget(self, action: #selector(pressedSaveButton), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: rightButton)
         customizedNavigationBar.topItem?.rightBarButtonItem = barButton
@@ -72,7 +72,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         print("wallet Name is: \(appWallet.name)")
         
         guard nameTextField.text?.count != 0 else {
-            let alertController = UIAlertController(title: NSLocalizedString("New wallet name can't be empty", comment: ""), message: nil, preferredStyle: .alert)
+            let alertController = UIAlertController(title: LocalizedString("New wallet name can't be empty", comment: ""), message: nil, preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
             })
             alertController.addAction(defaultAction)
@@ -81,9 +81,9 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         }
         
         guard AppWalletDataManager.shared.isNewWalletNameToken(newWalletname: nameTextField.text!) else {
-            let title = NSLocalizedString("The name is token, please try another one", comment: "")
+            let title = LocalizedString("The name is token, please try another one", comment: "")
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
                 
             }))
             self.present(alert, animated: true, completion: nil)

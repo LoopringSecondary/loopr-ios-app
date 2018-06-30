@@ -55,9 +55,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.backgroundColor = UIStyleConfig.tableViewBackgroundColor
         
         // Receive button
-        receiveButton.setTitle(NSLocalizedString("Receive", comment: ""), for: .normal)
+        receiveButton.setTitle(LocalizedString("Receive", comment: ""), for: .normal)
         // Send button
-        sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
+        sendButton.setTitle(LocalizedString("Send", comment: ""), for: .normal)
         
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {

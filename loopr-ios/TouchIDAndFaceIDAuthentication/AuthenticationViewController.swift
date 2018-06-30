@@ -20,7 +20,7 @@ class AuthenticationViewController: UIViewController {
         print("Show AuthenticationViewController")
 
         unlockAppButton1.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
-        unlockAppButton2.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
+        unlockAppButton2.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
         unlockAppButton2.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
 
         self.navigationController?.isNavigationBarHidden = true

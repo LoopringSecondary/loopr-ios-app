@@ -53,7 +53,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         
         // Update the navigation bar
         let navigationItem = UINavigationItem()
-        navigationItem.title = NSLocalizedString("Generate Wallet", comment: "")
+        navigationItem.title = LocalizedString("Generate Wallet", comment: "")
         customizedNavigationBar.setItems([navigationItem], animated: false)
 
         statusBarBackgroundView.backgroundColor = UIColor.init(rgba: "#2E2BA4")
@@ -95,7 +95,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         walletNameInfoLabel.textColor = UIColor.tokenestTip
         walletNameInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         walletNameInfoLabel.frame = CGRect(x: 74, y: 105, width: 200, height: 17)
-        walletNameInfoLabel.text = NSLocalizedString("Wallet Name", comment: "")
+        walletNameInfoLabel.text = LocalizedString("Wallet Name", comment: "")
         mainScrollView.addSubview(walletNameInfoLabel)
         
         walletNameTextField.delegate = self
@@ -107,7 +107,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         passwordInfoLabel.textColor = UIColor.tokenestTip
         passwordInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         passwordInfoLabel.frame = CGRect(x: 74, y: 186, width: 200, height: 17)
-        passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
+        passwordInfoLabel.text = LocalizedString("Password", comment: "")
         mainScrollView.addSubview(passwordInfoLabel)
         
         passwordTextField.textContentType = UITextContentType("")
@@ -122,7 +122,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         repeatPasswordInfoLabel.textColor = UIColor.tokenestTip
         repeatPasswordInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         repeatPasswordInfoLabel.frame = CGRect(x: 74, y: 267, width: 200, height: 17)
-        repeatPasswordInfoLabel.text = NSLocalizedString("Repeat Password", comment: "")
+        repeatPasswordInfoLabel.text = LocalizedString("Repeat Password", comment: "")
         mainScrollView.addSubview(repeatPasswordInfoLabel)
         
         repeatPasswordTextField.textContentType = UITextContentType("")
@@ -142,7 +142,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         
         let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         numberToolbar.barStyle = .default
-        let doneBarButton = UIBarButtonItem(title: NSLocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(doneWithNumberPad))
+        let doneBarButton = UIBarButtonItem(title: LocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(doneWithNumberPad))
         doneBarButton.setTitleTextAttributes([
             NSAttributedStringKey.foregroundColor: UIColor(rgba: "#4350CC"),
             NSAttributedStringKey.font: FontConfigManager.shared.getLabelENFont(size: 16)
@@ -233,9 +233,9 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
     
     @objc func pressedContinueButton(_ sender: Any) {
         guard AppWalletDataManager.shared.isNewWalletNameToken(newWalletname: walletNameTextField.text ?? "") else {
-            let title = NSLocalizedString("The name is token, please try another one", comment: "")
+            let title = LocalizedString("The name is token, please try another one", comment: "")
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
                 
             }))
             self.present(alert, animated: true, completion: nil)
@@ -277,7 +277,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         }
         if password != repeatPassword {
             validRepeatPassword = false
-            self.repeatPasswordInfoLabel.text = NSLocalizedString("Please input the consistant password", comment: "")
+            self.repeatPasswordInfoLabel.text = LocalizedString("Please input the consistant password", comment: "")
         }
         if !validRepeatPassword {
             self.repeatPasswordInfoLabel.shake()
@@ -312,17 +312,17 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         case passwordTextField.tag:
             if newLength > 0 && newLength < 6 {
                 passwordInfoLabel.textColor = UIColor.tokenestTip
-                passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
+                passwordInfoLabel.text = LocalizedString("Password", comment: "")
             } else if newLength >= 6 {
                 passwordInfoLabel.textColor = UIColor.tokenestTip
-                passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
+                passwordInfoLabel.text = LocalizedString("Password", comment: "")
             } else {
                 passwordInfoLabel.shake()
                 passwordInfoLabel.textColor = UIStyleConfig.red
             }
         case repeatPasswordTextField.tag:
             if newLength > 0 {
-                repeatPasswordInfoLabel.text = NSLocalizedString("Repeat Password", comment: "")
+                repeatPasswordInfoLabel.text = LocalizedString("Repeat Password", comment: "")
                 repeatPasswordInfoLabel.textColor = UIColor.tokenestTip
             } else {
                 repeatPasswordInfoLabel.shake()

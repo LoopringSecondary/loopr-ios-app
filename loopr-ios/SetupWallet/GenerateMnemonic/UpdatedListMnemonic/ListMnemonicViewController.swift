@@ -57,7 +57,7 @@ class ListMnemonicViewController: UIViewController {
         
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         skipMnemonicButton.addTarget(self, action: #selector(pressedSkipButton), for: .touchUpInside)
-        skipMnemonicButton.title = NSLocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
+        skipMnemonicButton.title = LocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
         skipMnemonicButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         skipMnemonicButton.setTitleColor(UIColor.init(rgba: "#F2F5F7"), for: .normal)
         if isCreatingWalletMode {
@@ -78,7 +78,7 @@ class ListMnemonicViewController: UIViewController {
             startInfolbel.text = "Backup help word"
             subStartInfoImageView.isHidden = true
             subStartInfoLabel.isHidden = false
-            subStartInfoLabel.text = NSLocalizedString("Backup Mnemonic", comment: "")
+            subStartInfoLabel.text = LocalizedString("Backup Mnemonic", comment: "")
         }
         
         infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
@@ -159,8 +159,8 @@ class ListMnemonicViewController: UIViewController {
     }
     
     func exit() {
-        let header = NSLocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
-        let footer = NSLocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
+        let header = LocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
+        let footer = LocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
         let attributedString = NSAttributedString(string: header + " " + "\(GenerateWalletDataManager.shared.walletName)" + " " + footer, attributes: [
             NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
             NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
@@ -168,12 +168,12 @@ class ListMnemonicViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alertController.setValue(attributedString, forKey: "attributedMessage")
         
-        let backAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: .default, handler: { _ in
+        let backAction = UIAlertAction(title: LocalizedString("Back", comment: ""), style: .default, handler: { _ in
             alertController.dismiss(animated: true, completion: nil)
         })
         alertController.addAction(backAction)
         
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
+        let confirmAction = UIAlertAction(title: LocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
             GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
                 if error == nil {
                     self.dismissGenerateWallet()

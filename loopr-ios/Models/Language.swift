@@ -14,8 +14,8 @@ class Language: Equatable {
     let displayName: String
 
     let map = [
-        "English_en": "English",
-        "Chinese_zh-Hans": "简体中文"
+        "en": "English",
+        "zh-Hans": "简体中文"
     ]
     
     init(name: String) {

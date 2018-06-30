@@ -26,7 +26,7 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Wallet", comment: "")
+        self.navigationItem.title = LocalizedString("Wallet", comment: "")
         
         walletTableView.delegate = self
         walletTableView.dataSource = self
@@ -41,11 +41,11 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
         let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 4))
         walletTableView.tableFooterView = footerView
 
-        createButton.setTitle(NSLocalizedString("Generate Wallet", comment: ""), for: .normal)
+        createButton.setTitle(LocalizedString("Generate Wallet", comment: ""), for: .normal)
         createButton.setupRoundPurple(height: 48, font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16))
         createButton.addTarget(self, action: #selector(pressedCreateButton(_:)), for: UIControlEvents.touchUpInside)
         
-        importButton.setTitle(NSLocalizedString("Import Wallet", comment: ""), for: .normal)
+        importButton.setTitle(LocalizedString("Import Wallet", comment: ""), for: .normal)
         importButton.setupRoundPurpleOutline(height: 48, font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16))
         importButton.addTarget(self, action: #selector(pressedImportButton(_:)), for: UIControlEvents.touchUpInside)
         
@@ -135,15 +135,15 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
         
         let appWallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
         if appWallet.address != CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address {
-            let alertController = UIAlertController(title: NSLocalizedString("Choose Wallet", comment: "") + ": \(appWallet.name)",
+            let alertController = UIAlertController(title: LocalizedString("Choose Wallet", comment: "") + ": \(appWallet.name)",
                 message: nil,
                 preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+            let defaultAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                 // setCurrentAppWallet will publish a currentAppWalletSwitchedReceivedNotification to dismiss 
                 CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
             })
             alertController.addAction(defaultAction)
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            let cancelAction = UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
             })
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)

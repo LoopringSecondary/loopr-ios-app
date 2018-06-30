@@ -68,7 +68,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
         
         // Convert button
         convertButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14)
-        convertButton.title = NSLocalizedString("Convert", comment: "")
+        convertButton.title = LocalizedString("Convert", comment: "")
         convertButton.setupRoundPurpleWithShadow()
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
@@ -85,7 +85,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Convert", comment: ""))
+        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Convert", comment: ""))
     }
     
     @objc func scrollViewTapped() {
@@ -179,14 +179,14 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
     func validate() -> GethBigInt? {
         var result: GethBigInt? = nil
         let symbol = asset!.symbol.uppercased()
-        let tipMessage = NSLocalizedString("Convert_TipInfo", comment: "")
+        let tipMessage = LocalizedString("Convert_TipInfo", comment: "")
         if let text = amountSTextField.text, let inputAmount = Double(text),
            let amount = availableLabels[symbol]?.text, let maxAmount = Double(amount) {
             if inputAmount > 0 {
                 if inputAmount > maxAmount {
                     availableLabels[symbol]?.shake()
                     tipLabel.textColor = .red
-                    tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+                    tipLabel.text = LocalizedString("Please input a valid amount", comment: "")
                 } else {
                     amountBTextField.text = amountSTextField.text
                     result = GethBigInt.generate(inputAmount)
@@ -196,7 +196,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
             } else {
                 tipLabel.textColor = .red
                 tipLabel.shake()
-                tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+                tipLabel.text = LocalizedString("Please input a valid amount", comment: "")
             }
         } else {
             if amountSTextField.text == "" {
@@ -206,7 +206,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
             } else {
                 tipLabel.textColor = .red
                 tipLabel.shake()
-                tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+                tipLabel.text = LocalizedString("Please input a valid amount", comment: "")
             }
         }
         return result
@@ -215,7 +215,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
     @IBAction func pressedConvertButton(_ sender: UIButton) {
         guard validate() != nil else {
             tipLabel.textColor = .red
-            tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            tipLabel.text = LocalizedString("Please input a valid amount", comment: "")
             tipLabel.shake()
             return
         }

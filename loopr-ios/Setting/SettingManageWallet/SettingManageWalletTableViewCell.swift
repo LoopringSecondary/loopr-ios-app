@@ -37,7 +37,7 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         toatalBalanceLabel.font = FontConfigManager.shared.getLabelENFont(size: 20)
         toatalBalanceLabel.textColor = UIColor.init(rgba: "#3658ED")
         
-        needVerifiedButton.setTitle(NSLocalizedString("Backup_Mnemonic_in_SettingManageWallet", comment: ""), for: .normal)
+        needVerifiedButton.setTitle(LocalizedString("Backup_Mnemonic_in_SettingManageWallet", comment: ""), for: .normal)
         needVerifiedButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 10)
         needVerifiedButton.setTitleColor(UIColor.init(rgba: "#8997F3"), for: .normal)
         needVerifiedButton.setTitleColor(UIColor.init(rgba: "#8997F3").withAlphaComponent(0.7), for: .normal)

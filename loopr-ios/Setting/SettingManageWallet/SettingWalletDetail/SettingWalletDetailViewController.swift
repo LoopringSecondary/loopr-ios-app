@@ -32,7 +32,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         
         totalBalanceInfoLabel.textColor = UIColor.white
         totalBalanceInfoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
-        totalBalanceInfoLabel.text = NSLocalizedString("Total Balance", comment: "") + "≈"
+        totalBalanceInfoLabel.text = LocalizedString("Total Balance", comment: "") + "≈"
         totalBalanceInfoLabel.textAlignment = .left
 
         totalBalanceLabel.textColor = UIColor.white
@@ -57,7 +57,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         
-        deleteWalletButton.setTitle(NSLocalizedString("Delete Wallet", comment: ""), for: .normal)
+        deleteWalletButton.setTitle(LocalizedString("Delete Wallet", comment: ""), for: .normal)
         deleteWalletButton.setTitleColor(UIColor.init(rgba: "#E83769"), for: .normal)
         deleteWalletButton.setTitleColor(UIColor.init(rgba: "#E83769").withAlphaComponent(0.3), for: .highlighted)
         deleteWalletButton.addTarget(self, action: #selector(pressedDeleteWalletButton(_:)), for: UIControlEvents.touchUpInside)
@@ -142,10 +142,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
 
     func presentAlertControllerToConfirmClearRecords() {
-        let header = NSLocalizedString("You are going to clear records of", comment: "")
-        let footer = NSLocalizedString("on this device.", comment: "")
+        let header = LocalizedString("You are going to clear records of", comment: "")
+        let footer = LocalizedString("on this device.", comment: "")
         let alertController = UIAlertController(title: "\(header) \(appWallet.name) \(footer)", message: nil, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+        let defaultAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
             AppWalletDataManager.shared.logout(appWallet: self.appWallet)
             if AppWalletDataManager.shared.getWallets().isEmpty {
                 self.navigationToSetupNavigationController()
@@ -154,7 +154,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             }
         })
         alertController.addAction(defaultAction)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+        let cancelAction = UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
         })
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
@@ -171,13 +171,13 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
     
     func exportingPrivateKey() {
-        let alertController = UIAlertController(title: NSLocalizedString("Export Private Key", comment: ""), message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: LocalizedString("Export Private Key", comment: ""), message: "", preferredStyle: .alert)
         alertController.addTextField { (textField) in
             textField.text = self.appWallet.privateKey
             textField.isEnabled = false
         }
         
-        let copyAction = UIAlertAction(title: NSLocalizedString("Copy", comment: ""), style: .default) { (_) in
+        let copyAction = UIAlertAction(title: LocalizedString("Copy", comment: ""), style: .default) { (_) in
             print("Copy private key")
             UIPasteboard.general.string = self.appWallet.privateKey
         }
@@ -186,18 +186,18 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
 
     func exportingKeystoreEnterPassword() {
-        let alertController = UIAlertController(title: NSLocalizedString("Please Enter Password", comment: ""), message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: LocalizedString("Please Enter Password", comment: ""), message: "", preferredStyle: .alert)
         alertController.addTextField { (textField) in
-            textField.placeholder = NSLocalizedString("Password", comment: "")
+            textField.placeholder = LocalizedString("Password", comment: "")
             textField.isSecureTextEntry = true
         }
 
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { (action) in
+        let cancelAction = UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .default) { (action) in
             
         }
         alertController.addAction(cancelAction)
         
-        let saveAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { (action) in
+        let saveAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default) { (action) in
             let firstTextField = alertController.textFields![0] as UITextField
             self.exportingKeystoreConfirmPassword(password: firstTextField.text!)
         }
@@ -214,7 +214,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         
         if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
             var isSucceeded: Bool = false
-            SVProgressHUD.show(withStatus: NSLocalizedString("Exporting keystore", comment: "") + "...")
+            SVProgressHUD.show(withStatus: LocalizedString("Exporting keystore", comment: "") + "...")
             let dispatchGroup = DispatchGroup()
             dispatchGroup.enter()
             DispatchQueue.global().async {

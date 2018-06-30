@@ -63,7 +63,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         
         // Update the navigation bar
         let navigationItem = UINavigationItem()
-        navigationItem.title = NSLocalizedString("Import Wallet", comment: "")
+        navigationItem.title = LocalizedString("Import Wallet", comment: "")
         customizedNavigationBar.setItems([navigationItem], animated: false)
         
         statusBarBackgroundView.backgroundColor = UIColor.init(rgba: "#2E2BA4")
@@ -124,7 +124,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         contentTextView.font = FontConfigManager.shared.getLabelENFont(size: 15)
         contentTextView.delegate = self
         contentTextView.autocapitalizationType = .none
-        // contentTextView.text = NSLocalizedString("Please enter the keystore", comment: "")
+        // contentTextView.text = LocalizedString("Please enter the keystore", comment: "")
         contentTextView.backgroundColor = UIColor.tokenestTextFieldBackground
         contentTextView.textColor = .black
         contentTextView.tintColor = UIColor.black
@@ -133,7 +133,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         passwordInfoLabel.textAlignment = .left
         passwordInfoLabel.textColor = UIColor.tokenestTip
         passwordInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
-        passwordInfoLabel.text = NSLocalizedString("Password", comment: "")
+        passwordInfoLabel.text = LocalizedString("Password", comment: "")
         mainScrollView.addSubview(passwordInfoLabel)
         
         passwordTextField.textContentType = UITextContentType("")
@@ -147,7 +147,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         selectWalletTypeInfoLabel.textAlignment = .left
         selectWalletTypeInfoLabel.textColor = UIColor.tokenestTip
         selectWalletTypeInfoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
-        selectWalletTypeInfoLabel.text = NSLocalizedString("Select Your Wallet Type", comment: "")
+        selectWalletTypeInfoLabel.text = LocalizedString("Select Your Wallet Type", comment: "")
         mainScrollView.addSubview(selectWalletTypeInfoLabel)
         
         selectWalletTypeBackground.layer.borderWidth = 0.5
@@ -185,7 +185,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         
         let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         numberToolbar.barStyle = .default
-        let doneBarButton = UIBarButtonItem(title: NSLocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(doneWithNumberPad))
+        let doneBarButton = UIBarButtonItem(title: LocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(doneWithNumberPad))
         doneBarButton.setTitleTextAttributes([
             NSAttributedStringKey.foregroundColor: UIColor(rgba: "#4350CC"),
             NSAttributedStringKey.font: FontConfigManager.shared.getLabelENFont(size: 16)
@@ -278,7 +278,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         
         var currentImportMethodDescription = currentImportMethod.description
         if currentImportMethod == .importUsingKeystore {
-            currentImportMethodDescription += " " + NSLocalizedString("File", comment: "")
+            currentImportMethodDescription += " " + LocalizedString("File", comment: "")
         }
         let titleWidth = currentImportMethodDescription.textWidth(font: FontConfigManager.shared.getLabelSCFont(size: 14))
         importMethodSelection.frame = CGRect(x: 76, y: 94, width: titleWidth, height: 17)

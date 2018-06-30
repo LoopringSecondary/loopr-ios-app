@@ -65,15 +65,15 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
             startInfolbel.text = "Backup help word"
             subStartInfoImageView.isHidden = true
             subStartInfoLabel.isHidden = false
-            subStartInfoLabel.text = NSLocalizedString("Verify Mnemonic", comment: "")
+            subStartInfoLabel.text = LocalizedString("Verify Mnemonic", comment: "")
         }
         
         infoLabel.textColor = UIColor.tokenestTip
         infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         infoLabel.numberOfLines = 1
-        infoLabel.text = NSLocalizedString("Please click words in order.", comment: "")
+        infoLabel.text = LocalizedString("Please click words in order.", comment: "")
         
-        clearButton.setTitle(NSLocalizedString("Clear", comment: ""), for: .normal)
+        clearButton.setTitle(LocalizedString("Clear", comment: ""), for: .normal)
         
         mnemonicBackgroundView.cornerRadius = 5
         mnemonicBackgroundView.layer.borderColor = UIColor.init(rgba: "#E5E7ED").cgColor
@@ -182,9 +182,9 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
             print("User input Mnemonic doesn't match")
             var title = ""
             if GenerateWalletDataManager.shared.getUserInputMnemonics().count == 0 {
-                title = NSLocalizedString("Please click words in order to verify your mnemonic.", comment: "")
+                title = LocalizedString("Please click words in order to verify your mnemonic.", comment: "")
             } else {
-                title = NSLocalizedString("Mnemonic doesn't match. Please verify again.", comment: "")
+                title = LocalizedString("Mnemonic doesn't match. Please verify again.", comment: "")
             }
             
             // Reset
@@ -205,15 +205,15 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
     }
 
     func exit() {
-        let header = NSLocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
-        let footer = NSLocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
+        let header = LocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
+        let footer = LocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
         let attributedString = NSAttributedString(string: header + " " + "\(GenerateWalletDataManager.shared.walletName)" + " " + footer, attributes: [
             NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
             NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
             ])
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alertController.setValue(attributedString, forKey: "attributedMessage")
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
+        let confirmAction = UIAlertAction(title: LocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
             GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
                 if error == nil {
                     self.dismissGenerateWallet()

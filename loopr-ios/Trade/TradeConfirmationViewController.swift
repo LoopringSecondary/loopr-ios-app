@@ -62,7 +62,7 @@ class TradeConfirmationViewController: UIViewController {
         scrollView.addSubview(arrowRightImageView)
         
         // Price label
-        priceLabel.text = NSLocalizedString("Price", comment: "")
+        priceLabel.text = LocalizedString("Price", comment: "")
         priceLabel.textColor = UIColor.black
         priceLabel.font = FontConfigManager.shared.getLabelENFont()
         priceLabel.frame = CGRect(x: padding, y: screenHeight * 0.57, width: 160, height: rowHeight)
@@ -79,7 +79,7 @@ class TradeConfirmationViewController: UIViewController {
         scrollView.addSubview(priceUnderLine)
         
         // Trading Fee
-        LRCFeeLabel.text = NSLocalizedString("Trading Fee", comment: "")
+        LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
         LRCFeeLabel.textColor = UIColor.black
         LRCFeeLabel.font = FontConfigManager.shared.getLabelENFont()
         LRCFeeLabel.frame = CGRect(x: padding, y: priceValueLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
@@ -96,7 +96,7 @@ class TradeConfirmationViewController: UIViewController {
         scrollView.addSubview(LRCFeeUnderLine)
         
         // Margin Split
-        marginSplitLabel.text = NSLocalizedString("Margin Split", comment: "")
+        marginSplitLabel.text = LocalizedString("Margin Split", comment: "")
         marginSplitLabel.textColor = UIColor.black
         marginSplitLabel.font = FontConfigManager.shared.getLabelENFont()
         marginSplitLabel.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
@@ -112,7 +112,7 @@ class TradeConfirmationViewController: UIViewController {
         scrollView.contentSize = CGSize(width: screenWidth, height: marginSplitLabel.frame.maxY + padding)
         
         // Button
-        placeOrderButton.setTitle(NSLocalizedString("Place Order", comment: ""), for: .normal)
+        placeOrderButton.setTitle(LocalizedString("Place Order", comment: ""), for: .normal)
         placeOrderButton.setupRoundBlack()
     }
 
@@ -136,8 +136,8 @@ class TradeConfirmationViewController: UIViewController {
     }
     
     func updateLabels(order: OriginalOrder) {
-        tokenSView.update(title: NSLocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
-        tokenBView.update(title: NSLocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
+        tokenSView.update(title: LocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(title: LocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
         let value = order.amountSell / order.amountBuy
         priceValueLabel.text = "\(value.withCommas()) \(order.market)"
         priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)

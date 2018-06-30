@@ -17,7 +17,7 @@ extension UpdatedUnlockWalletViewController {
         print("pressedUnlockButton")
         // TODO: Use notificatino to require
         guard password != "" else {
-            let notificationTitle = NSLocalizedString("Please enter a password", comment: "")
+            let notificationTitle = LocalizedString("Please enter a password", comment: "")
             let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
             banner.duration = 1.5
             banner.show()
@@ -25,7 +25,7 @@ extension UpdatedUnlockWalletViewController {
         }
         
         var isSucceeded: Bool = false
-        SVProgressHUD.show(withStatus: NSLocalizedString("Importing keystore", comment: "") + "...")
+        SVProgressHUD.show(withStatus: LocalizedString("Importing keystore", comment: "") + "...")
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         DispatchQueue.global().async {
@@ -43,8 +43,8 @@ extension UpdatedUnlockWalletViewController {
             SVProgressHUD.dismiss()
             if isSucceeded {
                 if AppWalletDataManager.shared.isDuplicatedAddress(address: ImportWalletUsingKeystoreDataManager.shared.address) {
-                    let alert = UIAlertController(title: NSLocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                    let alert = UIAlertController(title: LocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
                         
                     }))
                     self.present(alert, animated: true, completion: nil)

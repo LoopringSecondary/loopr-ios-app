@@ -53,30 +53,30 @@ class SettingWalletDetailTableViewCell: UITableViewCell {
     }
     
     func setupWalletName() {
-        contentTypeLabel.text = NSLocalizedString("Update Wallet Name", comment: "")
+        contentTypeLabel.text = LocalizedString("Update Wallet Name", comment: "")
         arrowRightIcon.isHidden = false
         actionLabel.isHidden = true
     }
     
     func setupBackupMnemonic() {
-        contentTypeLabel.text = NSLocalizedString("Backup Mnemonic", comment: "")
+        contentTypeLabel.text = LocalizedString("Backup Mnemonic", comment: "")
         arrowRightIcon.isHidden = true
         actionLabel.isHidden = false
-        actionLabel.text = NSLocalizedString("Backup", comment: "")
+        actionLabel.text = LocalizedString("Backup", comment: "")
     }
     
     func setupExportPrivateKey() {
-        contentTypeLabel.text = NSLocalizedString("Export Private Key", comment: "")
+        contentTypeLabel.text = LocalizedString("Export Private Key", comment: "")
         arrowRightIcon.isHidden = true
         actionLabel.isHidden = false
-        actionLabel.text = NSLocalizedString("Export", comment: "")
+        actionLabel.text = LocalizedString("Export", comment: "")
     }
     
     func setupExportKeystore() {
-        contentTypeLabel.text = NSLocalizedString("Export Keystore", comment: "")
+        contentTypeLabel.text = LocalizedString("Export Keystore", comment: "")
         arrowRightIcon.isHidden = true
         actionLabel.isHidden = false
-        actionLabel.text = NSLocalizedString("Export", comment: "")
+        actionLabel.text = LocalizedString("Export", comment: "")
     }
 
     class func getCellIdentifier() -> String {

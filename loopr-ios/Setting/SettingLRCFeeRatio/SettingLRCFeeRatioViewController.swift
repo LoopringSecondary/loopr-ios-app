@@ -30,7 +30,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
         typeLabel.font = FontConfigManager.shared.getLabelENFont()
-        typeLabel.text = NSLocalizedString("LRC Fee Ratio", comment: "")
+        typeLabel.text = LocalizedString("LRC Fee Ratio", comment: "")
         
         textFieldBackgroundView.layer.borderColor = UIColor.init(rgba: "#E5E7ED").cgColor
         textFieldBackgroundView.layer.borderWidth = 1.0
@@ -47,17 +47,17 @@ class SettingLRCFeeRatioViewController: UIViewController {
         view.addSubview(slider)
 
         minLabel.font = FontConfigManager.shared.getLabelENFont()
-        minLabel.text = NSLocalizedString("Slow", comment: "")
+        minLabel.text = LocalizedString("Slow", comment: "")
         view.addSubview(minLabel)
         
         maxLabel.textAlignment = .right
         maxLabel.font = FontConfigManager.shared.getLabelENFont()
-        maxLabel.text = NSLocalizedString("Fast", comment: "")
+        maxLabel.text = LocalizedString("Fast", comment: "")
         view.addSubview(maxLabel)
         
         /*
         saveButton.setupRoundBlack()
-        saveButton.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
+        saveButton.setTitle(LocalizedString("Save", comment: ""), for: .normal)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
         view.addSubview(saveButton)
         */
@@ -71,7 +71,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("LRC Fee Ratio", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("LRC Fee Ratio", comment: ""))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

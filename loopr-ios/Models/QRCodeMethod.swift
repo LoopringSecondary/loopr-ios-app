@@ -18,11 +18,11 @@ enum QRCodeMethod: String {
 
     var description: String {
         switch self {
-        case .create: return NSLocalizedString("Create", comment: "")
-        case .importUsingMnemonic: return NSLocalizedString("Mnemonic", comment: "")
-        case .importUsingKeystore: return NSLocalizedString("Keystore", comment: "")
-        case .importUsingPrivateKey: return NSLocalizedString("Private Key", comment: "")
-        case .authorization: return NSLocalizedString("Authorization", comment: "")
+        case .create: return LocalizedString("Create", comment: "")
+        case .importUsingMnemonic: return LocalizedString("Mnemonic", comment: "")
+        case .importUsingKeystore: return LocalizedString("Keystore", comment: "")
+        case .importUsingPrivateKey: return LocalizedString("Private Key", comment: "")
+        case .authorization: return LocalizedString("Authorization", comment: "")
         }
     }
     

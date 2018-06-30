@@ -23,16 +23,16 @@ extension Transaction {
         
         var description: String {
             switch self {
-            case .approved: return NSLocalizedString("Enabled", comment: "")
-            case .sent: return NSLocalizedString("Sent", comment: "")
-            case .received: return NSLocalizedString("Received", comment: "")
-            case .sold: return NSLocalizedString("Sold", comment: "")
-            case .bought: return NSLocalizedString("Bought", comment: "")
-            case .convert_income: return NSLocalizedString("Convert", comment: "") // eth <-> weth
-            case .convert_outcome: return NSLocalizedString("Convert", comment: "") // eth <-> weth
-            case .canceledOrder: return NSLocalizedString("Cancel Order(s)", comment: "")
-            case .cutoff: return NSLocalizedString("Cancel Order(s)", comment: "")
-            case .unsupportedContract: return NSLocalizedString("Unknown", comment: "")
+            case .approved: return LocalizedString("Enabled", comment: "")
+            case .sent: return LocalizedString("Sent", comment: "")
+            case .received: return LocalizedString("Received", comment: "")
+            case .sold: return LocalizedString("Sold", comment: "")
+            case .bought: return LocalizedString("Bought", comment: "")
+            case .convert_income: return LocalizedString("Convert", comment: "") // eth <-> weth
+            case .convert_outcome: return LocalizedString("Convert", comment: "") // eth <-> weth
+            case .canceledOrder: return LocalizedString("Cancel Order(s)", comment: "")
+            case .cutoff: return LocalizedString("Cancel Order(s)", comment: "")
+            case .unsupportedContract: return LocalizedString("Unknown", comment: "")
             }
         }
     }

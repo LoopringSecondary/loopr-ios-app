@@ -47,7 +47,7 @@ class TradeCompleteViewController: UIViewController {
         
         // 1st row: need A token
         needATipLabel.font = FontConfigManager.shared.getLabelENFont()
-        needATipLabel.text = NSLocalizedString("You Need More", comment: "")
+        needATipLabel.text = LocalizedString("You Need More", comment: "")
         needATipLabel.frame = CGRect(x: padding, y: padding, width: 150, height: 40)
         scrollView.addSubview(needATipLabel)
         needAInfoLabel.font = FontConfigManager.shared.getLabelENFont()
@@ -65,7 +65,7 @@ class TradeCompleteViewController: UIViewController {
         
         // 2nd row: need B token
         needBTipLabel.font = FontConfigManager.shared.getLabelENFont()
-        needBTipLabel.text = NSLocalizedString("You Need More", comment: "")
+        needBTipLabel.text = LocalizedString("You Need More", comment: "")
         needBTipLabel.frame = CGRect(x: padding, y: needATipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(needBTipLabel)
         needBInfoLabel.font = FontConfigManager.shared.getLabelENFont()
@@ -80,11 +80,11 @@ class TradeCompleteViewController: UIViewController {
         exchangedLabel.font = FontConfigManager.shared.getRegularFont(size: 20.0)
         exchangedInfoLabel.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
         if isBalanceEnough() {
-            exchangedLabel.text = NSLocalizedString("Placed!", comment: "")
-            exchangedInfoLabel.text = NSLocalizedString("Congradualations! Your order has been submited!", comment: "")
+            exchangedLabel.text = LocalizedString("Placed!", comment: "")
+            exchangedInfoLabel.text = LocalizedString("Congradualations! Your order has been submited!", comment: "")
         } else {
-            exchangedLabel.text = NSLocalizedString("Attention!", comment: "")
-            exchangedInfoLabel.text = NSLocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
+            exchangedLabel.text = LocalizedString("Attention!", comment: "")
+            exchangedInfoLabel.text = LocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
         }
     }
     
@@ -93,7 +93,7 @@ class TradeCompleteViewController: UIViewController {
     }
     
     func setupButtons() {
-        detailsButton.title = NSLocalizedString("Check Details", comment: "")
+        detailsButton.title = LocalizedString("Check Details", comment: "")
         detailsButton.setupRoundWhite()
         if isBalanceEnough() {
             detailsButton.isEnabled = true
@@ -103,7 +103,7 @@ class TradeCompleteViewController: UIViewController {
             detailsButton.layer.borderColor = UIColor.clear.cgColor
             detailsButton.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         }
-        doneButton.title = NSLocalizedString("Done", comment: "")
+        doneButton.title = LocalizedString("Done", comment: "")
         doneButton.setupRoundBlack()
     }
     
