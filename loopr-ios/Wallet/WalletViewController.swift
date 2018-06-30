@@ -215,6 +215,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let vc = TradeConfirmationViewController()
             vc.order = TradeDataManager.shared.orders[1]
             self.navigationController?.pushViewController(vc, animated: true)
+        } else if type == .address {
+            let vc = SendViewController()
+            vc.address = valueSent
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

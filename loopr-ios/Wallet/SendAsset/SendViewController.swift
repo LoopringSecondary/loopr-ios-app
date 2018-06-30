@@ -63,8 +63,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     var asset: Asset!
     var showCollection: Bool = false
     var recGasPriceInGwei: Double = 0
-    var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
     var selectedIndexPath: IndexPath!
+    var address: String!
+    var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,11 +73,12 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         // Do any additional setup after loading the view.
         maskView.alpha = 0
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
-        
         nameLabel.font = FontConfigManager.shared.getLabelENFont(size: 14)
         amountTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
-        
         collectionHeight.constant = getCollectionHeight()
+        if asset == nil {
+            asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
+        }
         
         tokensCollectionView.alpha = 0
         tokensCollectionView.dataSource = self
@@ -102,21 +104,23 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         addressTextField.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         addressTextField.theme_tintColor = GlobalPicker.textColor
         addressTextField.placeholder = NSLocalizedString("Enter the address", comment: "")
+        addressTextField.text = self.address ?? ""
         addressTextField.borderStyle = .roundedRect
+        addressTextField.setLeftPaddingPoints(8)
         addressTextField.setRightPaddingPoints(40)
         addressTextField.contentMode = UIViewContentMode.bottom
         addressTextField.frame = CGRect(x: padding, y: addressInfoLabel.frame.maxY, width: screenWidth-padding*2, height: 48)
         scrollView.addSubview(addressTextField)
         addressY = addressTextField.frame.minY
         
-        scanButton.image = #imageLiteral(resourceName: "Tokenest-scan")
+        scanButton.setImage(#imageLiteral(resourceName: "Tokenest-scan"), for: .normal)
         scanButton.frame = CGRect(x: screenWidth-padding-40, y: addressTextField.frame.origin.y+4, width: 40, height: 40)
         scanButton.addTarget(self, action: #selector(pressedScanButton(_:)), for: .touchUpInside)
         scrollView.addSubview(scanButton)
         
         // 2nd row: amount
         amountInfoLabel.frame = CGRect(x: padding, y: addressTextField.frame.maxY + padding, width: screenWidth, height: 40)
-        amountInfoLabel.text = "转账金额(ETH)"
+        amountInfoLabel.text = "转账金额(\(asset.symbol))"
         amountInfoLabel.font = FontConfigManager.shared.getLabelSCFont()
         amountInfoLabel.textColor = UIColor.tokenestTip
         scrollView.addSubview(amountInfoLabel)
@@ -125,6 +129,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         amountTextField.inputView = UIView()
         amountTextField.tag = 1
         amountTextField.borderStyle = .roundedRect
+        amountTextField.setLeftPaddingPoints(8)
         amountTextField.setRightPaddingPoints(100)
         amountTextField.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         amountTextField.theme_tintColor = GlobalPicker.textColor
@@ -231,7 +236,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             self.gasPriceInGwei = Double(gasPrice)
             self.recGasPriceInGwei = Double(gasPrice)
             DispatchQueue.main.async {
-                
                 self.updateTransactionFeeAmountLabel(self.gasPriceInGwei)
             }
         }
@@ -241,16 +245,12 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: NSLocalizedString("Send", comment: ""))
-        if asset == nil {
-            asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
-        }
         self.tokenImage.image = asset.icon
         self.tokenLabel.text = asset.symbol
         self.nameLabel.text = asset.name
-        self.amountLabel.text = asset.display
+        self.amountLabel.text = getAvailableString()
         if asset.symbol.uppercased() == "ETH" {
             amountETHTipLabel.isHidden = false
-            amountLabel.text = ConvertDataManager.shared.getMaxAmountString("ETH")
         }
     }
     
@@ -336,8 +336,34 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         return false
     }
     
+    func getAvailableAmount() -> Double {
+        var result: Double = 0
+        if let asset = self.asset {
+            let balance = asset.balance
+            if asset.symbol.uppercased() == "ETH" {
+                result = balance - 0.01
+            } else {
+                result = balance
+            }
+        }
+        return result
+    }
+    
+    func getAvailableString() -> String {
+        var result: String = ""
+        if let asset = self.asset {
+            if asset.symbol.uppercased() == "ETH" {
+                result = (asset.balance - 0.01).withCommas(6)
+            } else {
+                result = asset.display
+            }
+        }
+        return result
+    }
+    
     func validateAmount() -> Bool {
-        if let amount = Double(amountTextField.text ?? "0"), let balance = Double(amountLabel.text ?? "0") {
+        if let amount = Double(amountTextField.text ?? "0") {
+            let balance = getAvailableAmount()
             if amount > 0.0 {
                 if balance >= amount {
                     if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
@@ -358,7 +384,13 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 updateLabel(label: amountInfoLabel, text: text, textColor: .red)
             }
         } else {
-            updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .tokenestTip)
+            var text = ""
+            if amountTextField.text == "" {
+                text = "转账金额(\(asset.symbol))"
+            } else {
+                text = NSLocalizedString("Please input a valid amount", comment: "")
+            }
+            updateLabel(label: amountInfoLabel, text: text, textColor: .tokenestTip)
         }
         return false
     }
@@ -375,6 +407,8 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
         addressTextField.text = valueSent
+        activeTextFieldTag = addressTextField.tag
+        _ = validate()
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -383,7 +417,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         } else if textField.tag == 1 {
             showNumericKeyboard(textField: amountTextField)
         }
-        activeTextFieldTag = amountTextField.tag
+        activeTextFieldTag = textField.tag
         _ = validate()
         return true
     }
@@ -429,9 +463,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     }
     
     @objc func pressedMaxButton(_ sender: UIButton) {
-        amountTextField.text = asset.display
+        amountTextField.text = getAvailableString()
         if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
-            let total = asset.balance * price
+            let total = getAvailableAmount() * price
             updateLabel(label: amountInfoLabel, text: total.currency, textColor: .tokenestTip)
         }
         _ = validate()
@@ -582,14 +616,14 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 tokenImage.image = token.icon
                 nameLabel.text = token.source
                 tokenLabel.text = token.symbol
+                amountInfoLabel.text = "转账金额(\(token.symbol))"
                 if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: symbol) {
                     self.asset = asset
-                    amountLabel.text = asset.display
+                    self.amountLabel.text = getAvailableString()
                 }
             }
             if symbol.uppercased() == "ETH" {
                 amountETHTipLabel.isHidden = false
-                amountLabel.text = ConvertDataManager.shared.getMaxAmountString("ETH")
             } else {
                 amountETHTipLabel.isHidden = true
             }

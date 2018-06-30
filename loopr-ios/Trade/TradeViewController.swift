@@ -9,32 +9,26 @@
 import UIKit
 import Geth
 
-class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, AmountStackViewDelegate {
+class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
-    @IBOutlet weak var progressBar: UIView!
-    @IBOutlet weak var customNaviBar: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var nextBackgroundView: UIView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var historyButton: UIButton!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var exchangelabel: UILabel!
     
-    var qrCodeBarButton: UIBarButtonItem!
     var historyBarButton: UIBarButtonItem!
 
     // TokenS
     var tokenSButton: UIButton = UIButton()
-    var amountSellTextField: FloatLabelTextField!
+    var amountSellTextField: UITextField = UITextField()
     var tokenSUnderLine: UIView = UIView()
     var estimateValueInCurrency: UILabel = UILabel()
-    var amountStackView: AmountStackView!
-    
-    // Exchange label
-    var exchangeImage: UIImageView = UIImageView()
-    var exchangeLabel: UILabel = UILabel()
     
     // TokenB
     var tokenBButton: UIButton = UIButton()
-    var amountBuyTextField: FloatLabelTextField!
+    var amountBuyTextField: UITextField = UITextField()
     var totalUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
 
@@ -46,21 +40,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        progressBar.backgroundColor = GlobalPicker.themeColor
-        scrollViewButtonLayoutConstraint.constant = 0
         
-        let historyButton = UIButton(type: UIButtonType.custom)
-        // TODO: smaller images.
-        historyButton.theme_setImage(["Order-history-black", "Order-history-white"], forState: UIControlState.normal)
-        historyButton.setImage(UIImage(named: "Order-history-black")?.alpha(0.3), for: .highlighted)
-        historyButton.addTarget(self, action: #selector(self.pressedOrderHistoryButton(_:)), for: UIControlEvents.touchUpInside)
-        historyButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        historyBarButton = UIBarButtonItem(customView: historyButton)
-        
-        nextButton.title = NSLocalizedString("Next", comment: "")
-        nextButton.setupRoundBlack()
+        subtitleLabel.textColor = UIColor.tokenestTip
+        subtitleLabel.font = FontConfigManager.shared.getLabelSCFont(size: 18)
+        exchangelabel.textColor = UIColor.tokenestTableFont
+        exchangelabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -69,76 +53,55 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         let originY: CGFloat = 60
         let padding: CGFloat = 15
         let tokenButtonWidth: CGFloat = 60
+        let textFieldWidth: CGFloat = 200
 
         // First row: TokenS
-        
-        tokenSButton.setTitleColor(UIColor.black, for: .normal)
-        tokenSButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
-        tokenSButton.titleLabel?.font = FontConfigManager.shared.getLabelENFont()
-        tokenSButton.frame = CGRect(x: screenWidth-padding-tokenButtonWidth, y: originY, width: tokenButtonWidth, height: 40)
+        tokenSButton.setTitleColor(UIColor.tokenestTableFont, for: .normal)
+        tokenSButton.setTitleColor(UIColor.tokenestTableFont.withAlphaComponent(0.3), for: .highlighted)
+        tokenSButton.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 18)
+        tokenSButton.frame = CGRect(x: padding, y: originY, width: tokenButtonWidth, height: 40)
         tokenSButton.addTarget(self, action: #selector(pressedSwitchTokenSButton), for: .touchUpInside)
         scrollView.addSubview(tokenSButton)
         
-        amountSellTextField = FloatLabelTextField(frame: CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40))
+        amountSellTextField.frame = CGRect(x: screenWidth-textFieldWidth-padding, y: originY, width: textFieldWidth, height: 40)
         amountSellTextField.delegate = self
         amountSellTextField.tag = 0
         amountSellTextField.inputView = UIView()
-        amountSellTextField.font = FontConfigManager.shared.getLabelENFont()
+        amountSellTextField.font = FontConfigManager.shared.getLabelENFont(size: 18)
         amountSellTextField.theme_tintColor = GlobalPicker.textColor
         amountSellTextField.placeholder = NSLocalizedString("Enter the amount you have", comment: "")
-        amountSellTextField.contentMode = UIViewContentMode.bottom
+        amountSellTextField.textAlignment = .right
         scrollView.addSubview(amountSellTextField)
         
-        tokenSUnderLine.frame = CGRect(x: padding, y: tokenSButton.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        tokenSUnderLine.backgroundColor = UIColor.black
-        scrollView.addSubview(tokenSUnderLine)
-        
-        estimateValueInCurrency.font = FontConfigManager.shared.getLabelENFont()
-        estimateValueInCurrency.frame = CGRect(x: padding, y: tokenSUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
+        estimateValueInCurrency.textColor = UIColor.tokenestTip
+        estimateValueInCurrency.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        estimateValueInCurrency.frame = CGRect(x: screenWidth-padding-textFieldWidth, y: amountSellTextField.frame.maxY, width: textFieldWidth, height: 40)
+        estimateValueInCurrency.textAlignment = .right
         scrollView.addSubview(estimateValueInCurrency)
         
-        amountStackView = AmountStackView(frame: CGRect(x: screenWidth-100-padding, y: tokenSUnderLine.frame.maxY, width: 100, height: 40))
-        amountStackView.delegate = self
-        scrollView.addSubview(amountStackView)
+        tokenSUnderLine.frame = CGRect(x: padding, y: estimateValueInCurrency.frame.maxY, width: screenWidth - padding * 2, height: 0.5)
+        tokenSUnderLine.backgroundColor = UIColor.tokenestBorder
+        scrollView.addSubview(tokenSUnderLine)
         
         // Second row: exchange label
-        
-        exchangeImage.image = UIImage(named: "Trading")
-        exchangeLabel.font = FontConfigManager.shared.getLabelENFont(size: 15)
-        exchangeLabel.textAlignment = .center
-        exchangeLabel.frame = CGRect(x: 0, y: estimateValueInCurrency.frame.maxY + padding*2, width: screenWidth, height: 40)
-        scrollView.addSubview(exchangeLabel)
-        
-        // Thrid row: TokenB
-
-        tokenBButton.setTitleColor(UIColor.black, for: .normal)
-        tokenBButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
-        tokenBButton.titleLabel?.font = FontConfigManager.shared.getLabelENFont()
-        tokenBButton.frame = CGRect(x: screenWidth-padding-tokenButtonWidth, y: exchangeLabel.frame.maxY + padding*2, width: tokenButtonWidth, height: 40)
+        tokenBButton.setTitleColor(UIColor.tokenestTableFont, for: .normal)
+        tokenBButton.setTitleColor(UIColor.tokenestTableFont.withAlphaComponent(0.3), for: .highlighted)
+        tokenBButton.titleLabel?.font = FontConfigManager.shared.getLabelENFont(size: 18)
+        tokenBButton.frame = CGRect(x: padding, y: tokenSUnderLine.frame.maxY + padding*2, width: tokenButtonWidth, height: 40)
         tokenBButton.addTarget(self, action: #selector(pressedSwitchTokenBButton), for: .touchUpInside)
         scrollView.addSubview(tokenBButton)
         
-        amountBuyTextField = FloatLabelTextField(frame: CGRect(x: padding, y: exchangeLabel.frame.maxY + padding*2, width: screenWidth-padding*2-80, height: 40))
+        amountBuyTextField.frame = CGRect(x: screenWidth-padding-textFieldWidth, y: tokenSUnderLine.frame.maxY + padding*2, width: textFieldWidth, height: 40)
         amountBuyTextField.delegate = self
         amountBuyTextField.tag = 2
         amountBuyTextField.inputView = UIView()
-        amountBuyTextField.font = FontConfigManager.shared.getLabelENFont()
+        amountBuyTextField.font = FontConfigManager.shared.getLabelENFont(size: 18)
         amountBuyTextField.theme_tintColor = GlobalPicker.textColor
         amountBuyTextField.placeholder = NSLocalizedString("Enter the amount you get", comment: "")
-        amountBuyTextField.contentMode = UIViewContentMode.bottom
+        amountBuyTextField.textAlignment = .right
         scrollView.addSubview(amountBuyTextField)
-        
-        totalUnderLine.frame = CGRect(x: padding, y: tokenBButton.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        totalUnderLine.backgroundColor = UIColor.black
-        scrollView.addSubview(totalUnderLine)
-        
-        availableLabel.text = ""
-        availableLabel.font = FontConfigManager.shared.getLabelENFont()
-        availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
-        scrollView.addSubview(availableLabel)
 
-        scrollView.contentSize = CGSize(width: screenWidth, height: availableLabel.frame.maxY + 30)
-        
+        scrollView.contentSize = CGSize(width: screenWidth, height: amountBuyTextField.frame.maxY + 30)
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
@@ -151,13 +114,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customNaviBar, title: "P2P交易")
-        
-        // A hack solution to bring history icon back. It's not a perfect soluction
-        customNaviBar.topItem?.leftBarButtonItem = qrCodeBarButton
-        customNaviBar.topItem?.rightBarButtonItem = historyBarButton
-        
+        self.navigationController?.setToolbarHidden(true, animated: false)
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
         tokenSButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)
@@ -168,7 +125,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setToolbarHidden(false, animated: false)
     }
     
     func updateInfoLabel() {
@@ -176,13 +133,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         let tokenb = TradeDataManager.shared.tokenB.symbol
         let pair = TradeDataManager.shared.tradePair
         if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            exchangeLabel.isHidden = false
-            exchangeLabel.text = "Exchange (1 \(tokens) ≈ \(market.balance) \(tokenb))"
-            let width = (UIScreen.main.bounds.width - exchangeLabel.intrinsicContentSize.width) / 2
-            exchangeImage.frame = CGRect(x: width - 25, y: 10, width: 20, height: 20)
-            exchangeLabel.addSubview(exchangeImage)
+            exchangelabel.isHidden = false
+            exchangelabel.text = "1 \(tokens) ≈ \(market.balance) \(tokenb)"
         } else {
-            exchangeLabel.isHidden = true
+            exchangelabel.isHidden = true
         }
     }
     
@@ -212,13 +166,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         hideNumericKeyboard()
     }
     
-    @objc func pressedOrderHistoryButton(_ sender: Any) {
-        print("pressedOrderHistoryButton")
-        let viewController = P2POrderHistoryViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     @objc func pressedSwitchTokenSButton(_ sender: Any) {
         print("pressedSwitchTokenSButton")
         let viewController = SwitchTradeTokenViewController()
@@ -231,6 +178,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         print("pressedSwitchTokenBButton")
         let viewController = SwitchTradeTokenViewController()
         viewController.type = .tokenB
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func pressedHistoryButton(_ sender: UIButton) {
+        let viewController = P2POrderHistoryViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -386,17 +339,14 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     func showNumericKeyboard(textField: UITextField) {
         if !isNumericKeyboardShown {
             let width = self.view.frame.width
-            let height = self.nextBackgroundView.frame.origin.y
-
-            scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
-            
+            let height = self.view.frame.height
+            scrollViewBottom.constant = DefaultNumericKeyboard.height
             numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate = self
             view.addSubview(numericKeyboardView)
-            view.bringSubview(toFront: nextBackgroundView)
-            view.bringSubview(toFront: nextButton)
             
-            let destinateY = height - DefaultNumericKeyboard.height
+            let barHeight = self.tabBarController?.tabBar.frame.height ?? 49.0
+            let destinateY = height - DefaultNumericKeyboard.height - barHeight
             
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
@@ -421,13 +371,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     func hideNumericKeyboard() {
         if isNumericKeyboardShown {
             let width = self.view.frame.width
-            let height = self.nextBackgroundView.frame.origin.y
-            let destinateY = height
-            self.scrollViewButtonLayoutConstraint.constant = 0
+            let height = self.view.frame.height
+            self.scrollViewBottom.constant = 0
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
-                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
+                self.numericKeyboardView.frame = CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height)
             }, completion: { finished in
                 self.isNumericKeyboardShown = false
                 if finished {
