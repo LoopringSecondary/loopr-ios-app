@@ -25,6 +25,8 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     
     @IBOutlet weak var deleteWalletButton: UIButton!
 
+    @IBOutlet weak var presentedBackgroundView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,6 +63,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         deleteWalletButton.setTitleColor(UIColor.init(rgba: "#E83769"), for: .normal)
         deleteWalletButton.setTitleColor(UIColor.init(rgba: "#E83769").withAlphaComponent(0.3), for: .highlighted)
         deleteWalletButton.addTarget(self, action: #selector(pressedDeleteWalletButton(_:)), for: UIControlEvents.touchUpInside)
+        
+        presentedBackgroundView.backgroundColor = UIColor.clear
+        presentedBackgroundView.isHidden = true
+        view.bringSubview(toFront: presentedBackgroundView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -242,9 +248,18 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             dispatchGroup.notify(queue: .main) {
                 SVProgressHUD.dismiss()
                 if isSucceeded {
-                    let viewController = ExportKeystoreSwipeViewController()
-                    viewController.keystore = self.keystore
-                    self.navigationController?.pushViewController(viewController, animated: true)
+                    let viewController = ExportKeystoreViewController()
+                    viewController.delegate = self
+                    viewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+                    viewController.setKeystore(self.keystore)
+                    self.presentedBackgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+                    self.presentedBackgroundView.isHidden = false
+                    UIView.animate(withDuration: 0.3) {
+                        self.presentedBackgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+                    }
+                    self.present(viewController, animated: true, completion: {
+                        
+                    })
                 } else {
                     let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
                     banner.duration = 1.5
@@ -265,9 +280,28 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
                 return
             }
 
-            let viewController = ExportKeystoreSwipeViewController()
-            viewController.keystore = appWallet.getKeystore()
-            self.navigationController?.pushViewController(viewController, animated: true)
+            let viewController = ExportKeystoreViewController()
+            viewController.delegate = self
+            viewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+            viewController.setKeystore(appWallet.getKeystore())
+            self.presentedBackgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+            self.presentedBackgroundView.isHidden = false
+            UIView.animate(withDuration: 0.3) {
+                self.presentedBackgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+            }
+            self.present(viewController, animated: true, completion: {
+                
+            })
         }
+    }
+}
+
+extension SettingWalletDetailViewController: ExportKeystoreViewControllerDelegate {
+    func dismissExportKeystoreViewController() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.presentedBackgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        }, completion: { (_) in
+            self.presentedBackgroundView.isHidden = true
+        })
     }
 }

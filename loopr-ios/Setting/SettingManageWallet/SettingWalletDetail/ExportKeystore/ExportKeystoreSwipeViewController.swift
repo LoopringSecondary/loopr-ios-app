@@ -10,7 +10,7 @@ import UIKit
 
 class ExportKeystoreSwipeViewController: SwipeViewController {
     
-    var keystore: String = ""
+    private var keystore: String = ""
 
     private var viewControllers: [UIViewController] = []
     var options = SwipeViewOptions()
@@ -22,17 +22,8 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         self.navigationItem.title = LocalizedString("Export Keystore", comment: "")
         setBackButton()
 
-        let displayKeystoreViewController = DisplayKeystoreViewController()
-        displayKeystoreViewController.keystore = keystore
-        
-        let displayKeystoreInQRCodeViewController = DisplayKeystoreInQRCodeViewController()
-        displayKeystoreInQRCodeViewController.keystore = keystore
-        
-        viewControllers = [displayKeystoreViewController, displayKeystoreInQRCodeViewController]
-
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
-        options.swipeTabView.underlineView.margin = 85
         
         options.swipeTabView.style = .segmented
         options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
@@ -43,6 +34,17 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setKeystore(_ keystore: String) {
+        let displayKeystoreViewController = DisplayKeystoreViewController()
+        displayKeystoreViewController.keystore = keystore
+        
+        let displayKeystoreInQRCodeViewController = DisplayKeystoreInQRCodeViewController()
+        displayKeystoreInQRCodeViewController.keystore = keystore
+        
+        viewControllers = [displayKeystoreViewController, displayKeystoreInQRCodeViewController]
+        swipeView.reloadData(options: options)
     }
 
     // MARK: - Delegate
@@ -77,13 +79,11 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
     
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {
         var viewController: UIViewController
-
         if index == 0 {
             viewController = viewControllers[0]
         } else {
             viewController = viewControllers[1]
         }
-        
         self.addChildViewController(viewController)
         return viewController
     }

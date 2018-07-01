@@ -41,16 +41,16 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-qr-header" translatesAutoresizingMaskIntoConstraints="NO" id="Ria-tk-td6">
-                    <rect key="frame" x="16" y="201.99999999999997" width="343" height="120.66666666666666"/>
+                    <rect key="frame" x="16" y="202" width="343" height="120"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-qr-line" translatesAutoresizingMaskIntoConstraints="NO" id="T3e-GW-rgK">
-                    <rect key="frame" x="26" y="322" width="323" height="0.66666666666668561"/>
+                    <rect key="frame" x="26" y="321.33333333333331" width="323" height="0.66666666666668561"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="71G-zL-lRB"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxo-fS-cjo">
-                    <rect key="frame" x="112.66666666666669" y="378.66666666666669" width="150" height="150.00000000000006"/>
+                    <rect key="frame" x="112.66666666666669" y="378" width="150" height="150"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Jxo-fS-cjo" secondAttribute="height" id="yLV-La-av1"/>
                     </constraints>
@@ -62,7 +62,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-nI-gps">
-                    <rect key="frame" x="75" y="584" width="225" height="48"/>
+                    <rect key="frame" x="75" y="583.33333333333337" width="225" height="48"/>
                     <color key="backgroundColor" name="Tokenest-button"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="zuf-3t-ySU"/>
@@ -103,7 +103,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUP-l3-OtM">
-                    <rect key="frame" x="263" y="247.33333333333337" width="64" height="30"/>
+                    <rect key="frame" x="263" y="247" width="64" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="64" id="3h0-bM-cOa"/>
@@ -134,7 +134,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSD-WS-ef8">
-                    <rect key="frame" x="48" y="276" width="160" height="15"/>
+                    <rect key="frame" x="48" y="275.33333333333331" width="160" height="15"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="p0J-38-wXH"/>
                     </constraints>

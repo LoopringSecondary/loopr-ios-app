@@ -121,7 +121,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
                 SVProgressHUD.dismiss()
                 if isSucceeded {
                     let viewController = ExportKeystoreSwipeViewController()
-                    viewController.keystore = self.keystore
+                    viewController.setKeystore(self.keystore)
                     self.navigationController?.pushViewController(viewController, animated: true)
                 } else {
                     let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
@@ -144,7 +144,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             }
 
             let viewController = ExportKeystoreSwipeViewController()
-            viewController.keystore = appWallet.getKeystore()
+            viewController.setKeystore(self.keystore)
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
