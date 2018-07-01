@@ -18,6 +18,8 @@ class SettingManageWalletTableViewCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var toatalBalanceLabel: UILabel!
     
+    @IBOutlet weak var nameLabelTrailingConstraint: NSLayoutConstraint!
+    
     var pressedNeedVerifiedButtonClosure: (() -> Void)?
     var needVerifiedButton: UIButton = UIButton()
 
@@ -30,6 +32,7 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         baseView.backgroundColor = UIColor.white
         baseView.cornerRadius = 7.5
         nameLabel.font = FontConfigManager.shared.getLabelENFont(size: 18)
+        nameLabel.lineBreakMode = .byTruncatingMiddle
         addressLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         addressLabel.textColor = UIColor.init(rgba: "#878FA4")
         addressLabel.backgroundColor = UIColor.init(rgba: "#F4F6F8")
@@ -59,8 +62,19 @@ class SettingManageWalletTableViewCell: UITableViewCell {
             if wallet.isVerified {
                 needVerifiedButton.isHidden = true
             } else {
-                print(nameLabel.frame.maxX + nameLabel.intrinsicContentSize.width + 10)
-                needVerifiedButton.frame = CGRect.init(x: nameLabel.frame.minX + nameLabel.intrinsicContentSize.width + 10, y: nameLabel.frame.midY - 12, width: 68, height: 22)
+                // To measure the width
+                let buttonLabel = UILabel(frame: CGRect.init(x: 0, y: 0, width: 68, height: 22))
+                buttonLabel.font = FontConfigManager.shared.getLabelSCFont(size: 10)
+                buttonLabel.text = LocalizedString("Backup_Mnemonic_in_SettingManageWallet", comment: "")
+                
+                let needVerifiedButtonWidth = buttonLabel.intrinsicContentSize.width + 16
+                var needVerifiedButtonX = nameLabel.frame.minX + nameLabel.intrinsicContentSize.width + 10
+                if needVerifiedButtonX + needVerifiedButtonWidth > baseView.width - 60 {
+                    needVerifiedButtonX = baseView.width - 60 - needVerifiedButtonWidth
+                    nameLabelTrailingConstraint.constant = needVerifiedButtonWidth + 50
+                }
+                
+                needVerifiedButton.frame = CGRect.init(x: needVerifiedButtonX, y: nameLabel.frame.midY - 12, width: needVerifiedButtonWidth, height: 22)
                 needVerifiedButton.isHidden = false
             }
         }

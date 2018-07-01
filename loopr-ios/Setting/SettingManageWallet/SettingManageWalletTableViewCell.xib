@@ -80,6 +80,7 @@
                 <outlet property="addressLabel" destination="Xmm-aW-i01" id="reo-Op-h4t"/>
                 <outlet property="baseView" destination="c4m-7T-zj8" id="BiW-N3-VcL"/>
                 <outlet property="nameLabel" destination="XYG-qc-hhn" id="iGh-QY-agK"/>
+                <outlet property="nameLabelTrailingConstraint" destination="rgr-mx-oey" id="4ku-Ys-T1A"/>
                 <outlet property="toatalBalanceLabel" destination="lly-V8-2nd" id="WFZ-uW-scA"/>
             </connections>
             <point key="canvasLocation" x="82.5" y="85"/>
