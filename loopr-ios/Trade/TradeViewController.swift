@@ -29,7 +29,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     // TokenB
     var tokenBButton: UIButton = UIButton()
     var amountBuyTextField: UITextField = UITextField()
-    var totalUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
 
     // Numeric keyboard
@@ -100,6 +99,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountBuyTextField.placeholder = LocalizedString("Enter the amount you get", comment: "")
         amountBuyTextField.textAlignment = .right
         scrollView.addSubview(amountBuyTextField)
+        
+        availableLabel.textColor = UIColor.tokenestTip
+        availableLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        availableLabel.frame = CGRect(x: screenWidth-padding-textFieldWidth, y: amountBuyTextField.frame.maxY, width: textFieldWidth, height: 40)
+        availableLabel.textAlignment = .right
+        scrollView.addSubview(availableLabel)
 
         scrollView.contentSize = CGSize(width: screenWidth, height: amountBuyTextField.frame.maxY + 30)
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
@@ -116,9 +121,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
-        tokenSButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
+        tokenSButton.setRightImage(imageName: "Tokenest-importMethodSelection", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)
-        tokenBButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
+        tokenBButton.setRightImage(imageName: "Tokenest-importMethodSelection", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         updateTipLabel()
         updateInfoLabel()
     }
@@ -269,7 +274,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
                 } else {
                     if let price = PriceDataManager.shared.getPrice(of: tokens) {
                         let estimateValue: Double = amountSell * price
-                        text = estimateValue.currency
+                        text = "≈\(estimateValue.currency)"
                         updateTipLabel(text: text, color: .black)
                     }
                     return true
@@ -298,7 +303,13 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     func validateAmountBuy() -> Bool {
         availableLabel.isHidden = true
-        if let amountb = amountBuyTextField.text, Double(amountb) != nil {
+        if let amountb = amountBuyTextField.text, let amountBuy = Double(amountb) {
+            let tokenb = TradeDataManager.shared.tokenB.symbol
+            if let price = PriceDataManager.shared.getPrice(of: tokenb) {
+                let estimateValue: Double = amountBuy * price
+                availableLabel.isHidden = false
+                availableLabel.text = "≈\(estimateValue.currency)"
+            }
             return true
         } else {
             return false
@@ -430,16 +441,5 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             }
             activeTextField!.text = currentText
         }
-    }
-    
-    func setResultOfAmount(with percentage: Double) {
-        let tokens = TradeDataManager.shared.tokenS.symbol
-        if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-            amountSellTextField.text = (balance * percentage).withCommas()
-        } else {
-            amountSellTextField.text = "0.0"
-        }
-        activeTextFieldTag = amountSellTextField.tag
-        _ = validate()
     }
 }
