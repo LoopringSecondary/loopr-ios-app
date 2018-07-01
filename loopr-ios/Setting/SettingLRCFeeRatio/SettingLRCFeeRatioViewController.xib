@@ -17,6 +17,7 @@
                 <outlet property="minLabel" destination="9gI-tz-U2f" id="DHt-lK-Rrd"/>
                 <outlet property="slider" destination="2bn-Pe-4qT" id="loa-34-Buu"/>
                 <outlet property="statusBarBackgroundView" destination="STU-Rh-i3e" id="VQl-Xp-Soi"/>
+                <outlet property="textField" destination="lbf-Ln-DMr" id="bbb-f9-XpR"/>
                 <outlet property="textFieldBackgroundView" destination="wJG-HS-Sm2" id="Eib-ic-NsW"/>
                 <outlet property="typeLabel" destination="Lrr-ot-m5d" id="nqi-DF-Pxh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

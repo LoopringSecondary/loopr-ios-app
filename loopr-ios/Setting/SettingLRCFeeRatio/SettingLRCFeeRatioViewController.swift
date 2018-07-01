@@ -15,9 +15,9 @@ class SettingLRCFeeRatioViewController: UIViewController {
     
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var textFieldBackgroundView: UIView!
-
-    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var maxLabel: UILabel!
     
@@ -36,6 +36,10 @@ class SettingLRCFeeRatioViewController: UIViewController {
         textFieldBackgroundView.layer.borderWidth = 1.0
         textFieldBackgroundView.layer.cornerRadius = 7.5
         textFieldBackgroundView.clipsToBounds = true
+        
+        textField.text = "\(SettingDataManager.shared.getLrcFeeRatio() * 1000)"
+        textField.tintColor = UIColor.init(rgba: "#4A5668")
+        textField.textColor = UIColor.init(rgba: "#4A5668")
 
         slider.minimumValue = 1
         slider.maximumValue = 50
@@ -46,12 +50,12 @@ class SettingLRCFeeRatioViewController: UIViewController {
         slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         view.addSubview(slider)
 
-        minLabel.font = FontConfigManager.shared.getLabelENFont()
+        minLabel.font = FontConfigManager.shared.getLabelSCFont()
         minLabel.text = LocalizedString("Slow", comment: "")
         view.addSubview(minLabel)
         
         maxLabel.textAlignment = .right
-        maxLabel.font = FontConfigManager.shared.getLabelENFont()
+        maxLabel.font = FontConfigManager.shared.getLabelSCFont()
         maxLabel.text = LocalizedString("Fast", comment: "")
         view.addSubview(maxLabel)
         
@@ -90,7 +94,9 @@ class SettingLRCFeeRatioViewController: UIViewController {
         let step: Float = 1
         let roundedStepValue = Int(round(sender.value / step))
         let perMillSymbol = NumberFormatter().perMillSymbol!
-        typeLabel.text = "\(roundedStepValue)\(perMillSymbol)"
+        // typeLabel.text = "\(roundedStepValue)\(perMillSymbol)"
+        
+        textField.text = "\(roundedStepValue)"
     }
 
     @objc func pressedSaveButton(_ sender: Any) {

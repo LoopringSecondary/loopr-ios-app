@@ -74,10 +74,10 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
             cell?.leftLabel.text = LocalizedString("Currency", comment: "")
             cell?.rightLabel.text = SettingDataManager.shared.getCurrentCurrency().name
         case 1:
-            return createSettingPasscodeTableView()
-        case 2:
             cell?.leftLabel.text = LocalizedString("Language", comment: "")
             cell?.rightLabel.text = SettingDataManager.shared.getCurrentLanguage().displayName
+        case 2:
+            return createSettingPasscodeTableView()
         default:
             break
         }
@@ -95,11 +95,11 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             case 1:
-                break
-            case 2:
                 let viewController = SettingLanguageViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
+            case 2:
+                break
             default:
                 break
             }

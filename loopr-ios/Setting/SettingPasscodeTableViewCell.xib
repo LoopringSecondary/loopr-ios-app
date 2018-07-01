@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHK-cP-eJl">
-                        <rect key="frame" x="257" y="7" width="49" height="31"/>
+                        <rect key="frame" x="251" y="7" width="49" height="31"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="31" id="BdC-s3-WP3"/>
                             <constraint firstAttribute="width" constant="47" id="Vlv-dC-8lv"/>
@@ -40,18 +40,29 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cda-Bu-a92">
+                        <rect key="frame" x="15" y="44.5" width="283" height="0.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="2YI-fR-8vV"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="CHK-cP-eJl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1Sa-YK-gse"/>
+                    <constraint firstAttribute="bottom" secondItem="Cda-Bu-a92" secondAttribute="bottom" id="9cS-7A-tDz"/>
                     <constraint firstItem="AiE-6M-VW6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="A2h-E3-bTl"/>
-                    <constraint firstAttribute="trailing" secondItem="CHK-cP-eJl" secondAttribute="trailing" constant="16" id="B8d-DO-uLZ"/>
+                    <constraint firstAttribute="trailing" secondItem="CHK-cP-eJl" secondAttribute="trailing" constant="22" id="B8d-DO-uLZ"/>
+                    <constraint firstAttribute="trailing" secondItem="Cda-Bu-a92" secondAttribute="trailing" constant="22" id="bgs-5c-Io8"/>
                     <constraint firstItem="AiE-6M-VW6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ezz-nV-lh8"/>
+                    <constraint firstItem="Cda-Bu-a92" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="gV4-tA-qfS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="passcodeLabel" destination="AiE-6M-VW6" id="8Xm-aG-kne"/>
                 <outlet property="passcodeSwitch" destination="CHK-cP-eJl" id="z9B-na-UAo"/>
+                <outlet property="seperateLine" destination="Cda-Bu-a92" id="vuJ-AE-LSL"/>
             </connections>
             <point key="canvasLocation" x="35" y="143.5"/>
         </tableViewCell>

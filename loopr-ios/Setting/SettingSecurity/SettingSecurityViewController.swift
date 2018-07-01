@@ -45,7 +45,7 @@ class SettingSecurityViewController: UIViewController, UITableViewDelegate, UITa
         cell.textLabel?.font = FontConfigManager.shared.getLabelENFont()
         let option = options[indexPath.row]
         if option == .disable {
-            cell.textLabel?.text = "Eable Touch ID"
+            cell.textLabel?.text = "Enable Touch ID"
         } else {
             cell.textLabel?.text = options[indexPath.row].description
         }

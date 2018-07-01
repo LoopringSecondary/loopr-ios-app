@@ -45,6 +45,10 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return languages.count
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return SettingLanguageTableViewCell.getHeight()
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: SettingLanguageTableViewCell.getCellIdentifier()) as? SettingLanguageTableViewCell
@@ -55,14 +59,14 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
             
         }
 
-        cell?.textLabel?.text = languages[indexPath.row].displayName
-                
+        cell?.leftLabel.text = languages[indexPath.row].displayName
+
+        cell?.tintColor = GlobalPicker.themeColor
         if SettingDataManager.shared.getCurrentLanguage() == languages[indexPath.row] {
             cell?.accessoryType = .checkmark
         } else {
             cell?.accessoryType = .none
         }
-
         return cell!
     }
 
