@@ -138,6 +138,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         barButton = UIBarButtonItem(customView: rightButton)
         navigationItem.rightBarButtonItem = barButton
         customizedNavigationBar.setItems([navigationItem], animated: false)
+        
+        // Add swipe to go-back feature back which is a system default gesture
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -185,7 +188,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @objc func pushTradeController() {
         let viewController = TradeViewController()
-        viewController.hidesBottomBarWhenPushed = false
+        viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

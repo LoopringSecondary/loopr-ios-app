@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="P2POrderHistoryViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="customizedNavigationBar" destination="RIm-nb-0Vg" id="klI-y5-HsA"/>
                 <outlet property="historyTableView" destination="ENh-OV-R2e" id="wsF-W7-59g"/>
+                <outlet property="statusBarBackgroundView" destination="ez3-BH-oDx" id="Vut-kF-VCK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,16 +23,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ENh-OV-R2e">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ez3-BH-oDx">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIm-nb-0Vg">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="jM6-AV-oU7"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Title" id="Pws-gT-Xzm"/>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ENh-OV-R2e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Fz2-vc-UeS"/>
+                <constraint firstItem="RIm-nb-0Vg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1ER-6s-HZt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="ez3-BH-oDx" secondAttribute="bottom" id="2Qz-h6-eA9"/>
                 <constraint firstItem="ENh-OV-R2e" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="LMn-Sg-nIo"/>
+                <constraint firstItem="RIm-nb-0Vg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Nmy-G3-aEU"/>
                 <constraint firstItem="ENh-OV-R2e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TWm-1b-fOP"/>
+                <constraint firstItem="ez3-BH-oDx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UBg-cd-JNH"/>
+                <constraint firstItem="ENh-OV-R2e" firstAttribute="top" secondItem="RIm-nb-0Vg" secondAttribute="bottom" id="ahS-eo-ZtH"/>
+                <constraint firstItem="ez3-BH-oDx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dn6-2G-MBF"/>
                 <constraint firstItem="ENh-OV-R2e" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="kDN-L9-N46"/>
+                <constraint firstAttribute="trailing" secondItem="ez3-BH-oDx" secondAttribute="trailing" id="kxz-ER-33q"/>
+                <constraint firstItem="RIm-nb-0Vg" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vNc-ak-CIU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="126.5"/>

@@ -10,6 +10,9 @@ import UIKit
 
 class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    
     var isLaunching: Bool = true
 
     // These data need to be loaded when viewDidLoad() is called. Users can also pull to refresh the table view.
@@ -22,6 +25,7 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         historyTableView.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -51,6 +55,19 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         getOrderHistoryFromRelay()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("P2P Order History", comment: ""))
+        
+        // Reload data if the data is updated.
+        getOrderHistoryFromRelay()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {

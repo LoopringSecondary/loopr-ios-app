@@ -15,6 +15,9 @@ enum SwitchTradeTokenType {
 
 class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    
     var type: SwitchTradeTokenType = .tokenS
     @IBOutlet weak var tableView: UITableView!
 
@@ -28,7 +31,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // self.navigationController?.isNavigationBarHidden = false
+        statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
 
         setBackButton()
         setupSearchBar()
@@ -45,7 +48,12 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("", comment: ""))
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     func setupSearchBar() {

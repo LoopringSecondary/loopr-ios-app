@@ -114,7 +114,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setToolbarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
         tokenSButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)
@@ -125,7 +125,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setToolbarHidden(false, animated: false)
+        // We need this line of code.
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func updateInfoLabel() {
@@ -345,7 +346,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             numericKeyboardView.delegate = self
             view.addSubview(numericKeyboardView)
             
-            let barHeight = self.tabBarController?.tabBar.frame.height ?? 49.0
+            var barHeight: CGFloat = 0
+            if !(self.tabBarController?.tabBar.isHidden ?? true) {
+                barHeight = self.tabBarController?.tabBar.frame.height ?? 49.0
+            }
             let destinateY = height - DefaultNumericKeyboard.height - barHeight
             
             // TODO: improve the animation.
