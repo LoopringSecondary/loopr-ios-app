@@ -1366,6 +1366,15 @@
 			path = English;
 			sourceTree = "<group>";
 		};
+		AC13483420E97EC400D922C0 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */,
+				ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
 		AC13B305205488CF008A72C0 /* MarketPlaceOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -2542,8 +2551,7 @@
 				AC5E0DD5203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib */,
 				AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */,
 				AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */,
-				ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */,
-				ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */,
+				AC13483420E97EC400D922C0 /* Archive */,
 			);
 			path = AssetDetailTransaction;
 			sourceTree = "<group>";
@@ -3588,7 +3596,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

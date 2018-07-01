@@ -17,8 +17,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     @IBOutlet weak var historyButton: UIButton!
     @IBOutlet weak var exchangelabel: UILabel!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
-    
-    var historyBarButton: UIBarButtonItem!
+
+    var hasBackButton: Bool = false
 
     // TokenS
     var tokenSButton: UIButton = UIButton()
@@ -118,6 +118,24 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         customizedNavigationBar.isTranslucent = true
         customizedNavigationBar.setBackgroundImage(UIImage(), for: .default)
         customizedNavigationBar.shadowImage = UIImage()
+        
+        customizedNavigationBar.topItem?.title = LocalizedString("P2P Trade", comment: "")
+        
+        if hasBackButton {
+            let backButton = UIButton(type: UIButtonType.custom)
+            backButton.setImage(UIImage(named: "BackButtonImage-white"), for: .normal)
+            backButton.setImage(UIImage(named: "BackButtonImage-white")?.alpha(0.3), for: .highlighted)
+            
+            // Default left padding is 20. It should be 12 in our design.
+            backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -16, bottom: 0, right: 8)
+            
+            backButton.addTarget(self, action: #selector(pressedBackButton(_:)), for: UIControlEvents.touchUpInside)
+            // The size of the image.
+            backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            let backBarButton = UIBarButtonItem(customView: backButton)
+            
+            customizedNavigationBar.topItem?.leftBarButtonItem = backBarButton
+        }
     }
 
     override func didReceiveMemoryWarning() {

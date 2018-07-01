@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -21,25 +21,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="转出" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7V-32-L6z">
-                        <rect key="frame" x="16" y="26.5" width="83" height="19.5"/>
+                        <rect key="frame" x="16" y="0.5" width="83" height="71.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" name="Tokenest-table-font"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.101223" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMq-2b-bMp">
-                        <rect key="frame" x="83" y="26.5" width="99" height="19.5"/>
+                        <rect key="frame" x="83" y="0.0" width="99" height="71.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="16:30 05/30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq6-Vt-8yE">
-                        <rect key="frame" x="197.5" y="26.5" width="99" height="19.5"/>
+                        <rect key="frame" x="197.5" y="0.5" width="99" height="71.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" name="Tokenest-table-font"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成功" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNl-Vg-4Tf">
-                        <rect key="frame" x="296.5" y="26.5" width="99" height="19.5"/>
+                        <rect key="frame" x="296.5" y="0.5" width="99" height="71.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -54,8 +54,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Vq6-Vt-8yE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="trailing" multiplier="0.5" id="0Yr-Qr-yB6"/>
+                    <constraint firstItem="Q7V-32-L6z" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="2ze-ET-bzb"/>
+                    <constraint firstItem="gMq-2b-bMp" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="7sA-8b-ptU"/>
                     <constraint firstItem="fMq-qI-TAG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="AVG-5Z-Y8x"/>
                     <constraint firstAttribute="bottom" secondItem="fMq-qI-TAG" secondAttribute="bottom" id="Vf0-Ji-nnJ"/>
+                    <constraint firstItem="oNl-Vg-4Tf" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="bGg-Ir-VUp"/>
+                    <constraint firstItem="Vq6-Vt-8yE" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="uaG-ak-goV"/>
                     <constraint firstAttribute="trailing" secondItem="fMq-qI-TAG" secondAttribute="trailing" constant="16" id="wI1-av-qJJ"/>
                 </constraints>
             </tableViewCellContentView>

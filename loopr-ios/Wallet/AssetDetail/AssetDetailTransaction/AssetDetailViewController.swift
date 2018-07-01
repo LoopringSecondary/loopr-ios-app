@@ -188,6 +188,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @objc func pushTradeController() {
         let viewController = TradeViewController()
+        viewController.hasBackButton = true
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -203,7 +204,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         contextMenuSourceView.frame = CGRect(x: self.view.frame.width + 10, y: customizedNavigationBar.bottomY, width: 1, height: 1)
         view.addSubview(contextMenuSourceView)
         
-        let titles = ["转换为ETH", "交易"]
+        let titles = [LocalizedString("Convert_to_ETH_in_TradeViewController", comment: ""), LocalizedString("Trade", comment: "")]
         let menuViewController = AddMenuViewController(rows: 2, titles: titles)
         menuViewController.didSelectRowClosure = { (index) -> Void in
             if index == 0 {

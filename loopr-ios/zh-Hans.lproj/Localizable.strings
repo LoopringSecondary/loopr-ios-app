@@ -338,3 +338,5 @@
 "New Wallet Name" = "新钱包名称";
 "New wallet name can't be empty" = "新钱包名称不能为空";
 "Please Enter Password" = "请输入密码";
+"P2P Trade" = "场外交易";
+"Convert_to_ETH_in_TradeViewController" = "转换为ETH";
