@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,13 +16,47 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-background-image" translatesAutoresizingMaskIntoConstraints="NO" id="BhZ-bg-qnd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-logo" translatesAutoresizingMaskIntoConstraints="NO" id="g1l-NU-HIy">
+                                <rect key="frame" x="15" y="307" width="345" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="ofn-Dx-qOc"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-slogan" translatesAutoresizingMaskIntoConstraints="NO" id="c8X-kR-j3H">
+                                <rect key="frame" x="35" y="55" width="11" height="166"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="166" id="JGR-Xo-rti"/>
+                                    <constraint firstAttribute="width" constant="11" id="bPL-hM-D67"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BhZ-bg-qnd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2BN-b9-ogD"/>
+                            <constraint firstItem="g1l-NU-HIy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="CFZ-8U-y5P"/>
+                            <constraint firstItem="c8X-kR-j3H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="FMX-6Y-7s7"/>
+                            <constraint firstItem="c8X-kR-j3H" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="J25-w8-lla"/>
+                            <constraint firstItem="BhZ-bg-qnd" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="V8d-Wr-Cz1"/>
+                            <constraint firstItem="BhZ-bg-qnd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xwc-U8-ToL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g1l-NU-HIy" secondAttribute="trailing" constant="15" id="eLk-fd-KwE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="g1l-NU-HIy" secondAttribute="bottom" constant="235" id="jiQ-BU-TD6"/>
+                            <constraint firstItem="BhZ-bg-qnd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="y3a-Qj-Fzi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Tokenest-setup-background-image" width="375" height="667"/>
+        <image name="Tokenest-setup-logo" width="234" height="126"/>
+        <image name="Tokenest-setup-slogan" width="9" height="184"/>
+    </resources>
 </document>

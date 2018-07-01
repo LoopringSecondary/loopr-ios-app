@@ -66,7 +66,7 @@
                     <state key="normal" image="Tokenest-setup-import"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-logo" translatesAutoresizingMaskIntoConstraints="NO" id="NFo-ru-vqi">
-                    <rect key="frame" x="16" y="418" width="344" height="125"/>
+                    <rect key="frame" x="15" y="418" width="345" height="125"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="125" id="f04-Ee-Rfz"/>
                     </constraints>
@@ -88,7 +88,7 @@
                 <constraint firstItem="IHT-GH-qFM" firstAttribute="leading" secondItem="WI6-Em-h2J" secondAttribute="trailing" constant="15" id="EWb-xZ-LYm"/>
                 <constraint firstItem="rJf-XC-72q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="Fs9-gl-OGZ"/>
                 <constraint firstItem="8D5-wH-8hl" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="JCs-5i-v2V"/>
-                <constraint firstItem="NFo-ru-vqi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="L8P-FD-8mB"/>
+                <constraint firstItem="NFo-ru-vqi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="L8P-FD-8mB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Q2B-79-ztA" secondAttribute="bottom" constant="100" id="Lg8-q1-DU3"/>
                 <constraint firstItem="gED-cr-VQb" firstAttribute="centerY" secondItem="Q2B-79-ztA" secondAttribute="centerY" id="O25-cZ-TUd"/>
                 <constraint firstItem="Q2B-79-ztA" firstAttribute="leading" secondItem="gED-cr-VQb" secondAttribute="trailing" constant="30" id="V4N-vy-khG"/>
