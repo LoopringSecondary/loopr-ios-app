@@ -12,25 +12,24 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
 
     @IBOutlet weak var statusBarBackgroundView: UIView!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    @IBOutlet weak var historyTableView: UITableView!
     
     var isLaunching: Bool = true
-
-    // These data need to be loaded when viewDidLoad() is called. Users can also pull to refresh the table view.
     var orderDates: [String] = []
     var orders: [String: [Order]] = [:]
     
-    @IBOutlet weak var historyTableView: UITableView!
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("P2P Order History", comment: ""))
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         historyTableView.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = LocalizedString("P2P Order History", comment: "")
-        setBackButton()
+        
         historyTableView.dataSource = self
         historyTableView.delegate = self
         historyTableView.tableFooterView = UIView()
@@ -60,18 +59,16 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("P2P Order History", comment: ""))
-        
-        // Reload data if the data is updated.
         getOrderHistoryFromRelay()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
-        print("pressOrderSearchButton")        
+        print("pressOrderSearchButton")
         let viewController = OrderSearchViewController()
         let navigationController = UINavigationController.init(rootViewController: viewController)
         navigationController.navigationBar.shadowImage = UIImage()
@@ -137,9 +134,9 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
         headerView.backgroundColor = UIColor.white
         let headerLabel = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.size.width, height: 45))
-        headerLabel.textColor = UIColor.black.withAlphaComponent(0.3)
-        headerLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 17)
         headerLabel.text = orderDates[section]
+        headerLabel.textColor = UIColor.tokenestFailed
+        headerLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         headerView.addSubview(headerLabel)
         return headerView
     }

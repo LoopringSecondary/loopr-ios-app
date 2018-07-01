@@ -78,7 +78,7 @@ class CircleChart: UIView {
             clockwise: false)
         backgroundShapeLayer.path = circlePathInGrey.cgPath
         backgroundShapeLayer.fillColor = fillColor
-        backgroundShapeLayer.strokeColor = UIColor.init(white: 0.0, alpha: 0.1).cgColor
+        backgroundShapeLayer.strokeColor = UIColor.tokenestFailed.cgColor
         backgroundShapeLayer.lineWidth = desiredLineWidth
     }
     

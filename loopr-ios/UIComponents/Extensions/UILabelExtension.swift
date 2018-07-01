@@ -33,7 +33,7 @@ extension UILabel {
         if let text = self.text {
             let range = (text as NSString).range(of: "/\\w*\\d*", options: .regularExpression)
             let attribute = NSMutableAttributedString.init(string: text)
-            attribute.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.subtitle], range: range)
+            attribute.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.tokenestFailed], range: range)
             self.attributedText = attribute
         }
     }

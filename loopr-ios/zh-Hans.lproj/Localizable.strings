@@ -172,7 +172,7 @@
 "Order(s) cancel Failed, Please try again." =  "订单取消失败，请稍后重试";
 "Order(s) Cancelled Successful." = "订单取消成功";
 "Order Detail" = "订单详情";
-"Filled/Amount" = "Filled/Amount";
+"Filled/Amount" = "完成/总额";
 "Status" = "状态";
 "Trade" = "交易";
 "Go To Trade" = "去交易";
@@ -198,7 +198,7 @@
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
 "However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";
-"P2P Order History" = "P2P订单记录";
+"P2P Order History" = "场外交易记录";
 "Share Address through SMS" = "通过短信分享地址";
 "Clear Records of this Wallet" = "清除该钱包数据";
 "Amount" = "数量";
@@ -321,7 +321,7 @@
 "Complete" = "完成";
 "Recommended Gas Price" = "推荐油费";
 "Save QR code to Photo successfully." = "成功保存二维码到照片应用";
-"Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易。";
+"Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易";
 "Add Token" = "添加代币";
 "Tx_Failed_Result" = "交易失败";
 "Tx_Success_Result" = "交易成功";

@@ -15,8 +15,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     @IBOutlet weak var historyButton: UIButton!
-    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var exchangelabel: UILabel!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
     
     var historyBarButton: UIBarButtonItem!
 
@@ -40,8 +40,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        subtitleLabel.textColor = UIColor.tokenestTip
-        subtitleLabel.font = FontConfigManager.shared.getLabelSCFont(size: 18)
+        setupNavigationBar()
         exchangelabel.textColor = UIColor.tokenestTableFont
         exchangelabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         
@@ -111,6 +110,15 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
     }
+    
+    func setupNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
+        
+        customizedNavigationBar.backgroundColor = UIColor.clear
+        customizedNavigationBar.isTranslucent = true
+        customizedNavigationBar.setBackgroundImage(UIImage(), for: .default)
+        customizedNavigationBar.shadowImage = UIImage()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -119,7 +127,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        hideNavigationBar()
+        
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
         tokenSButton.setRightImage(imageName: "Tokenest-importMethodSelection", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)
@@ -131,7 +140,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // We need this line of code.
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        showNavigationBar()
     }
     
     func updateInfoLabel() {
@@ -161,7 +170,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             } else {
                 estimateValueInCurrency.text = "\(title) 0.0 \(tokens)"
             }
-            estimateValueInCurrency.textColor = .black
+            estimateValueInCurrency.textColor = .tokenestTip
         }
     }
     
@@ -275,14 +284,14 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
                     if let price = PriceDataManager.shared.getPrice(of: tokens) {
                         let estimateValue: Double = amountSell * price
                         text = "≈\(estimateValue.currency)"
-                        updateTipLabel(text: text, color: .black)
+                        updateTipLabel(text: text, color: .tokenestTip)
                     }
                     return true
                 }
             } else {
                 if amountSell == 0 {
                     text = 0.0.currency
-                    updateTipLabel(text: text, color: .black)
+                    updateTipLabel(text: text, color: .tokenestTip)
                     return true
                 } else {
                     text = "\(title) 0.0 \(tokens)"
@@ -296,7 +305,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             } else {
                 text = "\(title) 0.0 \(tokens)"
             }
-            updateTipLabel(text: text, color: .black)
+            updateTipLabel(text: text, color: .tokenestTip)
             return false
         }
     }
@@ -308,6 +317,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             if let price = PriceDataManager.shared.getPrice(of: tokenb) {
                 let estimateValue: Double = amountBuy * price
                 availableLabel.isHidden = false
+                availableLabel.textColor = UIColor.tokenestTip
                 availableLabel.text = "≈\(estimateValue.currency)"
             }
             return true
