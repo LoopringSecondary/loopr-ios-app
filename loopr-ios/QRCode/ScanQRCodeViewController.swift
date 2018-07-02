@@ -61,12 +61,16 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     var isTorchOn = false
     var shouldPop = true
+    
+    var scanViewWidth: CGFloat = 375
         
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
+        
+        scanViewWidth = UIScreen.main.bounds.width
 
         scanTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         scanTipLabel.textColor = .white
@@ -171,7 +175,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func setupScanLine() {
-        scanQRCodeView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.2, y: scanView.frame.size.width * 0.2, width: scanView.frame.size.width * 0.6, height: scanView.frame.size.width * 0.6))
+        scanQRCodeView = UIView(frame: CGRect(x: scanViewWidth * 0.2, y: scanViewWidth * 0.2, width: scanViewWidth * 0.6, height: scanViewWidth * 0.6))
         scanQRCodeView.layer.borderWidth = 1.0
         scanQRCodeView.layer.borderColor = UIColor.init(rgba: "#3658ED").cgColor
         scanView.addSubview(scanQRCodeView)
@@ -183,10 +187,10 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func setupBackGroundView() {
-        let topView = UIView(frame: CGRect(x: 0, y: 0, width: scanView.frame.size.width, height: scanView.frame.size.width * 0.2))
-        let leftView = UIView(frame: CGRect(x: 0, y: topView.bottomY, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
-        let bottomView = UIView(frame: CGRect(x: 0, y: leftView.bottomY, width: scanView.frame.size.width, height: scanView.frame.size.height))
-        let rightView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.8, y: leftView.y, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
+        let topView = UIView(frame: CGRect(x: 0, y: 0, width: scanViewWidth, height: scanViewWidth * 0.2))
+        let leftView = UIView(frame: CGRect(x: 0, y: topView.bottomY, width: scanViewWidth * 0.2, height: scanViewWidth * 0.6))
+        let bottomView = UIView(frame: CGRect(x: 0, y: leftView.bottomY, width: scanViewWidth, height: UIScreen.main.bounds.height))
+        let rightView = UIView(frame: CGRect(x: scanViewWidth * 0.8, y: leftView.y, width: scanViewWidth * 0.2, height: scanViewWidth * 0.6))
         
         topView.backgroundColor = UIColor(red: 0.0, green: 0, blue: 0, alpha: 0.4)
         bottomView.backgroundColor = UIColor(red: 0.0, green: 0, blue: 0, alpha: 0.4)
@@ -198,10 +202,10 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         self.scanView.addSubview(leftView)
         self.scanView.addSubview(rightView)
         
-        scanTipLabel.frame = CGRect(x: 0, y: leftView.bottomY + 11, width: scanView.frame.size.width, height: 20)
+        scanTipLabel.frame = CGRect(x: 0, y: leftView.bottomY + 11, width: scanViewWidth, height: 20)
         self.scanView.addSubview(scanTipLabel)
         
-        flashButton.frame = CGRect(x: (scanView.frame.size.width-64)*0.5, y: scanTipLabel.bottomY+72, width: 64, height: 64)
+        flashButton.frame = CGRect(x: (scanViewWidth-64)*0.5, y: scanTipLabel.bottomY+72, width: 64, height: 64)
         self.scanView.addSubview(flashButton)
     }
     
