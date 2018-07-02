@@ -11,14 +11,12 @@ import Geth
 
 class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
+    @IBOutlet weak var statusBar: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
-    @IBOutlet weak var historyButton: UIButton!
     @IBOutlet weak var exchangelabel: UILabel!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
-
-    var hasBackButton: Bool = false
 
     // TokenS
     var tokenSButton: UIButton = UIButton()
@@ -40,6 +38,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        statusBar.backgroundColor = GlobalPicker.themeColor
         setupNavigationBar()
         exchangelabel.textColor = UIColor.tokenestTableFont
         exchangelabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
@@ -112,30 +111,39 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     }
     
     func setupNavigationBar() {
+        // left bar button
         self.navigationController?.isNavigationBarHidden = true
-        
-        customizedNavigationBar.backgroundColor = UIColor.clear
-        customizedNavigationBar.isTranslucent = true
         customizedNavigationBar.setBackgroundImage(UIImage(), for: .default)
-        customizedNavigationBar.shadowImage = UIImage()
         
-        customizedNavigationBar.topItem?.title = LocalizedString("P2P Trade", comment: "")
+        let backButton = UIButton(type: UIButtonType.custom)
+        backButton.setImage(#imageLiteral(resourceName: "BackButtonImage-white"), for: .normal)
+        backButton.setImage(#imageLiteral(resourceName: "BackButtonImage-white").alpha(0.3), for: .highlighted)
+        backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -16, bottom: 0, right: 8)
+        backButton.addTarget(self, action: #selector(pressedBackButton(_:)), for: UIControlEvents.touchUpInside)
+        backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        var barButton = UIBarButtonItem(customView: backButton)
+        let navigationLeftItem = UINavigationItem()
+        navigationLeftItem.leftBarButtonItem = barButton
+        let navigationItem = UINavigationItem()
+        navigationItem.title = title
+        navigationItem.leftBarButtonItem = barButton
         
-        if hasBackButton {
-            let backButton = UIButton(type: UIButtonType.custom)
-            backButton.setImage(UIImage(named: "BackButtonImage-white"), for: .normal)
-            backButton.setImage(UIImage(named: "BackButtonImage-white")?.alpha(0.3), for: .highlighted)
-            
-            // Default left padding is 20. It should be 12 in our design.
-            backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -16, bottom: 0, right: 8)
-            
-            backButton.addTarget(self, action: #selector(pressedBackButton(_:)), for: UIControlEvents.touchUpInside)
-            // The size of the image.
-            backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            let backBarButton = UIBarButtonItem(customView: backButton)
-            
-            customizedNavigationBar.topItem?.leftBarButtonItem = backBarButton
-        }
+        // right bar button
+        let rightButton = UIButton(type: UIButtonType.custom)
+        rightButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        rightButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -16)
+        
+        rightButton.setImage(#imageLiteral(resourceName: "Tokenest-switch-wallet"), for: .normal)
+        rightButton.setImage(#imageLiteral(resourceName: "Tokenest-switch-wallet").alpha(0.3), for: .highlighted)
+        rightButton.addTarget(self, action: #selector(pressedHistoryButton(_:)), for: UIControlEvents.touchUpInside)
+        
+        // navigation item
+        barButton = UIBarButtonItem(customView: rightButton)
+        navigationItem.rightBarButtonItem = barButton
+        customizedNavigationBar.setItems([navigationItem], animated: false)
+        
+        // Add swipe to go-back feature back which is a system default gesture
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -145,12 +153,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        hideNavigationBar()
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
-        tokenSButton.setRightImage(imageName: "Tokenest-importMethodSelection", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
+        tokenSButton.setRightImage(imageName: "Tokenest-moretoken", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)
-        tokenBButton.setRightImage(imageName: "Tokenest-importMethodSelection", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
+        tokenBButton.setRightImage(imageName: "Tokenest-moretoken", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         updateTipLabel()
         updateInfoLabel()
     }
@@ -158,7 +166,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // We need this line of code.
-        showNavigationBar()
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func updateInfoLabel() {
@@ -215,7 +223,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func pressedHistoryButton(_ sender: UIButton) {
+    @objc func pressedHistoryButton(_ sender: UIButton) {
         let viewController = P2POrderHistoryViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)

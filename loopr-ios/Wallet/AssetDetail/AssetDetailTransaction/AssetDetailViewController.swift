@@ -188,7 +188,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @objc func pushTradeController() {
         let viewController = TradeViewController()
-        viewController.hasBackButton = true
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }

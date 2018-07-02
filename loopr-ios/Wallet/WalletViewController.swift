@@ -438,6 +438,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.present(viewController, animated: true, completion: nil)
     }
     
+    func pressedMarketButton() {
+    }
+        
+    func pressedTradeButton() {
+        let viewController = TradeViewController()
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
     func pressedAddTokenButton() {
         let viewController = AddTokenViewController()
         viewController.hidesBottomBarWhenPushed = true

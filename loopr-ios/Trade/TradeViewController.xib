@@ -15,10 +15,10 @@
             <connections>
                 <outlet property="customizedNavigationBar" destination="msJ-kh-OME" id="2sW-v8-KcG"/>
                 <outlet property="exchangelabel" destination="Jt7-aU-bMt" id="VAv-wg-FKF"/>
-                <outlet property="historyButton" destination="T7F-74-9Kn" id="ajM-G5-yet"/>
                 <outlet property="nextButton" destination="Fb9-mL-KG5" id="9JP-fm-qQp"/>
                 <outlet property="scrollView" destination="2G6-mE-e9W" id="mXT-jS-2gr"/>
                 <outlet property="scrollViewBottom" destination="jYZ-uf-VcS" id="sYh-tu-edg"/>
+                <outlet property="statusBar" destination="dqC-l8-LWp" id="fWp-Mm-0oZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,11 +31,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" name="Tokenest-blank"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqC-l8-LWp">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msJ-kh-OME">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="场外交易" id="CGd-0D-rhA"/>
+                    </items>
+                </navigationBar>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9z-je-Ijf" userLabel="Header View">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="120"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-trade-header" translatesAutoresizingMaskIntoConstraints="NO" id="fZM-mv-KMy">
-                            <rect key="frame" x="24" y="68" width="100" height="15"/>
+                            <rect key="frame" x="24" y="16" width="100" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="L56-fx-89W"/>
                                 <constraint firstAttribute="height" constant="15" id="lP6-01-rnh"/>
@@ -54,29 +64,18 @@
                         <constraint firstAttribute="height" constant="120" id="Kdm-zg-zNI"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7F-74-9Kn">
-                    <rect key="frame" x="24" y="88" width="80" height="80"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="1TS-gV-oaG"/>
-                        <constraint firstAttribute="width" constant="80" id="kTY-fY-mWH"/>
-                    </constraints>
-                    <state key="normal" image="Tokenest-setup-next-button"/>
-                    <connections>
-                        <action selector="pressedHistoryButton:" destination="-1" eventType="touchUpInside" id="y2v-Uo-o1X"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易1 LRC≈0.0001WETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jt7-aU-bMt">
-                    <rect key="frame" x="92" y="128" width="190" height="32"/>
+                    <rect key="frame" x="92" y="192" width="190" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2G6-mE-e9W">
-                    <rect key="frame" x="0.0" y="168" width="375" height="499"/>
+                    <rect key="frame" x="0.0" y="232" width="375" height="435"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fb9-mL-KG5">
-                    <rect key="frame" x="271" y="136" width="80" height="80"/>
+                    <rect key="frame" x="271" y="200" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="JK4-jo-UhU"/>
                         <constraint firstAttribute="width" constant="80" id="QBk-ca-d7n"/>
@@ -93,18 +92,13 @@
                         <action selector="pressedNextButton:" destination="-1" eventType="touchUpInside" id="i0X-el-Lcr"/>
                     </connections>
                 </button>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msJ-kh-OME">
-                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                    <items>
-                        <navigationItem title="场外交易" id="CGd-0D-rhA"/>
-                    </items>
-                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Jt7-aU-bMt" firstAttribute="top" secondItem="c9z-je-Ijf" secondAttribute="bottom" constant="8" id="1gQ-rF-VH8"/>
                 <constraint firstItem="Fb9-mL-KG5" firstAttribute="trailing" secondItem="c9z-je-Ijf" secondAttribute="trailing" constant="-24" id="2Od-JZ-ChT"/>
                 <constraint firstItem="2G6-mE-e9W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4Ha-G9-Bta"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dqC-l8-LWp" secondAttribute="trailing" id="HLd-7A-DYd"/>
                 <constraint firstItem="2G6-mE-e9W" firstAttribute="top" secondItem="Jt7-aU-bMt" secondAttribute="bottom" constant="8" id="IQh-Gt-siW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="msJ-kh-OME" secondAttribute="trailing" id="J3X-L3-e3f"/>
                 <constraint firstItem="Jt7-aU-bMt" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="M7D-ze-fQF"/>
@@ -115,18 +109,19 @@
                 <constraint firstItem="Fb9-mL-KG5" firstAttribute="centerY" secondItem="2G6-mE-e9W" secondAttribute="top" constant="8" id="Uky-F1-O8x"/>
                 <constraint firstItem="2G6-mE-e9W" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="W8o-bq-dkr"/>
                 <constraint firstItem="eMH-8c-AHH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WAi-oJ-XP3"/>
-                <constraint firstItem="T7F-74-9Kn" firstAttribute="centerY" secondItem="c9z-je-Ijf" secondAttribute="bottom" constant="8" id="XRT-36-lMB"/>
                 <constraint firstItem="2G6-mE-e9W" firstAttribute="top" secondItem="c9z-je-Ijf" secondAttribute="bottom" constant="48" id="Y1U-82-UcW"/>
                 <constraint firstItem="msJ-kh-OME" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aau-ZC-MDl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="dqC-l8-LWp" secondAttribute="bottom" id="bCL-dX-wFu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="eMH-8c-AHH" secondAttribute="bottom" id="bhS-SU-9ou"/>
                 <constraint firstItem="0jE-Vv-ZSa" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="8" id="cZx-zV-ocm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="fZM-mv-KMy" secondAttribute="top" constant="-48" id="dDE-yT-J94"/>
-                <constraint firstItem="c9z-je-Ijf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dXs-Ih-mIz"/>
+                <constraint firstItem="fZM-mv-KMy" firstAttribute="top" secondItem="c9z-je-Ijf" secondAttribute="top" constant="16" id="dDE-yT-J94"/>
+                <constraint firstItem="c9z-je-Ijf" firstAttribute="top" secondItem="msJ-kh-OME" secondAttribute="bottom" id="dXs-Ih-mIz"/>
                 <constraint firstItem="c9z-je-Ijf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ik1-fE-OUK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2G6-mE-e9W" secondAttribute="bottom" id="jYZ-uf-VcS"/>
                 <constraint firstItem="msJ-kh-OME" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="nAO-4D-dtb"/>
+                <constraint firstItem="dqC-l8-LWp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oXR-aS-2Z6"/>
+                <constraint firstItem="dqC-l8-LWp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sZv-gn-csy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eMH-8c-AHH" secondAttribute="trailing" id="tnK-dj-2P1"/>
-                <constraint firstItem="T7F-74-9Kn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="xhs-Vf-YRN"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="56.5" y="127.5"/>

@@ -10,6 +10,8 @@ import UIKit
 
 class TradeReviewViewController: UIViewController {
 
+    @IBOutlet weak var statusBar: UIView!
+    @IBOutlet weak var customNavBar: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var shareOrderButton: UIButton!
 
@@ -30,13 +32,8 @@ class TradeReviewViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setBackButton()
-        
-        // TODO: Review or Confirmation?
-        self.navigationItem.title = LocalizedString("Order Detail", comment: "")
-        
-        shareOrderButton.title = LocalizedString("Share Order", comment: "")
-        shareOrderButton.setupRoundBlack()
+        statusBar.backgroundColor = GlobalPicker.themeColor
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: "订单详情")
 
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -65,6 +62,9 @@ class TradeReviewViewController: UIViewController {
 
         scrollView.contentSize = CGSize(width: screenWidth, height: tokenBView.frame.maxY + padding)
         
+        shareOrderButton.title = LocalizedString("Share Order", comment: "")
+        shareOrderButton.setupRoundPurpleWithShadow()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(orderResponseReceivedNotification), name: .orderResponseReceived, object: nil)
     }
 
@@ -81,6 +81,7 @@ class TradeReviewViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         guard let order = self.order else { return }
         // self.navigationController?.isNavigationBarHidden = false
         tokenSView.update(title: "You send", symbol: order.tokenSell, amount: order.amountSell)
@@ -93,6 +94,11 @@ class TradeReviewViewController: UIViewController {
         let scaleY = qrcodeImageView.frame.size.height / qrcodeImageCIImage.extent.size.height
         let transformedImage = qrcodeImageCIImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func generateQRCode(order: OriginalOrder) {

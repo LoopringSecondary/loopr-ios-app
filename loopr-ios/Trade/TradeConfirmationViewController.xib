@@ -34,7 +34,7 @@
                     </items>
                 </navigationBar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXZ-sL-MIg">
-                    <rect key="frame" x="15" y="607" width="345" height="45"/>
+                    <rect key="frame" x="64" y="607" width="247" height="45"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="pTt-P0-Rz3"/>
@@ -52,7 +52,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="RXZ-sL-MIg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Agj-aT-ycz"/>
+                <constraint firstItem="RXZ-sL-MIg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="64" id="Agj-aT-ycz"/>
                 <constraint firstItem="AOd-Xx-MOF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Hr7-x0-UgD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AOd-Xx-MOF" secondAttribute="trailing" id="Mdb-A1-MYP"/>
                 <constraint firstItem="RTv-lU-cPl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NvV-kK-u2q"/>
@@ -63,7 +63,7 @@
                 <constraint firstItem="RTv-lU-cPl" firstAttribute="top" secondItem="rVB-Zh-IeA" secondAttribute="bottom" id="fuD-ii-2HH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RTv-lU-cPl" secondAttribute="bottom" constant="77" id="hFh-mv-yvJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RTv-lU-cPl" secondAttribute="trailing" id="jst-wA-JDa"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RXZ-sL-MIg" secondAttribute="trailing" constant="15" id="lW4-UW-RLD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RXZ-sL-MIg" secondAttribute="trailing" constant="64" id="lW4-UW-RLD"/>
                 <constraint firstItem="rVB-Zh-IeA" firstAttribute="top" secondItem="AOd-Xx-MOF" secondAttribute="bottom" id="qiW-bT-Sz7"/>
                 <constraint firstItem="AOd-Xx-MOF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="woa-NE-dDk"/>
             </constraints>

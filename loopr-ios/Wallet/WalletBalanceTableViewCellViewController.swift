@@ -11,6 +11,8 @@ import UIKit
 protocol WalletBalanceDelegate: class {
     func pressedReceiveButton()
     func pressedSendButton()
+    func pressedMarketButton()
+    func pressedTradeButton()
     func pressedAddTokenButton()
 }
 
@@ -21,10 +23,11 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     var updateBalanceLabelTimer: Timer?
     
     @IBOutlet weak var balanceLabel: TickerLabel!
-    // let addressLabel: UILabel = UILabel()
     
     @IBOutlet weak var addTokenButton: UIButton!
     
+    @IBOutlet weak var marketButton: UIButton!
+    @IBOutlet weak var tradeButton: UIButton!
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     
@@ -71,6 +74,18 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         sendButton.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
         sendButton.addTarget(self, action: #selector(self.pressedSendButton(_:)), for: .touchUpInside)
         
+        marketButton.backgroundColor = UIColor.clear
+        marketButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14.0, type: "Medium")
+        marketButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
+        marketButton.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
+        marketButton.addTarget(self, action: #selector(self.pressedMarketButton(_:)), for: .touchUpInside)
+        
+        tradeButton.backgroundColor = UIColor.clear
+        tradeButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14.0, type: "Medium")
+        tradeButton.setTitleColor(UIColor.init(rgba: "#4A5668"), for: .normal)
+        tradeButton.setTitleColor(UIColor.init(white: 0, alpha: 0.6), for: .highlighted)
+        tradeButton.addTarget(self, action: #selector(self.pressedTradeButton(_:)), for: .touchUpInside)
+        
         if updateBalanceLabelTimer == nil {
             updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
         }
@@ -97,12 +112,18 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         self.buttonBackgroundView.layer.shadowPath = shadowPath.cgPath
         
         let iconTitlePadding: CGFloat = 14
-
-        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive"), title: LocalizedString("Receive", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
-        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive")?.alpha(0.6), title: LocalizedString("Receive", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send"), title: LocalizedString("Send", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
-        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: LocalizedString("Send", comment: ""), titlePosition: .left, additionalSpacing: iconTitlePadding, state: .highlighted)
+        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive"), title: LocalizedString("Receive", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .normal)
+        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive")?.alpha(0.6), title: LocalizedString("Receive", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .highlighted)
+        
+        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send"), title: LocalizedString("Send", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .normal)
+        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: LocalizedString("Send", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .highlighted)
+        
+        marketButton.set(image: UIImage.init(named: "Tokenest-asset-market"), title: LocalizedString("Market", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .normal)
+        marketButton.set(image: UIImage.init(named: "Tokenest-asset-market")?.alpha(0.6), title: LocalizedString("Market", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .highlighted)
+        
+        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade"), title: LocalizedString("Trade", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .normal)
+        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade")?.alpha(0.6), title: LocalizedString("Trade", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .highlighted)
     }
     
     @objc func pressedReceiveButton(_ button: UIButton) {
@@ -113,6 +134,16 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     @objc func pressedSendButton(_ button: UIButton) {
         print("pressedSendButton")
         delegate?.pressedSendButton()
+    }
+    
+    @objc func pressedMarketButton(_ button: UIButton) {
+        print("pressedMarketButton")
+        delegate?.pressedMarketButton()
+    }
+    
+    @objc func pressedTradeButton(_ button: UIButton) {
+        print("pressedTradeButton")
+        delegate?.pressedTradeButton()
     }
     
     @objc func pressedAddTokenButton(_ button: UIButton) {

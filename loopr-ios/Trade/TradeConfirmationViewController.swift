@@ -18,20 +18,22 @@ class TradeConfirmationViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
     
-    // TODO: put the following UILabel and UIView to a UIView?
-    var marginSplitLabel: UILabel = UILabel()
-    var marginSplitValueLabel: UILabel = UILabel()
-    
-    var LRCFeeLabel: UILabel = UILabel()
-    var LRCFeeValueLabel: UILabel = UILabel()
-    var LRCFeeUnderLine: UIView = UIView()
+    var tokenSView: TradeTokenView!
+    var tokenBView: TradeTokenView!
     
     var priceLabel: UILabel = UILabel()
     var priceValueLabel: UILabel = UILabel()
     var priceUnderLine: UIView = UIView()
-    var tokenSView: TradeTokenView!
-    var tokenBView: TradeTokenView!
+    
     var arrowRightImageView: UIImageView = UIImageView()
+    var LRCFeeLabel: UILabel = UILabel()
+    var LRCFeeValueLabel: UILabel = UILabel()
+    var LRCFeeUnderLine: UIView = UIView()
+    
+    // TODO: put the following UILabel and UIView to a UIView?
+    var marginSplitLabel: UILabel = UILabel()
+    var marginSplitValueLabel: UILabel = UILabel()
+    var marginUnderLine: UIView = UIView()
     
     var order: OriginalOrder?
     var verifyInfo: [String: Double]?
@@ -63,57 +65,61 @@ class TradeConfirmationViewController: UIViewController {
         
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
-        priceLabel.textColor = UIColor.black
-        priceLabel.font = FontConfigManager.shared.getLabelENFont()
+        priceLabel.textColor = UIColor.tokenestTip
+        priceLabel.font = FontConfigManager.shared.getLabelSCFont(size: 16)
         priceLabel.frame = CGRect(x: padding, y: screenHeight * 0.57, width: 160, height: rowHeight)
         scrollView.addSubview(priceLabel)
         
-        priceValueLabel.textColor = UIColor.black
         priceValueLabel.textAlignment = .right
-        priceValueLabel.font = FontConfigManager.shared.getLabelENFont()
+        priceValueLabel.textColor = UIColor.tokenestTableFont
+        priceValueLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
         priceValueLabel.frame = CGRect(x: screenWidth - padding - 200, y: priceLabel.frame.minY, width: 200, height: rowHeight)
         scrollView.addSubview(priceValueLabel)
         
-        priceUnderLine.frame = CGRect(x: padding, y: priceLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 1)
+        priceUnderLine.frame = CGRect(x: padding, y: priceLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 0.5)
         priceUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         scrollView.addSubview(priceUnderLine)
         
         // Trading Fee
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
-        LRCFeeLabel.textColor = UIColor.black
-        LRCFeeLabel.font = FontConfigManager.shared.getLabelENFont()
+        LRCFeeLabel.textColor = UIColor.tokenestTip
+        LRCFeeLabel.font = FontConfigManager.shared.getLabelSCFont(size: 16)
         LRCFeeLabel.frame = CGRect(x: padding, y: priceValueLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
         scrollView.addSubview(LRCFeeLabel)
         
-        LRCFeeValueLabel.textColor = UIColor.black
         LRCFeeValueLabel.textAlignment = .right
-        LRCFeeValueLabel.font = FontConfigManager.shared.getLabelENFont()
+        LRCFeeValueLabel.textColor = UIColor.tokenestTableFont
+        LRCFeeValueLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
         LRCFeeValueLabel.frame = CGRect(x: screenWidth - padding - 160, y: LRCFeeLabel.frame.minY, width: 160, height: rowHeight)
         scrollView.addSubview(LRCFeeValueLabel)
         
-        LRCFeeUnderLine.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 1)
+        LRCFeeUnderLine.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 0.5)
         LRCFeeUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         scrollView.addSubview(LRCFeeUnderLine)
         
         // Margin Split
         marginSplitLabel.text = LocalizedString("Margin Split", comment: "")
-        marginSplitLabel.textColor = UIColor.black
-        marginSplitLabel.font = FontConfigManager.shared.getLabelENFont()
+        marginSplitLabel.textColor = UIColor.tokenestTip
+        marginSplitLabel.font = FontConfigManager.shared.getLabelSCFont(size: 16)
         marginSplitLabel.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
         scrollView.addSubview(marginSplitLabel)
         
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
-        marginSplitValueLabel.textColor = UIColor.black
         marginSplitValueLabel.textAlignment = .right
-        marginSplitValueLabel.font = FontConfigManager.shared.getLabelENFont()
+        marginSplitValueLabel.textColor = UIColor.tokenestTableFont
+        marginSplitValueLabel.font = FontConfigManager.shared.getLabelENFont(size: 16)
         marginSplitValueLabel.frame = CGRect(x: screenWidth - padding - 160, y: marginSplitLabel.frame.minY, width: 160, height: rowHeight)
         scrollView.addSubview(marginSplitValueLabel)
+        
+        marginUnderLine.frame = CGRect(x: padding, y: marginSplitValueLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 0.5)
+        marginUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+        scrollView.addSubview(marginUnderLine)
         
         scrollView.contentSize = CGSize(width: screenWidth, height: marginSplitLabel.frame.maxY + padding)
         
         // Button
         placeOrderButton.setTitle(LocalizedString("Place Order", comment: ""), for: .normal)
-        placeOrderButton.setupRoundBlack()
+        placeOrderButton.setupRoundPurpleWithShadow()
     }
 
     override func didReceiveMemoryWarning() {
