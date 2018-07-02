@@ -292,8 +292,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             headerBalanceViewController.balanceLabel.alpha = 1.0
             headerBalanceViewController.addTokenButton.alpha = 1.0
         } else {
-            if scrollView.contentOffset.y > 210 {
-                headerBalanceViewController.view.y = -210
+            if scrollView.contentOffset.y > 190 {
+                headerBalanceViewController.view.y = -190
             } else {
                 headerBalanceViewController.view.y = -scrollView.contentOffset.y
             }
