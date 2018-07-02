@@ -42,7 +42,7 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
             webView.load(request)
             self.view.addSubview(webView)
             // Auto Layout
-            let topConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.customNavBar, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: UIApplication.shared.statusBarFrame.height)
+            let topConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.customNavBar, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
             let botConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
             let leftConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
             let rigthConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
@@ -61,7 +61,6 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
         start = Date()
     }
     
@@ -99,8 +98,9 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
     }
 
     func sendDataToHtml(json: JSON) {
-        if let jsonString = json.rawString(.utf8), let callback = self.dexRequest.callback {
-            self.webView.evaluateJavaScript("\(callback)(\(jsonString))") { _, error in
+        if let jsonString = json.rawString(.utf8),
+            let dexRequest = self.dexRequest, let callback = dexRequest.callback {
+                self.webView.evaluateJavaScript("\(callback)(\(jsonString))") { _, error in
                 guard error == nil else {
                     print(error!)
                     return
