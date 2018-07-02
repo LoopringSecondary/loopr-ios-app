@@ -21,13 +21,11 @@ class MainTabController: ESTabBarController {
         
         // Do any additional setup after loading the view.
         let v1 = WalletNavigationViewController()
-        let v2 = H5DexNavigationController()
-        let v3 = SettingNavigationViewController()
+        let v2 = SettingNavigationViewController()
         
         v1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-asset"), selectedImage: UIImage(named: "Tokenest-asset-selected"))
-        v2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-orders"), selectedImage: UIImage(named: "Tokenest-orders-selected"))
-        v3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-settings"), selectedImage: UIImage(named: "Tokenest-settings-selected"))
-        viewControllers = [v1, v2, v3]
+        v2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Tokenest-settings"), selectedImage: UIImage(named: "Tokenest-settings-selected"))
+        viewControllers = [v1, v2]
     }
 
     override func viewWillLayoutSubviews() {

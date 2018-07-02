@@ -17,13 +17,12 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
 
     @IBOutlet weak var statusBarBackgroundView: UIView!
     @IBOutlet weak var customizedNavigationBar: UINavigationBar!
-    
-    var type: SwitchTradeTokenType = .tokenS
     @IBOutlet weak var tableView: UITableView!
-
-    var searchText: String = ""
+    
     var isFiltering = false
+    var searchText: String = ""
     var filteredTokens = [Token]()
+    var type: SwitchTradeTokenType = .tokenS
 
     let searchBar = UISearchBar()
     
@@ -33,7 +32,6 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         // Do any additional setup after loading the view.
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
 
-        setBackButton()
         setupSearchBar()
 
         tableView.dataSource = self
@@ -49,11 +47,12 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("", comment: ""))
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("选择代币", comment: ""))
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func setupSearchBar() {
@@ -66,12 +65,22 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
         navigationItem.titleView = searchBarContainer
     }
+    
+    func getTokens() -> [Token] {
+        let tokens = TradeDataManager.shared.tokenS
+        let tokenb = TradeDataManager.shared.tokenB
+        if self.type == .tokenB {
+            return TokenDataManager.shared.getErcTokensExcept(for: tokens.symbol)
+        } else {
+            return TokenDataManager.shared.getErcTokensExcept(for: tokenb.symbol)
+        }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filteredTokens.count
         } else {
-            return TokenDataManager.shared.getTokens().count
+            return getTokens().count
         }
     }
     
@@ -85,12 +94,11 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
             let nib = Bundle.main.loadNibNamed("SwitchTradeTokenTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SwitchTradeTokenTableViewCell
         }
-
         let token: Token
         if isFiltering {
             token = filteredTokens[indexPath.row]
         } else {
-            token = TokenDataManager.shared.getTokens()[indexPath.row]
+            token = getTokens()[indexPath.row]
         }
         cell?.token = token
         cell?.update()
@@ -109,7 +117,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         if isFiltering {
             token = filteredTokens[indexPath.row]
         } else {
-            token = TokenDataManager.shared.getTokens()[indexPath.row]
+            token = getTokens()[indexPath.row]
         }
         switch type {
         case .tokenS:

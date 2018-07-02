@@ -20,7 +20,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var typeButton: UIButton!
-    @IBOutlet weak var moreButton: UIBarButtonItem!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var receiveButton: UIButton!
@@ -56,6 +55,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Receive button
         receiveButton.setTitle(LocalizedString("Receive", comment: ""), for: .normal)
+        receiveButton.layer.shadowColor = UIColor.init(rgba: "#939BB1").cgColor
+        receiveButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        receiveButton.layer.shadowRadius = 6
+        receiveButton.layer.shadowOpacity = 0.3
+        receiveButton.layer.masksToBounds = false
+        
         // Send button
         sendButton.setTitle(LocalizedString("Send", comment: ""), for: .normal)
         
@@ -187,7 +192,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @objc func pushTradeController() {
-        let viewController = TradeViewController()
+        let viewController = H5DexViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }

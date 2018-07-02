@@ -115,9 +115,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     }
     
     func setupNavigationBar() {
-        // left bar button
-//        customizedNavigationBar.setBackgroundImage(UIImage(), for: .default)
-        
         let backButton = UIButton(type: UIButtonType.custom)
         backButton.setImage(#imageLiteral(resourceName: "BackButtonImage-white"), for: .normal)
         backButton.setImage(#imageLiteral(resourceName: "BackButtonImage-white").alpha(0.3), for: .highlighted)

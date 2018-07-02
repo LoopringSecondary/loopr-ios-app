@@ -98,6 +98,22 @@ class TokenDataManager {
         return tokens
     }
     
+    func getTokensExcept(for symbol: String) -> [Token] {
+        return tokens.filter({ (token) -> Bool in
+            return token.symbol.uppercased() != symbol
+        })
+    }
+    
+    func getErcTokens() -> [Token] {
+        return getTokensExcept(for: "ETH")
+    }
+    
+    func getErcTokensExcept(for symbol: String) -> [Token] {
+        return getErcTokens().filter({ (token) -> Bool in
+            return token.symbol.uppercased() != symbol
+        })
+    }
+    
     func getTokensToAdd() -> [Token] {
         let notZeroAssets = CurrentAppWalletDataManager.shared.getAssets(isNotZero: true)
         let symbols = notZeroAssets.map { $0.symbol }

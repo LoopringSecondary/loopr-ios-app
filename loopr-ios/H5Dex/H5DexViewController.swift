@@ -26,7 +26,7 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
 
         // Do any additional setup after loading the view.
         statusBar.backgroundColor = GlobalPicker.themeColor
-        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: LocalizedString("DEX APP", comment: ""))
+        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: LocalizedString("DEX APP", comment: ""), image: "Tokenest-market-home")
         H5DexDataManager.shared.sendClosure = self.sendDataToHtml
         createWebView(marketUrl: "https://loopring.io/tokenest/#/auth/loopr")
     }

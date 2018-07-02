@@ -62,15 +62,13 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     var isTorchOn = false
     var shouldPop = true
     
-    var scanViewWidth: CGFloat = 375
+    var scanViewWidth: CGFloat = UIScreen.main.bounds.width
         
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
-        
-        scanViewWidth = UIScreen.main.bounds.width
 
         scanTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         scanTipLabel.textColor = .white
@@ -191,12 +189,12 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         let leftView = UIView(frame: CGRect(x: 0, y: topView.bottomY, width: scanViewWidth * 0.2, height: scanViewWidth * 0.6))
         let bottomView = UIView(frame: CGRect(x: 0, y: leftView.bottomY, width: scanViewWidth, height: UIScreen.main.bounds.height))
         let rightView = UIView(frame: CGRect(x: scanViewWidth * 0.8, y: leftView.y, width: scanViewWidth * 0.2, height: scanViewWidth * 0.6))
-        
-        topView.backgroundColor = UIColor(red: 0.0, green: 0, blue: 0, alpha: 0.4)
-        bottomView.backgroundColor = UIColor(red: 0.0, green: 0, blue: 0, alpha: 0.4)
+
+        topView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        bottomView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         leftView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         rightView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
-        
+
         self.scanView.addSubview(topView)
         self.scanView.addSubview(bottomView)
         self.scanView.addSubview(leftView)

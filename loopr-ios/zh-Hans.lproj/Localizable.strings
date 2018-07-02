@@ -312,7 +312,7 @@
 "Exporting keystore" = "正在导出keystore";
 "Create" = "创建";
 "Import" = "导入";
-"gas price" = "油费";
+"gas price" = "油价";
 "Processing the transaction" = "正在处理交易";
 "Airdrop" = "空投";
 "Trade FAQ" = "交易FAQ";
@@ -323,7 +323,7 @@
 "My Wallet Address" = "我的钱包地址";
 "Copy" = "复制";
 "Complete" = "完成";
-"Recommended Gas Price" = "推荐油费";
+"Recommended Gas Price" = "推荐油价";
 "Save QR code to Photo successfully." = "成功保存二维码到照片应用";
 "Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易";
 "Add Token" = "添加代币";
