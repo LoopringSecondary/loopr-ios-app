@@ -12,6 +12,7 @@ import Geth
 class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
     @IBOutlet weak var statusBar: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
@@ -38,8 +39,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        statusBar.backgroundColor = GlobalPicker.themeColor
         setupNavigationBar()
+        statusBar.backgroundColor = GlobalPicker.themeColor
+        titleLabel.text = "场外交易"
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = FontConfigManager.shared.getLabelSCFont(size: 18)
         exchangelabel.textColor = UIColor.tokenestTableFont
         exchangelabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
         
@@ -112,8 +116,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     func setupNavigationBar() {
         // left bar button
-        self.navigationController?.isNavigationBarHidden = true
-        customizedNavigationBar.setBackgroundImage(UIImage(), for: .default)
+//        customizedNavigationBar.setBackgroundImage(UIImage(), for: .default)
         
         let backButton = UIButton(type: UIButtonType.custom)
         backButton.setImage(#imageLiteral(resourceName: "BackButtonImage-white"), for: .normal)
@@ -153,7 +156,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
         tokenSButton.setRightImage(imageName: "Tokenest-moretoken", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
@@ -166,7 +169,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // We need this line of code.
-//        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func updateInfoLabel() {

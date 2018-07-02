@@ -56,8 +56,8 @@ class TradeReviewViewController: UIViewController {
         tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: tokenViewMinY, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
         scrollView.addSubview(tokenBView)
         
-        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
-        arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
+        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 16*UIStyleConfig.scale, height: 16*UIStyleConfig.scale)))
+        arrowRightImageView.image = #imageLiteral(resourceName: "Tokenest-right-arrow")
         scrollView.addSubview(arrowRightImageView)
 
         scrollView.contentSize = CGSize(width: screenWidth, height: tokenBView.frame.maxY + padding)

@@ -439,11 +439,19 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func pressedMarketButton() {
+        let marketUrl = "https://loopring.io/tokenest/#/auth/loopr"
+        if let url = URL(string: marketUrl) {
+            let viewController = DefaultWebViewController()
+            viewController.url = url
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
         
     func pressedTradeButton() {
         let viewController = TradeViewController()
-        self.present(viewController, animated: true, completion: nil)
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func pressedAddTokenButton() {

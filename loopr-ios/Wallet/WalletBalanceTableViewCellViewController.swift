@@ -113,17 +113,17 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         
         let iconTitlePadding: CGFloat = 14
         
-        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive"), title: LocalizedString("Receive", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .normal)
-        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive")?.alpha(0.6), title: LocalizedString("Receive", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .highlighted)
+        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive"), title: LocalizedString("Receive", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        receiveButton.set(image: UIImage.init(named: "Tokenest-asset-receive")?.alpha(0.6), title: LocalizedString("Receive", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send"), title: LocalizedString("Send", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .normal)
-        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: LocalizedString("Send", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .highlighted)
+        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send"), title: LocalizedString("Send", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: LocalizedString("Send", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        marketButton.set(image: UIImage.init(named: "Tokenest-asset-market"), title: LocalizedString("Market", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .normal)
-        marketButton.set(image: UIImage.init(named: "Tokenest-asset-market")?.alpha(0.6), title: LocalizedString("Market", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .highlighted)
+        marketButton.set(image: UIImage.init(named: "Tokenest-asset-market"), title: LocalizedString("Market", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        marketButton.set(image: UIImage.init(named: "Tokenest-asset-market")?.alpha(0.6), title: LocalizedString("Market", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade"), title: LocalizedString("Trade", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .normal)
-        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade")?.alpha(0.6), title: LocalizedString("Trade", comment: ""), titlePosition: .top, additionalSpacing: iconTitlePadding, state: .highlighted)
+        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade"), title: LocalizedString("Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade")?.alpha(0.6), title: LocalizedString("Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
     }
     
     @objc func pressedReceiveButton(_ button: UIButton) {
