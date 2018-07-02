@@ -17,6 +17,7 @@
                 <outlet property="minLabel" destination="9gI-tz-U2f" id="DHt-lK-Rrd"/>
                 <outlet property="slider" destination="2bn-Pe-4qT" id="loa-34-Buu"/>
                 <outlet property="statusBarBackgroundView" destination="STU-Rh-i3e" id="VQl-Xp-Soi"/>
+                <outlet property="symbolLabel" destination="sbX-cg-4c2" id="6rQ-aC-0GZ"/>
                 <outlet property="textField" destination="lbf-Ln-DMr" id="bbb-f9-XpR"/>
                 <outlet property="textFieldBackgroundView" destination="wJG-HS-Sm2" id="Eib-ic-NsW"/>
                 <outlet property="typeLabel" destination="Lrr-ot-m5d" id="nqi-DF-Pxh"/>
@@ -59,14 +60,26 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbX-cg-4c2">
+                            <rect key="frame" x="249" y="0.0" width="80" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="gM2-gY-o5b"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" name="Tokenest-blank"/>
                     <constraints>
                         <constraint firstItem="lbf-Ln-DMr" firstAttribute="top" secondItem="wJG-HS-Sm2" secondAttribute="top" id="1se-vp-aSM"/>
+                        <constraint firstAttribute="bottom" secondItem="sbX-cg-4c2" secondAttribute="bottom" id="K75-7s-cYY"/>
+                        <constraint firstAttribute="trailing" secondItem="sbX-cg-4c2" secondAttribute="trailing" constant="16" id="WN9-8t-fuN"/>
                         <constraint firstItem="lbf-Ln-DMr" firstAttribute="leading" secondItem="wJG-HS-Sm2" secondAttribute="leading" constant="28" id="ijd-qa-H2m"/>
                         <constraint firstAttribute="height" constant="49" id="kwf-VX-YRb"/>
                         <constraint firstAttribute="trailing" secondItem="lbf-Ln-DMr" secondAttribute="trailing" constant="28" id="pOd-uT-AVD"/>
                         <constraint firstAttribute="bottom" secondItem="lbf-Ln-DMr" secondAttribute="bottom" id="sEq-c2-GEC"/>
+                        <constraint firstItem="sbX-cg-4c2" firstAttribute="top" secondItem="wJG-HS-Sm2" secondAttribute="top" id="yq8-lu-VSd"/>
                     </constraints>
                 </view>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2bn-Pe-4qT">

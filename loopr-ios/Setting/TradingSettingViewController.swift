@@ -88,12 +88,12 @@ class TradingSettingViewController: UIViewController, UITableViewDelegate, UITab
             switch indexPath.row {
             case 0:
                 print("LRC Fee ratio")
-                let viewController = SettingLRCFeeRatioViewController()
+                let viewController = SettingLRCFeeRatioViewController(type: .lrcFeeRatio)
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             case 1:
                 print("Margin split")
-                let viewController = SettingMarginSplitViewController()
+                let viewController = SettingLRCFeeRatioViewController(type: .marginSplit)
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             default:
