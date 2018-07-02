@@ -72,6 +72,9 @@
 "Invalid mnemonic. Please enter again." = "Invalid mnemonic. Please enter again.";
 "Invalid private key. Please enter again." = "Invalid private key. Please enter again.";
 "Invalid keystore. Please enter again." = "Invalid keystore. Please enter again.";
+"Please enter mnemonic" = "Please enter mnemonic";
+"Please enter private key" = "Please enter private key";
+"Please enter keystore" = "Please enter keystore";
 "Mnemonic Password (optional)" = "Mnemonic Password (optional)";
 "Please enter a wallet name" = "Please set a wallet name";
 "Please set a password" = "Please set a password";
@@ -339,6 +342,7 @@
 "New Wallet Name" = "New Wallet Name";
 "New wallet name can't be empty" = "New wallet name can't be empty";
 "Please Enter Password" = "Please Enter Password";
+"Please enter password" = "Please enter password";
 "P2P Trade" = "P2P Trade";
 "Convert_to_ETH_in_TradeViewController" = "Convert to ETH";
 "Export_Keystore_in_ExportKeystoreSwipeViewController" = "Export Keystore";

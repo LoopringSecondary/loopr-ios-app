@@ -31,7 +31,7 @@ class UpdatedMnemonicSelectAddressViewController: UIViewController, UITableViewD
         nextButton.addTarget(self, action: #selector(pressedNextButton), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         
-        infoLabel.textColor = UIColor.init(rgba: "#B5B9C0")
+        infoLabel.textColor = UIColor.tokenestTip
         infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         
         selectedAddress.textColor = UIColor.init(rgba: "#32384C")

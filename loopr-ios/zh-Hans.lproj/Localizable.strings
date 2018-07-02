@@ -72,6 +72,9 @@
 "Invalid mnemonic. Please enter again." = "无法导入助记词。请重新输入。";
 "Invalid private key. Please enter again." = "无法导入私钥。请重新输入。";
 "Invalid keystore. Please enter again." = "Keystore无法导入。请重新输入。";
+"Please enter mnemonic" = "请输入助记词";
+"Please enter private key" = "请输入私钥";
+"Please enter keystore" = "请输入Keystore";
 "Mnemonic Password (optional)" = "助记词密码 (可选)";
 "Please enter a wallet name" = "请输入钱包名字";
 "Please set a password" = "请设置密码";
@@ -339,6 +342,7 @@
 "New Wallet Name" = "新钱包名称";
 "New wallet name can't be empty" = "新钱包名称不能为空";
 "Please Enter Password" = "请输入密码";
+"Please enter password" = "请输入密码";
 "P2P Trade" = "场外交易";
 "Convert_to_ETH_in_TradeViewController" = "转换为ETH";
 "Export_Keystore_in_ExportKeystoreSwipeViewController" = "导出Keystore";
