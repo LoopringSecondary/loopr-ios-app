@@ -256,6 +256,7 @@
 		AC387520205F12F100A76637 /* ContextMenu+ContainerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38750F205F12F000A76637 /* ContextMenu+ContainerStyle.swift */; };
 		AC387521205F12F100A76637 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387510205F12F100A76637 /* ContextMenu.swift */; };
 		AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387522205F141000A76637 /* AddMenuViewController.swift */; };
+		AC3C868920EA371800D625F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC3C868B20EA371800D625F0 /* InfoPlist.strings */; };
 		AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141ED203524280089861D /* MarketSwipeViewController.swift */; };
 		AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4141EE203524280089861D /* MarketSwipeViewController.xib */; };
 		AC4141F320352C460089861D /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F220352C460089861D /* SwipeViewController.swift */; };
@@ -834,6 +835,8 @@
 		AC38750F205F12F000A76637 /* ContextMenu+ContainerStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+ContainerStyle.swift"; sourceTree = "<group>"; };
 		AC387510205F12F100A76637 /* ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		AC387522205F141000A76637 /* AddMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMenuViewController.swift; sourceTree = "<group>"; };
+		AC3C868A20EA371800D625F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AC3C868C20EA371B00D625F0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		AC4141ED203524280089861D /* MarketSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewController.swift; sourceTree = "<group>"; };
 		AC4141EE203524280089861D /* MarketSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketSwipeViewController.xib; sourceTree = "<group>"; };
 		AC4141F220352C460089861D /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
@@ -1888,6 +1891,7 @@
 				AC13481A20E828D800D922C0 /* Localizable */,
 				ACE5BFA920466EFD005D75DD /* Localizable.strings */,
 				AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */,
+				AC3C868B20EA371800D625F0 /* InfoPlist.strings */,
 				FF9C7DD9208D55F8004687AD /* Settings.bundle */,
 				FF9C7DDB208D59EA004687AD /* SettingsBundleHelper.swift */,
 			);
@@ -2761,6 +2765,7 @@
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
 				AC06189E20E2347C003659C4 /* UpdatedSettingTableViewCell.xib in Resources */,
 				943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */,
+				AC3C868920EA371800D625F0 /* InfoPlist.strings in Resources */,
 				AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
 				AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */,
 				AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */,
@@ -3457,6 +3462,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AC3C868B20EA371800D625F0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC3C868A20EA371800D625F0 /* en */,
+				AC3C868C20EA371B00D625F0 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		AC798E482022B93A0071D477 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -90,7 +90,7 @@
                         <constraint firstAttribute="width" constant="151" id="Fr0-6D-QCx"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="讲助记词按顺序记录到本子上，千万不要截图或保存到互联网上。\n这对您的账户安全至关重要，一旦丢失无法恢复！" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6d-kK-598">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将助记词按顺序记录到本子上，千万不要截图或保存到互联网上。\n这对您的账户安全至关重要，一旦丢失无法恢复！" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6d-kK-598">
                     <rect key="frame" x="68.5" y="276" width="276.5" height="51"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="51" id="DOx-36-z8p"/>
