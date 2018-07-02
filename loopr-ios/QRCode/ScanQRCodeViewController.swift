@@ -16,7 +16,6 @@ protocol QRCodeScanProtocol: class {
 enum QRCodeType: String {
     case address = "Address"
     case mnemonic = "Mnemonic"
-    case keystore = "Keystore"
     case privateKey = "Private Key"
     case login = "UUID"
     case convert = "Convert"
@@ -29,7 +28,6 @@ enum QRCodeType: String {
         switch self {
         case .address: return LocalizedString("Address detected", comment: "")
         case .mnemonic: return LocalizedString("Mnemonic detected", comment: "")
-        case .keystore: return LocalizedString("Keystore detected", comment: "")
         case .privateKey: return LocalizedString("Private key detected", comment: "")
         case .submitOrder: return LocalizedString("Authorization message detected", comment: "")
         case .login: return LocalizedString("Login message detected", comment: "")
@@ -300,8 +298,6 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             return QRCodeType.mnemonic
         } else if QRCodeMethod.isPrivateKey(key: qrContent) {
             return QRCodeType.privateKey
-        } else if QRCodeMethod.isKeystore(content: qrContent) {
-            return QRCodeType.keystore
         } else {
             return QRCodeType.undefined
         }

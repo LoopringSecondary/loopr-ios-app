@@ -61,7 +61,7 @@ class AppWallet: NSObject, NSCoding {
         print("########################## keystoreString ##########################")
         print(keystoreString)
         print("########################## end ##########################")
-        if keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString) {
+        if keystoreString == "" || !AppWallet.isKeystore(content: keystoreString) {
             print("Need to generate keystore")
             preconditionFailure("No keystore")
             // generateKeystoreInBackground()
@@ -85,6 +85,19 @@ class AppWallet: NSObject, NSCoding {
     func addAssetSequenceInHideSmallAssets(symbol: String) {
         if symbol.trim() != "" && !assetSequenceInHideSmallAssets.contains(symbol) {
             assetSequenceInHideSmallAssets.append(symbol)
+        }
+    }
+    
+    static func isKeystore(content: String) -> Bool {
+        let jsonData = content.data(using: String.Encoding.utf8)
+        if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData!, options: []) {
+            if JSONSerialization.isValidJSONObject(jsonObject) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
         }
     }
 
@@ -151,7 +164,7 @@ class AppWallet: NSObject, NSCoding {
         
         if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let keystoreString = keystoreString, let name = name {
             // Verify keystore
-            if keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString) {
+            if keystoreString == "" || !AppWallet.isKeystore(content: keystoreString) {
                 return nil
             }
             self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, active: active, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets))

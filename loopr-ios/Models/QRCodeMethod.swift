@@ -44,20 +44,7 @@ enum QRCodeMethod: String {
         }
         return true
     }
-    
-    static func isKeystore(content: String) -> Bool {
-        let jsonData = content.data(using: String.Encoding.utf8)
-        if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData!, options: []) {
-            if JSONSerialization.isValidJSONObject(jsonObject) {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
-    }
-    
+
     static func isP2POrder(content: String) -> Bool {
         return content.contains("-")
     }

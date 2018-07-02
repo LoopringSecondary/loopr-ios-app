@@ -387,7 +387,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             if contentText.trim() == "" {
                 invalidMessage = LocalizedString("Please enter keystore", comment: "")
                 valid = false
-            } else if !QRCodeMethod.isKeystore(content: contentText) {
+            } else if !AppWallet.isKeystore(content: contentText) {
                 invalidMessage = LocalizedString("Invalid keystore. Please enter again.", comment: "")
                 valid = false
             } else if password == "" {
