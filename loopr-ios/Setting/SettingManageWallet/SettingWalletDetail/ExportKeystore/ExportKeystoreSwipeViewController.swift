@@ -23,10 +23,10 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         setBackButton()
 
         options.swipeTabView.height = 44
-        options.swipeTabView.underlineView.height = 1
+        options.swipeTabView.underlineView.height = 0
         
         options.swipeTabView.style = .segmented
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
+        options.swipeTabView.itemView.font = FontConfigManager.shared.getLabelSCFont(size: 17, type: "Medium")
         
         swipeView.reloadData(options: options)
     }
@@ -71,7 +71,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
     
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {
         if index == 0 {
-            return "Keystore"
+            return LocalizedString("Export_Keystore_in_ExportKeystoreSwipeViewController", comment: "")
         } else {
             return LocalizedString("QR Code", comment: "")
         }

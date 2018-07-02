@@ -45,8 +45,8 @@ class ExportKeystoreViewController: UIViewController {
     func setupExportViewBackground() {
         exportKeystoreSwipeViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(exportKeystoreSwipeViewController.view)
-        let topConstraint = NSLayoutConstraint(item: exportKeystoreSwipeViewController.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: exportViewBackground, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 30)
-        let bottomConstraint = NSLayoutConstraint(item: exportKeystoreSwipeViewController.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: exportViewBackground, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: -10)
+        let topConstraint = NSLayoutConstraint(item: exportKeystoreSwipeViewController.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: exportViewBackground, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 10)
+        let bottomConstraint = NSLayoutConstraint(item: exportKeystoreSwipeViewController.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: exportViewBackground, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
 
         let constraints: [NSLayoutConstraint] = [
             topConstraint,

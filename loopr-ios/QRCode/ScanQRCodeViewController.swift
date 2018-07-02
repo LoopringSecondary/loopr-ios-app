@@ -49,15 +49,15 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     weak var delegate: QRCodeScanProtocol?
     
     @IBOutlet weak var scanView: UIView!
-    @IBOutlet weak var flashButton: UIButton!
-    @IBOutlet weak var scanTipLabel: UILabel!
+    var flashButton: UIButton = UIButton()
+    var scanTipLabel: UILabel = UILabel()
     
     var captureSession = AVCaptureSession()
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
     var timer = Timer()
-    var scanning: String!
+    var scanning: String = ""
     var scanLine = UIImageView()
     var scanQRCodeView = UIView()
     
@@ -69,11 +69,14 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
 
         // Do any additional setup after loading the view.
         statusBarBackgroundView.backgroundColor = GlobalPicker.themeColor
-        
-        scanTipLabel.font = FontConfigManager.shared.getLabelENFont()
-        scanTipLabel.textColor = Themes.isNight() ? .white : .black
+
+        scanTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
+        scanTipLabel.textColor = .white
+        scanTipLabel.textAlignment = .center
         scanTipLabel.text = LocalizedString("Align QR Code within Frame to Scan", comment: "")
-        self.flashButton.image = UIImage(named: "TorchOff")
+
+        flashButton.image = UIImage(named: "TorchOff")
+        flashButton.addTarget(self, action: #selector(switchFlash(_:)), for: .touchUpInside)
         
         // Get the camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
@@ -103,7 +106,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         
         // Start video capture.
         captureSession.startRunning()
-        
+
         self.setupScanLine()
         self.setupBackGroundView()
         self.setupFrameLine()
@@ -134,7 +137,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         }
     }
     
-    @IBAction func switchFlash(_ sender: UIButton) {
+    @objc func switchFlash(_ sender: UIButton) {
         guard let device = AVCaptureDevice.default(for: .video) else { return }
         if device.hasTorch && device.isTorchAvailable {
             try? device.lockForConfiguration()
@@ -170,9 +173,9 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func setupScanLine() {
-        scanQRCodeView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.2, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.6, height: scanView.frame.size.width * 0.6))
+        scanQRCodeView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.2, y: scanView.frame.size.width * 0.2, width: scanView.frame.size.width * 0.6, height: scanView.frame.size.width * 0.6))
         scanQRCodeView.layer.borderWidth = 1.0
-        scanQRCodeView.layer.borderColor = UIColor.white.cgColor
+        scanQRCodeView.layer.borderColor = UIColor.init(rgba: "#3658ED").cgColor
         scanView.addSubview(scanQRCodeView)
         scanLine.frame = CGRect(x: 0, y: 0, width: scanQRCodeView.frame.size.width, height: 2)
         scanLine.image = UIImage(named: "QRCodeScanLine")
@@ -182,13 +185,13 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func setupBackGroundView() {
-        let topView = UIView(frame: CGRect(x: 0, y: 0, width: scanView.frame.size.width, height: scanView.frame.size.height * 0.2))
-        let bottomView = UIView(frame: CGRect(x: 0, y: scanView.frame.size.height * 0.8, width: scanView.frame.size.width, height: scanView.frame.size.height * 0.2))
-        let leftView = UIView(frame: CGRect(x: 0, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
-        let rightView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.8, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
+        let topView = UIView(frame: CGRect(x: 0, y: 0, width: scanView.frame.size.width, height: scanView.frame.size.width * 0.2))
+        let leftView = UIView(frame: CGRect(x: 0, y: topView.bottomY, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
+        let bottomView = UIView(frame: CGRect(x: 0, y: leftView.bottomY, width: scanView.frame.size.width, height: scanView.frame.size.height))
+        let rightView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.8, y: leftView.y, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
         
-        topView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
-        bottomView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        topView.backgroundColor = UIColor(red: 0.0, green: 0, blue: 0, alpha: 0.4)
+        bottomView.backgroundColor = UIColor(red: 0.0, green: 0, blue: 0, alpha: 0.4)
         leftView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         rightView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         
@@ -196,6 +199,12 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         self.scanView.addSubview(bottomView)
         self.scanView.addSubview(leftView)
         self.scanView.addSubview(rightView)
+        
+        scanTipLabel.frame = CGRect(x: 0, y: leftView.bottomY + 11, width: scanView.frame.size.width, height: 20)
+        self.scanView.addSubview(scanTipLabel)
+        
+        flashButton.frame = CGRect(x: (scanView.frame.size.width-64)*0.5, y: scanTipLabel.bottomY+72, width: 64, height: 64)
+        self.scanView.addSubview(flashButton)
     }
     
     func setupFrameLine() {
@@ -223,7 +232,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         path.addLine(to: CGPoint(x: scanQRCodeView.frame.maxX - 2, y: scanQRCodeView.frame.maxY - lineLength))
         
         line.path = path.cgPath
-        line.strokeColor = UIColor.white.cgColor
+        line.strokeColor = UIColor.init(rgba: "#3658ED").cgColor
         line.lineWidth = 4
         
         line.lineJoin = kCALineJoinRound
