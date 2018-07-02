@@ -11,9 +11,10 @@ import UIKit
 import WebKit
 import JavaScriptCore
 
-class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIScrollViewDelegate, UITextFieldDelegate {
+class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIScrollViewDelegate {
 
-    @IBOutlet weak var urlTextField: UITextField!
+    @IBOutlet weak var statusBar: UIView!
+    @IBOutlet weak var customNavBar: UINavigationBar!
     
     var webView: WKWebView!
     var dexRequest: DexRequest!
@@ -24,30 +25,32 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.isNavigationBarHidden = true
+        statusBar.backgroundColor = GlobalPicker.themeColor
+        self.setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: LocalizedString("DEX APP", comment: ""))
         H5DexDataManager.shared.sendClosure = self.sendDataToHtml
-        urlTextField.delegate = self
-        urlTextField.returnKeyType = UIReturnKeyType.done
+        createWebView(marketUrl: "https://loopring.io/tokenest/#/auth/loopr")
     }
 
-    func createWebView(url: URL) {
-        let contentController = WKUserContentController()
-        contentController.add(self, name: "nativeCallbackHandler")
-        let config = WKWebViewConfiguration()
-        config.userContentController = contentController
-        webView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), configuration: config)
-        let request = URLRequest(url: url)
-        webView.load(request)
-        self.view.addSubview(webView)
-        // Auto Layout
-        let topConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: UIApplication.shared.statusBarFrame.height)
-        let botConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
-        let leftConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
-        let rigthConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
-        NSLayoutConstraint.activate([topConst, botConst, leftConst, rigthConst])
-        self.webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.navigationDelegate = self
-        webView.scrollView.delegate = self
+    func createWebView(marketUrl: String) {
+        if let url = URL(string: marketUrl) {
+            let contentController = WKUserContentController()
+            contentController.add(self, name: "nativeCallbackHandler")
+            let config = WKWebViewConfiguration()
+            config.userContentController = contentController
+            webView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), configuration: config)
+            let request = URLRequest(url: url)
+            webView.load(request)
+            self.view.addSubview(webView)
+            // Auto Layout
+            let topConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.customNavBar, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: UIApplication.shared.statusBarFrame.height)
+            let botConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            let leftConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
+            let rigthConst = NSLayoutConstraint(item: self.webView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+            NSLayoutConstraint.activate([topConst, botConst, leftConst, rigthConst])
+            self.webView.translatesAutoresizingMaskIntoConstraints = false
+            webView.navigationDelegate = self
+            webView.scrollView.delegate = self
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,19 +58,16 @@ class H5DexViewController: UIViewController, WKNavigationDelegate, WKScriptMessa
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        urlTextField.resignFirstResponder()
-        return false
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         start = Date()
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        let url = URL(string: textField.text!)
-        self.createWebView(url: url!)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
