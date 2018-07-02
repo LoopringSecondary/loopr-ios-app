@@ -174,7 +174,8 @@ class UpdatedImportWalletEnterWalletNameViewController: UIViewController, UIText
     }
     
     @objc func doneWithNumberPad(_ sender: Any) {
-        pressedContinueButton(sender)
+        // pressedContinueButton(sender)
+        walletNameTextField.resignFirstResponder()
     }
     
     @objc func pressedContinueButton(_ sender: Any) {

@@ -30,7 +30,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         
         let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         numberToolbar.barStyle = .default
-        let doneBarButton = UIBarButtonItem(title: LocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(pressedSaveButton))
+        let doneBarButton = UIBarButtonItem(title: LocalizedString("Complete", comment: ""), style: .plain, target: self, action: #selector(doneWithNumberPad))
         doneBarButton.setTitleTextAttributes([
             NSAttributedStringKey.foregroundColor: UIColor(rgba: "#4350CC"),
             NSAttributedStringKey.font: FontConfigManager.shared.getLabelENFont(size: 16)
@@ -65,6 +65,10 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func doneWithNumberPad(_ sender: Any) {
+        nameTextField.resignFirstResponder()
     }
 
     @objc func pressedSaveButton(_ sender: Any) {

@@ -187,7 +187,10 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
     }
     
     @objc func doneWithNumberPad(_ sender: Any) {
-        pressedContinueButton(sender)
+        // pressedContinueButton(sender)
+        walletNameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        repeatPasswordTextField.resignFirstResponder()
     }
     
     @objc func scrollViewTapped() {
