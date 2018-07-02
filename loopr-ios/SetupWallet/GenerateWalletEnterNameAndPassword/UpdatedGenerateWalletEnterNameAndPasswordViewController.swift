@@ -82,13 +82,13 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         mainScrollView.addSubview(infoImage)
         
         infoLabel.textColor = UIColor.tokenestTip
-        infoLabel.font = FontConfigManager.shared.getLabelENFont(size: 12)
+        infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         infoLabel.frame = CGRect(x: 72, y: 36, width: screenWidth, height: 34)
         infoLabel.numberOfLines = 2
         let attr = NSMutableAttributedString(string: "钱包密码用于导出私钥，交易设置时验证您的身份" + "\n" + "长度不少于6位")
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 4
-        attr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attr.length))
+        // let paragraphStyle = NSMutableParagraphStyle()
+        // paragraphStyle.lineSpacing = 4
+        // attr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attr.length))
         infoLabel.attributedText = attr
         mainScrollView.addSubview(infoLabel)
 

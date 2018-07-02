@@ -59,14 +59,24 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         // Reload data if the data is updated.
         tableView.reloadData()
         
+        // Add shadow
         let shadowSize: CGFloat = 0.5
-        let shadowPath = UIBezierPath(rect: CGRect(x: -shadowSize / 2, y: -shadowSize / 2, width: self.createButton.frame.size.width + shadowSize, height: self.createButton.frame.size.height + shadowSize))
+
+        let shadowPath1 = UIBezierPath(rect: CGRect(x: -shadowSize / 2, y: -shadowSize / 2, width: self.createButton.frame.size.width + shadowSize, height: self.createButton.frame.size.height + shadowSize))
         self.createButton.layer.masksToBounds = false
         self.createButton.layer.shadowColor = UIColor.init(rgba: "#939BB1").cgColor
         self.createButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         self.createButton.layer.shadowOpacity = 0.5
-        self.createButton.layer.shadowPath = shadowPath.cgPath
+        self.createButton.layer.shadowPath = shadowPath1.cgPath
         createButton.setBackgroundColor(UIColor.white, for: .normal)
+        
+        let shadowPath2 = UIBezierPath(rect: CGRect(x: -shadowSize / 2, y: -shadowSize / 2, width: self.importButton.frame.size.width + shadowSize, height: self.importButton.frame.size.height + shadowSize))
+        self.importButton.layer.masksToBounds = false
+        self.importButton.layer.shadowColor = UIColor.init(rgba: "#939BB1").cgColor
+        self.importButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.importButton.layer.shadowOpacity = 0.5
+        self.importButton.layer.shadowPath = shadowPath2.cgPath
+        importButton.setBackgroundColor(UIColor.tokenestBackground, for: .normal)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

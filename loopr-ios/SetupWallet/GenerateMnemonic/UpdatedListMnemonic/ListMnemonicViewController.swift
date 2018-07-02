@@ -51,7 +51,7 @@ class ListMnemonicViewController: UIViewController {
         }
         
         nextButton.addTarget(self, action: #selector(pressedNextButton), for: .touchUpInside)
-        if isExportingWalletMode {
+        if isExportingWalletMode && wallet!.isVerified {
             nextButton.isHidden = true
         }
         

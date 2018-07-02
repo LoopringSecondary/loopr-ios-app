@@ -77,14 +77,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         maxLabel.textAlignment = .right
         maxLabel.font = FontConfigManager.shared.getLabelSCFont()
         view.addSubview(maxLabel)
-        
-        /*
-        saveButton.setupRoundBlack()
-        saveButton.setTitle(LocalizedString("Save", comment: ""), for: .normal)
-        saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
-        view.addSubview(saveButton)
-        */
-        
+
         switch currentSettingType {
         case .lrcFeeRatio:
             typeLabel.text = LocalizedString("LRC Fee Ratio", comment: "")
@@ -125,6 +118,15 @@ class SettingLRCFeeRatioViewController: UIViewController {
             navigationTitle = LocalizedString("Margin Split", comment: "")
         }
         setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: navigationTitle)
+        
+        let rightButton = UIButton(type: UIButtonType.custom)
+        rightButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        rightButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -16)
+        rightButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14)
+        rightButton.title = LocalizedString("Confirmation", comment: "")
+        rightButton.addTarget(self, action: #selector(pressedSaveButton), for: UIControlEvents.touchUpInside)
+        let barButton = UIBarButtonItem(customView: rightButton)
+        customizedNavigationBar.topItem?.rightBarButtonItem = barButton
     }
     
     override func viewWillDisappear(_ animated: Bool) {
