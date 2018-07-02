@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,9 +11,9 @@
                 <outlet property="addressLabel" destination="auU-X6-1ZA" id="ADc-Rz-A2E"/>
                 <outlet property="copyButton" destination="mBe-Wn-sPj" id="whE-Bb-6Kg"/>
                 <outlet property="customizedNavigationBar" destination="ASs-TZ-HlA" id="yBa-54-zoK"/>
+                <outlet property="displayQrcodeButton" destination="tZo-c6-Cjb" id="Yk9-B7-Xwm"/>
                 <outlet property="myAddressInfoLabel" destination="4sN-kc-WgP" id="Ll4-7h-NiA"/>
                 <outlet property="presentedBackgroundView" destination="bAa-KD-SWC" id="sQq-S0-2Br"/>
-                <outlet property="qrcodeButton" destination="tZo-c6-Cjb" id="Yk9-B7-Xwm"/>
                 <outlet property="settingsTableView" destination="fhl-ir-4jy" id="Eot-wo-Thj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
