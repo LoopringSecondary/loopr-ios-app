@@ -50,7 +50,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     var transactionAmountMinLabel = UILabel()
     var transactionAmountMaxLabel = UILabel()
     var transactionAmountCurrentLabel = UILabel()
-    var transactionAmountHelpButton = UIButton()
     
     // send button
     var sendButton = UIButton()
@@ -61,10 +60,10 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     var activeTextFieldTag = -1
     
     var asset: Asset!
+    var address: String!
     var showCollection: Bool = false
     var recGasPriceInGwei: Double = 0
     var selectedIndexPath: IndexPath!
-    var address: String!
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
     
     override func viewDidLoad() {
@@ -199,12 +198,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         transactionAmountCurrentLabel.text = LocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
         
         scrollView.addSubview(transactionAmountCurrentLabel)
-        
-        let pad = (transactionAmountCurrentLabel.frame.width - transactionAmountCurrentLabel.intrinsicContentSize.width) / 2
-        transactionAmountHelpButton.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX - pad, y: transactionAmountCurrentLabel.frame.minY, width: 30, height: 30)
-        transactionAmountHelpButton.image = UIImage(named: "HelpIcon")
-        transactionAmountHelpButton.addTarget(self, action: #selector(pressedHelpButton), for: .touchUpInside)
-        scrollView.addSubview(transactionAmountHelpButton)
         
         transactionAmountMaxLabel.textAlignment = .right
         transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
@@ -346,14 +339,18 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
                 result = balance
             }
         }
-        return result
+        return result < 0 ? 0 : result
     }
     
     func getAvailableString() -> String {
         var result: String = ""
         if let asset = self.asset {
             if asset.symbol.uppercased() == "ETH" {
-                result = (asset.balance - 0.01).withCommas(6)
+                var balance = asset.balance - 0.01
+                if balance < 0 {
+                    balance = 0
+                }
+                result = balance.withCommas(6)
             } else {
                 result = asset.display
             }
@@ -650,18 +647,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    @objc func pressedHelpButton(_ sender: Any) {
-        let title = LocalizedString("What is gas?", comment: "")
-        let message = LocalizedString("Gas is...", comment: "") // TODO
-        let alertController = UIAlertController(title: title,
-                                                message: message,
-                                                preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .cancel, handler: { _ in
-        })
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
     }
     
     @objc func scrollViewTapped() {

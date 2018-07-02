@@ -15,10 +15,10 @@
                 <outlet property="balanceLabel" destination="1nU-4m-F2g" id="fOT-h5-b0S"/>
                 <outlet property="buttonBackgroundImageView" destination="3Wr-EV-Dmb" id="R62-Jy-JJt"/>
                 <outlet property="buttonBackgroundView" destination="JtW-QQ-8am" id="r4W-rM-WpS"/>
-                <outlet property="marketButton" destination="4Fu-CM-z6v" id="L8T-AQ-eGm"/>
-                <outlet property="receiveButton" destination="03m-r6-GOI" id="ZXe-8z-lut"/>
+                <outlet property="marketButton" destination="2g3-w6-paq" id="OcU-pX-jwe"/>
+                <outlet property="receiveButton" destination="4Fu-CM-z6v" id="2wS-XA-POU"/>
                 <outlet property="sendButton" destination="OhF-4h-aNV" id="DoP-s0-3Bf"/>
-                <outlet property="tradeButton" destination="2g3-w6-paq" id="aJf-9n-7Hv"/>
+                <outlet property="tradeButton" destination="03m-r6-GOI" id="hQB-aq-F1h"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
