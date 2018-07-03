@@ -53,7 +53,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         
         let originY: CGFloat = 60
         let padding: CGFloat = 15
-        let tokenButtonWidth: CGFloat = 60
+        let tokenButtonWidth: CGFloat = 100
         let textFieldWidth: CGFloat = 200
 
         // First row: TokenS

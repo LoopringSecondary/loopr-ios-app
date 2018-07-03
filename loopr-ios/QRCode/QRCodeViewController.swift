@@ -36,6 +36,10 @@ class QRCodeViewController: UIViewController {
         addressLabel.font = FontConfigManager.shared.getLabelENFont(size: 14)
         addressTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         
+        let backgroundTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        backgroundTapGesture.delegate = self
+        view.addGestureRecognizer(backgroundTapGesture)
+        
         copyAddressButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 13)
         copyAddressButton.layer.shadowColor = UIColor.tokenestLightShadow.cgColor
         copyAddressButton.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -62,6 +66,11 @@ class QRCodeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         qrcodeImageView.image = qrcodeImage
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        delegate?.dismissQRCodeViewController()
+        self.dismiss(animated: true, completion: nil)
     }
     
     func generateQRCode(from data: Data) {

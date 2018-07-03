@@ -22,7 +22,7 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     
     var updateBalanceLabelTimer: Timer?
     
-    @IBOutlet weak var balanceInfoLabel: UILabel!
+    @IBOutlet weak var balanceTipLabel: UILabel!
     @IBOutlet weak var balanceLabel: TickerLabel!
     
     @IBOutlet weak var addTokenButton: UIButton!
@@ -41,9 +41,9 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
 
-        balanceInfoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
-        balanceInfoLabel.textColor = UIColor.init(rgba: "#8997F3")
-        balanceInfoLabel.text = "总资产 (元)"
+        balanceTipLabel.text = "总资产 (元)"
+        balanceTipLabel.textColor = UIColor.tokenestPending
+        balanceTipLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
         
         balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 36))
         balanceLabel.animationDuration = 0.3
@@ -101,8 +101,8 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         marketButton.set(image: UIImage.init(named: "Tokenest-asset-market"), title: LocalizedString("Market", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         marketButton.set(image: UIImage.init(named: "Tokenest-asset-market")?.alpha(0.6), title: LocalizedString("Market", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade"), title: LocalizedString("Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade")?.alpha(0.6), title: LocalizedString("Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade"), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade")?.alpha(0.6), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
         sendButton.set(image: UIImage.init(named: "Tokenest-asset-send"), title: LocalizedString("Send", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: LocalizedString("Send", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
@@ -133,9 +133,9 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         self.buttonBackgroundView.layer.shadowPath = shadowPath.cgPath
         
         if SettingDataManager.shared.getCurrentCurrency().name == "CNY" {
-            balanceInfoLabel.text = LocalizedString("Total (yuan)", comment: "")
+            balanceTipLabel.text = LocalizedString("Total (yuan)", comment: "")
         } else {
-            balanceInfoLabel.text = LocalizedString("Total (USD)", comment: "")
+            balanceTipLabel.text = LocalizedString("Total (USD)", comment: "")
         }
     }
     
