@@ -31,13 +31,13 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         
         baseView.backgroundColor = UIColor.white
         baseView.cornerRadius = 7.5
-        nameLabel.font = FontConfigManager.shared.getLabelENFont(size: 18)
+        nameLabel.font = FontConfigManager.shared.getLabelSCFont(size: 18)
         nameLabel.lineBreakMode = .byTruncatingMiddle
         addressLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         addressLabel.textColor = UIColor.init(rgba: "#878FA4")
         addressLabel.backgroundColor = UIColor.init(rgba: "#F4F6F8")
         addressLabel.cornerRadius = 9.0
-        toatalBalanceLabel.font = FontConfigManager.shared.getLabelENFont(size: 20)
+        toatalBalanceLabel.font = FontConfigManager.shared.getLabelSCFont(size: 20)
         toatalBalanceLabel.textColor = UIColor.init(rgba: "#3658ED")
         
         needVerifiedButton.setTitle(LocalizedString("Backup_Mnemonic_in_SettingManageWallet", comment: ""), for: .normal)

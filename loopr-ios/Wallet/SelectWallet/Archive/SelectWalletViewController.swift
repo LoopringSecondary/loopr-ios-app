@@ -74,8 +74,8 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @objc func pressedCreateButton(_ sender: UIButton) {
-        let viewController = GenerateWalletEnterNameAndPasswordViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        // let viewController = GenerateWalletEnterNameAndPasswordViewController()
+        // self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func pressedImportButton(_ sender: UIButton) {
