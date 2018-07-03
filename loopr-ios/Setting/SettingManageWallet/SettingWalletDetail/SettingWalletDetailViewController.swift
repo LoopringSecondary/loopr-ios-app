@@ -76,7 +76,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         self.tableView.reloadData()
         
         let shadowSize: CGFloat = 1.0
-        let shadowPath = UIBezierPath(rect: CGRect(x: -shadowSize / 2, y: -shadowSize / 2, width: self.deleteWalletButton.frame.size.width + shadowSize, height: self.deleteWalletButton.frame.size.height + shadowSize))
+        let shadowPath = UIBezierPath(rect: CGRect(x: -shadowSize / 2, y: -shadowSize / 2, width: UIScreen.main.bounds.width + shadowSize, height: self.deleteWalletButton.frame.size.height + shadowSize))
         self.deleteWalletButton.layer.masksToBounds = false
         self.deleteWalletButton.layer.shadowColor = UIColor.init(rgba: "#939BB1").cgColor
         self.deleteWalletButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
