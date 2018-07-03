@@ -13,6 +13,8 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet weak var unlockAppButton1: UIButton!
     @IBOutlet weak var unlockAppButton2: UIButton!
     
+    var needNavigate: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,17 +35,25 @@ class AuthenticationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        AuthenticationDataManager.shared.authenticate { (error) in
-            guard error == nil else { return }
-            self.dismiss(animated: true, completion: nil)
-        }
+        startAuthentication()
     }
 
     @objc func pressedUnlockAppButton(_ sender: Any) {
         print("pressedUnlockAppButton")
+        startAuthentication()
+    }
+    
+    func startAuthentication() {
         AuthenticationDataManager.shared.authenticate { (error) in
             guard error == nil else { return }
-            self.dismiss(animated: true, completion: nil)
+            if self.needNavigate {
+                DispatchQueue.main.async {
+                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                    appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+                }
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }
