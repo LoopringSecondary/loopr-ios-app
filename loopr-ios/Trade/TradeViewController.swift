@@ -133,8 +133,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         rightButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         rightButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -16)
         
-        rightButton.setImage(#imageLiteral(resourceName: "Tokenest-switch-wallet"), for: .normal)
-        rightButton.setImage(#imageLiteral(resourceName: "Tokenest-switch-wallet").alpha(0.3), for: .highlighted)
+        rightButton.setImage(#imageLiteral(resourceName: "Tokenest-order-history"), for: .normal)
+        rightButton.setImage(#imageLiteral(resourceName: "Tokenest-order-history").alpha(0.3), for: .highlighted)
         rightButton.addTarget(self, action: #selector(pressedHistoryButton(_:)), for: UIControlEvents.touchUpInside)
         
         // navigation item
@@ -191,8 +191,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         } else {
             let tokens = TradeDataManager.shared.tokenS.symbol
             let title = LocalizedString("Available Balance", comment: "")
-            if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-                estimateValueInCurrency.text = "\(title) \(balance) \(tokens)"
+            if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens) {
+                estimateValueInCurrency.text = "\(title) \(asset.display) \(tokens)"
             } else {
                 estimateValueInCurrency.text = "\(title) 0.0 \(tokens)"
             }

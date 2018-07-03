@@ -250,8 +250,9 @@
                     <constraints>
                         <constraint firstItem="yBD-H3-CZV" firstAttribute="top" secondItem="jgg-vL-AdJ" secondAttribute="top" id="1SP-nj-1bs"/>
                         <constraint firstItem="yBD-H3-CZV" firstAttribute="trailing" secondItem="jgg-vL-AdJ" secondAttribute="trailing" id="8xa-HA-zwy"/>
-                        <constraint firstItem="J6x-s5-jwg" firstAttribute="width" secondItem="jgg-vL-AdJ" secondAttribute="width" constant="-128" id="AD9-fC-wjB"/>
+                        <constraint firstAttribute="trailing" secondItem="J6x-s5-jwg" secondAttribute="trailing" constant="64" id="Lq5-VF-xU7"/>
                         <constraint firstItem="yBD-H3-CZV" firstAttribute="width" secondItem="jgg-vL-AdJ" secondAttribute="width" id="NNr-6q-9bJ"/>
+                        <constraint firstItem="J6x-s5-jwg" firstAttribute="leading" secondItem="jgg-vL-AdJ" secondAttribute="leading" constant="64" id="Nc8-gW-F3H"/>
                         <constraint firstItem="nud-Lc-1dr" firstAttribute="leading" secondItem="jgg-vL-AdJ" secondAttribute="leading" id="QAr-yb-XwY"/>
                         <constraint firstItem="nud-Lc-1dr" firstAttribute="top" secondItem="yBD-H3-CZV" secondAttribute="bottom" constant="16" id="TOm-WH-njL"/>
                         <constraint firstAttribute="bottom" secondItem="J6x-s5-jwg" secondAttribute="bottom" constant="30" id="bzB-Q1-2LA"/>

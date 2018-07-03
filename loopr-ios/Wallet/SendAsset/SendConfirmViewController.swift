@@ -40,7 +40,10 @@ class SendConfirmViewController: UIViewController {
         gasPriceLabel.text = gasAmountInETH
         senderLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
         receiverLabel.text = self.receiveAddress!
-        sendButton.setupRoundPurpleWithShadow()
+        sendButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
+        sendButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        sendButton.layer.shadowRadius = 4
+        sendButton.clipsToBounds = false
     }
 
     override func didReceiveMemoryWarning() {

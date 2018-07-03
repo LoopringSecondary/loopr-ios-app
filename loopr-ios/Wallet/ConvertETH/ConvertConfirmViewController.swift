@@ -31,7 +31,10 @@ class ConvertConfirmViewController: UIViewController {
         convertValueLabel.font = FontConfigManager.shared.getLabelENFont(size: 24)
         convertValueLabel.text = message
         convertTipLabel.text = "\(message) → \(self.convertAmount!) \(self.getAnotherToken())"
-        convertButton.setupRoundPurpleWithShadow()
+        convertButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
+        convertButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        convertButton.layer.shadowRadius = 4
+        convertButton.clipsToBounds = false
     }
 
     override func didReceiveMemoryWarning() {

@@ -94,6 +94,12 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="24"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                    <real key="value" value="0.29999999999999999"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="pressedConvertButton:" destination="-1" eventType="touchUpInside" id="UcP-My-Mro"/>
@@ -136,9 +142,6 @@
         <image name="Tokenest-arrow-down" width="12" height="7"/>
         <namedColor name="Tokenest-background">
             <color red="0.18039215689999999" green="0.16862745100000001" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Tokenest-tip-font">
-            <color red="0.52941176469999995" green="0.56078431370000004" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Tokenest-tip-font">
             <color red="0.52941176469999995" green="0.56078431370000004" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

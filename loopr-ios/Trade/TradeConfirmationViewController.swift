@@ -119,7 +119,10 @@ class TradeConfirmationViewController: UIViewController {
         
         // Button
         placeOrderButton.setTitle(LocalizedString("Place Order", comment: ""), for: .normal)
-        placeOrderButton.setupRoundPurpleWithShadow()
+        placeOrderButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
+        placeOrderButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        placeOrderButton.layer.shadowRadius = 4
+        placeOrderButton.clipsToBounds = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -280,11 +283,13 @@ extension TradeConfirmationViewController {
         guard error == nil && txHash != nil else {
             SVProgressHUD.dismiss()
             DispatchQueue.main.async {
-                print("TradeViewController \(error.debugDescription)")
-                let message = (error! as NSError).userInfo["message"] as! String
-                let banner = NotificationBanner.generate(title: message, style: .danger)
-                banner.duration = 5
-                banner.show()
+                if let error = error as NSError?,
+                    let json = error.userInfo["message"] as? JSON,
+                    let message = json.string {
+                    let banner = NotificationBanner.generate(title: message, style: .danger)
+                    banner.duration = 5
+                    banner.show()
+                }
             }
             return
         }

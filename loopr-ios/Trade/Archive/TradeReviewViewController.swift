@@ -63,7 +63,10 @@ class TradeReviewViewController: UIViewController {
         scrollView.contentSize = CGSize(width: screenWidth, height: tokenBView.frame.maxY + padding)
         
         shareOrderButton.title = LocalizedString("Share Order", comment: "")
-        shareOrderButton.setupRoundPurpleWithShadow()
+        shareOrderButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
+        shareOrderButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        shareOrderButton.layer.shadowRadius = 4
+        shareOrderButton.clipsToBounds = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(orderResponseReceivedNotification), name: .orderResponseReceived, object: nil)
     }

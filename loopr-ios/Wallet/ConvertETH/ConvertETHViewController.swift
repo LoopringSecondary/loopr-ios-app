@@ -69,7 +69,10 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
         // Convert button
         convertButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         convertButton.title = LocalizedString("Convert", comment: "")
-        convertButton.setupRoundPurpleWithShadow()
+        convertButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
+        convertButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        convertButton.layer.shadowRadius = 4
+        convertButton.clipsToBounds = false
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1

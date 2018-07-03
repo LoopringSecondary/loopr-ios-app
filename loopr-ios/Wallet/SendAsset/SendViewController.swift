@@ -211,7 +211,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         sendButton.addTarget(self, action: #selector(pressedSendButton(_:)), for: .touchUpInside)
         sendButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 16)
         scrollView.addSubview(sendButton)
-        self.sendButton.setupRoundPurpleWithShadow()
+        self.sendButton.setupRoundPurpleWithShadow(height: 48)
         
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: screenWidth, height: sendButton.frame.maxY + 30)
