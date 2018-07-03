@@ -20,6 +20,7 @@ class WalletType: Equatable {
         return lhs.name == rhs.name && lhs.derivationPath == rhs.derivationPath
     }
     
+    // Default is Tokenest Wallet
     class func getDefault() -> WalletType {
         return WalletType(name: "Tokenest Wallet", derivationPath: "m/44'/60'/0'/0")
     }

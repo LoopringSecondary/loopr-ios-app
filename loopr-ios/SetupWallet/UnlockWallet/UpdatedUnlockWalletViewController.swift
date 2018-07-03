@@ -301,7 +301,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             selectWalletTypeButton.isHidden = true
             selectWalletTypeArrowIcon.isHidden = true
 
-        } else if currentImportMethod == .importUsingMnemonic && currentWalletType == WalletType.getLoopringWallet() {
+        } else if currentImportMethod == .importUsingMnemonic && (currentWalletType == WalletType.getLoopringWallet() || currentWalletType == WalletType.getDefault()) {
             passwordInfoLabel.textColor = UIColor.tokenestTip
             passwordInfoLabel.isHidden = false
             passwordTextField.isHidden = false
@@ -411,7 +411,7 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
             } else if !QRCodeMethod.isMnemonicValid(mnemonic: contentText.trim()) {
                 invalidMessage = LocalizedString("Invalid mnemonic. Please enter again.", comment: "")
                 valid = false
-            } else if currentWalletType == WalletType.getLoopringWallet() && password == "" {
+            } else if (currentWalletType == WalletType.getLoopringWallet() || currentWalletType == WalletType.getDefault()) && password == "" {
                 passwordInfoLabel.shake()
                 passwordInfoLabel.textColor = UIStyleConfig.red
                 invalidMessage = LocalizedString("Please enter password", comment: "")

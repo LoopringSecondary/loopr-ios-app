@@ -348,3 +348,4 @@
 "Export_Keystore_in_ExportKeystoreSwipeViewController" = "导出Keystore";
 "Total (yuan)" = "总资产 (元)";
 "Total (USD)" = "总资产 (美元)";
+"No wallet is found in the device. Navigate to the wallet creation view." = "该手机已清空所有钱包，跳转到钱包创建页面。";

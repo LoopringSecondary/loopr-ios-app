@@ -348,3 +348,4 @@
 "Export_Keystore_in_ExportKeystoreSwipeViewController" = "Export Keystore";
 "Total (yuan)" = "Total (yuan)";
 "Total (USD)" = "Total (USD)";
+"No wallet is found in the device. Navigate to the wallet creation view." = "No wallet is found in the device. Navigate to the wallet creation view.";

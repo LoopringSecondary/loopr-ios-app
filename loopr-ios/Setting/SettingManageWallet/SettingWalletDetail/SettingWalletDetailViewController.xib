@@ -37,13 +37,13 @@
                     </constraints>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dhq-y0-wHQ">
-                    <rect key="frame" x="0.0" y="208" width="375" height="398"/>
+                    <rect key="frame" x="0.0" y="208" width="375" height="411"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hc-cb-QF8">
-                    <rect key="frame" x="0.0" y="606" width="375" height="61"/>
+                    <rect key="frame" x="0.0" y="619" width="375" height="48"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="61" id="pmD-eO-M5Q"/>
+                        <constraint firstAttribute="height" constant="48" id="pmD-eO-M5Q"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                 </button>
