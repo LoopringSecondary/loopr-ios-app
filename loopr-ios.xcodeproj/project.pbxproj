@@ -3586,7 +3586,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3596,7 +3596,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
