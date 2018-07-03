@@ -1478,6 +1478,8 @@
 				AC83859F20DF4EB300438B25 /* UpdatedImportWalletEnterWalletNameViewController.xib */,
 				AC6D34C520E04F70008FD404 /* UpdatedMnemonicSelectAddressViewController.swift */,
 				AC6D34C620E04F70008FD404 /* UpdatedMnemonicSelectAddressViewController.xib */,
+				AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */,
+				AC061938208401EB0060F416 /* MnemonicAddressTableViewCell.xib */,
 				AC99CF4A2083E0A4000AE4BD /* ImportKeystore */,
 				AC99CF4B2083E0B9000AE4BD /* ImportPrivateKey */,
 			);
@@ -1956,8 +1958,6 @@
 				AC6466072083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.xib */,
 				AC99CF4C2083E4AF000AE4BD /* MnemonicSelectAddressViewController.swift */,
 				AC99CF4D2083E4AF000AE4BD /* MnemonicSelectAddressViewController.xib */,
-				AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */,
-				AC061938208401EB0060F416 /* MnemonicAddressTableViewCell.xib */,
 			);
 			path = ImportMnemonic_Archive;
 			sourceTree = "<group>";

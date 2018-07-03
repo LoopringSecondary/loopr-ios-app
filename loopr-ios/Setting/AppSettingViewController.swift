@@ -51,7 +51,12 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        // If there is no touch id or face id, don't show the 3rd option.
+        if BiometricType.get() == .none {
+            return 2
+        } else {
+            return 3
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

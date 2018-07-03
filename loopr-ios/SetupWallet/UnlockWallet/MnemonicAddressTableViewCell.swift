@@ -17,9 +17,10 @@ class MnemonicAddressTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        indexLabel.textAlignment = .right
-        indexLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
-        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
+        accessoryType = .none
+        backgroundColor = UIColor.init(rgba: "#F3F5F8")
+        
+        indexLabel.textAlignment = .center
     }
     
     class func getCellIdentifier() -> String {
@@ -27,6 +28,6 @@ class MnemonicAddressTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 44
+        return 51
     }
 }

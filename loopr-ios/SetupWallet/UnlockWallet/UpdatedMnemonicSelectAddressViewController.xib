@@ -21,6 +21,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpdatedMnemonicSelectAddressViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="sJJ-nJ-Olp" id="kGP-j0-hcq"/>
+                <outlet property="hideTableViewButton" destination="eCQ-ML-HYT" id="mkv-Ib-Mb5"/>
                 <outlet property="infoLabel" destination="zbP-s9-P0V" id="r6H-Zt-cMQ"/>
                 <outlet property="nextButton" destination="Hdh-ZT-WE1" id="NaN-Un-E9L"/>
                 <outlet property="selectedAddress" destination="2ZH-Fh-S2Z" id="ITi-pU-CZZ"/>
@@ -95,17 +96,22 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="local" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZH-Fh-S2Z">
-                    <rect key="frame" x="48" y="304" width="279" height="54"/>
+                    <rect key="frame" x="48" y="310" width="279" height="23"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="54" id="jRR-Ip-fqR"/>
+                        <constraint firstAttribute="height" constant="23" id="jRR-Ip-fqR"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
                     <color key="textColor" name="Tokenest-table-font"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4nb-yz-292">
-                    <rect key="frame" x="48" y="367.5" width="279" height="251.5"/>
+                    <rect key="frame" x="50" y="381.5" width="275" height="237.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </tableView>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-5-2-select-address" translatesAutoresizingMaskIntoConstraints="NO" id="c1i-GB-WDf">
                     <rect key="frame" x="41" y="115" width="134" height="25"/>
@@ -114,13 +120,14 @@
                         <constraint firstAttribute="height" constant="25" id="TsC-SG-scT"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-5-2-select-other-address" translatesAutoresizingMaskIntoConstraints="NO" id="Pnx-Ql-kCO">
-                    <rect key="frame" x="58" y="351.5" width="101" height="20"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCQ-ML-HYT">
+                    <rect key="frame" x="52" y="351.5" width="101" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="101" id="L2D-BL-8Zh"/>
-                        <constraint firstAttribute="height" constant="20" id="RTb-sO-jJS"/>
+                        <constraint firstAttribute="height" constant="20" id="9Bf-1i-Jen"/>
+                        <constraint firstAttribute="width" constant="101" id="Brv-wY-0w2"/>
                     </constraints>
-                </imageView>
+                    <state key="normal" title="Button" image="Tokenest-setup-5-2-select-other-address-hide"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -129,10 +136,9 @@
                 <constraint firstItem="zbP-s9-P0V" firstAttribute="leading" secondItem="dNg-7e-8Sn" secondAttribute="trailing" constant="6" id="6Gu-q3-Nhd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zbP-s9-P0V" secondAttribute="trailing" constant="16" id="6Ya-jC-zV8"/>
                 <constraint firstAttribute="trailing" secondItem="PvV-Pe-f28" secondAttribute="trailing" id="6hD-X1-sad"/>
-                <constraint firstItem="2ZH-Fh-S2Z" firstAttribute="top" secondItem="vPW-dw-OIX" secondAttribute="bottom" constant="64" id="98q-9f-W2X"/>
+                <constraint firstItem="2ZH-Fh-S2Z" firstAttribute="top" secondItem="vPW-dw-OIX" secondAttribute="bottom" constant="70" id="98q-9f-W2X"/>
                 <constraint firstItem="8Yr-Ta-ZeT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ChH-iv-kPs"/>
                 <constraint firstItem="PvV-Pe-f28" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Cna-w2-cM3"/>
-                <constraint firstItem="Pnx-Ql-kCO" firstAttribute="top" secondItem="vPW-dw-OIX" secondAttribute="bottom" constant="111.5" id="Ewa-cn-KnW"/>
                 <constraint firstItem="2ZH-Fh-S2Z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="Ggf-Q7-A9D"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hdh-ZT-WE1" secondAttribute="trailing" constant="34" id="Gku-b3-Vne"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="4nb-yz-292" secondAttribute="bottom" constant="48" id="Hsk-6e-JIb"/>
@@ -143,13 +149,14 @@
                 <constraint firstItem="c1i-GB-WDf" firstAttribute="top" secondItem="MWB-zp-ii8" secondAttribute="bottom" constant="10" id="PRC-Lw-X6d"/>
                 <constraint firstItem="dNg-7e-8Sn" firstAttribute="top" secondItem="vPW-dw-OIX" secondAttribute="bottom" constant="37" id="QgK-ab-xvO"/>
                 <constraint firstItem="dNg-7e-8Sn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="RDp-RV-1WH"/>
-                <constraint firstItem="Pnx-Ql-kCO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="58" id="TAS-qs-bV3"/>
                 <constraint firstItem="PvV-Pe-f28" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TwG-0b-RgZ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4nb-yz-292" secondAttribute="trailing" constant="48" id="VFW-9H-YDz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4nb-yz-292" secondAttribute="trailing" constant="50" id="VFW-9H-YDz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2ZH-Fh-S2Z" secondAttribute="trailing" constant="48" id="Vbp-cH-i3l"/>
-                <constraint firstItem="4nb-yz-292" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="Zhk-Ug-JVC"/>
+                <constraint firstItem="4nb-yz-292" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="Zhk-Ug-JVC"/>
+                <constraint firstItem="eCQ-ML-HYT" firstAttribute="top" secondItem="vPW-dw-OIX" secondAttribute="bottom" constant="111.5" id="aMu-R2-hKz"/>
+                <constraint firstItem="eCQ-ML-HYT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="52" id="cNJ-jF-72d"/>
                 <constraint firstItem="sJJ-nJ-Olp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="29" id="gLq-Q1-4Di"/>
-                <constraint firstItem="4nb-yz-292" firstAttribute="top" secondItem="2ZH-Fh-S2Z" secondAttribute="bottom" constant="9.5" id="gVn-bM-jrx"/>
+                <constraint firstItem="4nb-yz-292" firstAttribute="top" secondItem="eCQ-ML-HYT" secondAttribute="bottom" constant="10" id="gVn-bM-jrx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="PvV-Pe-f28" secondAttribute="bottom" id="gvP-Kk-JX5"/>
                 <constraint firstItem="c1i-GB-WDf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="41" id="kPA-6S-Yx8"/>
                 <constraint firstItem="MWB-zp-ii8" firstAttribute="top" secondItem="sJJ-nJ-Olp" secondAttribute="bottom" constant="2" id="l6g-FC-v1F"/>
@@ -164,7 +171,7 @@
     </objects>
     <resources>
         <image name="Tokenest-setup-5-2-select-address" width="129" height="17"/>
-        <image name="Tokenest-setup-5-2-select-other-address" width="101" height="14"/>
+        <image name="Tokenest-setup-5-2-select-other-address-hide" width="99" height="14"/>
         <image name="Tokenest-setup-back-button" width="17" height="16"/>
         <image name="Tokenest-setup-background-curve-image" width="375" height="240"/>
         <image name="Tokenest-setup-info-icon" width="17" height="17"/>

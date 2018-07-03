@@ -20,6 +20,9 @@ class AuthenticationDataManager {
     }
     
     func getPasscodeSetting() -> Bool {
+        guard BiometricType.get() != .none else {
+            return false
+        }
         let passcodeOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.passcodeOn.rawValue)
         return passcodeOn
     }
