@@ -634,6 +634,14 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         self.tokensCollectionView.reloadData()
     }
     
+    // To avoid gesture conflicts in swiping to back and UISlider
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view != nil && touch.view!.isKind(of: UISlider.self) {
+            return false
+        }
+        return true
+    }
+    
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         print("Slider value changed \(sender.value)")
         let step: Float = 1
