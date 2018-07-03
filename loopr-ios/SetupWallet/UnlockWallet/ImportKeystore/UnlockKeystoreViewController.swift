@@ -149,7 +149,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
                     self.present(alert, animated: true, completion: nil)
                     return
                 }
-                let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
+                let viewController = UpdatedImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingKeystore)
                 self.navigationController?.pushViewController(viewController, animated: true)
             } else {
                 let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)

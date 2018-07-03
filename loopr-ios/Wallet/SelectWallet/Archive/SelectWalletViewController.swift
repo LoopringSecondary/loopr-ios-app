@@ -79,8 +79,8 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @objc func pressedImportButton(_ sender: UIButton) {
-        let viewController = UnlockWalletViewController_Archive()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        // let viewController = UnlockWalletViewController_Archive()
+        // self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

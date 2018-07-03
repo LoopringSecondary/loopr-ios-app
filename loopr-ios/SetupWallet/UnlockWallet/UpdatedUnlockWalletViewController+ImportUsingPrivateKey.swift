@@ -69,7 +69,7 @@ extension UpdatedUnlockWalletViewController {
         dispatchGroup.notify(queue: .main) {
             SVProgressHUD.dismiss()
             if isSucceeded {
-                let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingPrivateKey)
+                let viewController = UpdatedImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingPrivateKey)
                 self.navigationController?.pushViewController(viewController, animated: true)
             } else {
                 let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)

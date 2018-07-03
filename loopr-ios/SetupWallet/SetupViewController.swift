@@ -97,8 +97,8 @@ class SetupViewController: UIViewController {
     @objc func unlockWalletButtonPressed(_ sender: Any) {
         print("unlockWalletButtonPressed")
         // backgrondImageView.removeFromSuperview()
-        let viewController = UnlockWalletViewController_Archive()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        // let viewController = UnlockWalletViewController_Archive()
+        // self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func generateWalletButtonPressed(_ sender: Any) {
