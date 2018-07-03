@@ -62,6 +62,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         textField.font = FontConfigManager.shared.getLabelSCFont(size: 16)
         textField.tintColor = UIColor.init(rgba: "#4A5668")
         textField.textColor = UIColor.init(rgba: "#4A5668")
+        textField.isEnabled = false
 
         symbolLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
         symbolLabel.textColor = UIColor.init(rgba: "#4A5668")

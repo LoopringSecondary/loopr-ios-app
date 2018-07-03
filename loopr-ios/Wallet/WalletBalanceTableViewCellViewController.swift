@@ -22,6 +22,7 @@ class WalletBalanceTableViewCellViewController: UIViewController {
     
     var updateBalanceLabelTimer: Timer?
     
+    @IBOutlet weak var balanceInfoLabel: UILabel!
     @IBOutlet weak var balanceLabel: TickerLabel!
     
     @IBOutlet weak var addTokenButton: UIButton!
@@ -40,6 +41,10 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.init(rgba: "#F3F6F8")
 
+        balanceInfoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
+        balanceInfoLabel.textColor = UIColor.init(rgba: "#8997F3")
+        balanceInfoLabel.text = "总资产 (元)"
+        
         balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 36))
         balanceLabel.animationDuration = 0.3
         balanceLabel.textAlignment = NSTextAlignment.center
@@ -126,6 +131,12 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         self.buttonBackgroundView.layer.shadowOpacity = 0.2
         self.buttonBackgroundView.layer.shadowRadius = 7.5
         self.buttonBackgroundView.layer.shadowPath = shadowPath.cgPath
+        
+        if SettingDataManager.shared.getCurrentCurrency().name == "CNY" {
+            balanceInfoLabel.text = LocalizedString("Total (yuan)", comment: "")
+        } else {
+            balanceInfoLabel.text = LocalizedString("Total (USD)", comment: "")
+        }
     }
     
     @objc func pressedReceiveButton(_ button: UIButton) {

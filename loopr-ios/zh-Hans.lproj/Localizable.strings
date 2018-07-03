@@ -346,3 +346,5 @@
 "P2P Trade" = "场外交易";
 "Convert_to_ETH_in_TradeViewController" = "转换为ETH";
 "Export_Keystore_in_ExportKeystoreSwipeViewController" = "导出Keystore";
+"Total (yuan)" = "总资产 (元)";
+"Total (USD)" = "总资产 (美元)";

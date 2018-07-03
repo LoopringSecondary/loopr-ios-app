@@ -346,3 +346,5 @@
 "P2P Trade" = "P2P Trade";
 "Convert_to_ETH_in_TradeViewController" = "Convert to ETH";
 "Export_Keystore_in_ExportKeystoreSwipeViewController" = "Export Keystore";
+"Total (yuan)" = "Total (yuan)";
+"Total (USD)" = "Total (USD)";

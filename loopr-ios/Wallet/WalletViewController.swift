@@ -268,6 +268,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
         // Update the headerBalanceViewController
         headerBalanceViewController.view.y = 0
+        headerBalanceViewController.balanceInfoLabel.alpha = 1.0
         headerBalanceViewController.balanceLabel.alpha = 1.0
         headerBalanceViewController.addTokenButton.alpha = 1.0
         
@@ -289,6 +290,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("change: \(scrollView.contentOffset.y)")
         if scrollView.contentOffset.y < 0 {
             headerBalanceViewController.view.y = 0
+            headerBalanceViewController.balanceInfoLabel.alpha = 1.0
             headerBalanceViewController.balanceLabel.alpha = 1.0
             headerBalanceViewController.addTokenButton.alpha = 1.0
         } else {
@@ -300,6 +302,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             if scrollView.contentOffset.y > 20 {
                 let diff = scrollView.contentOffset.y-20
+                headerBalanceViewController.balanceInfoLabel.alpha = (60 - diff)/60
                 headerBalanceViewController.balanceLabel.alpha = (60 - diff)/60
                 headerBalanceViewController.addTokenButton.alpha = (60 - diff)/60
             }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WalletBalanceTableViewCellViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="addTokenButton" destination="Mnt-wU-hi8" id="agX-RZ-dDV"/>
+                <outlet property="balanceInfoLabel" destination="D13-lA-wbH" id="Vt0-Uc-VFi"/>
                 <outlet property="balanceLabel" destination="1nU-4m-F2g" id="fOT-h5-b0S"/>
                 <outlet property="buttonBackgroundImageView" destination="3Wr-EV-Dmb" id="R62-Jy-JJt"/>
                 <outlet property="buttonBackgroundView" destination="JtW-QQ-8am" id="r4W-rM-WpS"/>
@@ -31,7 +32,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nU-4m-F2g" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
-                    <rect key="frame" x="50" y="288.5" width="275" height="50"/>
+                    <rect key="frame" x="50" y="294.5" width="275" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="sIJ-SJ-rMl"/>
@@ -101,28 +102,40 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mnt-wU-hi8">
-                    <rect key="frame" x="333" y="293.5" width="42" height="40"/>
+                    <rect key="frame" x="333" y="299.5" width="42" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="TOd-4C-DX0"/>
                         <constraint firstAttribute="width" constant="42" id="eQu-Ui-Acn"/>
                     </constraints>
                     <state key="normal" image="Tokenest-asset-add-token"/>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D13-lA-wbH">
+                    <rect key="frame" x="40" y="273.5" width="295" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="UA6-Pc-WFo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JtW-QQ-8am" secondAttribute="trailing" constant="15" id="AIx-QO-AmN"/>
                 <constraint firstItem="JtW-QQ-8am" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="CbM-ev-N47"/>
+                <constraint firstItem="D13-lA-wbH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="Jz6-0y-BlF"/>
                 <constraint firstItem="2Z3-HD-571" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ofa-jT-m2f"/>
                 <constraint firstItem="2Z3-HD-571" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YLz-pG-yrH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2Z3-HD-571" secondAttribute="bottom" constant="40" id="aA5-ec-Oo7"/>
-                <constraint firstItem="1nU-4m-F2g" firstAttribute="centerY" secondItem="2Z3-HD-571" secondAttribute="centerY" id="d1k-uk-qRu"/>
+                <constraint firstItem="1nU-4m-F2g" firstAttribute="centerY" secondItem="2Z3-HD-571" secondAttribute="centerY" constant="6" id="d1k-uk-qRu"/>
                 <constraint firstItem="Mnt-wU-hi8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="gfn-N4-4J3"/>
                 <constraint firstItem="2Z3-HD-571" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="pHu-Bq-aBD"/>
                 <constraint firstItem="Mnt-wU-hi8" firstAttribute="centerY" secondItem="1nU-4m-F2g" secondAttribute="centerY" id="pW2-Ph-z2K"/>
                 <constraint firstItem="1nU-4m-F2g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="rmN-qa-zR3"/>
+                <constraint firstItem="1nU-4m-F2g" firstAttribute="top" secondItem="D13-lA-wbH" secondAttribute="bottom" constant="4" id="tXP-Aa-Ny2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1nU-4m-F2g" secondAttribute="trailing" constant="50" id="u7h-gs-Ps6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="JtW-QQ-8am" secondAttribute="bottom" constant="4" id="wTs-sa-NgC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D13-lA-wbH" secondAttribute="trailing" constant="40" id="x0L-05-dE2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-30.5" y="-41.5"/>
