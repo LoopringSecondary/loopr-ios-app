@@ -304,8 +304,8 @@
 "Your mnemonic has been verified successfully." = "Your mnemonic has been verified successfully.";
 "Authorze Successfully" = "Authorze Successfully";
 "Authorze Failed" = "Authorze Failed";
-"Login Authorzation Successful! Please transfer to our website to continue." = "Login Authorzation Successful! Please transfer to our website to continue.";
-"Login Authorzation failed! Please review your signing address and try again later." = "Login Authorzation failed! Please review your signing address and try again later.";
+"Authorze_Successfully" = "Authorzation Successful! Please transfer to our website to continue.";
+"Authorze_Failed" = "Authorzation failed! Please review your signing data and try again later.";
 "Initializing the wallet" = "Initializing the wallet";
 "Do you wish to handle the qrcode?" = "Do you wish to handle the qrcode?";
 "Failed to import address." = "Failed to import address.";
