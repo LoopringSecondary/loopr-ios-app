@@ -42,7 +42,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Om8-4P-GfG">
-                    <rect key="frame" x="29" y="43" width="44" height="44"/>
+                    <rect key="frame" x="29" y="19" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="HkH-io-pSL"/>
                         <constraint firstAttribute="height" constant="44" id="omM-UN-roi"/>
@@ -50,7 +50,7 @@
                     <state key="normal" image="Tokenest-setup-back-button"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almost Get It" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKt-Yq-byq">
-                    <rect key="frame" x="43" y="89" width="316" height="40"/>
+                    <rect key="frame" x="43" y="65" width="316" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="LHu-7b-CBl"/>
                     </constraints>
@@ -67,14 +67,14 @@
                     <state key="normal" image="Tokenest-setup-ok-button"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-info-icon" translatesAutoresizingMaskIntoConstraints="NO" id="xg7-Cs-oMb">
-                    <rect key="frame" x="48" y="277" width="16.666666666666671" height="16.666666666666686"/>
+                    <rect key="frame" x="48" y="277" width="16.5" height="16.5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16.5" id="GU6-c8-2Jt"/>
                         <constraint firstAttribute="width" constant="16.5" id="pb9-6J-Bgx"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="or7-vm-Y96">
-                    <rect key="frame" x="83" y="275" width="215" height="21"/>
+                    <rect key="frame" x="68.5" y="275" width="229.5" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="qfB-PD-xkE"/>
                     </constraints>
@@ -83,7 +83,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTD-hU-yUZ">
-                    <rect key="frame" x="290" y="270.66666666666669" width="46" height="30"/>
+                    <rect key="frame" x="290" y="270.5" width="46" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="8sa-mO-R1I"/>
                         <constraint firstAttribute="width" constant="46" id="L6A-ix-m2v"/>
@@ -112,20 +112,19 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmn-iH-lP7" customClass="TagListView" customModule="TagListView">
-                    <rect key="frame" x="48" y="461" width="287" height="295"/>
+                    <rect key="frame" x="48" y="461" width="287" height="184"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-setup-5-3-verify" translatesAutoresizingMaskIntoConstraints="NO" id="9lF-Ta-IxY">
-                    <rect key="frame" x="44" y="139" width="151" height="25"/>
+                    <rect key="frame" x="44" y="115" width="151" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="hNT-uy-Oxj"/>
                         <constraint firstAttribute="width" constant="151" id="n5l-hQ-vuo"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnS-eS-kiD">
-                    <rect key="frame" x="43" y="141" width="91" height="21"/>
+                    <rect key="frame" x="44" y="115" width="311" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="90" id="3U7-BX-QBo"/>
                         <constraint firstAttribute="height" constant="25" id="Iza-p8-fRG"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -158,6 +157,7 @@
                 <constraint firstItem="MhC-p0-wfv" firstAttribute="top" secondItem="nyw-Ai-JtX" secondAttribute="top" constant="158" id="Szv-zu-7oT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DXp-o1-U2P" secondAttribute="trailing" constant="40" id="Zgf-8T-CfR"/>
                 <constraint firstItem="gTD-hU-yUZ" firstAttribute="centerY" secondItem="xg7-Cs-oMb" secondAttribute="centerY" id="hfm-i5-V9H"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pnS-eS-kiD" secondAttribute="trailing" constant="20" id="iLc-7B-1IK"/>
                 <constraint firstItem="xg7-Cs-oMb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="oVM-f6-00D"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gTD-hU-yUZ" secondAttribute="trailing" constant="39" id="qdM-Oj-cJM"/>
                 <constraint firstItem="DXp-o1-U2P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="txz-TU-ni7"/>
@@ -169,7 +169,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Tokenest-setup-5-3-verify" width="149" height="17"/>
+        <image name="Tokenest-setup-5-3-verify" width="150" height="17"/>
         <image name="Tokenest-setup-back-button" width="17" height="16"/>
         <image name="Tokenest-setup-background-curve-image" width="375" height="240"/>
         <image name="Tokenest-setup-info-icon" width="17" height="17"/>
