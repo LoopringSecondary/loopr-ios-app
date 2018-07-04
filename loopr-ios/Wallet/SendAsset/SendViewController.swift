@@ -482,7 +482,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-            self.scrollViewBottomConstraint.constant = systemKeyboardHeight + bottomPadding
+            self.scrollViewBottomConstraint.constant = systemKeyboardHeight - bottomPadding
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 if self.addressY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewBottomConstraint.constant {
