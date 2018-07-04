@@ -323,7 +323,7 @@
 "My Wallet Address" = "My Wallet Address";
 "Copy" = "Copy";
 "Complete" = "Complete";
-"Recommended Gas Price" = "Recommended Gas Price";
+"Recommended Gas" = "Recommended Gas Amount";
 "Save QR code to Photo successfully." = "Save QR code to Photo successfully.";
 "Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易";
 "Add Token" = "Add Token";

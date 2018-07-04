@@ -94,6 +94,10 @@ class GasDataManager {
     func getGasPriceInGwei() -> Double {
         return self.gasPrice
     }
+    
+    func setGasPrice(in gwei: Double) {
+        self.gasPrice = gwei
+    }
 
     func getGasPriceInWei() -> GethBigInt {
         var price = self.gasPrice

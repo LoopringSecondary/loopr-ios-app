@@ -10,6 +10,8 @@ import UIKit
 
 class TradeCompleteViewController: UIViewController {
 
+    @IBOutlet weak var statusBar: UIView!
+    @IBOutlet weak var customNavBar: UINavigationBar!
     @IBOutlet weak var exchangedLabel: UILabel!
     @IBOutlet weak var exchangedInfoLabel: UILabel!
     @IBOutlet weak var detailsButton: UIButton!
@@ -30,13 +32,24 @@ class TradeCompleteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        statusBar.backgroundColor = GlobalPicker.themeColor
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customNavBar, title: "提交结果")
         // Do any additional setup after loading the view.
         setBackButton()
         setupErrorInfo()
         setupLabels()
         setupRows()
         setupButtons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func setupRows() {
@@ -76,9 +89,11 @@ class TradeCompleteViewController: UIViewController {
     }
     
     func setupLabels() {
-        exchangedLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
-        exchangedLabel.font = FontConfigManager.shared.getRegularFont(size: 20.0)
-        exchangedInfoLabel.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
+        exchangedLabel.textColor = UIColor.tokenestTableFont
+        exchangedLabel.font = FontConfigManager.shared.getLabelSCFont(size: 40, type: "Bold")
+        exchangedInfoLabel.textColor = UIColor.tokenestTip
+        exchangedInfoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 21)
+        
         if isBalanceEnough() {
             exchangedLabel.text = LocalizedString("Placed!", comment: "")
             exchangedInfoLabel.text = LocalizedString("Congradualations! Your order has been submited!", comment: "")
@@ -93,18 +108,23 @@ class TradeCompleteViewController: UIViewController {
     }
     
     func setupButtons() {
-        detailsButton.title = LocalizedString("Check Details", comment: "")
-        detailsButton.setupRoundWhite()
-        if isBalanceEnough() {
-            detailsButton.isEnabled = true
-            detailsButton.backgroundColor = UIColor.white
-        } else {
-            detailsButton.isEnabled = false
-            detailsButton.layer.borderColor = UIColor.clear.cgColor
-            detailsButton.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
-        }
         doneButton.title = LocalizedString("Done", comment: "")
-        doneButton.setupRoundBlack()
+        detailsButton.title = LocalizedString("Check Details", comment: "")
+        
+        detailsButton.layer.shadowRadius = 4
+        detailsButton.layer.shadowColor = UIColor.tokenestBackground.cgColor
+        detailsButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        detailsButton.clipsToBounds = false
+        doneButton.layer.shadowRadius = 8
+        doneButton.layer.shadowColor = UIColor.tokenestLightShadow.cgColor
+        doneButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        doneButton.clipsToBounds = false
+        
+        if isBalanceEnough() {
+            detailsButton.isHidden = false
+        } else {
+            detailsButton.isHidden = true
+        }
     }
     
     func setupErrorInfo() {

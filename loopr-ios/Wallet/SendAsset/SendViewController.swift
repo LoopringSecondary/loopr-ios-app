@@ -63,8 +63,8 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     var address: String!
     var showCollection: Bool = false
     var selectedIndexPath: IndexPath!
+    var recGasPriceInGwei: Double = 0
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
-    var recGasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,7 +175,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         transactionTipButton.titleColor = UIColor.tokenestBackground
         transactionTipButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont()
         transactionTipButton.contentHorizontalAlignment = .right
-        transactionTipButton.title = LocalizedString("Recommended Gas Price", comment: "")
+        transactionTipButton.title = LocalizedString("Recommended Gas", comment: "")
         transactionTipButton.addTarget(self, action: #selector(pressedTipButton(_:)), for: .touchUpInside)
         scrollView.addSubview(transactionTipButton)
         
@@ -223,6 +223,14 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
+        
+        GasDataManager.shared.getEstimateGasPrice { (gasPrice, _) in
+            self.gasPriceInGwei = Double(gasPrice)
+            self.recGasPriceInGwei = Double(gasPrice)
+            DispatchQueue.main.async {
+                self.updateTransactionFeeAmountLabel(self.gasPriceInGwei)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -254,7 +262,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     
     func updateTransactionFeeAmountLabel(_ gasPriceInGwei: Double) {
         let amountInEther = gasPriceInGwei / 1000000000
-        let totalGasInEther = amountInEther * Double(GasDataManager.shared.getGasLimit(by: "eth_transfer")!)
+        let totalGasInEther = amountInEther * Double(GasDataManager.shared.getGasLimit(by: "token_transfer")!)
         transactionAmountCurrentLabel.text = LocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
             let transactionFeeInFiat = totalGasInEther * etherPrice
@@ -638,6 +646,7 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         let step: Float = 1
         let roundedStepValue = round(sender.value / step) * step
         gasPriceInGwei = Double(roundedStepValue)
+        GasDataManager.shared.setGasPrice(in: gasPriceInGwei)
         updateTransactionFeeAmountLabel(self.gasPriceInGwei)
     }
     
