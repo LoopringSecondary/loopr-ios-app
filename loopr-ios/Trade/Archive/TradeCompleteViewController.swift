@@ -83,6 +83,7 @@ class TradeCompleteViewController: UIViewController {
         scrollView.addSubview(needBTipLabel)
         needBInfoLabel.font = FontConfigManager.shared.getLabelENFont()
         needBInfoLabel.textColor = .red
+        needBInfoLabel.text = errorTipInfo[1]
         needBInfoLabel.textAlignment = .right
         needBInfoLabel.frame = CGRect(x: padding + 150, y: needBTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(needBInfoLabel)
