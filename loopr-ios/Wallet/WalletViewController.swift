@@ -430,9 +430,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func pressedSendButton() {
-//        let vc = SendViewController()
-        
-        let vc = TradeCompleteViewController()
+        let vc = SendViewController()
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
