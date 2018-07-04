@@ -62,7 +62,7 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         
         // TODO: not sure why we have to set this value here. Setting in storyboard doesn't work.
-        startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31)
+        startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31*UIStyleConfig.scale)
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

@@ -53,7 +53,7 @@ class UpdatedVerifyMnemonicViewController: UIViewController, TagListViewDelegate
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         clearButton.addTarget(self, action: #selector(pressedClearButton), for: .touchUpInside)
         
-        startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31)
+        startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31*UIStyleConfig.scale)
         subStartInfoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 18)
         subStartInfoLabel.textColor = UIColor.white
         

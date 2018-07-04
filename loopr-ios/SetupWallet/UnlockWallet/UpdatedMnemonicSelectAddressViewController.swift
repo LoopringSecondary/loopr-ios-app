@@ -28,7 +28,7 @@ class UpdatedMnemonicSelectAddressViewController: UIViewController, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31)
+        startInfolbel.font = UIFont.init(name: "Futura-Bold", size: 31*UIStyleConfig.scale)
 
         nextButton.addTarget(self, action: #selector(pressedNextButton), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
