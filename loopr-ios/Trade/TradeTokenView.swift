@@ -72,7 +72,7 @@ class TradeTokenView: UIView {
     // Used in Trade
     func update(title: String, symbol: String, amount: Double) {
         titleLabel.text = title
-        amountLabel.text = "\(amount) \(symbol)"
+        amountLabel.text = "\(amount.withCommas(6)) \(symbol)"
         amountLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17*UIStyleConfig.scale)
         
         totalPriceInFiatCurrency.isHidden = false
