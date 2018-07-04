@@ -86,7 +86,6 @@ class GasDataManager {
             }
             self.gasPrice = gasPrice! * 1000000000
             self.gasPrice.round()
-            print("Estimate gas price: \(self.gasPrice)")
             let copyGasPrice = self.gasPrice
             completionHandler(copyGasPrice, nil)
         }

@@ -46,16 +46,13 @@ class OrderTableViewCell: UITableViewCell {
         if flag {
             cancelButton.isEnabled = true
             cancelButton.backgroundColor = UIColor.tokenestBackground
-            cancelButton.layer.borderColor = UIColor.clear.cgColor
+            cancelButton.clipsToBounds = false
         } else {
             cancelButton.isEnabled = false
             cancelButton.backgroundColor = UIColor.tokenestPending
-            cancelButton.layer.borderColor = UIColor.clear.cgColor
         }
         cancelButton.title = text
         cancelButton.titleColor = UIColor.white
-        cancelButton.layer.borderWidth = 1
-        cancelButton.layer.cornerRadius = 16
         cancelButton.titleLabel?.font = FontConfigManager.shared.getLabelSCFont(size: 12)
     }
     

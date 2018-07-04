@@ -173,8 +173,8 @@
 "My Trades" = "My Trades";
 "You are going to cancel all open orders." = "You are going to cancel all open orders.";
 "You are going to cancel the order." = "You are going to cancel the order.";
-"Order(s) cancel Failed, Please try again." =  "Order(s) cancel Failed, Please try again.";
-"Order(s) Cancelled Successful." = "Order(s) Cancelled Successful.";
+"Order(s) cancelled Failed, Please try again." =  "Order(s) cancelled Failed, Please try again.";
+"Order(s) cancelled Successful." = "Order(s) cancelled Successful.";
 "Order Detail" = "Order Detail";
 "Filled/Amount" = "Filled/Amount";
 "Status" = "Status";

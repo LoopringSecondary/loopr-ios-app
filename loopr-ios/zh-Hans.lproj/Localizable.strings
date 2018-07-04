@@ -173,8 +173,8 @@
 "My Trades" = "我的历史成交";
 "You are going to cancel all open orders." = "您将取消所有待成交订单。";
 "You are going to cancel the order." = "您将取消该笔订单";
-"Order(s) cancel Failed, Please try again." =  "订单取消失败，请稍后重试";
-"Order(s) Cancelled Successful." = "订单取消成功";
+"Order(s) cancelled Failed, Please try again." =  "订单取消失败，请稍后重试";
+"Order(s) cancelled Successful." = "订单取消成功";
 "Order Detail" = "订单详情";
 "Filled/Amount" = "完成/总额";
 "Status" = "状态";

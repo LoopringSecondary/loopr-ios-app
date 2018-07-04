@@ -62,9 +62,9 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
     var asset: Asset!
     var address: String!
     var showCollection: Bool = false
-    var recGasPriceInGwei: Double = 0
     var selectedIndexPath: IndexPath!
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
+    var recGasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -223,15 +223,6 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
-        
-        // Get the latest estimate gas price from Relay.
-        GasDataManager.shared.getEstimateGasPrice { (gasPrice, _) in
-            self.gasPriceInGwei = Double(gasPrice)
-            self.recGasPriceInGwei = Double(gasPrice)
-            DispatchQueue.main.async {
-                self.updateTransactionFeeAmountLabel(self.gasPriceInGwei)
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

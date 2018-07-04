@@ -222,6 +222,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, DefaultNu
             tipLabel.shake()
             return
         }
+        hideNumericKeyboard()
+        amountSTextField.resignFirstResponder()
         self.pushController()
     }
     

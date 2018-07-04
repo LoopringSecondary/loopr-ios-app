@@ -564,7 +564,7 @@ extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
         var title: String = ""
         guard error == nil && txHash != nil else {
             DispatchQueue.main.async {
-                title = LocalizedString("Order(s) cancel Failed, Please try again.", comment: "")
+                title = LocalizedString("Order(s) cancelled Failed, Please try again.", comment: "")
                 let banner = NotificationBanner.generate(title: title, style: .danger)
                 banner.duration = 5
                 banner.show()
@@ -573,7 +573,7 @@ extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
         }
         DispatchQueue.main.async {
             print(txHash!)
-            title = LocalizedString("Order(s) Cancelled Successful.", comment: "")
+            title = LocalizedString("Order(s) cancelled Successful.", comment: "")
             let banner = NotificationBanner.generate(title: title, style: .success)
             banner.duration = 5
             banner.show()
