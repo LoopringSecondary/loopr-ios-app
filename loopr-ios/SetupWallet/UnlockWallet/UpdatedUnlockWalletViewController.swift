@@ -269,6 +269,9 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
     }
     
     func updateImportMethodSelection() {
+        // Reset password
+        // passwordTextField.text = ""
+
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
@@ -454,14 +457,14 @@ class UpdatedUnlockWalletViewController: UIViewController, UITextViewDelegate, U
         }
 
         if currentImportMethod == .importUsingKeystore {
-            let keystoreString = self.contentTextView.text ?? ""
+            let keystoreString = contentTextView.text ?? ""
             let password = passwordTextField.text ?? ""
             continueImportUsingKeystore(keystoreString: keystoreString, password: password)
         } else if currentImportMethod == .importUsingPrivateKey {
-            let privateKey = self.contentTextView.text ?? ""
+            let privateKey = contentTextView.text ?? ""
             continueImportUsingPrivateKey(privateKey: privateKey)
         } else if currentImportMethod == .importUsingMnemonic {
-            let memonicString = self.contentTextView.text ?? ""
+            let memonicString = contentTextView.text ?? ""
             let password = passwordTextField.text ?? ""
             continueImportUsingMnemonic(memonicString: memonicString, password: password)
         }
@@ -482,6 +485,9 @@ extension UpdatedUnlockWalletViewController: SwitchImportWalletMethodViewControl
             // Reset text in contentTextView
             contentTextView.text = ""
             
+            // Reset text in passwordTextField
+            passwordTextField.text = ""
+            
             // Update UI
             updateImportMethodSelection()
         }
@@ -495,8 +501,13 @@ extension UpdatedUnlockWalletViewController: SwitchImportWalletWalletTypeViewCon
         }, completion: { (_) in
             self.presentedBackgroundView.isHidden = true
         })
-        
+
         if selectedWalletType != nil {
+            // Reset text in passwordTextField
+            if selectedWalletType != WalletType.getDefault() || selectedWalletType != WalletType.getLoopringWallet() {
+                passwordTextField.text = ""
+            }
+
             currentWalletType = selectedWalletType!
             selectWalletTypeButton.setTitle(currentWalletType.name, for: .normal)
             ImportWalletUsingMnemonicDataManager.shared.derivationPathValue = currentWalletType.derivationPath
