@@ -477,7 +477,6 @@ class LoopringAPIRequest {
                 completionHandler(nil, error)
                 return
             }
-            // It should return txHash
             completionHandler(txHash, nil)
         }
     }

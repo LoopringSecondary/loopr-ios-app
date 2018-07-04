@@ -19,6 +19,7 @@ class QRCodeViewController: UIViewController {
     var qrcodeImage: UIImage!
     weak var delegate: QRCodeViewControllerDelegate?
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var qrcodeImageView: UIImageView!
     @IBOutlet weak var addressTipLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -71,6 +72,14 @@ class QRCodeViewController: UIViewController {
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         delegate?.dismissQRCodeViewController()
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: nil)
+        if backgroundImageView.frame.contains(location) {
+            return false
+        }
+        return true
     }
     
     func generateQRCode(from data: Data) {

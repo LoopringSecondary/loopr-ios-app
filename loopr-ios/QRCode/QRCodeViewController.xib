@@ -17,6 +17,7 @@
             <connections>
                 <outlet property="addressLabel" destination="pSD-WS-ef8" id="PCU-V3-OIx"/>
                 <outlet property="addressTipLabel" destination="edC-Mr-nnR" id="Syv-Jx-7gS"/>
+                <outlet property="backgroundImageView" destination="elc-oh-t7d" id="tnM-Di-Ynd"/>
                 <outlet property="copyAddressButton" destination="lUP-l3-OtM" id="xAj-Il-h6n"/>
                 <outlet property="dismissButton" destination="Vya-Hx-Gla" id="Z7a-Zh-7Hr"/>
                 <outlet property="qrcodeImageView" destination="Jxo-fS-cjo" id="Z5I-ZU-tdP"/>
