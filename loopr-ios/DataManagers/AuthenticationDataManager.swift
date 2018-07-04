@@ -19,6 +19,10 @@ class AuthenticationDataManager {
         
     }
     
+    public func devicePasscodeEnabled() -> Bool {
+        return LAContext().canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
+    }
+
     func getPasscodeSetting() -> Bool {
         guard BiometricType.get() != .none else {
             return false
@@ -45,7 +49,11 @@ class AuthenticationDataManager {
                 }
             }
         } else {
-            completion(authError)
+            print(authError.debugDescription)
+            // Could not start authentication. So disable touch id or face id.
+            setPasscodeSetting(false)
+            AuthenticationDataManager.shared.hasLogin = true
+            completion(nil)
         }
     }
 }

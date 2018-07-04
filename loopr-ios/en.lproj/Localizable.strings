@@ -350,3 +350,5 @@
 "Total (USD)" = "Total (USD)";
 "No wallet is found in the device. Navigate to the wallet creation view." = "No wallet is found in the device. Navigate to the wallet creation view.";
 "Default" = "Default";
+"Please turn on Touch ID in settings" = "Please turn on Touch ID in settings";
+"Please turn on Face ID in settings" = "Please turn on Face ID in settings";

@@ -45,7 +45,10 @@ class AuthenticationViewController: UIViewController {
     
     func startAuthentication() {
         AuthenticationDataManager.shared.authenticate { (error) in
-            guard error == nil else { return }
+            guard error == nil else {
+                print(error.debugDescription)
+                return
+            }
             if self.needNavigate {
                 DispatchQueue.main.async {
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate

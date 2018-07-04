@@ -25,6 +25,13 @@ class SettingPasscodeTableViewCell: UITableViewCell {
         
         passcodeSwitch.transform = CGAffineTransform(scaleX: 0.81, y: 0.81)
         passcodeSwitch.setOn(AuthenticationDataManager.shared.getPasscodeSetting(), animated: false)
+        
+        if AuthenticationDataManager.shared.devicePasscodeEnabled() {
+            passcodeSwitch.isHidden = false
+            selectionStyle = .none
+        } else {
+            passcodeSwitch.isHidden = true
+        }
     }
     
     @IBAction func togglePasscodeSwitch(_ sender: Any) {

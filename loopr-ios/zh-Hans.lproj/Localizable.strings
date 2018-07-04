@@ -350,3 +350,5 @@
 "Total (USD)" = "总资产 (美元)";
 "No wallet is found in the device. Navigate to the wallet creation view." = "该手机已清空所有钱包，跳转到钱包创建页面。";
 "Default" = "默认";
+"Please turn on Touch ID in settings" = "请先前往通用设置中开启指纹功能";
+"Please turn on Face ID in settings" = "请先前往通用设置中开启面容识别功能";

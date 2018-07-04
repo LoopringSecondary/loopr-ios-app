@@ -104,7 +104,19 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             case 2:
-                break
+                if !AuthenticationDataManager.shared.devicePasscodeEnabled() {
+                    let title: String
+                    if BiometricType.get() == .touchID {
+                        title = LocalizedString("Please turn on Touch ID in settings", comment: "")
+                    } else {
+                        title = LocalizedString("Please turn on Face ID in settings", comment: "")
+                    }
+                    let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                        
+                    }))
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                }
             default:
                 break
             }
@@ -118,7 +130,6 @@ class AppSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("SettingPasscodeTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SettingPasscodeTableViewCell
-            cell?.selectionStyle = .none
         }
         return cell!
     }
