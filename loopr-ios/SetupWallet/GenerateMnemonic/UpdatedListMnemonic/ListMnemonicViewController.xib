@@ -21,6 +21,7 @@
             <connections>
                 <outlet property="backButton" destination="ex5-CK-3Ip" id="qkE-BL-Hmo"/>
                 <outlet property="infoLabel" destination="t6d-kK-598" id="LiL-6T-i11"/>
+                <outlet property="infoLabelHeightConstraint" destination="DOx-36-z8p" id="QIe-Ia-mnR"/>
                 <outlet property="nextButton" destination="Jwl-2l-KjS" id="1IV-LJ-Rz0"/>
                 <outlet property="skipMnemonicButton" destination="e3g-Nu-gh5" id="3z1-2g-yO5"/>
                 <outlet property="startInfolbel" destination="XbE-vr-neH" id="Qdi-Ou-i2P"/>
@@ -91,9 +92,9 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将助记词按顺序记录到本子上，千万不要截图或保存到互联网上。\n这对您的账户安全至关重要，一旦丢失无法恢复！" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6d-kK-598">
-                    <rect key="frame" x="68.5" y="276" width="276.5" height="51"/>
+                    <rect key="frame" x="68.5" y="276" width="266.5" height="31"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="51" id="DOx-36-z8p"/>
+                        <constraint firstAttribute="height" constant="31" id="DOx-36-z8p"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
                     <nil key="textColor"/>
@@ -129,7 +130,7 @@
                 <constraint firstItem="Jwl-2l-KjS" firstAttribute="top" secondItem="qZa-8t-k2D" secondAttribute="top" constant="158" id="hwG-fQ-CP3"/>
                 <constraint firstItem="oQo-3w-Gcq" firstAttribute="top" secondItem="Qhw-DN-aH8" secondAttribute="top" id="nKH-VM-BiV"/>
                 <constraint firstItem="e3g-Nu-gh5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="sZ6-Xu-kLZ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="t6d-kK-598" secondAttribute="trailing" constant="30" id="vMz-Zi-iI9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="t6d-kK-598" secondAttribute="trailing" constant="40" id="vMz-Zi-iI9"/>
                 <constraint firstItem="XbE-vr-neH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="43" id="wDC-9N-Kdb"/>
                 <constraint firstItem="Qhw-DN-aH8" firstAttribute="top" secondItem="XbE-vr-neH" secondAttribute="bottom" constant="10" id="yEX-2X-Sln"/>
                 <constraint firstItem="Qhw-DN-aH8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="44" id="zzX-zN-DUB"/>
@@ -139,7 +140,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Tokenest-setup-5-3-record" width="149" height="17"/>
+        <image name="Tokenest-setup-5-3-record" width="150" height="17"/>
         <image name="Tokenest-setup-back-button" width="17" height="16"/>
         <image name="Tokenest-setup-background-curve-image" width="375" height="240"/>
         <image name="Tokenest-setup-info-icon" width="17" height="17"/>

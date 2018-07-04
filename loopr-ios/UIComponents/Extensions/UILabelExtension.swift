@@ -37,4 +37,15 @@ extension UILabel {
             self.attributedText = attribute
         }
     }
+    
+    static func heightForOneLineStringView(font: UIFont) -> CGFloat{
+        let label: UILabel = UILabel(frame: CGRect.init(x: 0, y: 0, width: 200, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = LocalizedString("Default", comment: "")
+        
+        label.sizeToFit()
+        return label.frame.height
+    }
 }

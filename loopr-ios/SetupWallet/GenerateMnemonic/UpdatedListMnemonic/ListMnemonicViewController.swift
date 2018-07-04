@@ -25,6 +25,8 @@ class ListMnemonicViewController: UIViewController {
     @IBOutlet weak var subStartInfoImageView: UIImageView!
     @IBOutlet weak var subStartInfoLabel: UILabel!
     
+    @IBOutlet weak var infoLabelHeightConstraint: NSLayoutConstraint!
+
     var mnemonicCollectionViewController0: MnemonicCollectionViewController!
     
     var collectionViewY: CGFloat = 200
@@ -83,16 +85,18 @@ class ListMnemonicViewController: UIViewController {
         
         infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12*UIStyleConfig.scale)
         infoLabel.textColor = UIColor.tokenestTip
-        infoLabel.numberOfLines = 0
+        infoLabel.numberOfLines = 3
         let attributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#4C5669"),
                           NSAttributedStringKey.font: FontConfigManager.shared.getLabelSCFont(size: 12*UIStyleConfig.scale, type: "Medium")]
-        let infoString = "将助记词按顺序记录到本子上，千万不要截图或保存到互联网上。这对您的账户安全至关重要，一旦丢失无法恢复！"
+        let infoString = "将助记词按顺序记录到本子上，千万不要截图或保存到互联网上。\n这对您的账户安全至关重要，一旦丢失无法恢复！"
         let attr = infoString.higlighted(words: ["按顺序记录", "千万不要截图或保存到互联网上"], attributes: attributes)
 
         // let paragraphStyle = NSMutableParagraphStyle()
         // paragraphStyle.lineSpacing = 4
         // attr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attr.length))
         infoLabel.attributedText = attr
+        
+        infoLabelHeightConstraint.constant = UILabel.heightForOneLineStringView(font: FontConfigManager.shared.getLabelSCFont(size: 12*UIStyleConfig.scale, type: "Medium"))*3
 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
