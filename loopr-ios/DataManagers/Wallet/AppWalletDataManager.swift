@@ -21,6 +21,7 @@ class AppWalletDataManager {
     
     func setup() {
         getAppWalletsFromLocalStorage()
+        getAllBalanceFromRelay()
     }
 
     func logout(appWallet: AppWallet) {
@@ -232,6 +233,16 @@ class AppWalletDataManager {
             }
             
             completionHandler(totalCurrencyValue, nil)
+        }
+    }
+    
+    func getAllBalanceFromRelay() {
+        for wallet in AppWalletDataManager.shared.getWallets() {
+            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, completionHandler: { (totalCurrencyValue, error) in
+                print("getAllBalanceFromRelay \(totalCurrencyValue)")
+                wallet.totalCurrency = totalCurrencyValue
+                AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
+            })
         }
     }
 }

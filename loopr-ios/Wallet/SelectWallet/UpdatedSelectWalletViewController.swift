@@ -74,6 +74,11 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
                 print("getAllBalanceFromRelay \(totalCurrencyValue)")
                 wallet.totalCurrency = totalCurrencyValue
                 AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
+                
+                // TODO: a hack to reload table view.
+                if totalCurrencyValue > 0 {
+                    self.walletTableView.reloadData()
+                }
             })
         }
     }
