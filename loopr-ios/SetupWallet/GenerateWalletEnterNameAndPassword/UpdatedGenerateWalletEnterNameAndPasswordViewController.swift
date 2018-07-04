@@ -83,9 +83,13 @@ class UpdatedGenerateWalletEnterNameAndPasswordViewController: UIViewController,
         
         infoLabel.textColor = UIColor.tokenestTip
         infoLabel.font = FontConfigManager.shared.getLabelSCFont(size: 12)
-        infoLabel.frame = CGRect(x: 72, y: 36, width: screenWidth, height: 34)
+        
         infoLabel.numberOfLines = 2
         let attr = NSMutableAttributedString(string: "钱包密码用于导出私钥，交易设置时验证您的身份" + "\n" + "长度不少于6位")
+        
+        let infoLabelHeight = UILabel.heightForOneLineStringView(font: FontConfigManager.shared.getLabelSCFont(size: 12)) * 2
+        infoLabel.frame = CGRect(x: 72, y: 36, width: screenWidth, height: infoLabelHeight)
+        
         // let paragraphStyle = NSMutableParagraphStyle()
         // paragraphStyle.lineSpacing = 4
         // attr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attr.length))
