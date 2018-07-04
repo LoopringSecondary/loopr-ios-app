@@ -229,6 +229,10 @@ class SendViewController: UIViewController, UITextFieldDelegate, UIScrollViewDel
             self.recGasPriceInGwei = Double(gasPrice)
             DispatchQueue.main.async {
                 self.updateTransactionFeeAmountLabel(self.gasPriceInGwei)
+                
+                // Note: also need to update the transactionSpeedSlider.
+                self.transactionSpeedSlider.maximumValue = Float(self.gasPriceInGwei * 2) <= 20 ? 20 : Float(self.gasPriceInGwei * 2)
+                self.transactionSpeedSlider.value = Float(self.gasPriceInGwei)
             }
         }
     }
