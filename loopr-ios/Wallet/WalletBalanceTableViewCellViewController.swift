@@ -101,8 +101,8 @@ class WalletBalanceTableViewCellViewController: UIViewController {
         marketButton.set(image: UIImage.init(named: "Tokenest-asset-market"), title: LocalizedString("Market", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         marketButton.set(image: UIImage.init(named: "Tokenest-asset-market")?.alpha(0.6), title: LocalizedString("Market", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade"), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade")?.alpha(0.6), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade"), title: "C2C", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        tradeButton.set(image: UIImage.init(named: "Tokenest-asset-trade")?.alpha(0.6), title: "C2C", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
         sendButton.set(image: UIImage.init(named: "Tokenest-asset-send"), title: LocalizedString("Send", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         sendButton.set(image: UIImage.init(named: "Tokenest-asset-send")?.alpha(0.6), title: LocalizedString("Send", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
