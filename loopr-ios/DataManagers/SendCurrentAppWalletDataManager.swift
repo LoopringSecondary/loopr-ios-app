@@ -310,7 +310,7 @@ class SendCurrentAppWalletDataManager {
         self.getNonceFromRelay()
         let tx = RawTransaction(data: data, to: address, value: amount, gasLimit: gasLimit, gasPrice: GasDataManager.shared.getGasPriceInWei(), nonce: self.nonce)
         let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
-        if let signedTransaction = _sign(rawTx: tx, completion: completion) {
+        if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
             self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in
                 if txHash != nil && error == nil {
                     LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, rawTx: tx, from: from, completionHandler: completion)
