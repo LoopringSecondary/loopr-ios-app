@@ -139,10 +139,10 @@ class TradeDataManager {
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         
         // P2P 订单 默认 1hour 过期，或增加ui调整
-        // let since = Int64(Date().timeIntervalSince1970)
-        // let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
-        let since = Int64(1530806400)
-        let until = Int64(1530979200)
+        let since = Int64(Date().timeIntervalSince1970)
+        let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
+        // let since = Int64(1530806400)
+        // let until = Int64(1530979200)
         
         var order = OriginalOrder(delegate: delegate, address: address, side: "buy", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, market: market)
         PlaceOrderDataManager.shared.completeOrder(&order)
