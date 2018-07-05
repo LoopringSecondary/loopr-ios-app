@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Loopr</string>
+	<string>Tokenest</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -42,10 +42,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Use camera to scan QR Code</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Save QR code to the photo library</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Use face id to unlock the wallet</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Save QR code to the photo library</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
